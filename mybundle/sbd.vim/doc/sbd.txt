@@ -1,0 +1,133 @@
+*sbd.vim* Smart Buffer Delete
+
+==============================================================================
+CONTENTS                                                      *sbd-contents*
+
+    1. Intro .......................... |sbdIntro|
+    2. Usage .......................... |sbdUsage|
+    3. Configuration .................. |sbdConfig|
+        3.1 sbd_delete_anyway ......... |sbd_delete_anyway|
+        3.2 sbd_close_special  ........ |sbd_close_special|
+    4. License ........................ |sbdLicense|
+    5. Bugs ........................... |sbdBugs|
+    6. Contributing ................... |sbdContributing|
+    7. Changelog ...................... |sbdChangelog|
+    8. Credits ........................ |sbdCredits|
+
+
+==============================================================================
+1. Intro                                                          *sbdIntro*
+
+Vim's vanilla buffer closing/deletion becomes painful as soon as you
+start working with multiple buffers and windows.
+
+sbd allows you to close buffers while leaving your window layout intact. As
+a bonus, deleting a special buffer (e.g. |quickfix|, |help|, |directory|,
+|scratch|, etc) will automatically close the window holding it. Making these
+special buffers easier to deal with.
+
+
+==============================================================================
+2. Usage                                                          *sbdUsage*
+
+Add the following to your |vimrc|, as-is or tweaked to your taste: >
+
+    nnoremap <silent> <leader>bd    :Sbd<CR>
+    nnoremap <silent> <leader>bdm   :Sbdm<CR>
+
+`:Sbd` closes the buffer normally, while `:Sbdm` closes the buffer
+disregarding if it has unsaved changes or not.
+
+
+==============================================================================
+3. Configuration                                                 *sbdConfig*
+
+You can tweak the behavior of sbd by setting a few variables in your |vimrc|
+file. For example: >
+
+    let g:sbd_delete_anyway=1
+    let g:sbd_close_special=0
+
+------------------------------------------------------------------------------
+3.1 g:sbd_delete_anyway                                   *sbd_delete_anyway*
+
+Delete buffer even if containing unsaved changes.
+
+Default: 0 (off)
+
+------------------------------------------------------------------------------
+3.2 g:sbd_close_special                                   *sbd_close_special*
+
+Set the vertical height of the Gunclose special buffer's window toodo preview.
+
+Default: 1 (on)
+
+
+==============================================================================
+4. License                                                      *sbdLicense*
+
+ISC license https://en.wikipedia.org/wiki/ISC_license >
+
+    © 2012 Orphée Lafond-Lummis <orftz@orftz.com>
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted, provided that the above
+    copyright notice and this permission notice appear in all copies.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+==============================================================================
+5. Bugs                                                             *sbdBugs*
+
+If you find a bug please post it on the issue tracker:
+
+    https://github.com/orftz/sbd.vim/issues
+
+
+==============================================================================
+6. Contributing                                             *sbdContributing*
+
+Think you can make this plugin better? I love your mindset. Fork it on GitHub
+and send a pull request.
+
+    https://github.com/orftz/sbd.vim
+
+
+==============================================================================
+7. Changelog                                                  *sbdChangelog*
+
+**1.1.1** — NOTE: I may have screwed up a merge in **1.1.0**. If you're
+running in such a problem, simply re-install the plugin. Sorry for the fuss.
+
+**1.1.0** — DeleteBuffer() modes
+
+* `modeNormal` used via `:Sbd` does the normal thing
+* `modeCloseModified` used via `:Sbdm` closes the buffer even if it's modified
+
+**1.0.3** — Better README
+
+**1.0.2** — Flattr button
+
+**1.0.1** — Documentation and README clarification
+
+**1.0.0** — Initial stable release
+
+
+==============================================================================
+8. Credits                                                      *sbdCredits*
+
+The code is heavily based on kwbdi.vim, which is itself based on kwbd.vim and
+minibufexpl. Many thanks to the contributors of these plugins.
+
+The doc is based on gundo.vim's. Thanks Steve Losh.
+
+
+------------------------------------------------------------------------------
+ vim:tw=78:fo=tcq2:ai:isk=!-~,^*,^\|,^\":ts=4:ft=help:norl:
