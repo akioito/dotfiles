@@ -15,7 +15,7 @@ imap <D-w> <Esc>:CommandW<CR>
 colorscheme mycolor
 " set guifont=Menlo:h14    
 " set guifont=Courier:h16
-set guifont=Ubuntu\ Mono:h18
+set guifont=Ubuntu\ Mono:h16
 " set guifont=Osaka-Mono:h18
 " set guifont=Inconsolata\ XL:h16
 " set guifont=Monaco:h14
