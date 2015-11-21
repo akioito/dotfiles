@@ -5,11 +5,8 @@ git clone https://github.com/akioito/dotfiles
 mkdir .vim
 ln -s dotfiles/vimrc .vimrc
 ln -s dotfiles/gvimrc .gvimrc
-cp dorfiles/mybundle .vim/mybundle
-#rm -fr ~/.vim/bundle/neobundle.vim
+cp -r dotfiles/mybundle .vim/mybundle
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
-
-:NeoBundleUpdate
 
 --------------------------------------------------
 Environment:
@@ -44,7 +41,7 @@ uf  for Buffer navigation
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix 
 Shift Cursor Select and Enter for Align column
 Cmd-1 for Comment/Uncomment
-As usual for other commands see vimrc
+As usual, for other commands see vimrc
 
 --------------------------------------------------
 Project management
