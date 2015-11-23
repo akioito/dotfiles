@@ -64,10 +64,11 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
-NeoBundle 'kballard/vim-swift', {
-        \ 'filetypes': 'swift',
-        \ 'unite_sources': ['swift/device', 'swift/developer_dir']
-        \}
+" NeoBundle 'kballard/vim-swift', {
+"         \ 'filetypes': 'swift',
+"         \ 'unite_sources': ['swift/device', 'swift/developer_dir']
+"         \}
+NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
