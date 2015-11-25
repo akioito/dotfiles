@@ -68,7 +68,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
 "         \ 'filetypes': 'swift',
 "         \ 'unite_sources': ['swift/device', 'swift/developer_dir']
 "         \}
-NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-repeat'
