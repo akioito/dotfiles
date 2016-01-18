@@ -132,6 +132,7 @@ NeoBundle 'junegunn/vim-easy-align' "{
 "}
 NeoBundle 'Shougo/neomru.vim' "{
   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
+  let g:neomru#file_mru_limit = 3000
 "}
 " NeoBundle 'Chiel92/vim-autoformat' # test
 NeoBundle 'ptrin/JumpToCSS'
