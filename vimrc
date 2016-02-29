@@ -15,6 +15,7 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/ 
 endif
 
+let $PATH=$HOME . '/.pyenv/shims:' . $PATH
 
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
