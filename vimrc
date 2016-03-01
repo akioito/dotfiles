@@ -603,7 +603,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=147
+set columns=160
 set lines=65
 set autowrite
 set autoread
