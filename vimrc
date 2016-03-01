@@ -131,6 +131,7 @@ NeoBundle 'junegunn/vim-easy-align' "{
   let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
   nnoremap <C-Space>      :TagbarToggle<CR>
 "}
+NeoBundle 'yegappan/mru'
 NeoBundle 'Shougo/neomru.vim' "{
   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
   let g:neomru#file_mru_limit = 3000
