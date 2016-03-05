@@ -10,8 +10,6 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/ 
 endif
 
-let $PATH=$HOME . '/.pyenv/shims:' . $PATH
-
 " Required:
 call neobundle#begin(expand('~/.vim/bundle'))
 
@@ -38,6 +36,8 @@ if has("gui_macvim")
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4
     autocmd BufEnter    * :call indent_guides#enable()
   "}
+else
+  NeoBundle 'Yggdroot/indentLine'
 endif
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
   " autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
@@ -426,6 +426,7 @@ autocmd BufEnter *.js  :match defLine /.*function.*$/
 " autocmd BufEnter * :syntax sync minlines=200
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
 " Problem with Japanese IME / 例: 中 (tyuu) 
 autocmd VimEnter * set imdisable
