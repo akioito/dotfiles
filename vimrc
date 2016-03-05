@@ -3,11 +3,6 @@ if !&compatible
   set nocompatible
 endif
 
-if has("gui_macvim")
-    let macvim_hig_shift_movement = 1
-    " macvim-askpass from MacVim Kaoriya
-    command! W w !SUDO_ASKPASS=/usr/local/bin/macvim-askpass sudo tee % > /dev/null
-endif
 set encoding=utf-8
 
 if has('vim_starting')    
@@ -23,7 +18,6 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-
 
 " Add or remove your Bundles here:
 NeoBundle 'Shougo/vimproc.vim', {
@@ -64,11 +58,6 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   \        'hook/qfsigns_update/priority_exit': 3,},}
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
-
-" NeoBundle 'kballard/vim-swift', {
-"         \ 'filetypes': 'swift',
-"         \ 'unite_sources': ['swift/device', 'swift/developer_dir']
-"         \}
 NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-markdown'
@@ -83,11 +72,13 @@ NeoBundle 'tpope/vim-surround' "{
   " gvS' ･･･ visual surroud with char
 "}
 NeoBundle 'tpope/vim-commentary' "{
+if has("gui_macvim")
   noremap  <D-1> <ESC>:Commentary
   vnoremap <D-1> <ESC>gv:Commentary<cr>
   inoremap <D-1> <ESC>:Commentary<cr> 
+  vnoremap <D-2> <ESC>gv:sort<cr>  
+endif
 "} 
-vnoremap <D-2> <ESC>gv:sort<cr> 
 
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
@@ -98,23 +89,17 @@ NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
+if has('mac')
   let Grep_Path = '/usr/local/bin/ggrep'
   " let Grep_Path = '/usr/local/bin/ack'
   " to install ggrep
   " brew tap homebrew/dupes
   " brew install homebrew/dupes/grep
+endif
 "}
 
 NeoBundle 'AndrewRadev/simple_bookmarks.vim'
-" NeoBundle 'fatih/vim-go' "{
-"   let g:go_highlight_methods = 1 
-"   let g:go_fmt_autosave      = 0
-"   let g:go_highlight_trailing_whitespace_error = 0
-" "}
-" NeoBundle 'wting/rust.vim'
-
 NeoBundle 'henrik/vim-reveal-in-finder'
-" NeoBundle 'kentaroi/cocoa.vim'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
@@ -127,26 +112,26 @@ NeoBundle 'junegunn/vim-easy-align' "{
   let g:tagbar_compact     = 1
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
-  let g:tagbar_width       = 20
-  let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
-  nnoremap <C-Space>      :TagbarToggle<CR>
+  let g:tagbar_width       = 25
+  if has("mac") 
+    let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
+  endif
+  if has("gui_running")
+    nnoremap <C-Space>  :TagbarToggle<CR>
+  else
+    nnoremap <C-@>      :TagbarToggle<CR> 
+  endif
+  
 "}
 NeoBundle 'yegappan/mru'
 NeoBundle 'Shougo/neomru.vim' "{
   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
   let g:neomru#file_mru_limit = 3000
 "}
-" NeoBundle 'Chiel92/vim-autoformat' # test
 NeoBundle 'ptrin/JumpToCSS'
-
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-" NeoBundleLazy 'godlygeek/tabular', {'autoload':{'commands':'Tabularize'}} "{
-"   nmap tb:   :Tabularize /:\zs
-"   nmap tb=   :Tabularize /=
-" "}    
-
 NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
   let g:neocomplete#enable_at_startup       = 1
   let g:neocomplete#enable_auto_select      = 1
@@ -183,22 +168,12 @@ NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
 
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'gorkunov/smartpairs.vim'
-
-" NeoBundle 'SirVer/ultisnips'
-" NeoBundle 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<C-k>"
-" let g:UltiSnipsJumpForwardTrigger="<TAB>"
-" let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
-
 NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
  let g:unite_source_mark_marks =
   \   "abcdefghijklmnopqrstuvwxyz"
   \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   \ . "0123456789.'`^<>[]{}()\""
 "}
-
-" NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}} 
 " Unite "{
   " call unite#filters#matcher_default#use(['matcher_fuzzy'])
   " call unite#custom#source('line,outline,file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
@@ -225,15 +200,17 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     imap <buffer> <C-j>   <Plug>(unite_select_next_line)
     imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
     imap <buffer> <D-j>   <Plug>(unite_select_next_line)
+    imap <buffer> <ESC>oA <Plug>(unite_select_previous_line)
+    imap <buffer> <ESC>oB <Plug>(unite_select_next_line)
 
     nmap <buffer> <Space> <Plug>(unite_do_default_action)
-    " imap <buffer> <Space> <Plug>(unite_do_default_action)
 
     imap <buffer> <ESC>   <Plug>(unite_exit)
     imap <buffer> jk      <Plug>(unite_insert_leave)
   endfunction
 "}   
-  
+NeoBundle 'godlygeek/csapprox'
+
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -242,9 +219,6 @@ NeoBundleLocal ~/.vim/mybundle
 
 " Required:
 call neobundle#end()
-
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])  
 
 " Required:
 filetype plugin indent on
@@ -287,7 +261,7 @@ let MRU_Max_Entries = 250
 " Grep
 let g:Grep_Xargs_Options = '-0'
 
-set tags=./tags,./../tags,./*/tags,../mrpLib/tags,../../mrpLib/tags,../../../tags
+set tags=./tags,./../tags,./*/tags
 " ----------------------------------------------------------------------------
 " Status Line
 function! SyntaxItem()
@@ -368,8 +342,14 @@ map <SwipeDown>    <C-b>
 nnoremap bd :bdelete
 
 "nnoremap <leader>fix     :FixWhitespace<CR>
-nnoremap <D-j>           :cn<cr>ztkj
-nnoremap <D-k>           :cp<cr>ztkj
+if has("gui_macvim") 
+  nnoremap <D-j>           :cn<cr>ztkj
+  nnoremap <D-k>           :cp<cr>ztkj
+else
+  nnoremap <C-j>           :cn<cr>ztkj
+  nnoremap <C-k>           :cp<cr>ztkj
+endif
+
 nnoremap <leader>v       0<C-v>$
 nnoremap <leader>w       <C-w>v<C-w>l
 nnoremap zr              zRzz
@@ -562,19 +542,12 @@ if has("gui_macvim")
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
+  nmap <D-w> :CommandW<CR>
+  imap <D-w> <Esc>:CommandW<CR> 
 endif
-
-" ----------------------------------------------------------------------------
-" For Command T/W
-" macmenu &File.New\ Tab key=<nop>
-" macmenu &File.Close key=<nop>
-
-nmap <D-w> :CommandW<CR>
-imap <D-w> <Esc>:CommandW<CR>
 
 colorscheme mycolor
 " set guifont=Menlo:h16    
-" set guifont=Courier:h16
 " set guifont=Ubuntu\ Mono:h18
 set guifont=Inconsolata\ for\ Powerline:h18
 " set guifont=M+\ 1m:h18
@@ -582,6 +555,8 @@ set guifont=Inconsolata\ for\ Powerline:h18
 " set guifont=Inconsolata\ XL:h16
 " set guifont=Monaco:h14
 " set guifont=Source\ Code\ Pro:h15
+
+syntax on
 
 set nocompatible                       " More stuff
 set hlsearch                           " Highlight search

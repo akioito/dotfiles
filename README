@@ -1,7 +1,7 @@
 To Use:
 Clone this repository to your home directory:
 cd ~
-git clone https://github.com/akioito/dotfiles
+git clone https://github.com/macvim-dev/macvim.git
 mkdir .vim
 ln -s dotfiles/vimrc .vimrc
 ln -s dotfiles/gvimrc .gvimrc
@@ -13,7 +13,7 @@ Environment:
 MacVim compiled as following:
 git clone https://github.com/amadeus/macvim
 cd macvim
-CC=clang CFLAGS=-O3 ./configure --with-features=huge \
+CFLAGS=-O3 ./configure --with-features=huge \
               --enable-pythoninterp \
               --enable-luainterp \
               --with-luajit \
