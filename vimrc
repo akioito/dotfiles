@@ -32,18 +32,19 @@ if has("gui_macvim")
 endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 " NeoBundle 'Stormherz/tablify'
-if has('gui_macvim') 
-  NeoBundle 'nathanaelkane/vim-indent-guides' "{
-    let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=254
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=255
-    autocmd BufEnter    * :call indent_guides#enable()
-  "}
-else
-  NeoBundle 'github.com/Yggdroot/indentLine'
-  " Todo: resolve problem with copy and paste... :IndentLinesDisable
-  " autocmd CursorHold * IndentLinesReset
-endif
+NeoBundle 'nathanaelkane/vim-indent-guides' "{
+  if has('gui_macvim') 
+      let g:indent_guides_auto_colors = 0
+      autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=254
+      autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=255
+  else
+    " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
+    let g:indent_guides_auto_colors = 1
+    let g:indent_guides_guide_size  = 1
+    let g:indent_guides_start_level = 2
+  endif
+  autocmd BufEnter * :call indent_guides#enable() 
+"} 
 
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
   " autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
@@ -553,7 +554,6 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR> 
 endif
 
-colorscheme mycolor
 " set guifont=Menlo:h16    
 " set guifont=Ubuntu\ Mono:h18
 set guifont=Inconsolata\ for\ Powerline:h18
@@ -563,7 +563,10 @@ set guifont=Inconsolata\ for\ Powerline:h18
 " set guifont=Monaco:h14
 " set guifont=Source\ Code\ Pro:h15
 
-syntax on
+if !exists("g:syntax_on")
+    syntax on
+    colorscheme mycolor 
+endif
 
 set nocompatible                       " More stuff
 set hlsearch                           " Highlight search
