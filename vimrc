@@ -27,18 +27,23 @@ NeoBundle 'Shougo/vimproc.vim', {
 \   },
 \ }
 
+if has("gui_macvim")
+  let macvim_hig_shift_movement = 1
+endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 " NeoBundle 'Stormherz/tablify'
-if has("gui_macvim")
+if has("gui_macvim")   
   NeoBundle 'nathanaelkane/vim-indent-guides' "{
     let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=white
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=255
     autocmd BufEnter    * :call indent_guides#enable()
   "}
 else
-  NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'github.com/Yggdroot/indentLine'
+  autocmd CursorHold * IndentLinesReset
 endif
+
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
   " autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
 "}
