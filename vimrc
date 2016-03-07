@@ -32,17 +32,17 @@ if has("gui_macvim")
 endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 " NeoBundle 'Stormherz/tablify'
-if has("gui_macvim")   
+if has('gui_macvim') 
   NeoBundle 'nathanaelkane/vim-indent-guides' "{
     let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=white
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=254
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=255
     autocmd BufEnter    * :call indent_guides#enable()
   "}
 else
   NeoBundle 'github.com/Yggdroot/indentLine'
-  # Todo: resolve problem with copy and paste...
-  autocmd CursorHold * IndentLinesReset
+  " Todo: resolve problem with copy and paste... :IndentLinesDisable
+  " autocmd CursorHold * IndentLinesReset
 endif
 
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
