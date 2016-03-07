@@ -41,6 +41,7 @@ if has("gui_macvim")
   "}
 else
   NeoBundle 'github.com/Yggdroot/indentLine'
+  # Todo: resolve problem with copy and paste...
   autocmd CursorHold * IndentLinesReset
 endif
 
