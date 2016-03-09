@@ -78,9 +78,14 @@ if has("gui_macvim")
   vnoremap <D-1> <ESC>gv:Commentary<cr>
   inoremap <D-1> <ESC>:Commentary<cr> 
   vnoremap <D-2> <ESC>gv:sort<cr>  
+else
+  noremap  ,c <ESC>:Commentary<cr>
+  vnoremap ,c <ESC>gv:Commentary<cr>
+  inoremap ,c <ESC>:Commentary<cr> 
 endif
 "} 
 
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
 NeoBundle 'akioito/vim-myshell'
@@ -231,12 +236,10 @@ filetype plugin on
 
 
 " ----------------------------------------------------------------------------
-if has('mac')
-  set termencoding=utf-8
-  set encoding=utf-8
-  set fileencoding=utf-8
-  set fileencodings=utf-8,cp932
-endif
+set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932
 
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
