@@ -34,10 +34,16 @@ NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 " NeoBundle 'Stormherz/tablify'
 NeoBundle 'nathanaelkane/vim-indent-guides' "{
   " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
-  let g:indent_guides_auto_colors = 1
-  let g:indent_guides_guide_size  = 1
-  let g:indent_guides_start_level = 2
-  autocmd BufEnter python :call indent_guides#enable() 
+  if has("gui_macvim")  
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4 
+  else
+    let g:indent_guides_auto_colors = 1
+    let g:indent_guides_guide_size  = 1
+    let g:indent_guides_start_level = 2
+  endif
+  autocmd BufEnter * :call indent_guides#enable()
 "} 
 
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
