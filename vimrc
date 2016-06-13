@@ -91,6 +91,7 @@ else
 endif
 "} 
 
+NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
