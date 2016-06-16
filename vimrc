@@ -560,7 +560,8 @@ endif
 
 " set guifont=Menlo:h16    
 " set guifont=Ubuntu\ Mono:h18
-set guifont=Inconsolata\ for\ Powerline:h18
+" set guifont=Inconsolata\ for\ Powerline:h18
+set guifont=SF\ Mono:h18
 " set guifont=M+\ 1m:h18
 " set guifont=Osaka-Mono:h18
 " set guifont=Inconsolata\ XL:h16
