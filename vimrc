@@ -91,6 +91,7 @@ else
 endif
 "} 
 
+NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
