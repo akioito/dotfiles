@@ -435,7 +435,7 @@ autocmd BufEnter * lcd %:p:h " Current Directory
  
 " autocmd BufEnter *.py  :match defLine /def\ .*$/
 autocmd BufEnter *.js  :match defLine /.*function.*$/ 
-" autocmd BufEnter * :syntax sync minlines=200
+autocmd BufEnter * :syntax sync maxlines=200
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
