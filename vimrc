@@ -562,7 +562,7 @@ endif
 " set guifont=Menlo:h16    
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=Inconsolata\ for\ Powerline:h18
-set guifont=SF\ Mono:h18
+set guifont=SF\ Mono:h14
 " set guifont=M+\ 1m:h18
 " set guifont=Osaka-Mono:h18
 " set guifont=Inconsolata\ XL:h16
@@ -596,8 +596,8 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=160
-set lines=65
+set columns=200
+set lines=80
 set autowrite
 set autoread
 set nobackup
