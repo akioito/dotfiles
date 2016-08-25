@@ -44,8 +44,9 @@ NeoBundle 'nathanaelkane/vim-indent-guides' "{
     let g:indent_guides_start_level = 2
   endif
   autocmd BufEnter * :call indent_guides#enable()
-"} 
+"}                         
 
+NeoBundle 'tacroe/unite-mark'
 NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
   " autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
 "}
