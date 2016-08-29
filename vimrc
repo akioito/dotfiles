@@ -588,7 +588,7 @@ set mousehide                          " Hide mouse when typing
 set autoindent                         " We can make it better
 "set smartindent                        " commented because # goto first col
 set softtabstop=4                      " 4 spaces
-set expandtab                          " Kill tabulars
+set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
 set tabstop=4                          " Need for retab
 set listchars=tab:»\ 
@@ -598,7 +598,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=200
+set columns=180
 set lines=80
 set autowrite
 set autoread
