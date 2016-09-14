@@ -92,6 +92,7 @@ else
 endif
 "} 
 
+NeoBundle 'vim-utils/vim-man'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'craigemery/vim-autotag'
