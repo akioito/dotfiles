@@ -92,7 +92,6 @@ else
 endif
 "} 
 
-NeoBundle 'ElmCast/elm-vim'
 NeoBundle 'vim-utils/vim-man'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'udalov/kotlin-vim'
