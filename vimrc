@@ -107,11 +107,13 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
-  let Grep_Path = '/usr/local/bin/ggrep'
-  " let Grep_Path = '/usr/local/bin/ack'
+  " let Grep_Path = '/usr/local/bin/ggrep'
+  " let Grep_Path = '/usr/local/bin/rg'
   " to install ggrep
   " brew tap homebrew/dupes
   " brew install homebrew/dupes/grep
+  " brew install https://raw.githubusercontent.com/BurntSushi/ripgrep/master/pkg/brew/ripgrep.rb
+  set grepprg=rg\ --vimgrep
 endif
 "}
 
