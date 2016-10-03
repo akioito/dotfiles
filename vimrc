@@ -93,8 +93,8 @@ endif
 "} 
 
 NeoBundle 'vim-utils/vim-man'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'udalov/kotlin-vim'
+" NeoBundle 'elixir-lang/vim-elixir'
+" NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
