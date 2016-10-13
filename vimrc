@@ -146,6 +146,7 @@ NeoBundle 'yegappan/mru'
 NeoBundle 'Shougo/neomru.vim' "{
   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
   let g:neomru#file_mru_limit = 3000
+  let g:unite_source_file_mru_limit = 3000
 "}
 NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
