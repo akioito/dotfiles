@@ -153,39 +153,41 @@ NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass',
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 
-NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
-  let g:neocomplete#enable_at_startup       = 1
-  let g:neocomplete#enable_auto_select      = 1
-  let g:neocomplete#min_keyword_length      = 3
-  let g:neocomplete#max_list                = 20
-  let g:neocomplete#enable_insert_char_pre  = 1
-  let g:neocomplete#enable_fuzzy_completion = 1
-  let g:neocomplete#use_vimproc             = 1
-  let g:neocomplete#force_overwrite_completefunc = 1
-  let g:neocomplete#sources#buffer#cache_limit_size = 1024000
+NeoBundle 'maralla/completor.vim'
 
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  let g:neocomplete#sources#omni#input_patterns.python = ''
-  autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+"NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
+"  let g:neocomplete#enable_at_startup       = 1
+"  let g:neocomplete#enable_auto_select      = 1
+"  let g:neocomplete#min_keyword_length      = 3
+"  let g:neocomplete#max_list                = 20
+"  let g:neocomplete#enable_insert_char_pre  = 1
+"  let g:neocomplete#enable_fuzzy_completion = 1
+"  let g:neocomplete#use_vimproc             = 1
+"  let g:neocomplete#force_overwrite_completefunc = 1
+"  let g:neocomplete#sources#buffer#cache_limit_size = 1024000
 
-  " 補完を始めるキーワード長を長くする
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-  let g:neocomplete#auto_completion_start_length = 3
+"  if !exists('g:neocomplete#sources#omni#input_patterns')
+"    let g:neocomplete#sources#omni#input_patterns = {}
+"  endif
+"  let g:neocomplete#sources#omni#input_patterns.python = ''
+"  autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+"  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"  autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+"  autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
 
-  " 補完が止まった際に、スキップする長さを短くする
-  let g:neocomplete#skip_auto_completion_time = '0.2'
+"  " 補完を始めるキーワード長を長くする
+"  let g:neocomplete#sources#syntax#min_keyword_length = 3
+"  let g:neocomplete#auto_completion_start_length = 3
 
-  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-  function! s:my_cr_function()
-    " For no inserting <CR> key.
-    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  endfunction
-"}  
+"  " 補完が止まった際に、スキップする長さを短くする
+"  let g:neocomplete#skip_auto_completion_time = '0.2'
+
+"  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"  function! s:my_cr_function()
+"    " For no inserting <CR> key.
+"    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"  endfunction
+""}  
 
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'gorkunov/smartpairs.vim'
