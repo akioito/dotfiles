@@ -66,6 +66,11 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   \        'hook/qfsigns_update/priority_exit': 3,},}
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
+
+NeoBundle 'kovisoft/slimv'
+let g:slimv_lisp = 'ros run'
+let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
+
 NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-markdown'
@@ -271,7 +276,7 @@ nnoremap <C-N>          :tabnew<cr>
 let html_no_rendering     = 1
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
-let loaded_matchparen     = 1 " no automatic highlight parens
+" let loaded_matchparen     = 1 " no automatic highlight parens
 let loaded_quickfixsigns  = 100
 
 " ----------------------------------------------------------------------------
