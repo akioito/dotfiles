@@ -212,7 +212,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   let g:unite_prompt                        = '» '
   
   nnoremap uf           :Unite -auto-resize buffer<CR>    
-  nnoremap <Space>      :Unite buffer<CR>
+  nnoremap jf           :Unite buffer<CR>
+  nnoremap fj           :Unite buffer<CR>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :Unite -input=prj\  file_mru<CR>
@@ -358,6 +359,8 @@ nnoremap <C-[>     <C-t>
 " 
 " Smart way to move buffer
 nnoremap  b<space> :b<space>
+nnoremap <space>   <c-d>
+nnoremap <s-space> <c-u>
 
 " Buffer Navigation
 map <SwipeLeft>     :bp<CR>
