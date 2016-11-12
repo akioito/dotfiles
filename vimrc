@@ -358,9 +358,9 @@ nnoremap <C-[>     <C-t>
 " :%s/foo/bar/gc
 " 
 " Smart way to move buffer
-nnoremap  b<space> :b<space>
-nnoremap <space>   <c-d>
-nnoremap <s-space> <c-u>
+nnoremap  b<Space> :b<Space>
+nnoremap <Space>   <C-d>
+nnoremap <S-Space> <C-u>
 
 " Buffer Navigation
 map <SwipeLeft>     :bp<CR>
