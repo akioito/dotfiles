@@ -14,18 +14,28 @@ MacVim compiled as following:
 git clone https://github.com/macvim-dev/macvim.git
 cd macvim
 CFLAGS=-O3 ./configure --with-features=huge \
-              --enable-pythoninterp \
+              --enable-python3interp \
               --enable-luainterp \
               --with-luajit \
               --with-lua-prefix=/usr/local
 make
-
+--------------------------------------------------
+fish shell
+cd macvim
+git pull
+set -x CC clang;set -x CFLAGS -O3; ./configure --with-features=huge --enable-luainterp --with-luajit --with-lua-prefix=/usr/local  --enable-python3interp
+make
+---------------
+Symlink (Only for first time)
+cd /Applications
+ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .
 --------------------------------------------------
 Assume previous installs:
 XCode
 HomeBrew
 brew install lua
 brew install luajit
+brew install python3
 
 --------------------------------------------------
 Visual trick:
