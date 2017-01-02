@@ -67,6 +67,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
+NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'kovisoft/slimv'
 let g:slimv_lisp = 'ros run'
 let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
