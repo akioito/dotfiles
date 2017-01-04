@@ -68,6 +68,10 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'racer-rust/vim-racer' "{
+  let g:racer_cmd = "$HOME/.cargo/bin/racer"
+  au FileType rust nmap gd <Plug>(rust-def)
+"}
 NeoBundle 'kovisoft/slimv'
 let g:slimv_lisp = 'ros run'
 let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
