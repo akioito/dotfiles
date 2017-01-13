@@ -72,10 +72,10 @@ NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   au FileType rust nmap gd <Plug>(rust-def)
 "}
-NeoBundle 'kovisoft/slimv'
-let g:slimv_lisp = 'ros run'
-let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
-let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros run --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""' 
+" NeoBundle 'kovisoft/slimv'
+" let g:slimv_lisp = 'ros run'
+" let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
+" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros run --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""' 
 
 NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
