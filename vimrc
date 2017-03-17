@@ -187,6 +187,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
 
   " 補完を始めるキーワード長を長くする
   let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -303,16 +304,16 @@ function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
-" let g:syntax = '???'
+let g:syntax = '???'
 let g:currentTag = '???'
-" autocmd CursorHold * let g:syntax = SyntaxItem()
+autocmd CursorHold * let g:syntax = SyntaxItem()
 autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c
 set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
-" set statusline+=%5*\ %=%{g:syntax}               " only for debug
+set statusline+=%5*\ %=%{g:syntax}               " only for debug
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
