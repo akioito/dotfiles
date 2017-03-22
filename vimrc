@@ -67,6 +67,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
+NeoBundle 'vim-scripts/arc.vim'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
@@ -463,6 +464,7 @@ autocmd BufEnter * lcd %:p:h " Current Directory
 autocmd BufEnter *.js  :match defLine /.*function.*$/ 
 autocmd BufEnter * :syntax sync maxlines=200
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
+autocmd BufNewFile,BufRead *.arc set filetype=arc
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
