@@ -365,6 +365,7 @@ nnoremap <C-[>     <C-t>
 ":Reveal to reveal the current file in the OS X Finder.
 "z/ to toggle highlighting all instance of word under cursor on/off
 " :%s/foo/bar/gc
+" zR ulfold all
 " 
 " Smart way to move buffer
 nnoremap  b<Space> :b<Space>
