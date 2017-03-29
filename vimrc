@@ -584,6 +584,7 @@ if has("gui_macvim")
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
+  " set macligatures
   nmap <D-w> :CommandW<CR>
   imap <D-w> <Esc>:CommandW<CR> 
 endif
