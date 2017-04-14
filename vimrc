@@ -68,7 +68,6 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
 NeoBundle 'darthmall/vim-vue'
-NeoBundle 'vim-scripts/arc.vim'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
@@ -94,18 +93,24 @@ NeoBundle 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
-NeoBundle 'tpope/vim-commentary' "{
-if has("gui_macvim")
-  noremap  <D-1> <ESC>:Commentary
-  vnoremap <D-1> <ESC>gv:Commentary<cr>
-  inoremap <D-1> <ESC>:Commentary<cr> 
-  vnoremap <D-2> <ESC>gv:sort<cr>  
-else
-  noremap  ,c <ESC>:Commentary<cr>
-  vnoremap ,c <ESC>gv:Commentary<cr>
-  inoremap ,c <ESC>:Commentary<cr> 
-endif
-"} 
+NeoBundle 'tomtom/tcomment_vim' "{
+ noremap  <D-1> <ESC>:TComment
+ vnoremap <D-1> <ESC>gv:TComment<cr>
+ inoremap <D-1> <ESC>:TComment<cr> 
+}" 
+
+"NeoBundle 'tpope/vim-commentary' "{
+"if has("gui_macvim")
+"  noremap  <D-1> <ESC>:Commentary
+"  vnoremap <D-1> <ESC>gv:Commentary<cr>
+"  inoremap <D-1> <ESC>:Commentary<cr> 
+"  vnoremap <D-2> <ESC>gv:sort<cr>  
+"else
+"  noremap  ,c <ESC>:Commentary<cr>
+"  vnoremap ,c <ESC>gv:Commentary<cr>
+"  inoremap ,c <ESC>:Commentary<cr> 
+"endif
+""} 
 
 NeoBundle 'vim-utils/vim-man'
 " NeoBundle 'elixir-lang/vim-elixir'
