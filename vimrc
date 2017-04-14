@@ -97,7 +97,7 @@ NeoBundle 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
-}" 
+"} 
 
 "NeoBundle 'tpope/vim-commentary' "{
 "if has("gui_macvim")
