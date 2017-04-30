@@ -3,7 +3,7 @@ if !&compatible
   set nocompatible
 endif
 
-set encoding=utf-8
+" set encoding=utf-8
 
 if has('vim_starting')    
   " Required:
@@ -255,6 +255,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   endfunction
 "}   
 NeoBundle 'godlygeek/csapprox'
+NeoBundle 'sensible.vim'
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
@@ -613,20 +614,20 @@ endif
 
 set nocompatible                       " More stuff
 set hlsearch                           " Highlight search
-set incsearch                          " Incremental search
+" set incsearch                          " Incremental search
 set ignorecase                         " Ignore case when searching
 set smartcase
 set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
 set showmode                           " Always show the mode
-set backspace=2                        " Allow backspacing over a line
+" set backspace=2                        " Allow backspacing over a line
 set mousehide                          " Hide mouse when typing
-set autoindent                         " We can make it better
+" set autoindent                         " We can make it better
 "set smartindent                        " commented because # goto first col
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
 set tabstop=4                          " Need for retab
-set listchars=tab:»\ 
+" set listchars=tab:»\ 
 set matchpairs+=<:>                    " Match angle brackets
 set hidden                             " Allow modified buffers to be hidden
 
@@ -636,7 +637,7 @@ set imsearch=0
 set columns=180
 set lines=80
 set autowrite
-set autoread
+" set autoread
 set nobackup
 set noswapfile
 set nowritebackup
