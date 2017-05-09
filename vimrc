@@ -374,7 +374,7 @@ nnoremap <C-[>     <C-t>
 "z/ to toggle highlighting all instance of word under cursor on/off
 " :%s/foo/bar/gc
 " zR ulfold all
-" 
+" gi Resumes inserting at the last place  
 " Smart way to move buffer
 nnoremap  b<Space> :b<Space>
 nnoremap <Space>   <C-f>
