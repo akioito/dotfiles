@@ -36,20 +36,16 @@ hi Function     guifg=Blue                      gui=bold
 hi pythonStatement       guifg=#0100C8    gui=bold
 hi pythonRepeat          guifg=#0100C8    gui=bold
 hi pythonConditional     guifg=#0100C8    gui=bold
-hi pythonComment         guifg=#F09868 "Green variant
+hi pythonComment         guifg=#00b418 "Green variant
 hi pythonFunction        guifg=#0100C8    gui=bold
 hi pythonTripleString    guifg=darkgreen
-hi pythonString          guifg=#0BB634
 hi pythonBuiltinObj      guifg=Red
 hi pythonMethod          guifg=Darkorange
 hi pythonNumber          guifg=Orangered
 hi pythonBuiltinFunc     guifg=Red
 hi pythonSpecial         guifg=Blue
 hi pythonPreCondit       guifg=#487e52
-hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
-
-" HTML
-hi htmlString            guifg=#0BB634
+hi pythonStatementSpecial guifg=#a52a2a  gui=bold "guibg=#fff8f8
 
 " :call HexHighlight() to see the Color
 
@@ -71,6 +67,3 @@ hi Pmenu        guifg=#fd8900 guibg=#ffffa2
 " 
 " hi javascriptString    guifg=black    gui=bold
 hi javascriptAServices guifg=darkblue gui=bold
-
-" http://www.unpack.site/cash.me
-
