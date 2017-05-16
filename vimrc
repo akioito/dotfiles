@@ -338,7 +338,7 @@ autocmd VimEnter * nested if
 
 " ----------------------------------------------------------------------------
 " Abbrevs
-"iabbrev Todo: Todo: remove after test...
+iabbrev xrm: # testIto remove after test...
 
 " ----------------------------------------------------------------------------
 " Maps
