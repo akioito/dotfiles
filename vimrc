@@ -507,7 +507,7 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
-nnoremap <C-k>       :Bgrep \-{<CR> " Search -{ entry in MyTemplate
+nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
 
 " Used to track the quickfix window.
 augroup QSearchToggle
