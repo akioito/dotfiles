@@ -230,6 +230,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap uf           :Unite -auto-resize buffer<CR>    
   nnoremap jf           :Unite buffer<CR>
   nnoremap fj           :Unite buffer<CR>
+  nnoremap <C-l>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :Unite -input=prj\  file_mru<CR>
@@ -434,8 +435,8 @@ inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
 inoremap <silent> <F6>  <ESC>:MySQL<CR>
 nnoremap <silent> <F6>       :MySQL<CR>
-
-nnoremap          <F5>       :QFGrep <C-R><C-W><CR>
+ 
+noremap          <F5>       :QFGrep <C-R><C-W><CR>
 
 nmap     <F7>                :call HexHighlight()<Return>
 
@@ -505,6 +506,8 @@ function! QSearchToggle(forced)
         execute "normal! *:Bgrep\<CR>\<CR>"
     endif
 endfunction
+
+nnoremap <C-k>       :Bgrep \-{<CR> " Search -{ entry in MyTemplate
 
 " Used to track the quickfix window.
 augroup QSearchToggle
