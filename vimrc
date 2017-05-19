@@ -3,8 +3,6 @@ if !&compatible
   set nocompatible
 endif
 
-" set encoding=utf-8
-
 if has('vim_starting')    
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/ 
@@ -31,7 +29,6 @@ if has("gui_macvim")
   let macvim_hig_shift_movement = 1
 endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
-" NeoBundle 'Stormherz/tablify'
 NeoBundle 'nathanaelkane/vim-indent-guides' "{
   " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
   if has("gui_macvim")  
@@ -47,9 +44,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides' "{
 "}                         
 
 NeoBundle 'tacroe/unite-mark'
-NeoBundle 'othree/javascript-libraries-syntax.vim' "{ 
-  " autocmd BufReadPre *.js let b:javascript_lib_use_angularjs = 0
-"}
+NeoBundle 'othree/javascript-libraries-syntax.vim' 
 
 NeoBundle 'osyo-manga/vim-watchdogs' , {
   \ 'depends': [
@@ -100,22 +95,7 @@ NeoBundle 'tomtom/tcomment_vim' "{
  inoremap <D-1> <ESC>:TComment<cr> 
 "} 
 
-"NeoBundle 'tpope/vim-commentary' "{
-"if has("gui_macvim")
-"  noremap  <D-1> <ESC>:Commentary
-"  vnoremap <D-1> <ESC>gv:Commentary<cr>
-"  inoremap <D-1> <ESC>:Commentary<cr> 
-"  vnoremap <D-2> <ESC>gv:sort<cr>  
-"else
-"  noremap  ,c <ESC>:Commentary<cr>
-"  vnoremap ,c <ESC>gv:Commentary<cr>
-"  inoremap ,c <ESC>:Commentary<cr> 
-"endif
-""} 
-
 NeoBundle 'vim-utils/vim-man'
-" NeoBundle 'elixir-lang/vim-elixir'
-" NeoBundle 'udalov/kotlin-vim'
 NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
@@ -128,11 +108,6 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
-  " let Grep_Path = '/usr/local/bin/ggrep'
-  " let Grep_Path = '/usr/local/bin/rg'
-  " to install ggrep
-  " brew tap homebrew/dupes
-  " brew install homebrew/dupes/grep
   " brew install https://raw.githubusercontent.com/BurntSushi/ripgrep/master/pkg/brew/ripgrep.rb
   set grepprg=rg\ --vimgrep
 endif
@@ -161,7 +136,6 @@ NeoBundle 'junegunn/vim-easy-align' "{
   else
     nnoremap <C-@>      :TagbarToggle<CR> 
   endif
-  
 "}
 NeoBundle 'yegappan/mru'
 NeoBundle 'Shougo/neomru.vim' "{
@@ -173,8 +147,6 @@ NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-
-" NeoBundle 'maralla/completor.vim'
 
 NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
   let g:neocomplete#enable_at_startup       = 1
@@ -220,8 +192,6 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   \ . "0123456789.'`^<>[]{}()\""
 "}
 " Unite "{
-  " call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  " call unite#custom#source('line,outline,file,file/new,buffer,file_rec', 'matchers', 'matcher_fuzzy')
   let g:unite_enable_start_insert           = 1
   let g:unite_source_buffer_time_format     = ''
   let g:unite_winheight                     = 40
@@ -289,18 +259,14 @@ inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
 
 nnoremap <C-N>          :tabnew<cr> 
-" nnoremap <TAB>          :tabnext<cr>
-" nnoremap <S-TAB>        :tabprevious<cr>
 
 " For performance reason
 let html_no_rendering     = 1
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
-" let loaded_matchparen     = 1 " no automatic highlight parens
 let loaded_quickfixsigns  = 100
 
 " ----------------------------------------------------------------------------
-" let loaded_mru      = 1 
 let MRU_Max_Entries = 250
 
 " ----------------------------------------------------------------------------
@@ -443,24 +409,6 @@ nmap     <F7>                :call HexHighlight()<Return>
 inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
 
-" Comment/UnComment Python code
-" See python_box.vim
-"map      <D-1> :s/^/#/<CR>j
-"map      <D-2> :s/^#//<CR>0j
-"inoremap <D-1> <ESC>:s/^/#/<CR>j
-"inoremap <D-2> <ESC>:s/^#//<CR>0j
-
-" idutils
-"let LID_Cmd = 'lid -r'
-"let LID_Jump_To_Match = 0
-"nnoremap <F11> :Lid<cr><cr>
-
-" key mapping for window navigation
-" map H <C-w>h
-" map J <C-w>j
-" map K <C-w>k
-" map L <C-w>l
-
 " MacVim - move cursor word left
 map <S-w> <M-Left>
 
@@ -482,13 +430,9 @@ autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 autocmd VimEnter * set imdisable
                 
 autocmd FileType html setlocal indentkeys-=*<Return>
-" autocmd BufWritePost *.js     JSHint " use vim-watchdogs, :Errors to quickfix
 
 " Trim Trailing Whitespace
 autocmd BufWritePre *.{py,js,html,css} %s/\s\+$//e
-" autocmd BufWritePre *.js %s/\s\+$//e
-" autocmd BufWritePre *.html %s/\s\+$//e
-" autocmd BufWritePre *.css %s/\s\+$//e
 
 " FocusLost save and Normal Mode
 autocmd FocusLost * silent! wa
@@ -618,20 +562,15 @@ endif
 
 set nocompatible                       " More stuff
 set hlsearch                           " Highlight search
-" set incsearch                          " Incremental search
 set ignorecase                         " Ignore case when searching
 set smartcase
 set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
 set showmode                           " Always show the mode
-" set backspace=2                        " Allow backspacing over a line
 set mousehide                          " Hide mouse when typing
-" set autoindent                         " We can make it better
-"set smartindent                        " commented because # goto first col
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
 set tabstop=4                          " Need for retab
-" set listchars=tab:»\ 
 set matchpairs+=<:>                    " Match angle brackets
 set hidden                             " Allow modified buffers to be hidden
 
@@ -641,11 +580,9 @@ set imsearch=0
 set columns=180
 set lines=80
 set autowrite
-" set autoread
 set nobackup
 set noswapfile
 set nowritebackup
-" set noimd imi=0 ims=0
 set imdisable
 set virtualedit=all
 set shortmess=oO
@@ -655,7 +592,6 @@ set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 " set synmaxcol=512                       " Syntax coloring lines that are too long just slows down the world
 set ttyfast
-"set wildmode=longest:list,full
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set noshowmatch
 set updatetime=700
