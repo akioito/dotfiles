@@ -29,19 +29,24 @@ if has("gui_macvim")
   let macvim_hig_shift_movement = 1
 endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
-NeoBundle 'nathanaelkane/vim-indent-guides' "{
-  " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
-  if has("gui_macvim")  
-    let g:indent_guides_auto_colors = 0
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4 
-  else
-    let g:indent_guides_auto_colors = 1
-    let g:indent_guides_guide_size  = 1
-    let g:indent_guides_start_level = 2
-  endif
-  autocmd BufEnter * :call indent_guides#enable()
-"}                         
+NeoBundle 'Yggdroot/indentLine' "{
+  let g:indentLine_char = '¦'
+  let g:indentLine_color_gui = '#0BB634'
+"}
+
+" NeoBundle 'nathanaelkane/vim-indent-guides' "{
+"   " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
+"   if has("gui_macvim")  
+"     let g:indent_guides_auto_colors = 0
+"     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
+"     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4 
+"   else
+"     let g:indent_guides_auto_colors = 1
+"     let g:indent_guides_guide_size  = 1
+"     let g:indent_guides_start_level = 2
+"   endif
+"   autocmd BufEnter * :call indent_guides#enable()
+" "}                         
 
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'othree/javascript-libraries-syntax.vim' 
