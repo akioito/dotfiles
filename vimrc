@@ -425,7 +425,7 @@ autocmd BufEnter * lcd %:p:h " Current Directory
  
 " autocmd BufEnter *.py  :match defLine /def\ .*$/
 autocmd BufEnter *.js  :match defLine /.*function.*$/ 
-autocmd BufEnter * :syntax sync maxlines=200
+" autocmd BufEnter * :syntax sync maxlines=200
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.arc set filetype=arc
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -595,7 +595,7 @@ set number
 set antialias
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
-" set synmaxcol=512                       " Syntax coloring lines that are too long just slows down the world
+set synmaxcol=8000                      " Syntax coloring lines that are too long just slows down the world
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set noshowmatch
