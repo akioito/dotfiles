@@ -475,6 +475,8 @@ function! s:ToggleNumberMode()
   endif
 endfunc  
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR> 
+autocmd InsertEnter * :set nornu | set nu
+autocmd InsertLeave * :set rnu
 
 " ----------------------------------------------------------------------------
 function! GrepQuickFix(pat)
