@@ -310,7 +310,7 @@ autocmd VimEnter * nested if
 
 " ----------------------------------------------------------------------------
 " Abbrevs
-iabbrev xrm: # testIto remove after test...
+iabbrev xrm # testIto remove after test...
 
 " ----------------------------------------------------------------------------
 " Maps
@@ -429,6 +429,7 @@ autocmd BufEnter *.js  :match defLine /.*function.*$/
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.arc set filetype=arc
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+autocmd BufNewFile,BufRead *.dyon set filetype=rust
 autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
 " Problem with Japanese IME / 例: 中 (tyuu) 
