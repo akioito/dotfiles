@@ -50,6 +50,7 @@ hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
 
 " HTML
 hi htmlString            guifg=#0BB634
+hi jsStringS             guifg=#0BB634
 
 " :call HexHighlight() to see the Color
 
