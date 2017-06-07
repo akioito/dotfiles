@@ -594,7 +594,7 @@ set nowritebackup
 set imdisable
 set virtualedit=all
 set shortmess=oO
-set relativenumber
+" set relativenumber
 set number
 set antialias
 set selection=exclusive
