@@ -351,6 +351,8 @@ nnoremap <C-[>     <C-t>
 nnoremap  b<Space> :b<Space>
 nnoremap <Space>   <C-f>
 nnoremap <S-Space> <C-b>
+noremap! ¥ \
+noremap! \ ¥
 
 " Buffer Navigation
 map <SwipeLeft>     :bp<CR>
