@@ -476,8 +476,6 @@ function! s:ToggleNumberMode()
   endif
 endfunc  
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR> 
-autocmd InsertEnter * :set nornu | set nu
-autocmd InsertLeave * :set rnu
 
 " ----------------------------------------------------------------------------
 function! GrepQuickFix(pat)
@@ -594,7 +592,6 @@ set nowritebackup
 set imdisable
 set virtualedit=all
 set shortmess=oO
-" set relativenumber
 set number
 set antialias
 set selection=exclusive
