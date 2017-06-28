@@ -426,7 +426,7 @@ autocmd BufEnter * lcd %:p:h " Current Directory
 " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
  
 " autocmd BufEnter *.py  :match defLine /def\ .*$/
-autocmd BufEnter *.js  :match defLine /.*function.*$/ 
+" autocmd BufEnter *.js  :match defLine /.*function.*$/ 
 " autocmd BufEnter * :syntax sync maxlines=200
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.arc set filetype=arc
