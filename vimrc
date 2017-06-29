@@ -142,6 +142,7 @@ NeoBundle 'junegunn/vim-easy-align' "{
     nnoremap <C-@>      :TagbarToggle<CR> 
   endif
 "}
+NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
 NeoBundle 'Shougo/neomru.vim' "{
   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
