@@ -553,11 +553,11 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR> 
 endif
 
-" set guifont=Menlo:h16    
+set guifont=Menlo:h14    
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=Inconsolata\ for\ Powerline:h18
 " set guifont=SF\ Mono:h14
-set guifont=Fira\ Code\ Retina:h14
+" set guifont=Fira\ Code\ Retina:h14
 " set guifont=M+\ 1m:h18
 " set guifont=Osaka-Mono:h18
 " set guifont=Inconsolata\ XL:h16
