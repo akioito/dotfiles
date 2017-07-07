@@ -349,6 +349,7 @@ nnoremap <C-[>     <C-t>
 " zR ulfold all
 " gi Resumes inserting at the last place  
 " Smart way to move buffer
+" mvim -d -g filea fileb (vimdiff)
 nnoremap  b<Space> :b<Space>
 nnoremap <Space>   <C-f>
 nnoremap <S-Space> <C-b>
@@ -586,7 +587,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=180
+set columns=200
 set lines=80
 set autowrite
 set nobackup
