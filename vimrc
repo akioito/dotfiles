@@ -67,7 +67,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   " ESC to not append 'g' when save in insert mode
   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
 
-NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer' "{
