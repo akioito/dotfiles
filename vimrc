@@ -113,7 +113,7 @@ NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
-  " brew install https://raw.githubusercontent.com/BurntSushi/ripgrep/master/pkg/brew/ripgrep.rb
+  " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
 endif
 "}
