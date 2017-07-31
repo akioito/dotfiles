@@ -144,11 +144,11 @@ NeoBundle 'junegunn/vim-easy-align' "{
 "}
 NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
-NeoBundle 'Shougo/neomru.vim' "{
-  let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
-  let g:neomru#file_mru_limit = 3000
-  let g:unite_source_file_mru_limit = 3000
-"}
+" NeoBundle 'Shougo/neomru.vim' "{
+"   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
+"   let g:neomru#file_mru_limit = 3000
+"   let g:unite_source_file_mru_limit = 3000
+" "}
 " NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
@@ -209,7 +209,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap <C-l>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
-  nnoremap ct           :Unite -input=prj\  file_mru<CR>
+  " nnoremap ct           :Unite -input=prj\  file_mru<CR>
+  nnoremap ct           :MRU prj<CR>
   nnoremap unu          :Unite neobundle/update
   " autocmd BufEnter *.js nnoremap <Space>   :Unite -input=function line<CR> 
   " autocmd BufEnter *.py nnoremap <Space>   :Unite -input=def\  line<CR>
