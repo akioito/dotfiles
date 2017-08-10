@@ -32,6 +32,7 @@ NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 NeoBundle 'Yggdroot/indentLine' "{
   let g:indentLine_char = '¦'
   let g:indentLine_color_gui = '#0BB634'
+  set list lcs=tab:\|\ 
 "}
 
 " NeoBundle 'nathanaelkane/vim-indent-guides' "{
