@@ -52,21 +52,30 @@ NeoBundle 'Yggdroot/indentLine' "{
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'othree/javascript-libraries-syntax.vim' 
 
-NeoBundle 'osyo-manga/vim-watchdogs' , {
-  \ 'depends': [
-  \     'Shougo/vimproc.vim',
-  \     'thinca/vim-quickrun',
-  \     'osyo-manga/shabadou.vim',
-  \     'KazuakiM/vim-qfsigns',
-  \     'dannyob/quickfixstatus' 
-  \  ]
-  \ }
-  let g:quickrun_config = {
-  \    'watchdogs_checker/_' : {
-  \        'hook/qfsigns_update/enable_exit':   1,
-  \        'hook/qfsigns_update/priority_exit': 3,},}
-  " ESC to not append 'g' when save in insert mode
-  autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
+" NeoBundle 'osyo-manga/vim-watchdogs' , {
+"   \ 'depends': [
+"   \     'Shougo/vimproc.vim',
+"   \     'thinca/vim-quickrun',
+"   \     'osyo-manga/shabadou.vim',
+"   \     'KazuakiM/vim-qfsigns',
+"   \     'dannyob/quickfixstatus' 
+"   \  ]
+"   \ }
+"   let g:quickrun_config = {
+"   \    'watchdogs_checker/_' : {
+"   \        'hook/qfsigns_update/enable_exit':   1,
+"   \        'hook/qfsigns_update/priority_exit': 3,},}
+"   " ESC to not append 'g' when save in insert mode
+"   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
+
+NeoBundle 'w0rp/ale' "{
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_enter = 0
+  let g:ale_set_loclist = 0
+  let g:ale_set_quickfix = 1
+  let g:ale_open_list = 1
+  let g:ale_python_flake8_args="--ignore=E"
+"}
 
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
