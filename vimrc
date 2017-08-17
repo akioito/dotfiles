@@ -35,42 +35,13 @@ NeoBundle 'Yggdroot/indentLine' "{
   set list lcs=tab:\|\ 
 "}
 
-" NeoBundle 'nathanaelkane/vim-indent-guides' "{
-"   " let l:cterm_colors = (&g:background == 'dark') ? ['darkgrey', 'black'] : [254, 255] # <== indent_guides.vim line 107 
-"   if has("gui_macvim")  
-"     let g:indent_guides_auto_colors = 0
-"     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=3
-"     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#fff2f2 ctermbg=4 
-"   else
-"     let g:indent_guides_auto_colors = 1
-"     let g:indent_guides_guide_size  = 1
-"     let g:indent_guides_start_level = 2
-"   endif
-"   autocmd BufEnter * :call indent_guides#enable()
-" "}                         
-
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'othree/javascript-libraries-syntax.vim' 
 
-" NeoBundle 'osyo-manga/vim-watchdogs' , {
-"   \ 'depends': [
-"   \     'Shougo/vimproc.vim',
-"   \     'thinca/vim-quickrun',
-"   \     'osyo-manga/shabadou.vim',
-"   \     'KazuakiM/vim-qfsigns',
-"   \     'dannyob/quickfixstatus' 
-"   \  ]
-"   \ }
-"   let g:quickrun_config = {
-"   \    'watchdogs_checker/_' : {
-"   \        'hook/qfsigns_update/enable_exit':   1,
-"   \        'hook/qfsigns_update/priority_exit': 3,},}
-"   " ESC to not append 'g' when save in insert mode
-"   autocmd BufWritePost *.py call feedkeys("\<Esc>") | WatchdogsRun
-
 NeoBundle 'w0rp/ale' "{
   let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_enter = 1
+  let g:ale_lint_on_filetype_changed = 0
+  let g:ale_lint_on_enter = 0
   let g:ale_set_loclist = 0
   let g:ale_set_quickfix = 1
   let g:ale_open_list = 1
@@ -91,11 +62,6 @@ NeoBundle 'racer-rust/vim-racer' "{
   au FileType rust nmap gd <Plug>(rust-def)
 "}
 NeoBundle 'cespare/vim-toml'
-
-" NeoBundle 'kovisoft/slimv'
-" let g:slimv_lisp = 'ros run'
-" let g:slimv_impl = 'sbcl'    " 使用する処理系に関わらず
-" let g:slimv_swank_cmd = '!osascript -e "tell application \"Terminal\" to do script \"ros run --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""' 
 
 NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
@@ -160,11 +126,7 @@ NeoBundle 'junegunn/vim-easy-align' "{
 "}
 NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
-" NeoBundle 'Shougo/neomru.vim' "{
-"   let g:neomru#time_format = "(%Y/%m/%d %H:%M) "
-"   let g:neomru#file_mru_limit = 3000
-"   let g:unite_source_file_mru_limit = 3000
-" "}
+
 " NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
@@ -225,11 +187,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap <C-l>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
-  " nnoremap ct           :Unite -input=prj\  file_mru<CR>
   nnoremap ct           :MRU prj<CR>
   nnoremap unu          :Unite neobundle/update
-  " autocmd BufEnter *.js nnoremap <Space>   :Unite -input=function line<CR> 
-  " autocmd BufEnter *.py nnoremap <Space>   :Unite -input=def\  line<CR>
 
   " Custom mappings for the unite buffer
   autocmd FileType unite call s:unite_settings()
