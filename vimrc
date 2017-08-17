@@ -384,9 +384,15 @@ command! -nargs=1 Xgrep
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
-inoremap <silent> <F6>  <ESC>:MySQL<CR>
-nnoremap <silent> <F6>       :MySQL<CR>
- 
+
+augroup filetype_mysql
+  autocmd!
+  autocmd FileType mysql inoremap <buffer><silent> <F6>   <ESC>:MySQL<CR>
+  autocmd FileType mysql inoremap <buffer><silent> <C-r>  <ESC>:MySQL<CR>
+  autocmd FileType mysql nnoremap <buffer><silent> <F6>        :MySQL<CR>
+  autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
+augroup END
+
 noremap          <F5>       :QFGrep <C-R><C-W><CR>
 
 nmap     <F7>                :call HexHighlight()<Return>
