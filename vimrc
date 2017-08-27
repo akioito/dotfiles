@@ -45,12 +45,13 @@ NeoBundle 'w0rp/ale' "{
   let g:ale_set_loclist = 0
   let g:ale_set_quickfix = 1
   let g:ale_open_list = 1
-  let g:ale_python_flake8_args="--ignore=E,W391"
+  let g:ale_python_flake8_args="--ignore=E,W601,W602,W391"
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
   let g:ale_echo_msg_format = '[%linter%] %s'
   let g:ale_linters = {
-  \   'html': [''],
+  \   'html':   [''],
+  \   'python': ['flake8']
   \}
 "}
 
