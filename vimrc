@@ -432,8 +432,8 @@ autocmd FocusLost * silent! wa
 autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
 
 " Fast Cursor / nocursorline in Insert Mode
-" autocmd CursorHold * setlocal cursorline
-" autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+autocmd CursorHold * setlocal cursorline
+autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
 
 " QuickFix Close or Search
 function! QSearchToggle(forced)
