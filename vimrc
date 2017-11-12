@@ -103,7 +103,8 @@ endif
 
 NeoBundle 'AndrewRadev/simple_bookmarks.vim'
 NeoBundle 'henrik/vim-reveal-in-finder'
-NeoBundle 'vim-scripts/matchit.zip'
+" NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'andymass/vim-matchup'
 NeoBundle 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
   vnoremap <Enter> :EasyAlign
