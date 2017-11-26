@@ -58,6 +58,7 @@ NeoBundle 'w0rp/ale' "{
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'zah/nim.vim'
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   au FileType rust nmap gd <Plug>(rust-def)
@@ -103,8 +104,7 @@ endif
 
 NeoBundle 'AndrewRadev/simple_bookmarks.vim'
 NeoBundle 'henrik/vim-reveal-in-finder'
-" NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'andymass/vim-matchup'
+NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
   vnoremap <Enter> :EasyAlign
