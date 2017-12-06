@@ -543,7 +543,8 @@ endif
 " set guifont=Inconsolata\ for\ Powerline:h18
 " set guifont=SF\ Mono:h14
 " set guifont=Fira\ Code\ Retina:h14
-set guifont=Hack\ Regular:h14
+set guifont=Courier:h16
+" set guifont=Hack\ Regular:h14
 " set guifont=Fira\ Mono:h14
 " set guifont=M+\ 1m:h18
 " set guifont=Osaka-Mono:h18
