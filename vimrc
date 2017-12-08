@@ -596,4 +596,5 @@ set noundofile
 
 set breakindent
 set breakindentopt=shift:2 
+set iskeyword+=-                        " treat dashes as part of word 
 
