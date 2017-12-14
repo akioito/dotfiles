@@ -38,22 +38,45 @@ NeoBundle 'Yggdroot/indentLine' "{
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'othree/javascript-libraries-syntax.vim' 
 
-NeoBundle 'w0rp/ale' "{
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_filetype_changed = 0
-  let g:ale_lint_on_enter = 0
-  let g:ale_set_loclist = 0
-  let g:ale_set_quickfix = 1
-  let g:ale_open_list = 1
-  let g:ale_python_flake8_args="--ignore=E,W601,W602,W391"
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s'
-  let g:ale_linters = {
-  \   'html':   [''],
-  \   'python': ['flake8']
-  \}
-"}
+NeoBundle 'osyo-manga/vim-watchdogs' , {
+  \ 'depends': [
+  \     'Shougo/vimproc.vim',
+  \     'thinca/vim-quickrun',
+  \     'osyo-manga/shabadou.vim',
+  \     'KazuakiM/vim-qfsigns',
+  \     'dannyob/quickfixstatus' 
+  \  ]
+  \ }
+  let g:quickrun_config = {
+  \    'watchdogs_checker/_' : {
+  \        'hook/qfsigns_update/enable_exit':   1,
+  \        'hook/qfsigns_update/priority_exit': 3,},}
+  let g:quickrun_config["python/watchdogs_checker"] = {
+  \	"type" : "watchdogs_checker/flake8",
+  \	"cmdopt" : "--ignore=E,W601,W602,W391"
+  \}  
+  " ESC to not append 'g' when save in insert mode
+autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
+autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
+autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
+
+" NeoBundle 'w0rp/ale' "{
+"   let g:ale_lint_on_text_changed = 'never'
+"   let g:ale_lint_on_filetype_changed = 0
+"   let g:ale_lint_on_enter = 0
+"   let g:ale_lint_on_save  = 0
+"   let g:ale_set_loclist = 0
+"   let g:ale_set_quickfix = 1
+"   let g:ale_open_list = 1
+"   let g:ale_python_flake8_args="--ignore=E,W601,W602,W391"
+"   let g:ale_echo_msg_error_str = 'E'
+"   let g:ale_echo_msg_warning_str = 'W'
+"   let g:ale_echo_msg_format = '[%linter%] %s'
+"   let g:ale_linters = {
+"   \   'html':   [''],
+"   \   'python': ['flake8']
+"   \}
+" "}
 
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
@@ -574,7 +597,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=200
+set columns=160
 set lines=80
 set autowrite
 set nobackup
