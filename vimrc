@@ -580,7 +580,6 @@ set guifont=Courier:h14
 " set guifont=Source\ Code\ Pro:h15
 
 if !exists("g:syntax_on")
-    syntax on
     colorscheme mycolor 
 endif
 
@@ -614,7 +613,6 @@ set number
 set antialias
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
-set synmaxcol=8000                      " Syntax coloring lines that are too long just slows down the world
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set noshowmatch
