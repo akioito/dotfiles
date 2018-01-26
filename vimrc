@@ -342,6 +342,10 @@ nnoremap <C-[>     <C-t>
 " Ctrl 6 or Ctrl ^ switches to the last visited buffer
 " Ctrl o / Ctrl i Jump previously visited location 
 " Back to tag equ CTR-T
+" Cursor movements / scroll relative 
+"  H - top         / zh or zt
+"  M - middle      / zm or zz
+"  L - Bottom      / zl or zb
 "nnoremap <C-[>     <C-t>
 "q: " Open cmd line history
 ":colder, restore QuickFix after :QFGrep
@@ -355,6 +359,9 @@ nnoremap <C-[>     <C-t>
 " gi Resumes inserting at the last place  
 " Smart way to move buffer
 " mvim -d -g filea fileb (vimdiff)
+noremap zh zt
+noremap zm zz
+noremap zl zb
 nnoremap  b<Space> :b<Space>
 nnoremap <Space>   <C-f>
 nnoremap <S-Space> <C-b>
@@ -530,8 +537,6 @@ function! s:MoveVToNonBlank(UpDown)
 endfunction
 nnoremap <silent> K        :call <SID>MoveVToNonBlank('Up')<CR>hh  
 nnoremap <silent> J        :call <SID>MoveVToNonBlank('Down')<CR>
-nnoremap H b
-nnoremap L w
 nnoremap <silent> <C-Up>   :call <SID>MoveVToNonBlank('Up')<CR>
 nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>h 
 
