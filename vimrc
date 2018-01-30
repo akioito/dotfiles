@@ -285,6 +285,11 @@ let MRU_Max_Entries = 250
 let g:Grep_Xargs_Options = '-0'
 
 set tags=./tags,./../tags,./*/tags
+" ctags
+" Press 't' to follow tag under cursor, 'T' to go back up the tag stack
+nmap t <C-]>
+nmap T :pop<CR>
+
 " ----------------------------------------------------------------------------
 " Status Line
 function! SyntaxItem()
