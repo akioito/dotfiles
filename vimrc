@@ -85,7 +85,7 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
 NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'zah/nim.vim'
+NeoBundle 'dart-lang/dart-vim-plugin'
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   au FileType rust nmap gd <Plug>(rust-def)
