@@ -52,6 +52,7 @@ hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
 hi ponyDocumentString    guifg=darkgreen
 hi ponyComment           guifg=#F09868 "Green variant
 hi ponyString            guifg=#0BB634
+hi ponyStringX           guifg=#0BB634
 hi ponyKwFunction        guifg=#28C101  gui=bold "guibg=#fff8f8 
 
 " HTML / JS
