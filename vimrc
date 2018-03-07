@@ -84,7 +84,7 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 
 " NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
-NeoBundle 'dleonard0/pony-vim-syntax'
+NeoBundle 'jakwings/vim-pony'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dart-lang/dart-vim-plugin'
 NeoBundle 'racer-rust/vim-racer' "{
@@ -132,7 +132,9 @@ endif
 
 NeoBundle 'AndrewRadev/simple_bookmarks.vim'
 NeoBundle 'henrik/vim-reveal-in-finder'
-NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'andymass/vim-matchup' "{
+  let g:matchup_matchparen_deferred = 1
+"}
 NeoBundle 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
   vnoremap <Enter> :EasyAlign
@@ -626,7 +628,7 @@ set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
-set noshowmatch
+" set noshowmatch
 set updatetime=700
 set noundofile
 

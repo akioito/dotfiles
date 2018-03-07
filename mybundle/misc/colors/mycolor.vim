@@ -49,8 +49,10 @@ hi pythonPreCondit       guifg=#487e52
 hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
 
 " Pony
-hi ponyTripleString    guifg=darkgreen
-hi ponyString          guifg=#0BB634
+hi ponyDocumentString    guifg=darkgreen
+hi ponyComment           guifg=#F09868 "Green variant
+hi ponyString            guifg=#0BB634
+hi ponyKwFunction        guifg=#28C101  gui=bold "guibg=#fff8f8 
 
 " HTML / JS
 hi htmlString            guifg=#0BB634
