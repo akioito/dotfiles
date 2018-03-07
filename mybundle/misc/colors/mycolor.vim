@@ -48,9 +48,13 @@ hi pythonSpecial         guifg=Blue
 hi pythonPreCondit       guifg=#487e52
 hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
 
-" HTML
+" Pony
+hi ponyTripleString    guifg=darkgreen
+hi ponyString          guifg=#0BB634
+
+" HTML / JS
 hi htmlString            guifg=#0BB634
-hi jsStringS             guifg=#0BB634
+hi jsStringS              guifg=#0BB634
 
 " :call HexHighlight() to see the Color
 
@@ -80,4 +84,4 @@ hi DiffAdd    ctermfg=233 ctermbg=194 guifg=#003300 guibg=#DDFFDD gui=none cterm
 hi DiffChange ctermbg=255  guibg=#ececec gui=none   cterm=none
 hi DiffText   ctermfg=233  ctermbg=189  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
 hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    cterm=none
-" }}}   
+" }}}
