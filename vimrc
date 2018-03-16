@@ -86,6 +86,7 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 NeoBundle 'darthmall/vim-vue'
 NeoBundle 'jakwings/vim-pony'
 NeoBundle 'zah/nim.vim'
+NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dart-lang/dart-vim-plugin'
 NeoBundle 'racer-rust/vim-racer' "{
