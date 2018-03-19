@@ -82,7 +82,7 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 "   \}
 " "}
 
-" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'darthmall/vim-vue'
 NeoBundle 'jakwings/vim-pony'
 NeoBundle 'zah/nim.vim'
