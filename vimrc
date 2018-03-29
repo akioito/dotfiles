@@ -52,8 +52,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   \        'hook/qfsigns_update/enable_exit':   1,
   \        'hook/qfsigns_update/priority_exit': 3,},}
   let g:quickrun_config["python/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/flake8",
-  \	"cmdopt" : "--ignore=E,W601,W602,W391"
+  \	"type" : "watchdogs_checker/flake8"
   \} 
   let g:quickrun_config["css/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/csslint",
