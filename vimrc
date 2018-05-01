@@ -322,6 +322,7 @@ autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c
+set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
 set statusline+=%5*\ %=%{g:syntax}               " only for debug
