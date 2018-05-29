@@ -59,7 +59,6 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   \	"type" : "watchdogs_checker/csslint",
   \	"cmdopt" : "--ignore=order-alphabetical,box-sizing,unqualified-attributes,fallback-colors,compatible-vendor-prefixes,adjoining-classes"
   \}  
-  call watchdogs#setup(g:quickrun_config)
   " ESC to not append 'g' when save in insert mode
 autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
