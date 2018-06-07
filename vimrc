@@ -31,7 +31,8 @@ endif
 NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
 NeoBundle 'Yggdroot/indentLine' "{
   let g:indentLine_char = '¦'
-  let g:indentLine_color_gui = '#0BB634'
+  " let g:indentLine_color_gui = '#0BB634'
+  let g:indentLine_color_gui = '#EFEFEF'
   set list lcs=tab:\|\ 
 "}
 
@@ -381,6 +382,7 @@ nnoremap <C-[>     <C-t>
 ":Reveal to reveal the current file in the OS X Finder.
 "z/ to toggle highlighting all instance of word under cursor on/off
 " :%s/foo/bar/gc
+" gUw  : Change to end of current WORD from lower to upper
 " zR ulfold all
 " gi Resumes inserting at the last place  
 " Smart way to move buffer
@@ -493,8 +495,8 @@ autocmd FocusLost * silent! wa
 autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
 
 " Fast Cursor / nocursorline in Insert Mode
-autocmd CursorHold * setlocal cursorline
-autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+" autocmd CursorHold * setlocal cursorline
+" autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
 
 " QuickFix Close or Search
 function! QSearchToggle(forced)
