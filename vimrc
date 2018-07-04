@@ -129,6 +129,7 @@ NeoBundle 'mkitt/browser-refresh.vim'
 NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
+silent! pyx import sys
 NeoBundle 'mgedmin/pythonhelper.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
