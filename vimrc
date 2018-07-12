@@ -90,9 +90,9 @@ NeoBundle 'zah/nim.vim'
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dart-lang/dart-vim-plugin'
-" NeoBundle 'natebosch/vim-lsc' "{
-"   let g:lsc_server_commands = {'dart': 'dart_language_server'}
-" "}
+NeoBundle 'natebosch/vim-lsc' "{
+  let g:lsc_server_commands = {'dart': 'dart_language_server'}
+"}
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   au FileType rust nmap gd <Plug>(rust-def)
@@ -119,7 +119,7 @@ NeoBundle 'tomtom/tcomment_vim' "{
 "} 
 
 NeoBundle 'vim-utils/vim-man'
-" NeoBundle 'craigemery/vim-autotag'
+NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
@@ -129,8 +129,7 @@ NeoBundle 'mkitt/browser-refresh.vim'
 NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
-" silent! pyx import sys
-" NeoBundle 'mgedmin/pythonhelper.vim'
+NeoBundle 'mgedmin/pythonhelper.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
