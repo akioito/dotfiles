@@ -3,7 +3,7 @@ if has("gui_macvim")
    set go-=L         " No verticall scoll bar for minibufexpl
    " set ambiwidth=auto
    set macmeta
-   highlight Cursor guifg=yellow guibg=red
+   highlight Cursor guifg=yellow guibg=brown
 end
 
 " For Command T/W
