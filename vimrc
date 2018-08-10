@@ -91,9 +91,9 @@ NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'dart-lang/dart-vim-plugin'
 autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
-NeoBundle 'natebosch/vim-lsc' "{
-  let g:lsc_server_commands = {'dart': 'dart_language_server'}
-"}
+" NeoBundle 'natebosch/vim-lsc' "{
+"   let g:lsc_server_commands = {'dart': 'dart_language_server'}
+" "}
 NeoBundle 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   au FileType rust nmap gd <Plug>(rust-def)
