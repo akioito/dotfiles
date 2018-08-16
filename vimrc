@@ -169,7 +169,7 @@ NeoBundle 'yegappan/mru'
 
 " NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
-NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
+" NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 
 " NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
