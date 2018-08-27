@@ -208,17 +208,26 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']
 "   endfunction
 " "}  
 
-NeoBundle 'Shougo/deoplete.nvim' "{
-  let g:deoplete#enable_at_startup = 1 
-  augroup omnifuncs
-    autocmd!
-    autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-  augroup end  
-"}
+" NeoBundle 'Shougo/deoplete.nvim' "{
+"   let g:deoplete#enable_at_startup = 1 
+"   augroup omnifuncs
+"     autocmd!
+"     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
+"     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
+"     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
+"     autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
+"     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
+"   augroup end  
+" "}
+
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build' : {
+     \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+     \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+     \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+     \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+     \    }
+     \ }
 
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
