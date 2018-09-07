@@ -90,6 +90,7 @@ NeoBundle 'jakwings/vim-pony'
 NeoBundle 'zah/nim.vim'
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'JuliaEditorSupport/julia-vim'
 NeoBundle 'akioito/dart-vim-plugin'
 autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
 NeoBundle 'natebosch/vim-lsc' "{
