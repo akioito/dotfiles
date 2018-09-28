@@ -175,6 +175,7 @@ NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass',
 " NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'jonsmithers/experimental-lit-html-vim'
+NeoBundle 'reasonml-editor/vim-reason-plus'
 
 " NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
 "   let g:neocomplete#enable_at_startup       = 1
