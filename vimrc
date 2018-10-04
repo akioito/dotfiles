@@ -86,12 +86,12 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'darthmall/vim-vue'
-NeoBundle 'jakwings/vim-pony'
+" NeoBundle 'jakwings/vim-pony'
 " NeoBundle 'zah/nim.vim'
-NeoBundle "baabelfish/nvim-nim"
+" NeoBundle "baabelfish/nvim-nim"
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'JuliaEditorSupport/julia-vim'
+" NeoBundle 'JuliaEditorSupport/julia-vim'
 NeoBundle 'akioito/dart-vim-plugin'
 autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
 NeoBundle 'natebosch/vim-lsc' "{
@@ -175,7 +175,7 @@ NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass',
 " NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'jonsmithers/experimental-lit-html-vim'
-NeoBundle 'reasonml-editor/vim-reason-plus'
+" NeoBundle 'reasonml-editor/vim-reason-plus'
 
 " NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
 "   let g:neocomplete#enable_at_startup       = 1
