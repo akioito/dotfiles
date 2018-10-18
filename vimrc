@@ -91,6 +91,13 @@ NeoBundle 'darthmall/vim-vue'
 " NeoBundle "baabelfish/nvim-nim"
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'terryma/vim-smooth-scroll'
+  noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+  noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+  noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+  noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+  noremap <silent> <S-Space> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+  noremap <silent> <Space>   :call smooth_scroll#down(&scroll*2, 0, 4)<CR> 
 " NeoBundle 'JuliaEditorSupport/julia-vim'
 NeoBundle 'akioito/dart-vim-plugin'
 autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
@@ -410,8 +417,8 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
-nnoremap <Space>   <C-f>
-nnoremap <S-Space> <C-b>
+" nnoremap <Space>   <C-f>
+" nnoremap <S-Space> <C-b>
 noremap! ¥ \
 noremap! \ ¥
 
