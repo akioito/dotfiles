@@ -130,7 +130,7 @@ NeoBundle 'tomtom/tcomment_vim' "{
 "} 
 
 NeoBundle 'vim-utils/vim-man'
-NeoBundle 'craigemery/vim-autotag'
+" NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
