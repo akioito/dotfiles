@@ -65,30 +65,9 @@ autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 
-" NeoBundle 'w0rp/ale' "{
-"   let g:ale_lint_on_text_changed = 'never'
-"   let g:ale_lint_on_filetype_changed = 0
-"   let g:ale_lint_on_enter = 0
-"   let g:ale_lint_on_save  = 0
-"   let g:ale_set_loclist = 0
-"   let g:ale_set_quickfix = 1
-"   let g:ale_open_list = 1
-"   let g:ale_python_flake8_args="--ignore=E,W601,W602,W391"
-"   let g:ale_echo_msg_error_str = 'E'
-"   let g:ale_echo_msg_warning_str = 'W'
-"   let g:ale_echo_msg_format = '[%linter%] %s'
-"   let g:ale_linters = {
-"   \   'html':   [''],
-"   \   'python': ['flake8']
-"   \}
-" "}
-
-NeoBundle 'airblade/vim-gitgutter'
+" NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bhurlow/vim-parinfer'
 NeoBundle 'dag/vim-fish'
-NeoBundle 'darthmall/vim-vue'
-" NeoBundle 'jakwings/vim-pony'
-" NeoBundle 'zah/nim.vim'
-" NeoBundle "baabelfish/nvim-nim"
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'terryma/vim-smooth-scroll'
@@ -98,16 +77,15 @@ NeoBundle 'terryma/vim-smooth-scroll'
   noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
   noremap <silent> <S-Space> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
   noremap <silent> <Space>   :call smooth_scroll#down(&scroll*2, 0, 4)<CR> 
-" NeoBundle 'JuliaEditorSupport/julia-vim'
 NeoBundle 'akioito/dart-vim-plugin'
 autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
-NeoBundle 'natebosch/vim-lsc' "{
-  let g:lsc_server_commands = {'dart': 'dart_language_server'}
-"}
-NeoBundle 'racer-rust/vim-racer' "{
-  let g:racer_cmd = "$HOME/.cargo/bin/racer"
-  au FileType rust nmap gd <Plug>(rust-def)
-"}
+" NeoBundle 'natebosch/vim-lsc' "{
+"   let g:lsc_server_commands = {'dart': 'dart_language_server'}
+" "}
+" NeoBundle 'racer-rust/vim-racer' "{
+"   let g:racer_cmd = "$HOME/.cargo/bin/racer"
+"   au FileType rust nmap gd <Plug>(rust-def)
+" "}
 NeoBundle 'cespare/vim-toml'
 
 NeoBundle 'keith/swift.vim'
@@ -130,7 +108,6 @@ NeoBundle 'tomtom/tcomment_vim' "{
 "} 
 
 NeoBundle 'vim-utils/vim-man'
-" NeoBundle 'craigemery/vim-autotag'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
@@ -177,47 +154,11 @@ NeoBundle 'junegunn/vim-easy-align' "{
 NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
 
-" NeoBundle 'ptrin/JumpToCSS'
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
-" NeoBundleLazy 'gregsexton/MatchTag', {'autoload':{'filetypes':['html','xml']}} 
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 NeoBundle 'jonsmithers/experimental-lit-html-vim'
-" NeoBundle 'reasonml-editor/vim-reason-plus'
 
-" NeoBundleLazy 'Shougo/neocomplete.vim', {'autoload':{'insert':1}} "{
-"   let g:neocomplete#enable_at_startup       = 1
-"   let g:neocomplete#enable_auto_select      = 1
-"   let g:neocomplete#min_keyword_length      = 3
-"   let g:neocomplete#max_list                = 20
-"   let g:neocomplete#enable_insert_char_pre  = 1
-"   let g:neocomplete#enable_fuzzy_completion = 1
-"   let g:neocomplete#use_vimproc             = 1
-"   let g:neocomplete#force_overwrite_completefunc = 1
-"   let g:neocomplete#sources#buffer#cache_limit_size = 1024000
-"
-"   if !exists('g:neocomplete#sources#omni#input_patterns')
-"     let g:neocomplete#sources#omni#input_patterns = {}
-"   endif
-"   let g:neocomplete#sources#omni#input_patterns.python = ''
-"   autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-"   autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
-"
-"   " 補完を始めるキーワード長を長くする
-"   let g:neocomplete#sources#syntax#min_keyword_length = 3
-"   let g:neocomplete#auto_completion_start_length = 3
-"
-"   " 補完が止まった際に、スキップする長さを短くする
-"   let g:neocomplete#skip_auto_completion_time = '0.2'
-"
-"   inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"   function! s:my_cr_function()
-"     " For no inserting <CR> key.
-"     return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-"   endfunction
-" "}  
+autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
 
 NeoBundle 'Shougo/deoplete.nvim' "{
   let g:deoplete#enable_at_startup = 1 
@@ -231,14 +172,6 @@ NeoBundle 'Shougo/deoplete.nvim' "{
   augroup end  
 "}
 
-" NeoBundle 'Valloric/YouCompleteMe', {
-"      \ 'build' : {
-"      \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"      \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"      \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-"      \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-"      \    }
-"      \ }
 
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
@@ -417,8 +350,6 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
-" nnoremap <Space>   <C-f>
-" nnoremap <S-Space> <C-b>
 noremap! ¥ \
 noremap! \ ¥
 
