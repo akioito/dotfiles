@@ -66,7 +66,8 @@ autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 
 " NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bhurlow/vim-parinfer'
+" NeoBundle 'bhurlow/vim-parinfer'
+NeoBundle 'junegunn/rainbow_parentheses.vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
