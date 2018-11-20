@@ -13,29 +13,28 @@ Environment:
 MacVim compiled as following:
 git clone https://github.com/macvim-dev/macvim.git
 cd macvim
-CFLAGS=-O3 ./configure --with-features=huge \
-              --enable-python3interp \
-              --enable-luainterp \
-              --with-luajit \
-              --with-lua-prefix=/usr/local
+sudo xcode-select --switch /Applications/Xcode9.4.1.app
+CFLAGS=-O3 ./configure --enable-python3interp 1
 make
+
 --------------------------------------------------
 fish shell
 cd macvim
 git pull
-set -x CC clang;set -x CFLAGS -O3; ./configure --with-features=huge --enable-luainterp --with-luajit --with-lua-prefix=/usr/local  --enable-python3interp
+sudo xcode-select --switch /Applications/Xcode9.4.1.app
+set -x CC clang;set -x CFLAGS -O3; ./configure --enable-python3interp
 make
+
 ---------------
 Symlink (Only for first time)
 cd /Applications
 ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .
 --------------------------------------------------
 Assume previous installs:
-XCode
+XCode9.4.1 (https://developer.apple.com/download/more/)
 HomeBrew
-brew install lua
-brew install luajit
-brew install python3
+Python3.6.5 (https://www.python.org/downloads/release/python-365/  macOS 64-bit installer)
+
 
 --------------------------------------------------
 Visual trick:
@@ -47,7 +46,7 @@ defaults write org.vim.MacVim MMTextInsetRight 2
 Usual commands:
 Normal mode
 unu for NeoBundle Update
-uf  for Buffer navigation
+Ctl-L  for Buffer navigation
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix 
 Shift Cursor Select and Enter for Align column
 Cmd-1 for Comment/Uncomment
