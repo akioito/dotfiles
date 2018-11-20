@@ -162,7 +162,10 @@ NeoBundle 'jonsmithers/experimental-lit-html-vim'
 autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
 
 NeoBundle 'Shougo/deoplete.nvim' "{
-  let g:deoplete#enable_at_startup = 1 
+  " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
+  " let g:deoplete#enable_at_startup = 1 
+  autocmd CursorHold * call deoplete#enable()
+  let g:python3_host_prog = '/usr/local/bin/python3'
   augroup omnifuncs
     autocmd!
     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
@@ -172,8 +175,8 @@ NeoBundle 'Shougo/deoplete.nvim' "{
     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
   augroup end  
 "}
-
-
+                                     
+                                     
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 
