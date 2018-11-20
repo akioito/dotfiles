@@ -13,16 +13,24 @@ Environment:
 MacVim compiled as following:
 git clone https://github.com/macvim-dev/macvim.git
 cd macvim
-sudo xcode-select --switch /Applications/Xcode9.4.1.app
-CFLAGS=-O3 ./configure --enable-python3interp 1
+sudo xcode-select --switch /Applications/Xcode9.4.1.app # if you are in Mojave, see Special Install bellow
+CFLAGS=-O3 ./configure --enable-python3interp 
 make
 
 --------------------------------------------------
 fish shell
 cd macvim
 git pull
-sudo xcode-select --switch /Applications/Xcode9.4.1.app
-set -x CC clang;set -x CFLAGS -O3; ./configure --enable-python3interp
+make distclean
+sudo xcode-select --switch /Applications/Xcode9.4.1.app # if you are in Mojave, see Special Install bellow
+set -x CFLAGS -O3; ./configure --enable-python3interp
+make
+
+--------------------------------------------------
+Mojave / XCode 10 Special Install (until this is resolved: https://github.com/macvim-dev/macvim/pull/757)
+git clone -b fix-the-flicker --single-branch https://github.com/s4y/macvim
+cd macvim
+set -x CFLAGS -O3; ./configure  --enable-python3interp
 make
 
 ---------------
@@ -31,7 +39,8 @@ cd /Applications
 ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .
 --------------------------------------------------
 Assume previous installs:
-XCode9.4.1 (https://developer.apple.com/download/more/)
+XCode9.4.1 (https://developer.apple.com/download/more/) # For Mojave
+XCode10 #  see Special Install above
 HomeBrew
 Python3.6.5 (https://www.python.org/downloads/release/python-365/  macOS 64-bit installer)
 
