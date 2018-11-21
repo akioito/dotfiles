@@ -42,7 +42,6 @@ Assume previous installs:
 XCode9.4.1 (https://developer.apple.com/download/more/) # For Mojave
 XCode10 #  see Special Install above
 HomeBrew
-Python3.6.5 (https://www.python.org/downloads/release/python-365/  macOS 64-bit installer)
 
 
 --------------------------------------------------
