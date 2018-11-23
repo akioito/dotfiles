@@ -1,59 +1,30 @@
-To Use:
-Clone this repository to your home directory:
-cd ~
-git clone https://github.com/akioito/dotfiles.git
-mkdir .vim
-ln -s dotfiles/vimrc .vimrc
-ln -s dotfiles/gvimrc .gvimrc
-cp -r dotfiles/mybundle .vim/mybundle
-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+My MacVim dotfile
 
---------------------------------------------------
-Environment:
-MacVim compiled as following:
-git clone https://github.com/macvim-dev/macvim.git
-cd macvim
-sudo xcode-select --switch /Applications/Xcode9.4.1.app # if you are in Mojave, see Special Install bellow
-CFLAGS=-O3 ./configure --enable-python3interp 
-make
 
---------------------------------------------------
-fish shell
-cd macvim
-git pull
-make distclean
-sudo xcode-select --switch /Applications/Xcode9.4.1.app # if you are in Mojave, see Special Install bellow
-set -x CFLAGS -O3; ./configure --enable-python3interp
-make
+-------------------------------------------------- 
+Install HomeBrew  / https://brew.sh/ 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
---------------------------------------------------
-Mojave / XCode 10 Special Install (until this is resolved: https://github.com/macvim-dev/macvim/pull/757)
-git clone -b fix-the-flicker --single-branch https://github.com/s4y/macvim
-cd macvim
-set -x CFLAGS -O3; ./configure  --enable-python3interp
-make
 
----------------
-Symlink (Only for first time)
-cd /Applications
-ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .
-ln -s /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin/mvim
-
---------------------------------------------------
-Assume previous installs:
-XCode9.4.1 (https://developer.apple.com/download/more/) # For Mojave
-XCode10 #  see Special Install above
-HomeBrew
-
+Install python + packages:
 brew install python
 pip3 install neovim
-pip3 install pyflakes 
+pip3 install pyflakes
 
 
---------------------------------------------------
-Visual trick:
-defaults write org.vim.MacVim MMTextInsetLeft  5
-defaults write org.vim.MacVim MMTextInsetRight 2
+Install MacVim:
+https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
+
+Clone this repository to  home directory:
+cd ~
+git clone https://github.com/akioito/dotfiles.git
+./dotfiles/install.sh
+
+mvim # enter space # install plugin dialog -> yes, wait until end plugin installation -> :quit
+
+mvim
+
+Enjoy!
 
 
 --------------------------------------------------
@@ -64,7 +35,7 @@ Ctl-L  for Buffer navigation
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix 
 Shift Cursor Select and Enter for Align column
 Cmd-1 for Comment/Uncomment
-As usual, for other commands see vimrc
+For other commands also see .vimrc
 
 --------------------------------------------------
 Project management
@@ -72,7 +43,28 @@ see mybundle/vim-project-files or https://github.com/akioito/vim-project-files
 open sample.vim-prj
 :PyOpenProject
 
+
 --------------------------------------------------
+Visual trick:
+Terminal
+defaults write org.vim.MacVim MMTextInsetLeft  5
+defaults write org.vim.MacVim MMTextInsetRight 2 
+
+
+
+--------------------------------------------------
+If you want to compile your MacVim
+git clone https://github.com/macvim-dev/macvim.git (first time)
+# git pull        
+# make distclean
+cd macvim
+sudo xcode-select --switch /Applications/Xcode9.4.1.app # Mojave
+CFLAGS=-O3 ./configure --enable-python3interp 
+make
+
+Symlink (Only for first time)
+cd /Applications
+ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .   
 
 
 
