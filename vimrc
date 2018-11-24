@@ -590,6 +590,7 @@ set smartcase
 set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
+set mouse=a                            " Terminal scroll with mouse
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
