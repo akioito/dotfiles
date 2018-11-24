@@ -77,18 +77,7 @@ NeoBundle 'junegunn/rainbow_parentheses.vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'terryma/vim-smooth-scroll'
-  noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-  noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-  noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-  noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-  noremap <silent> <S-Space> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-  noremap <silent> <Space>   :call smooth_scroll#down(&scroll*2, 0, 4)<CR> 
-NeoBundle 'akioito/dart-vim-plugin'
-autocmd FileType dart command! -nargs=* FmtDart call dart#fmt("-l 150")
-" NeoBundle 'natebosch/vim-lsc' "{
-"   let g:lsc_server_commands = {'dart': 'dart_language_server'}
-" "}
+
 " NeoBundle 'racer-rust/vim-racer' "{
 "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
 "   au FileType rust nmap gd <Plug>(rust-def)
@@ -115,7 +104,7 @@ NeoBundle 'tomtom/tcomment_vim' "{
 "} 
 
 NeoBundle 'vim-utils/vim-man'
-NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
 NeoBundle 'akioito/vim-mysql'
 NeoBundle 'akioito/vim-myshell'
@@ -293,7 +282,7 @@ autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c
-set statusline +=\ %{fugitive#statusline()}
+" set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
 set statusline+=%5*\ %=%{g:syntax}               " only for debug
@@ -442,7 +431,7 @@ autocmd BufEnter * lcd %:p:h " Current Directory
  
 " autocmd BufEnter *.py  :match defLine /def\ .*$/
 " autocmd BufEnter *.js  :match defLine /.*function.*$/ 
-autocmd BufEnter * :syntax sync fromstart
+" autocmd BufEnter * :syntax sync fromstart
 autocmd BufNewFile,BufRead *.l set filetype=picolisp
 autocmd BufNewFile,BufRead *.arc set filetype=arc
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -591,6 +580,8 @@ set cmdheight=2                        " To minibufexpl Not display Hit Enter =>
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
+set regexpengine=1                     " Improves performance syntax highlighted file
+set nostartofline
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
@@ -614,6 +605,7 @@ set number
 set antialias
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
+set redrawtime=10000
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
 " set noshowmatch
