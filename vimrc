@@ -65,8 +65,14 @@ autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
 autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 
+" Lisp
 " NeoBundle 'airblade/vim-gitgutter'
 " NeoBundle 'bhurlow/vim-parinfer'
+" NeoBundle 'https://github.com/kovisoft/slimv' "{
+"   let g:slimv_lisp = 'ros run'
+"   let g:silmv_impl = 'sbcl'
+" "}
+
 NeoBundle 'junegunn/rainbow_parentheses.vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'chrisbra/vim-diff-enhanced'
