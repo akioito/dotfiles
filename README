@@ -10,7 +10,7 @@ Install python + packages:
 brew install python
 pip3 install neovim
 pip3 install pyflakes
-
+pip3 install flake8 
 
 Install MacVim:
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
