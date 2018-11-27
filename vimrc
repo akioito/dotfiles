@@ -197,7 +197,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
   nnoremap unu          :Unite neobundle/update
-
+  nnoremap mm          :Unite output:map<CR>
+  
   " Custom mappings for the unite buffer
   autocmd FileType unite call s:unite_settings()
   function! s:unite_settings()
