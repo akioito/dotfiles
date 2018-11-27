@@ -73,7 +73,7 @@ autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 "   let g:silmv_impl = 'sbcl'
 " "}
 
-NeoBundle 'junegunn/rainbow_parentheses.vim'
+" NeoBundle 'junegunn/rainbow_parentheses.vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'chrisbra/vim-diff-enhanced'
 NeoBundle 'rust-lang/rust.vim'
@@ -103,11 +103,11 @@ NeoBundle 'tomtom/tcomment_vim' "{
  inoremap <D-1> <ESC>:TComment<cr> 
 "} 
 
-NeoBundle 'vim-utils/vim-man'
+" NeoBundle 'vim-utils/vim-man'
 " NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'akioito/vim-project-files'
-NeoBundle 'akioito/vim-mysql'
-NeoBundle 'akioito/vim-myshell'
+" NeoBundle 'akioito/vim-mysql'
+" NeoBundle 'akioito/vim-myshell'
 NeoBundle 'walm/jshint.vim'
 NeoBundle 'mkitt/browser-refresh.vim'
 NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
@@ -147,12 +147,12 @@ NeoBundle 'junegunn/vim-easy-align' "{
     nnoremap <C-@>      :TagbarToggle<CR> 
   endif
 "}
-NeoBundle 'tshirtman/vim-cython'
+" NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
 
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'jonsmithers/experimental-lit-html-vim'
+" NeoBundle 'jonsmithers/experimental-lit-html-vim'
 
 autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
 
@@ -352,6 +352,8 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
+nnoremap <Space>   <C-f>
+nnoremap <S-Space> <C-b>
 noremap! ¥ \
 noremap! \ ¥
 
