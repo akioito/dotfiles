@@ -196,6 +196,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
+  nnoremap <C-p>        :MRU prj<CR>
   nnoremap unu          :Unite neobundle/update
   nnoremap mm          :Unite output:map<CR>
   
