@@ -478,6 +478,7 @@ augroup QSearchToggle
 augroup end
 
 " ----------------------------------------------------------------------------
+set rnu
 function! s:ToggleNumberMode()
   if &rnu == 0
     set rnu
