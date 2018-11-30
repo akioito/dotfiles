@@ -134,11 +134,11 @@ NeoBundle 'junegunn/vim-easy-align' "{
   if has("mac") 
     let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
   endif
-  if has("gui_running")
-    nnoremap <C-Space>  :TagbarToggle<CR>
-  else
+  " if has("gui_running")
+  "   nnoremap <C-Space>  :TagbarToggle<CR>
+  " else
     nnoremap <C-@>      :TagbarToggle<CR> 
-  endif
+  " endif
 "}
 " NeoBundle 'tshirtman/vim-cython'
 NeoBundle 'yegappan/mru'
@@ -189,7 +189,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
-  nnoremap <C-p>        :MRU prj<CR>
+  " nnoremap <C-p>        :MRU prj<CR>
+  nnoremap <C-Space>    :Unite line -input=def\ <CR>
   nnoremap unu          :Unite neobundle/update
   nnoremap mm          :Unite output:map<CR>
   
@@ -210,6 +211,32 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     imap <buffer> <ESC>   <Plug>(unite_exit)
     imap <buffer> jk      <Plug>(unite_insert_leave)
   endfunction
+  
+    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
+    let g:unite_source_menu_menus.mycmds = {
+        \ 'description' : '            gestionar repositorios git
+            \                            ⌘ [espacio]g',
+        \}
+    let g:unite_source_menu_menus.mycmds.command_candidates = [
+        \['Name             Command',           ''],
+        \['python def       <C-Spave>',         'exe "Unite line -input=def\\ "'],
+        \['Projects         ct',                'normal ct'], 
+        \['Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
+        \['Buffers          fj/<C-l>',          'exe "Unite buffer"'],
+        \['vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
+        \['Update plugins   unu',               'exe "NeoBundleUpdate"'],
+        \['messages         :messages',         'exe "messages"'],
+        \['keyboard map     mm',                'normal mm'],
+        \['bookmars         <F2>',              'exe "Unite bookmark"'],
+        \['marks            um',                'exe "Unite mark"'],
+        \['unite source     us',                'exe "Unite source"'],
+        \['files            :Unite file_rec',   'exe "Unite file_rec"'],
+        \['directory        :Unite directory',  'exe "Unite directory"'],
+        \['jump             :Unite jump',       'exe "Unite jump"'],
+        \['change           :Unite change',     'exe "Unite change"'], 
+        \]
+    nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
+
 "}   
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'sensible.vim'

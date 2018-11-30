@@ -30,8 +30,11 @@ Enjoy!
 --------------------------------------------------
 Usual commands:
 Normal mode
+Ctl-p General menu command
+ct Projects
 unu for NeoBundle Update
 Ctl-L  for Buffer navigation
+Ctl-Space Python def
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix 
 Shift Cursor Select and Enter for Align column
 Cmd-1 for Comment/Uncomment
