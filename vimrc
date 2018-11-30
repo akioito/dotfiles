@@ -240,7 +240,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
 "}   
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'sensible.vim'
-NeoBundle 'hdima/python-syntax'
+NeoBundle 'adamatom/python-syntax'
   let python_highlight_all = 1
 
 " If there are uninstalled bundles found on startup,
