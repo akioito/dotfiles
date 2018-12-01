@@ -249,11 +249,13 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_CommandMap = {
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
-  nnoremap <space>f :<C-u>Leaderfx! function<cr>
-  nnoremap <space>b :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>m :<C-u>Leaderfx mru<cr>
-  nnoremap <space>p :<C-u>Leaderfx mru --input=prj\\ <cr>
-  nnoremap <space>l :<C-u>Leaderfx self<cr> 
+  nnoremap <space>f  :<C-u>Leaderfx! function<cr>
+  nnoremap <C-Space> :<C-u>Leaderfx! function<cr> i
+  inoremap <C-Space> <ESC>:<C-u>Leaderfx! function<cr>
+  nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
+  nnoremap <space>m  :<C-u>Leaderfx mru<cr>
+  nnoremap <space>p  :<C-u>Leaderfx mru --input=prj\\ <cr>
+  nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \ | execute 'call feedkeys("\<Tab>")'
