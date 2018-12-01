@@ -190,7 +190,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
   " nnoremap <C-p>        :MRU prj<CR>
-  nnoremap <C-Space>    :Unite line -input=def\ <CR>
+  " nnoremap <C-Space>    :Unite line -input=def\ <CR>
   nnoremap unu          :Unite neobundle/update
   nnoremap mm          :Unite output:map<CR>
   
@@ -219,10 +219,14 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
         \}
     let g:unite_source_menu_menus.mycmds.command_candidates = [
         \['Name             Command',           ''],
-        \['python def       <C-Spave>',         'exe "Unite line -input=def\\ "'],
+        \['python def       <C-Space>',         'exe "Unite line -input=def\\ "'],
+        \['function         <Spave>f',          'exe "Leaderfx! function"'],
         \['Projects         ct',                'normal ct'], 
+        \['lsProjects       <Space>p',          'exe "Leaderfx mru --input=prj "'],
         \['Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
         \['Buffers          fj/<C-l>',          'exe "Unite buffer"'],
+        \['lsBuffers        <Space>b',          'exe "Leaderfx buffer"'],
+        \['Leaderf          <Space>l',          'exe "Leaderfx self"'],  
         \['vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
         \['Update plugins   unu',               'exe "NeoBundleUpdate"'],
         \['messages         :messages',         'exe "messages"'],
@@ -236,10 +240,27 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
         \['change           :Unite change',     'exe "Unite change"'], 
         \]
     nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
-
 "}   
+
+NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
+  let g:Lf_WindowPosition  = "left"
+  let g:Lf_MruMaxFiles = 2500
+  let g:Lf_ShowRelativePath = 1
+  let g:Lf_CommandMap = {
+    \ '<C-J>': ['<Down>', '<C-J>'],
+    \ '<C-K>': ['<Up>',   '<C-K>']}
+  nnoremap <space>f :<C-u>Leaderfx! function<cr>
+  nnoremap <space>b :<C-u>Leaderfx buffer<cr>
+  nnoremap <space>m :<C-u>Leaderfx mru<cr>
+  nnoremap <space>p :<C-u>Leaderfx mru --input=prj\\ <cr>
+  nnoremap <space>l :<C-u>Leaderfx self<cr> 
+
+  command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
+    \ | execute 'call feedkeys("\<Tab>")'
+"}
+
 NeoBundle 'godlygeek/csapprox'
-NeoBundle 'sensible.vim'
+NeoBundle 'sensible.vim'                                      
 NeoBundle 'adamatom/python-syntax'
   let python_highlight_all = 1
 
@@ -418,17 +439,16 @@ nnoremap   <F2>             :Unite bookmark<CR>
 " use ctrl-d to delete bookmark
 nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
-
 inoremap <silent> <F3>  <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
 nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-nnoremap <silent> gb         :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
-nnoremap <silent> grep       :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
-command! -nargs=1 Xgrep 
-  \ | execute ':Unite -auto-resize grep:$buffers -input='.<q-args>
-  \ | execute 'normal <Del>'
-  \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
-  \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
-  \ | execute 'redraw!'
+" nnoremap <silent> gb         :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
+" nnoremap <silent> grep       :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
+" command! -nargs=1 Xgrep 
+"   \ | execute ':Unite -auto-resize grep:$buffers -input='.<q-args>
+"   \ | execute 'normal <Del>'
+"   \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
+"   \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
+"   \ | execute 'redraw!'
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
@@ -441,9 +461,8 @@ augroup filetype_mysql
   autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
 augroup END
 
-noremap          <F5>       :QFGrep <C-R><C-W><CR>
-
-nmap     <F7>                :call HexHighlight()<Return>
+noremap <F5>       :QFGrep <C-R><C-W><CR>
+nmap    <F7>       :call HexHighlight()<Return>
 
 inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
@@ -491,7 +510,7 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
-nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
+" nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
 
 " Used to track the quickfix window.
 augroup QSearchToggle
