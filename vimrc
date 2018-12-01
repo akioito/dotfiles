@@ -246,6 +246,10 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "left"
   let g:Lf_MruMaxFiles = 2500
   let g:Lf_ShowRelativePath = 1
+  let g:Lf_CtagsFuncOpts = {
+    \ 'c': '--c-kinds=fp',
+    \ 'rust': '',
+    \ }
   let g:Lf_CommandMap = {
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
