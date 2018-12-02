@@ -220,7 +220,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
     \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfx! --left function"'],
-    \['  lfProjects       <Space>p',          'exe "Leaderfx mru --input=prj\\ "'],
+    \['  lfProjects       <Space>p',          'exe "Unite file_mru -input=prj\\ "'],
     \['  lfBuffers        <Space>b',          'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
@@ -243,11 +243,14 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
 "}   
 
+NeoBundle 'Shougo/neomru.vim' "{
+  let g:neomru#file_mru_limit = 2500
+"}
+
 NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
-  let g:Lf_MruMaxFiles = 2500
-  let g:Lf_ShowRelativePath = 1
+  let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
     \ 'rust': '',
@@ -261,8 +264,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   nnoremap <C-R>     :<C-u>Leaderfx! --left function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfx! --left function<cr>
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>m  :<C-u>Leaderfx mru<cr>
-  nnoremap <space>p  :<C-u>Leaderfx mru --input=prj\\ <cr>
+  nnoremap <space>p  :<C-u>Unite file_mru -input=prj<cr><Space>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
