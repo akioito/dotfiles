@@ -36,7 +36,7 @@ Normal mode
 Ctl-P General menu command
 » 
    LeaderF            Shortcut/Command
-     lfFunction       <Space>f
+     lfFunction       <Space>f / <C-Space> / <C-R>
      lfProjects       <Space>p
      lfBuffers        <Space>b
      lfLeaderf        <Space>l
