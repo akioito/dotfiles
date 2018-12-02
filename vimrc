@@ -212,38 +212,40 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     imap <buffer> jk      <Plug>(unite_insert_leave)
   endfunction
   
-    let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
-    let g:unite_source_menu_menus.mycmds = {
-        \ 'description' : '            gestionar repositorios git
-            \                            ⌘ [espacio]g',
-        \}
-    let g:unite_source_menu_menus.mycmds.command_candidates = [
-        \['Name             Command',           ''],
-        \['python def       <C-Space>',         'exe "Unite line -input=def\\ "'],
-        \['function         <Spave>f',          'exe "Leaderfx! function"'],
-        \['Projects         ct',                'normal ct'], 
-        \['lsProjects       <Space>p',          'exe "Leaderfx mru --input=prj "'],
-        \['Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
-        \['Buffers          fj/<C-l>',          'exe "Unite buffer"'],
-        \['lsBuffers        <Space>b',          'exe "Leaderfx buffer"'],
-        \['Leaderf          <Space>l',          'exe "Leaderfx self"'],  
-        \['vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
-        \['Update plugins   unu',               'exe "NeoBundleUpdate"'],
-        \['messages         :messages',         'exe "messages"'],
-        \['keyboard map     mm',                'normal mm'],
-        \['bookmars         <F2>',              'exe "Unite bookmark"'],
-        \['marks            um',                'exe "Unite mark"'],
-        \['unite source     us',                'exe "Unite source"'],
-        \['files            :Unite file_rec',   'exe "Unite file_rec"'],
-        \['directory        :Unite directory',  'exe "Unite directory"'],
-        \['jump             :Unite jump',       'exe "Unite jump"'],
-        \['change           :Unite change',     'exe "Unite change"'], 
-        \]
-    nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
+  let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
+  let g:unite_source_menu_menus.mycmds = {
+    \ 'description' : '            gestionar repositorios git
+        \                            ⌘ [espacio]g',
+    \}
+  let g:unite_source_menu_menus.mycmds.command_candidates = [
+    \['LeaderF            Shortcut/Command',  ''],
+    \['  lfFunction       <Space>f',          'exe "Leaderfx! --left function"'],
+    \['  lfProjects       <Space>p',          'exe "Leaderfx mru --input=prj\\ "'],
+    \['  lfBuffers        <Space>b',          'exe "Leaderfx buffer"'], 
+    \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
+    \['Direct Command           ',           ''],
+    \['  Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
+    \['  vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
+    \['Legacy              Legacy',           ''],
+    \['  python def            ',             'exe "Unite line -input=def\\ "'],
+    \['  Functions        <C-@>',             'exe "TagbarToggle"'],
+    \['  Projects         ct',                'normal ct'], 
+    \['  Buffers          fj/<C-l>',          'exe "Unite buffer"'],
+    \['  Update plugins   unu',               'exe "NeoBundleUpdate"'],
+    \['  messages         :messages',         'exe "messages"'],
+    \['  keyboard map     mm',                'normal mm'],
+    \['  bookmars         <F2>',              'exe "Unite bookmark"'],
+    \['  marks            um',                'exe "Unite mark"'],
+    \['  unite source     us',                'exe "Unite source"'],
+    \['  jump             :Unite jump',       'exe "Unite jump"'],
+    \['  change           :Unite change',     'exe "Unite change"'], 
+    \]
+  nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
 "}   
 
 NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
-  let g:Lf_WindowPosition  = "left"
+  let g:Lf_WindowPosition  = "top"
+  " let g:Lf_WindowHeight = 0.30
   let g:Lf_MruMaxFiles = 2500
   let g:Lf_ShowRelativePath = 1
   let g:Lf_CtagsFuncOpts = {
@@ -253,9 +255,9 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_CommandMap = {
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
-  nnoremap <space>f  :<C-u>Leaderfx! function<cr>
-  nnoremap <C-Space> :<C-u>Leaderfx! function<cr> i
-  inoremap <C-Space> <ESC>:<C-u>Leaderfx! function<cr>
+  nnoremap <space>f  :<C-u>Leaderfx! --left function<cr>
+  nnoremap <C-Space> :<C-u>Leaderfx! --left function<cr> 
+  inoremap <C-Space> <ESC>:<C-u>Leaderfx! --left function<cr>
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>m  :<C-u>Leaderfx mru<cr>
   nnoremap <space>p  :<C-u>Leaderfx mru --input=prj\\ <cr>
