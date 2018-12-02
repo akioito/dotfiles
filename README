@@ -34,27 +34,29 @@ Enjoy!
 Usual commands:
 Normal mode
 Ctl-P General menu command
-   Name             Command
-   python def       <C-Space>
-   function         <Spave>f
-   Projects         ct
-   lsProjects       <Space>p
-   Project Open     :PyOpenProject
-   Buffers          fj/<C-l>
-   lsBuffers        <Space>b
-   Leaderf          <Space>l
-   vimrc            :e ~/.vimrc
-   Update plugins   unu
-   messages         :messages
-   keyboard map     mm
-   bookmars         <F2>
-   marks            um
-   unite source     us
-   files            :Unite file_rec
-   directory        :Unite directory
-   jump             :Unite jump
-   change           :Unite change 
-
+» 
+   LeaderF            Shortcut/Command
+     lfFunction       <Space>f
+     lfProjects       <Space>p
+     lfBuffers        <Space>b
+     lfLeaderf        <Space>l
+   Direct Command           
+     Project Open     :PyOpenProject
+     vimrc            :e ~/.vimrc
+   Legacy              
+     python def            
+     Functions        <C-@>
+     Projects         ct
+     Buffers          fj/<C-l>
+     Update plugins   unu
+     messages         :messages
+     keyboard map     mm
+     bookmars         <F2>
+     marks            um
+     unite source     us
+     jump             :Unite jump
+     change           :Unite change
+     
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix 
 Shift Cursor Select and Enter for Align column
 Cmd-1 for Comment/Uncomment
