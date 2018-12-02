@@ -219,7 +219,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     \}
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
-    \['  lfFunction       <Space>f',          'exe "Leaderfx! --left function"'],
+    \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfx! --left function"'],
     \['  lfProjects       <Space>p',          'exe "Leaderfx mru --input=prj\\ "'],
     \['  lfBuffers        <Space>b',          'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
@@ -258,6 +258,8 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   nnoremap <space>f  :<C-u>Leaderfx! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfx! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfx! --left function<cr>
+  nnoremap <C-R>     :<C-u>Leaderfx! --left function<cr> 
+  inoremap <C-R>     <ESC>:<C-u>Leaderfx! --left function<cr>
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>m  :<C-u>Leaderfx mru<cr>
   nnoremap <space>p  :<C-u>Leaderfx mru --input=prj\\ <cr>
