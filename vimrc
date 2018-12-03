@@ -274,7 +274,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'sensible.vim'                                      
 NeoBundle 'adamatom/python-syntax'
-  let python_highlight_all = 1
+  " let python_highlight_all = 1
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
