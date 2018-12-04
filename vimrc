@@ -60,12 +60,7 @@ NeoBundle 'osyo-manga/vim-watchdogs' , {
   \	"type" : "watchdogs_checker/csslint",
   \	"cmdopt" : "--ignore=order-alphabetical,box-sizing,unqualified-attributes,fallback-colors,compatible-vendor-prefixes,adjoining-classes"
   \}  
-  " ESC to not append 'g' when save in insert mode
-autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
-autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
-autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
 
-autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
 
 NeoBundle 'dag/vim-fish'
 NeoBundle 'chrisbra/vim-diff-enhanced'
@@ -146,21 +141,23 @@ NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass',
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 " NeoBundle 'jonsmithers/experimental-lit-html-vim'
 
-autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
+
 
 NeoBundle 'Shougo/deoplete.nvim' "{
   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
   " let g:deoplete#enable_at_startup = 1 
-  autocmd CursorHold * call deoplete#enable()
   let g:python3_host_prog = '/usr/local/bin/python3'
   augroup omnifuncs
     autocmd!
+    autocmd CursorHold * call deoplete#enable() 
     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
     autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-  augroup end  
+
+    autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
+  augroup END
 "}
                                      
                                      
@@ -194,7 +191,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap mm          :Unite output:map<CR>
   
   " Custom mappings for the unite buffer
-  autocmd FileType unite call s:unite_settings()
+  
   function! s:unite_settings()
     nunmap <silent><buffer> <Space>
     " Enable navigation with control-j and control-k in insert mode
@@ -334,8 +331,19 @@ endfunction
 
 let g:syntax = '???'
 let g:currentTag = '???'
-autocmd CursorHold * let g:syntax = SyntaxItem()
-autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+
+augroup my_autocmd_misc
+  autocmd! 
+  autocmd CursorHold * let g:syntax = SyntaxItem()
+  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  " Go to last file if invoked without arguments.
+  autocmd VimEnter * nested if
+    \ argc() == 0 &&
+    \ bufname("%") == "" &&
+    \ bufname("2" + 0) != "" |
+    \   exe "normal! `0" |
+    \ endif   
+augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c
@@ -347,14 +355,6 @@ set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
 " set statusline+=%5*\ %{Uptime(2)}
-
-" Go to last file if invoked without arguments.
-autocmd VimEnter * nested if
-  \ argc() == 0 &&
-  \ bufname("%") == "" &&
-  \ bufname("2" + 0) != "" |
-  \   exe "normal! `0" |
-  \ endif
 
 " ----------------------------------------------------------------------------
 " Abbrevs
@@ -483,33 +483,44 @@ map <S-w> <M-Left>
 " Directory & autocmd
 set directory=~/tmp/
 set backupdir=~/tmp
-autocmd BufEnter * lcd %:p:h " Current Directory
-" autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
- 
-" autocmd BufEnter *.py  :match defLine /def\ .*$/
-" autocmd BufEnter *.js  :match defLine /.*function.*$/ 
-" autocmd BufEnter * :syntax sync fromstart
-autocmd BufNewFile,BufRead *.l set filetype=picolisp
-autocmd BufNewFile,BufRead *.arc set filetype=arc
-autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-autocmd BufNewFile,BufRead *.dyon set filetype=rust
-autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
+augroup my_autocmd
+    autocmd! 
+    autocmd BufEnter * lcd %:p:h " Current Directory
+    " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
+    
+    " autocmd BufEnter *.py  :match defLine /def\ .*$/
+    " autocmd BufEnter *.js  :match defLine /.*function.*$/ 
+    " autocmd BufEnter * :syntax sync fromstart
+    autocmd BufNewFile,BufRead *.l set filetype=picolisp
+    autocmd BufNewFile,BufRead *.arc set filetype=arc
+    autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+    autocmd BufNewFile,BufRead *.dyon set filetype=rust
+    autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
-" Problem with Japanese IME / 例: 中 (tyuu) 
-autocmd VimEnter * set imdisable
-                
-autocmd FileType html setlocal indentkeys-=*<Return>
+    " Problem with Japanese IME / 例: 中 (tyuu) 
+    autocmd VimEnter * set imdisable
+                    
+    autocmd FileType html setlocal indentkeys-=*<Return>
 
-" Trim Trailing Whitespace
-autocmd BufWritePre *.{py,js,html,css} %s/\s\+$//e
+    " Trim Trailing Whitespace
+    autocmd BufWritePre *.{py,js,html,css} %s/\s\+$//e
 
-" FocusLost save and Normal Mode
-autocmd FocusLost * silent! wa
-autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
+    " FocusLost save and Normal Mode
+    autocmd FocusLost * silent! wa
+    autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
 
-" Fast Cursor / nocursorline in Insert Mode
-" autocmd CursorHold * setlocal cursorline
-" autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+    " Fast Cursor / nocursorline in Insert Mode
+    " autocmd CursorHold * setlocal cursorline
+    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+  
+    " ESC to not append 'g' when save in insert mode
+    autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
+    autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
+    autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
+
+    autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
+    autocmd FileType unite call s:unite_settings() 
+augroup end 
 
 " QuickFix Close or Search
 function! QSearchToggle(forced)
@@ -587,8 +598,6 @@ nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>h
 if has("gui_macvim")
   let g:transparency     = 7
   let g:transparencyCtrl = 1
-
-  " autocmd BufEnter * if &transparency == 0 && g:transparencyCtrl > 0 | let &transparency = g:transparency | endif 
   
   function! s:Toggle_transparence()
     if &transparency > 0
