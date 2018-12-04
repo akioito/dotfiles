@@ -257,7 +257,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   nnoremap <space>f  :<C-u>Leaderfx! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfx! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfx! --left function<cr>
-  nnoremap <C-R>     :<C-u>Leaderfx! --left function<cr> 
+  nnoremap <C-R>     :<C-u>Leaderfx! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfx! --left function<cr>
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
