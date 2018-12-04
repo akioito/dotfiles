@@ -135,7 +135,7 @@ NeoBundle 'junegunn/vim-easy-align' "{
   " endif
 "}
 " NeoBundle 'tshirtman/vim-cython'
-NeoBundle 'yegappan/mru'
+" NeoBundle 'yegappan/mru'
 
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
@@ -184,7 +184,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   " nnoremap <C-L>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
-  nnoremap ct           :MRU prj<CR>
+  " nnoremap ct           :MRU prj<CR>
   " nnoremap <C-p>        :MRU prj<CR>
   " nnoremap <C-Space>    :Unite line -input=def\ <CR>
   nnoremap unu          :Unite neobundle/update
