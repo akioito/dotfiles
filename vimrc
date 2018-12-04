@@ -106,7 +106,6 @@ NeoBundle 'mkitt/browser-refresh.vim'
 NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
-" NeoBundle 'mgedmin/pythonhelper.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
@@ -185,7 +184,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   nnoremap uf           :Unite -auto-resize buffer<CR>    
   nnoremap jf           :Unite buffer<CR>
   nnoremap fj           :Unite buffer<CR>
-  nnoremap <C-l>        :Unite buffer<cr>
+  " nnoremap <C-L>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
@@ -221,7 +220,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     \['LeaderF            Shortcut/Command',  ''],
     \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfx! --left function"'],
     \['  lfProjects       <Space>p',          'exe "Unite file_mru -input=prj\\ "'],
-    \['  lfBuffers        <Space>b',          'exe "Leaderfx buffer"'], 
+    \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
     \['  Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
@@ -263,6 +262,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   inoremap <C-Space> <ESC>:<C-u>Leaderfx! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfx! --left function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfx! --left function<cr>
+  nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>p  :<C-u>Unite file_mru -input=prj<cr><Space>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
@@ -273,8 +273,6 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
 
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'sensible.vim'                                      
-NeoBundle 'adamatom/python-syntax'
-  " let python_highlight_all = 1
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
