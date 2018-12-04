@@ -143,24 +143,29 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']
 
 
 
-NeoBundle 'Shougo/deoplete.nvim' "{
-  " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
-  " let g:deoplete#enable_at_startup = 1 
-  let g:python3_host_prog = '/usr/local/bin/python3'
-  augroup omnifuncs
-    autocmd!
-    autocmd CursorHold * call deoplete#enable() 
-    autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
+" NeoBundle 'Shougo/deoplete.nvim' "{
+"   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
+"   " let g:deoplete#enable_at_startup = 1 
+"   let g:python3_host_prog = '/usr/local/bin/python3'
+"   augroup omnifuncs
+"     autocmd!
+"     autocmd CursorHold * call deoplete#enable() 
+"     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
+"     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
+"     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
+"     autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
+"     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
+"
+"     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
+"   augroup END
+" "}
 
-    autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
-  augroup END
-"}
-                                     
-                                     
+NeoBundle 'Valloric/YouCompleteMe', {
+    \ 'build' : {
+    \     'mac':     'python3 install.py',
+    \   },
+    \ }                                
+
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 
