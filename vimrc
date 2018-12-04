@@ -265,7 +265,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
-    \ | execute 'call feedkeys("\<Tab>")'
+    \ | execute "set nowrap" | execute 'call feedkeys("30<C-W><<Tab>")'
 "}
 
 NeoBundle 'godlygeek/csapprox'
