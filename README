@@ -7,6 +7,7 @@ Install HomeBrew  / https://brew.sh/
 
 
 Install python + packages:
+brew install cmake
 brew install python
 brew install ripgrep
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -14,6 +15,7 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 pip3 install neovim
 pip3 install pyflakes
 pip3 install flake8 
+pip3 install jedi
 
 Install MacVim:
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
