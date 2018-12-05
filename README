@@ -85,7 +85,6 @@ git clone https://github.com/macvim-dev/macvim.git (first time)
 # git pull        
 # make distclean
 cd macvim
-sudo xcode-select --switch /Applications/Xcode9.4.1.app # Mojave
 CFLAGS=-O3 ./configure --enable-python3interp 
 make
 
