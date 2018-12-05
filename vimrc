@@ -165,6 +165,7 @@ NeoBundle 'Valloric/YouCompleteMe', {
     \     'mac':     'python3 install.py',
     \   },
     \ }                                
+  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
