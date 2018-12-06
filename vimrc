@@ -166,7 +166,10 @@ NeoBundle 'Valloric/YouCompleteMe', {
     \   },
     \ }                                
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-  let g:ycm_autoclose_preview_window_after_completion = 1
+  augroup xyoucompleteme
+    autocmd!
+    autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
+  augroup END 
 
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
