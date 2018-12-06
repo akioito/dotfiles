@@ -164,7 +164,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
     \ 'build' : {
     \     'mac':     'python3 install.py',
     \   },
-    \ }                                
+    \ }               
+  let g:ycm_log_level = 'error'
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   augroup xyoucompleteme
     autocmd!
@@ -695,3 +696,4 @@ set iskeyword+=-                        " treat dashes as part of word
 set linespace=1                         " for correct kanji display 
 set wildmenu
 
+" End
