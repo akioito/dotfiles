@@ -171,7 +171,8 @@ NeoBundle 'Valloric/YouCompleteMe', {
     autocmd!
     autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
   augroup END 
-
+  
+NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
 
