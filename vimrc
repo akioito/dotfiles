@@ -228,11 +228,11 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
     \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfx! --left function"'],
-    \['  lfProjects       <Space>p',          'exe "Unite file_mru -input=prj\\ "'],
+    \['  lfProjects       <Space>p / <F5>',   'exe "Unite file_mru -input=prj\\ "'],
     \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
-    \['  Project Open     :PyOpenProject',    'exe "PyOpenProject"'],
+    \['  Project Open     op',                 'exe "PyOpenProject"'],
     \['  vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
     \['Legacy                    ',           ''],
     \['  python def            ',             'exe "Unite line -input=def\\ "'],
@@ -248,7 +248,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     \['  jump             :Unite jump',       'exe "Unite jump"'],
     \['  change           :Unite change',     'exe "Unite change"'], 
     \]
-  nnoremap <C-p>  :Unite -silent -start-insert menu:mycmds<CR>
+  nnoremap <C-p>    :Unite -silent -start-insert menu:mycmds<CR>
+  noremap op        :PyOpenProject<CR> 
 "}   
 
 NeoBundle 'Shougo/neomru.vim' "{
@@ -274,6 +275,7 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>p  :<C-u>Unite file_mru -input=prj<cr><Space>
+  nnoremap <F5>      :<C-u>Unite file_mru -input=prj<cr><Space>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
@@ -483,8 +485,7 @@ augroup filetype_mysql
   autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
 augroup END
 
-noremap <F5>       :QFGrep <C-R><C-W><CR>
-nmap    <F7>       :call HexHighlight()<Return>
+" nmap    <F7>       :call HexHighlight()<Return>
 
 inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
 nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
