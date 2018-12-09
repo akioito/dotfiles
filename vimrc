@@ -85,6 +85,11 @@ NeoBundle 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
+" NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
+NeoBundle 'jiangmiao/auto-pairs' "{
+  " <M-e> Fast Wrap (|)'hello' -> ('hello')
+  " <M-n> Jump to next closed pair
+"}
 NeoBundle 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
@@ -98,7 +103,6 @@ NeoBundle 'akioito/vim-project-files'
 " NeoBundle 'akioito/vim-myshell'
 NeoBundle 'walm/jshint.vim'
 NeoBundle 'mkitt/browser-refresh.vim'
-NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'vim-scripts/python_match.vim'
 NeoBundle 'vim-scripts/grep.vim' "{
