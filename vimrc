@@ -236,7 +236,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
     \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
-    \['  Project Open     op',                 'exe "PyOpenProject"'],
+    \['  Project Open     :PyOpenProject / op', 'exe "PyOpenProject"'],
     \['  vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
     \['Legacy                    ',           ''],
     \['  python def            ',             'exe "Unite line -input=def\\ "'],
