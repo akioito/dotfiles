@@ -508,6 +508,8 @@ augroup my_autocmd
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/ 
     " autocmd BufEnter * :syntax sync fromstart
+    autocmd BufEnter *.py  :set Wrap
+    autocmd BufEnter *.js  :set wrap
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
@@ -537,6 +539,8 @@ augroup my_autocmd
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
     autocmd FileType unite call s:unite_settings() 
+
+    autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
 augroup end 
 
 " QuickFix Close or Search
