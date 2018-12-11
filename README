@@ -31,6 +31,15 @@ mvim
 
 Enjoy!
 
+--------------------------------------------------  
+Speed-up LeaderF
+cd ~/.vim/bundle/LeaderF/
+./install.sh
+
+In case of trouble with YouCompleteMe
+cd ~/.vim/bundle/YouCompleteMe/
+git submodule update --init --recursive
+python3 install.py
 
 --------------------------------------------------
 Usual commands:

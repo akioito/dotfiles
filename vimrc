@@ -505,8 +505,8 @@ augroup my_autocmd
     autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
-    " autocmd BufEnter *.py  :match defLine /def\ .*$/
-    " autocmd BufEnter *.js  :match defLine /.*function.*$/ 
+    autocmd BufEnter *.py  :match defLine /def\ .*$/
+    autocmd BufEnter *.js  :match defLine /.*function.*$/ 
     " autocmd BufEnter * :syntax sync fromstart
     autocmd BufEnter *.py  :set Wrap
     autocmd BufEnter *.js  :set wrap
