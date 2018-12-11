@@ -508,7 +508,7 @@ augroup my_autocmd
     autocmd BufEnter *.py  :match defLine /def\ .*$/
     autocmd BufEnter *.js  :match defLine /.*function.*$/ 
     " autocmd BufEnter * :syntax sync fromstart
-    autocmd BufEnter *.py  :set Wrap
+    autocmd BufEnter *.py  :set wrap
     autocmd BufEnter *.js  :set wrap
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
