@@ -16,6 +16,7 @@ pip3 install neovim
 pip3 install pyflakes
 pip3 install flake8 
 pip3 install jedi
+pip3 install requests
 
 Install MacVim:
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
