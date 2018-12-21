@@ -71,6 +71,7 @@ NeoBundle 'rust-lang/rust.vim'
 "   au FileType rust nmap gd <Plug>(rust-def)
 " "}
 NeoBundle 'cespare/vim-toml'
+NeoBundle 'LnL7/vim-nix'
 
 NeoBundle 'keith/swift.vim'
 NeoBundle 'tpope/vim-sleuth'
