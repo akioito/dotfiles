@@ -140,7 +140,6 @@ NeoBundle 'junegunn/vim-easy-align' "{
   " endif
 "}
 " NeoBundle 'tshirtman/vim-cython'
-" NeoBundle 'yegappan/mru'
 
 NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
@@ -233,7 +232,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
     \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfwnowrap! --left function"'],
-    \['  lfProjects       <Space>p / <F5>',   'exe "Unite file_mru -input=prj\\ "'],
+    \['  lfProjects       <Space>p / <F5>',   'exe "Leaderfwnowrap! --top mru --input prj"'],
     \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
@@ -257,11 +256,8 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   noremap op        :PyOpenProject<CR> 
 "}   
 
-NeoBundle 'Shougo/neomru.vim' "{
-  let g:neomru#file_mru_limit = 2500
-"}
-
 NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
+  let g:Lf_MruMaxFiles = 2500
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
   let g:Lf_ShowRelativePath = 0
@@ -279,14 +275,14 @@ NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>p  :<C-u>Unite file_mru -input=prj<cr><Space>
-  nnoremap <F5>      :<C-u>Unite file_mru -input=prj<cr><Space>
+  nnoremap <space>p  :<C-u>Leaderfwnowrap! --top mru --input prj<cr>
+  nnoremap <F5>      :<C-u>Leaderfwnowrap! --top mru --input prj<cr>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
-    \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab>")
+    \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
 "}
 
 NeoBundle 'godlygeek/csapprox'
