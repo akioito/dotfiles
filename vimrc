@@ -145,24 +145,24 @@ NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass',
 NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
 " NeoBundle 'jonsmithers/experimental-lit-html-vim'
 
+NeoBundle 'Shougo/deoplete.nvim' "{
+  " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
+  " let g:deoplete#enable_at_startup = 1 
+  let g:python3_host_prog = '/usr/local/bin/python3'
+  augroup omnifuncs
+    autocmd!
+    autocmd CursorHold * call deoplete#enable() 
+    autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
 
-
-" NeoBundle 'Shougo/deoplete.nvim' "{
-"   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
-"   " let g:deoplete#enable_at_startup = 1 
-"   let g:python3_host_prog = '/usr/local/bin/python3'
-"   augroup omnifuncs
-"     autocmd!
-"     autocmd CursorHold * call deoplete#enable() 
-"     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-"     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
-"     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-"     autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
-"     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-"
-"     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
-"   augroup END
-" "}
+    autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
+    autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
+  augroup END
+NeoBundle 'zchee/deoplete-jedi'
+"}
 
 " NeoBundle 'Valloric/YouCompleteMe', {
 "     \ 'build' : {
@@ -173,17 +173,17 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']
 "   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 
-NeoBundle 'neoclide/coc.nvim' "{
-    " Remap keys for gotos
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-    augroup xcoc
-        autocmd!
-        autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
-    augroup END  
-"}
+" NeoBundle 'neoclide/coc.nvim' "{
+"     " Remap keys for gotos
+"     nmap <silent> gd <Plug>(coc-definition)
+"     nmap <silent> gy <Plug>(coc-type-definition)
+"     nmap <silent> gi <Plug>(coc-implementation)
+"     nmap <silent> gr <Plug>(coc-references)
+"     augroup xcoc
+"         autocmd!
+"         autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
+"     augroup END  
+" "}
 
 
 NeoBundle 'rhysd/clever-f.vim'
