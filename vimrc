@@ -155,13 +155,19 @@ NeoBundle 'Shougo/deoplete.nvim' "{
     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python         setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType python         setlocal omnifunc=pjedi#completions
     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
 
     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
     autocmd InsertLeave * silent! pclose!
   augroup END
   NeoBundle 'zchee/deoplete-jedi'
+  NeoBundle 'davidhalter/jedi-vim'
+    let g:jedi#force_py_version = 3
+    let g:jedi#completions_enabled = 0
+    let g:pymode_rope = 0
+    let g:jedi#goto_command = 'gd'
+    let g:jedi#usages_command = 'gr'
 "}
 
 " NeoBundle 'Valloric/YouCompleteMe', {
