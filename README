@@ -12,7 +12,6 @@ brew install python
 brew install ripgrep
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install yarn
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 pip3 install neovim
 # pip3 install pyflakes
