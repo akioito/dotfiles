@@ -167,11 +167,20 @@ NeoBundle 'Shougo/deoplete.nvim' "{
     let g:deoplete#sources#jedi#ignore_errors = v:true
     " let g:deoplete#sources#jedi#show_docstring = 1
   NeoBundle 'davidhalter/jedi-vim'
+    " Disable Jedi-vim autocompletion and enable call-signatures options
     let g:jedi#force_py_version = 3
-    let g:jedi#completions_enabled = 0
     let g:pymode_rope = 0
     let g:jedi#goto_command = 'gd'
     let g:jedi#usages_command = 'gr'
+    let g:jedi#auto_initialization = 1
+    let g:jedi#completions_enabled = 0
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#smart_auto_mappings = 0
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#completions_command = ""
+    let g:jedi#show_call_signatures = "1"
+  NeoBundle 'Shougo/echodoc.vim'
+    let g:echodoc#enable_at_startup = 1
 "}
 
 " NeoBundle 'Valloric/YouCompleteMe', {
