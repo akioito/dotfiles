@@ -162,6 +162,10 @@ NeoBundle 'Shougo/deoplete.nvim' "{
     autocmd InsertLeave * silent! pclose!
   augroup END
   NeoBundle 'zchee/deoplete-jedi'
+    let g:deoplete#sources#jedi#statement_length = 350
+    let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3' 
+    let g:deoplete#sources#jedi#ignore_errors = v:true
+    " let g:deoplete#sources#jedi#show_docstring = 1
   NeoBundle 'davidhalter/jedi-vim'
     let g:jedi#force_py_version = 3
     let g:jedi#completions_enabled = 0
