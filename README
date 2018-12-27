@@ -13,10 +13,11 @@ brew install ripgrep
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 pip3 install neovim
-pip3 install pyflakes
+# pip3 install pyflakes
 pip3 install flake8 
 pip3 install jedi
 pip3 install requests
+pip3 install python-language-server
 
 Install MacVim:
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
@@ -37,10 +38,14 @@ Speed-up LeaderF
 cd ~/.vim/bundle/LeaderF/
 ./install.sh
 
-In case of trouble with YouCompleteMe
-cd ~/.vim/bundle/YouCompleteMe/
-git submodule update --init --recursive
-python3 install.py
+Coc.vim - Conquer of Completion - https://github.com/neoclide/coc.nvim 
+ First time
+ :call coc#util#install()
+ Languages Server - https://www.npmjs.com/search?q=keywords:languageserver
+ :CocInstall coc-pyls
+ :CocInstall coc-html
+ :CocInstall eslint-server
+ :CocInstall coc-tsserver
 
 --------------------------------------------------
 Usual commands:

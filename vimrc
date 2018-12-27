@@ -164,18 +164,28 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']
 "   augroup END
 " "}
 
-NeoBundle 'Valloric/YouCompleteMe', {
-    \ 'build' : {
-    \     'mac':     'python3 install.py',
-    \   },
-    \ }               
-  let g:ycm_log_level = 'error'
-  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-  augroup xyoucompleteme
-    autocmd!
-    autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
-  augroup END 
-  
+" NeoBundle 'Valloric/YouCompleteMe', {
+"     \ 'build' : {
+"     \     'mac':     'python3 install.py',
+"     \   },
+"     \ }               
+"   let g:ycm_log_level = 'error'
+"   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+
+
+NeoBundle 'neoclide/coc.nvim' "{
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    augroup xcoc
+        autocmd!
+        autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
+    augroup END  
+"}
+
+
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'roxma/nvim-yarp'
 NeoBundle 'roxma/vim-hug-neovim-rpc'
@@ -694,7 +704,7 @@ set redrawtime=10000
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
 " set noshowmatch
-set updatetime=700
+set updatetime=500
 set noundofile
 
 set breakindent
