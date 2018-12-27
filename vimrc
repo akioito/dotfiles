@@ -147,11 +147,11 @@ NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']
 
 NeoBundle 'Shougo/deoplete.nvim' "{
   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
-  " let g:deoplete#enable_at_startup = 1 
+  let g:deoplete#enable_at_startup = 0 
   let g:python3_host_prog = '/usr/local/bin/python3'
-  augroup omnifuncs
+  augroup xdeoplete
     autocmd!
-    autocmd CursorHold * call deoplete#enable() 
+    autocmd InsertEnter * call deoplete#enable()
     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -159,9 +159,9 @@ NeoBundle 'Shougo/deoplete.nvim' "{
     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
 
     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
-    autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
+    autocmd InsertLeave * silent! pclose!
   augroup END
-NeoBundle 'zchee/deoplete-jedi'
+  NeoBundle 'zchee/deoplete-jedi'
 "}
 
 " NeoBundle 'Valloric/YouCompleteMe', {
