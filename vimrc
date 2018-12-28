@@ -285,6 +285,7 @@ NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
   noremap op        :PyOpenProject<CR> 
 "}   
 
+NeoBundle 'yegappan/mru' " usage as :MRU prj
 NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_MruMaxFiles = 2500
   let g:Lf_WindowPosition  = "top"
