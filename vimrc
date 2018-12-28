@@ -420,6 +420,7 @@ nnoremap FF ,
 inoremap jk        <ESC>l
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
+nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 
 " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
 "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
