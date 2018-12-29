@@ -30,7 +30,6 @@ Plug 'thinca/vim-quickrun'
 Plug 'osyo-manga/shabadou.vim'
 Plug 'KazuakiM/vim-qfsigns'
 Plug 'dannyob/quickfixstatus'
-
   let g:quickrun_config = {
   \    'watchdogs_checker/_' : {
   \        "runner/vimproc/updatetime" : 40,
@@ -80,7 +79,6 @@ Plug 'tomtom/tcomment_vim' "{
  inoremap <D-1> <ESC>:TComment<cr> 
 "} 
 
-" Plug 'vim-utils/vim-man'
 " Plug 'tpope/vim-fugitive'
 Plug 'akioito/vim-project-files'
 " Plug 'akioito/vim-mysql'
@@ -116,17 +114,11 @@ Plug 'junegunn/vim-easy-align' "{
   if has("mac") 
     let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
   endif
-  " if has("gui_running")
-  "   nnoremap <C-Space>  :TagbarToggle<CR>
-  " else
-    nnoremap <C-@>      :TagbarToggle<CR> 
-  " endif
+  nnoremap <C-@>      :TagbarToggle<CR> 
 "}
-" Plug 'tshirtman/vim-cython'
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-" Plug 'jonsmithers/experimental-lit-html-vim'
 
 Plug 'Shougo/deoplete.nvim' "{
   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
@@ -148,7 +140,6 @@ Plug 'Shougo/deoplete.nvim' "{
     let g:deoplete#sources#jedi#statement_length = 350
     let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3' 
     let g:deoplete#sources#jedi#ignore_errors = v:true
-    " let g:deoplete#sources#jedi#show_docstring = 1
   Plug 'davidhalter/jedi-vim'
     " Disable Jedi-vim autocompletion and enable call-signatures options
     let g:jedi#force_py_version = 3
@@ -165,28 +156,6 @@ Plug 'Shougo/deoplete.nvim' "{
   Plug 'Shougo/echodoc.vim'
     let g:echodoc#enable_at_startup = 1
 "}
-
-" Plug 'Valloric/YouCompleteMe', {
-"     \ 'build' : {
-"     \     'mac':     'python3 install.py',
-"     \   },
-"     \ }               
-"   let g:ycm_log_level = 'error'
-"   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-
-
-" Plug 'neoclide/coc.nvim' "{
-"     " Remap keys for gotos
-"     nmap <silent> gd <Plug>(coc-definition)
-"     nmap <silent> gy <Plug>(coc-type-definition)
-"     nmap <silent> gi <Plug>(coc-implementation)
-"     nmap <silent> gr <Plug>(coc-references)
-"     augroup xcoc
-"         autocmd!
-"         autocmd InsertLeave * if pumvisible() == 0 | pclose | endif 
-"     augroup END  
-" "}
-
 
 Plug 'rhysd/clever-f.vim'
 Plug 'roxma/nvim-yarp'
@@ -209,12 +178,9 @@ Plug 'tacroe/unite-mark' "{
   nnoremap uf           :Unite -auto-resize buffer<CR>    
   nnoremap jf           :Unite buffer<CR>
   nnoremap fj           :Unite buffer<CR>
-  " nnoremap <C-L>        :Unite buffer<cr>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
-  " nnoremap ct           :MRU prj<CR>
-  " nnoremap <C-p>        :MRU prj<CR>
-  " nnoremap <C-Space>    :Unite line -input=def\ <CR>
+  nnoremap ct           :MRU prj<CR>
   nnoremap unu          :Unite neobundle/update
   nnoremap mm          :Unite output:map<CR>
   
@@ -269,7 +235,7 @@ Plug 'tacroe/unite-mark' "{
 "}   
 
 Plug 'yegappan/mru' " usage as :MRU prj
-Plug 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_MruMaxFiles = 2500
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
@@ -301,12 +267,6 @@ Plug 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
 Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-" PlugCheck
-
-" NeoBundleLocal ~/.vim/mybundle
-
 Plug '~/.vim/mybundle/misc' 
 Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
@@ -322,7 +282,6 @@ filetype plugin indent on
 " Turn on filetype detection
 filetype on
 filetype plugin on
-
 
 " ----------------------------------------------------------------------------
 set termencoding=utf-8
@@ -456,7 +415,6 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-"nnoremap <leader>fix     :FixWhitespace<CR>
 if has("gui_macvim") 
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
@@ -487,14 +445,6 @@ nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
 inoremap <silent> <F3>  <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
 nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-" nnoremap <silent> gb         :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
-" nnoremap <silent> grep       :<C-u>Unite -auto-resize grep:$buffers<CR><C-R><C-W><CR><CR>
-" command! -nargs=1 Xgrep 
-"   \ | execute ':Unite -auto-resize grep:$buffers -input='.<q-args>
-"   \ | execute 'normal <Del>'
-"   \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
-"   \ | execute 'normal <Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del><Left><Del>'
-"   \ | execute 'redraw!'
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
@@ -578,7 +528,7 @@ augroup QSearchToggle
 augroup end
 
 " ----------------------------------------------------------------------------
-set rnu
+set nu
 function! s:ToggleNumberMode()
   if &rnu == 0
     set rnu
@@ -710,7 +660,6 @@ set lazyredraw                          " to avoid scrolling problems
 set redrawtime=10000
 set ttyfast
 set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
-" set noshowmatch
 set updatetime=500
 set noundofile
 
