@@ -3,34 +3,51 @@ if !&compatible
   set nocompatible
 endif
 
-syntax enable
+if has('vim_starting')    
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/ 
+endif
 
 " Required:
-call plug#begin('~/.vim/plugged')
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'mac':     'make -f make_mac.mak',
+\     'windows': 'make -f make_mingw32.mak',
+\     'cygwin':  'make -f make_cygwin.mak',
+\     'unix':    'make -f make_unix.mak',
+\   },
+\ }
 
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
 endif
-Plug 'Shougo/unite.vim'
-Plug 'Yggdroot/indentLine' "{
+NeoBundle 'Shougo/unite.vim', {'autoload' : {'commands' : ['Unite*']}}
+NeoBundle 'Yggdroot/indentLine' "{
   let g:indentLine_char = '¦'
   " let g:indentLine_color_gui = '#0BB634'
   let g:indentLine_color_gui = '#EFEFEF'
   set list lcs=tab:\|\ 
 "}
 
-Plug 'tacroe/unite-mark'
-Plug 'othree/javascript-libraries-syntax.vim' 
+NeoBundle 'tacroe/unite-mark'
+NeoBundle 'othree/javascript-libraries-syntax.vim' 
 
-Plug 'osyo-manga/vim-watchdogs' 
-Plug 'thinca/vim-quickrun'
-Plug 'osyo-manga/shabadou.vim'
-Plug 'KazuakiM/vim-qfsigns'
-Plug 'dannyob/quickfixstatus'
-
+NeoBundle 'osyo-manga/vim-watchdogs' , {
+  \ 'depends': [
+  \     'Shougo/vimproc.vim',
+  \     'thinca/vim-quickrun',
+  \     'osyo-manga/shabadou.vim',
+  \     'KazuakiM/vim-qfsigns',
+  \     'dannyob/quickfixstatus' 
+  \  ]
+  \ }
   let g:quickrun_config = {
   \    'watchdogs_checker/_' : {
   \        "runner/vimproc/updatetime" : 40,
@@ -45,22 +62,22 @@ Plug 'dannyob/quickfixstatus'
   \}  
 
 
-Plug 'dag/vim-fish'
-Plug 'chrisbra/vim-diff-enhanced'
-Plug 'rust-lang/rust.vim'
+NeoBundle 'dag/vim-fish'
+NeoBundle 'chrisbra/vim-diff-enhanced'
+NeoBundle 'rust-lang/rust.vim'
 
-" Plug 'racer-rust/vim-racer' "{
+" NeoBundle 'racer-rust/vim-racer' "{
 "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
 "   au FileType rust nmap gd <Plug>(rust-def)
 " "}
-Plug 'cespare/vim-toml'
-Plug 'LnL7/vim-nix'
+NeoBundle 'cespare/vim-toml'
+NeoBundle 'LnL7/vim-nix'
 
-Plug 'keith/swift.vim'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround' "{
+NeoBundle 'keith/swift.vim'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround' "{
   " ds ･･･ d(delete)s(surround)
   " di ･･･ d(delete)i(inside)
   " cs ･･･ c(change)s(surround)
@@ -69,44 +86,44 @@ Plug 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
-" Plug 'kana/vim-smartinput'
-Plug 'jiangmiao/auto-pairs' "{
+" NeoBundleLazy 'kana/vim-smartinput', { 'autoload' : {'insert' : '1'} }
+NeoBundle 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
-Plug 'tomtom/tcomment_vim' "{
+NeoBundle 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
 "} 
 
-" Plug 'vim-utils/vim-man'
-" Plug 'tpope/vim-fugitive'
-Plug 'akioito/vim-project-files'
-" Plug 'akioito/vim-mysql'
-" Plug 'akioito/vim-myshell'
-Plug 'walm/jshint.vim'
-Plug 'mkitt/browser-refresh.vim'
-Plug 'vim-scripts/a.vim'
-Plug 'vim-scripts/python_match.vim'
-Plug 'vim-scripts/grep.vim' "{
+" NeoBundle 'vim-utils/vim-man'
+" NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'akioito/vim-project-files'
+" NeoBundle 'akioito/vim-mysql'
+" NeoBundle 'akioito/vim-myshell'
+NeoBundle 'walm/jshint.vim'
+NeoBundle 'mkitt/browser-refresh.vim'
+NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'vim-scripts/python_match.vim'
+NeoBundle 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
 endif
 "}
 
-Plug 'AndrewRadev/simple_bookmarks.vim'
-Plug 'henrik/vim-reveal-in-finder'
-Plug 'andymass/vim-matchup' "{
+NeoBundle 'AndrewRadev/simple_bookmarks.vim'
+NeoBundle 'henrik/vim-reveal-in-finder'
+NeoBundle 'andymass/vim-matchup' "{
   let g:matchup_matchparen_deferred = 1
 "}
-Plug 'junegunn/vim-easy-align' "{
+NeoBundle 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
   vnoremap <Enter> :EasyAlign
 "}
 
-" Plug 'majutsushi/tagbar' "{ Some customization
+" NeoBundle 'majutsushi/tagbar' "{ Some customization
   let g:tagbar_autoclose   = 1
   let g:tagbar_sort        = 0
   let g:tagbar_compact     = 1
@@ -122,13 +139,13 @@ Plug 'junegunn/vim-easy-align' "{
     nnoremap <C-@>      :TagbarToggle<CR> 
   " endif
 "}
-" Plug 'tshirtman/vim-cython'
+" NeoBundle 'tshirtman/vim-cython'
 
-Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
-Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-" Plug 'jonsmithers/experimental-lit-html-vim'
+NeoBundleLazy 'ap/vim-css-color', {'autoload':{'filetypes':['css','scss','sass','less','styl']}}
+NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
+" NeoBundle 'jonsmithers/experimental-lit-html-vim'
 
-Plug 'Shougo/deoplete.nvim' "{
+NeoBundle 'Shougo/deoplete.nvim' "{
   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
   let g:deoplete#enable_at_startup = 0 
   let g:python3_host_prog = '/usr/local/bin/python3'
@@ -144,12 +161,12 @@ Plug 'Shougo/deoplete.nvim' "{
     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
     autocmd InsertLeave * silent! pclose!
   augroup END
-  Plug 'zchee/deoplete-jedi'
+  NeoBundle 'zchee/deoplete-jedi'
     let g:deoplete#sources#jedi#statement_length = 350
     let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3' 
     let g:deoplete#sources#jedi#ignore_errors = v:true
     " let g:deoplete#sources#jedi#show_docstring = 1
-  Plug 'davidhalter/jedi-vim'
+  NeoBundle 'davidhalter/jedi-vim'
     " Disable Jedi-vim autocompletion and enable call-signatures options
     let g:jedi#force_py_version = 3
     let g:pymode_rope = 0
@@ -162,11 +179,11 @@ Plug 'Shougo/deoplete.nvim' "{
     let g:jedi#popup_on_dot = 0
     let g:jedi#completions_command = ""
     let g:jedi#show_call_signatures = "1"
-  Plug 'Shougo/echodoc.vim'
+  NeoBundle 'Shougo/echodoc.vim'
     let g:echodoc#enable_at_startup = 1
 "}
 
-" Plug 'Valloric/YouCompleteMe', {
+" NeoBundle 'Valloric/YouCompleteMe', {
 "     \ 'build' : {
 "     \     'mac':     'python3 install.py',
 "     \   },
@@ -175,7 +192,7 @@ Plug 'Shougo/deoplete.nvim' "{
 "   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 
-" Plug 'neoclide/coc.nvim' "{
+" NeoBundle 'neoclide/coc.nvim' "{
 "     " Remap keys for gotos
 "     nmap <silent> gd <Plug>(coc-definition)
 "     nmap <silent> gy <Plug>(coc-type-definition)
@@ -188,13 +205,13 @@ Plug 'Shougo/deoplete.nvim' "{
 " "}
 
 
-Plug 'rhysd/clever-f.vim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'roxma/nvim-yarp'
+NeoBundle 'roxma/vim-hug-neovim-rpc'
 
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'gorkunov/smartpairs.vim'
-Plug 'tacroe/unite-mark' "{
+NeoBundle 'AndrewRadev/splitjoin.vim'
+NeoBundle 'gorkunov/smartpairs.vim'
+NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}} "{
  let g:unite_source_mark_marks =
   \   "abcdefghijklmnopqrstuvwxyz"
   \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -255,7 +272,7 @@ Plug 'tacroe/unite-mark' "{
     \['  Functions        <C-@>',             'exe "TagbarToggle"'],
     \['  Projects         ct',                'normal ct'], 
     \['  Buffers          fj/<C-l>',          'exe "Unite buffer"'],
-    \['  Update plugins   unu',               'exe "PlugUpdate"'],
+    \['  Update plugins   unu',               'exe "NeoBundleUpdate"'],
     \['  messages         :messages',         'exe "messages"'],
     \['  keyboard map     mm',                'normal mm'],
     \['  bookmars         <F2>',              'exe "Unite bookmark"'],
@@ -268,8 +285,8 @@ Plug 'tacroe/unite-mark' "{
   noremap op        :PyOpenProject<CR> 
 "}   
 
-Plug 'yegappan/mru' " usage as :MRU prj
-Plug 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
+NeoBundle 'yegappan/mru' " usage as :MRU prj
+NeoBundle 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_MruMaxFiles = 2500
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
@@ -298,22 +315,17 @@ Plug 'Yggdroot/LeaderF' "{ https://github.com/Yggdroot/LeaderF
     \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
 "}
 
-Plug 'godlygeek/csapprox'
-Plug 'tpope/vim-sensible'                                      
+NeoBundle 'godlygeek/csapprox'
+NeoBundle 'sensible.vim'                                      
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-" PlugCheck
+NeoBundleCheck
 
-" NeoBundleLocal ~/.vim/mybundle
+NeoBundleLocal ~/.vim/mybundle
 
-Plug '~/.vim/mybundle/misc' 
-Plug '~/.vim/mybundle/tagbar'
-Plug '~/.vim/mybundle/sbd.vim'
-Plug '~/.vim/mybundle/tablify'
-Plug '~/.vim/mybundle/vim-command-w' 
-
-call plug#end()
+" Required:
+call neobundle#end()
 
 " Required:
 filetype plugin indent on
@@ -672,7 +684,9 @@ set guifont=Courier:h16
 " set guifont=Monaco:h14
 " set guifont=Source\ Code\ Pro:h15
 
-colorscheme mycolor 
+if !exists("g:syntax_on")
+    colorscheme mycolor 
+endif
 
 set nocompatible                       " More stuff
 set hlsearch                           " Highlight search
@@ -719,6 +733,5 @@ set breakindentopt=shift:2
 set iskeyword+=-                        " treat dashes as part of word 
 set linespace=1                         " for correct kanji display 
 set wildmenu
-set laststatus=2
 
 " End
