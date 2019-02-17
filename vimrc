@@ -270,6 +270,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
     \ 'rust': '',
+    \ 'zig': '--options=$HOME/.ctags-d/zig.ctags',
     \ }
   let g:Lf_CommandMap = {
     \ '<C-J>': ['<Down>', '<C-J>'],
