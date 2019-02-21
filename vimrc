@@ -162,7 +162,7 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 " ncm2 https://github.com/ncm2
 Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
-  Plug 'akioito/ncm2-jedi'
+  " Plug 'akioito/ncm2-jedi'
   Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
