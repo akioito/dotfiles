@@ -162,7 +162,8 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 " ncm2 https://github.com/ncm2
 Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
-  Plug 'akioito/ncm2-jedi' " Caution: Error when editing python2 file with # -*- coding: future_fstrings -*-
+  " Plug 'akioito/ncm2-jedi' " Caution: Error when editing python2 file with # -*- coding: future_fstrings -*-
+  Plug 'rizzatti/dash.vim'
   Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
