@@ -382,6 +382,7 @@ set statusline+=%5*%y%*                            " file type
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
+iabbrev println println!
 
 " ----------------------------------------------------------------------------
 " Maps
