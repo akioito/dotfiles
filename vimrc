@@ -168,6 +168,9 @@ Plug 'ncm2/ncm2'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
   Plug 'ncm2/ncm2-cssomni'  
+  Plug 'ncm2/ncm2-ultisnips'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
   
   set shortmess+=c 
   inoremap <c-c> <ESC>
