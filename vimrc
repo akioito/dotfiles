@@ -49,10 +49,11 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'rust-lang/rust.vim'
 Plug 'ziglang/zig.vim'
 
-" Plug 'racer-rust/vim-racer' "{
+Plug 'racer-rust/vim-racer' "{
 "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
-"   au FileType rust nmap gd <Plug>(rust-def)
+  au FileType rust nmap gd <Plug>(rust-def)
 " "}
+Plug 'ncm2/ncm2-racer'
 Plug 'cespare/vim-toml'
 Plug 'LnL7/vim-nix'
 
