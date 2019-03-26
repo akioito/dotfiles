@@ -47,7 +47,8 @@ Plug 'dannyob/quickfixstatus'
 Plug 'dag/vim-fish'
 Plug 'chrisbra/vim-diff-enhanced'
 Plug 'rust-lang/rust.vim'
-Plug 'ziglang/zig.vim'
+Plug 'elzr/vim-json'
+  let g:vim_json_syntax_conceal = 0
 
 Plug 'racer-rust/vim-racer' "{
 "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
