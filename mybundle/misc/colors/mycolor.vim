@@ -39,7 +39,7 @@ hi pythonConditional     guifg=#0100C8    gui=bold
 hi pythonComment         guifg=#F09868 "Green variant
 hi pythonFunction        guifg=#0100C8    gui=bold
 hi pythonTripleString    guifg=darkgreen
-hi pythonString          guifg=#0BB634
+hi pythonString          guifg=#28C101 "#0BB634
 hi pythonBuiltinObj      guifg=Red
 hi pythonMethod          guifg=Darkorange
 hi pythonNumber          guifg=Orangered
@@ -88,3 +88,6 @@ hi DiffChange ctermbg=255  guibg=#ececec gui=none   cterm=none
 hi DiffText   ctermfg=233  ctermbg=189  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
 hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    cterm=none
 " }}}
+
+" Rust
+hi rustCommentLineDoc guifg=#28C101 
