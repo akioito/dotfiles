@@ -72,7 +72,7 @@ Plug 'tpope/vim-surround' "{
   " gvS' ･･･ visual surroud with char
 "}
 " Plug 'kana/vim-smartinput'
-Plug 'jiangmiao/auto-pairs' "{
+" Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
@@ -195,7 +195,8 @@ Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'gorkunov/smartpairs.vim'
+" Plug 'gorkunov/smartpairs.vim'
+Plug 'tmsvg/pear-tree'
 Plug 'tacroe/unite-mark' "{
  let g:unite_source_mark_marks =
   \   "abcdefghijklmnopqrstuvwxyz"
@@ -673,7 +674,7 @@ set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars                                                           
 set shiftwidth=4                       " 4 spaces
 set tabstop=4                          " Need for retab
-set matchpairs+=<:>                    " Match angle brackets
+" set matchpairs+=<:>                    " Match angle brackets
 set hidden                             " Allow modified buffers to be hidden
 
 set iminsert=0
