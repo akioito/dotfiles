@@ -50,11 +50,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-Plug 'racer-rust/vim-racer' "{
-"   let g:racer_cmd = "$HOME/.cargo/bin/racer"
-  au FileType rust nmap gd <Plug>(rust-def)
-" "}
-Plug 'ncm2/ncm2-racer'
+" Plug 'racer-rust/vim-racer' "{
+" "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
+"   au FileType rust nmap gd <Plug>(rust-def)
+" " "}
+" Plug 'ncm2/ncm2-racer'
 Plug 'cespare/vim-toml'
 Plug 'LnL7/vim-nix'
 
