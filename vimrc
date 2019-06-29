@@ -54,8 +54,11 @@ Plug 'racer-rust/vim-racer' "{
   let g:racer_cmd = "$HOME/.cargo/bin/racer"
   let g:racer_experimental_completer = 1
   let g:racer_insert_paren = 1
-  au FileType rust nmap <C-]> <Plug>(rust-def)
-  au FileType rust nmap <F1> <Plug>(rust-doc)
+  augroup racer
+    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
+    autocmd FileType rust nmap <F1> <Plug>(rust-doc)
+    autocmd FileType rustdoc noremap <buffer> q :q<cr>
+  augroup end
 "}
 Plug 'ncm2/ncm2-racer'
 Plug 'cespare/vim-toml'
