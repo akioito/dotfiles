@@ -50,11 +50,14 @@ Plug 'rust-lang/rust.vim'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-" Plug 'racer-rust/vim-racer' "{
-" "   let g:racer_cmd = "$HOME/.cargo/bin/racer"
-"   au FileType rust nmap gd <Plug>(rust-def)
-" " "}
-" Plug 'ncm2/ncm2-racer'
+Plug 'racer-rust/vim-racer' "{
+  let g:racer_cmd = "$HOME/.cargo/bin/racer"
+  let g:racer_experimental_completer = 1
+  let g:racer_insert_paren = 1
+  au FileType rust nmap <C-]> <Plug>(rust-def)
+  au FileType rust nmap <F1> <Plug>(rust-doc)
+"}
+Plug 'ncm2/ncm2-racer'
 Plug 'cespare/vim-toml'
 Plug 'LnL7/vim-nix'
 
@@ -444,7 +447,7 @@ nnoremap <S-Space> <C-b>
 " noremap! \ ¥
 
 " Buffer Navigation
-map <SwipeLeft>     :bp<CR>
+map <SwipeLeft>     <C-o>
 map <SwipeRight>    :bn<CR>
 
 map <SwipeUp>      <C-f>
@@ -473,8 +476,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Function Key
-nnoremap <F1> <ESC>
-imap     <F1> <ESC>l
+" nnoremap <F1> <ESC>
+" imap     <F1> <ESC>l
 
 nnoremap   <F2>             :Unite bookmark<CR> 
 " use ctrl-d to delete bookmark
