@@ -38,10 +38,10 @@ Plug 'dannyob/quickfixstatus'
   let g:quickrun_config["python/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/flake8"
   \} 
-  let g:quickrun_config["css/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/csslint",
-  \	"cmdopt" : "--ignore=order-alphabetical,box-sizing,unqualified-attributes,fallback-colors,compatible-vendor-prefixes,adjoining-classes"
-  \}  
+  " let g:quickrun_config["css/watchdogs_checker"] = {
+  " \	"type" : "watchdogs_checker/csslint",
+  " \	"cmdopt" : "--ignore=order-alphabetical,box-sizing,unqualified-attributes,fallback-colors,compatible-vendor-prefixes,adjoining-classes"
+  " \}  
 
 
 Plug 'dag/vim-fish'
@@ -395,7 +395,6 @@ set statusline+=%5*%y%*                            " file type
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
-iabbrev println println!
 
 " ----------------------------------------------------------------------------
 " Maps
