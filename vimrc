@@ -13,6 +13,8 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
+  set antialias 
+  set linespace=-3
 endif
 Plug 'Shougo/unite.vim'
 Plug 'Yggdroot/indentLine' "{
@@ -696,7 +698,7 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
-set antialias
+
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set redrawtime=10000
@@ -708,7 +710,6 @@ set noundofile
 set breakindent
 set breakindentopt=shift:2 
 set iskeyword+=-                        " treat dashes as part of word 
-set linespace=1                         " for correct kanji display 
 set wildmenu
 set laststatus=2
 
