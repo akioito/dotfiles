@@ -381,6 +381,7 @@ augroup my_autocmd_misc
     \ bufname("2" + 0) != "" |
     \   exe "normal! `0" |
     \ endif   
+  au FocusGained * checktime
 augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
