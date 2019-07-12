@@ -15,6 +15,8 @@ if has("gui_macvim")
   let macvim_hig_shift_movement = 1
   set antialias 
   set linespace=-3
+  " Text-to-speech
+  vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 endif
 Plug 'Shougo/unite.vim'
 Plug 'Yggdroot/indentLine' "{
@@ -466,8 +468,6 @@ nnoremap bd :bdelete
 if has("gui_macvim") || has("gui_vimr") 
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
-  " Text-to-speech
-  vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 else
   nnoremap <C-j>           :cn<cr>ztkj
   nnoremap <C-k>           :cp<cr>ztkj
