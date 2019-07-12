@@ -408,6 +408,9 @@ nnoremap ff ; "
 " previous searched char when fchar
 nnoremap FF ,
 
+nnoremap <C-J> <C-D>
+nnoremap <C-K> <C-U>
+
 " Insert / Normal Mode
 " Ctrl + c or [ = ESC 
 inoremap jk        <ESC>l
@@ -494,13 +497,13 @@ nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
 
-augroup filetype_mysql
-  autocmd!
-  autocmd FileType mysql inoremap <buffer><silent> <F6>   <ESC>:MySQL<CR>
-  autocmd FileType mysql inoremap <buffer><silent> <C-r>  <ESC>:MySQL<CR>
-  autocmd FileType mysql nnoremap <buffer><silent> <F6>        :MySQL<CR>
-  autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
-augroup end
+" augroup filetype_mysql
+"   autocmd!
+"   autocmd FileType mysql inoremap <buffer><silent> <F6>   <ESC>:MySQL<CR>
+"   autocmd FileType mysql inoremap <buffer><silent> <C-r>  <ESC>:MySQL<CR>
+"   autocmd FileType mysql nnoremap <buffer><silent> <F6>        :MySQL<CR>
+"   autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
+" augroup end
 
 " nmap    <F7>       :call HexHighlight()<Return>
 
