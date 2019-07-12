@@ -467,7 +467,7 @@ if has("gui_macvim") || has("gui_vimr")
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
   " Text-to-speech
-  vnoremap <silent><F6> "xy:call system('say '. shellescape(@x) .' &')<CR>  
+  vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 else
   nnoremap <C-j>           :cn<cr>ztkj
   nnoremap <C-k>           :cp<cr>ztkj
