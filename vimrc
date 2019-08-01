@@ -135,6 +135,8 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> gd <Plug>(coc-definition)
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   set shortmess+=c     
 
 " ncm2 https://github.com/ncm2
