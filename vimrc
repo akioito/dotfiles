@@ -133,72 +133,36 @@ Plug 'junegunn/vim-easy-align' "{
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-" Plug 'Shougo/deoplete.nvim' "{
-"   " slow startup, https://github.com/Shougo/deoplete.nvim/issues/780
-"   let g:deoplete#enable_at_startup = 0 
-"   let g:python3_host_prog = '/usr/local/bin/python3'
-"   augroup xdeoplete
-"     autocmd!
-"     autocmd InsertEnter * call deoplete#enable()
-"     autocmd FileType css            setlocal omnifunc=csscomplete#CompleteCSS
-"     autocmd FileType html,markdown  setlocal omnifunc=htmlcomplete#CompleteTags
-"     autocmd FileType javascript     setlocal omnifunc=javascriptcomplete#CompleteJS
-"     autocmd FileType python         setlocal omnifunc=pjedi#completions
-"     autocmd FileType xml            setlocal omnifunc=xmlcomplete#CompleteTags
-"
-"     autocmd FileType rust          hi rustCommentLineDoc    guifg=#00b418 "Green variant
-"     autocmd InsertLeave * silent! pclose!
-"   augroup end
-"   Plug 'zchee/deoplete-jedi'
-"     let g:deoplete#sources#jedi#statement_length = 350
-"     let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3' 
-"     let g:deoplete#sources#jedi#ignore_errors = v:true
-"   Plug 'davidhalter/jedi-vim'
-"     " Disable Jedi-vim autocompletion and enable call-signatures options
-"     let g:jedi#force_py_version = 3
-"     let g:pymode_rope = 0
-"     let g:jedi#goto_command = 'gd'
-"     let g:jedi#usages_command = 'gr'
-"     let g:jedi#auto_initialization = 1
-"     let g:jedi#completions_enabled = 0
-"     let g:jedi#auto_vim_configuration = 0
-"     let g:jedi#smart_auto_mappings = 0
-"     let g:jedi#popup_on_dot = 0
-"     let g:jedi#completions_command = ""
-"     let g:jedi#show_call_signatures = "1"
-"   Plug 'Shougo/echodoc.vim'
-"     let g:echodoc#enable_at_startup = 1
-" "}
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  nmap <silent> gd <Plug>(coc-definition)
+  set shortmess+=c     
 
 " ncm2 https://github.com/ncm2
-Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
+" Plug 'ncm2/ncm2'
+  " Plug 'roxma/nvim-yarp'
   " Plug 'akioito/ncm2-jedi' " Caution: Error when editing python2 file with # -*- coding: future_fstrings -*-
-  Plug 'rizzatti/dash.vim'
-  Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-  Plug 'ncm2/ncm2-cssomni'  
-  Plug 'ncm2/ncm2-path'
+  " Plug 'rizzatti/dash.vim'
+  " Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+  " Plug 'ncm2/ncm2-bufword'
+  " Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+  " Plug 'ncm2/ncm2-cssomni'  
+  " Plug 'ncm2/ncm2-path'
   " Plug 'ncm2/ncm2-ultisnips'
   " Plug 'SirVer/ultisnips'
   " Plug 'honza/vim-snippets'
   
-  set shortmess+=c 
+  " set shortmess+=c 
   inoremap <c-c> <ESC>
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  let g:ncm2#complete_delay = 100
-  let g:ncm2#popup_delay = 100
-  let g:ncm2#matcher = 'prefix'
-
-  augroup xncm2
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-    autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-    autocmd User Ncm2PopupClose set completeopt=menuone 
-    autocmd TextChangedI * call ncm2#auto_trigger()
-  augroup end   
+  " let g:ncm2#complete_delay = 100
+  " let g:ncm2#popup_delay = 100
+  " let g:ncm2#matcher = 'prefix'
+  "
+  " augroup xncm2
+  "   autocmd BufEnter * call ncm2#enable_for_buffer()
+  "   autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+  "   autocmd User Ncm2PopupClose set completeopt=menuone 
+  "   autocmd TextChangedI * call ncm2#auto_trigger()
+  " augroup end   
 
 
 Plug 'rhysd/clever-f.vim'
