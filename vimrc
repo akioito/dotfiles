@@ -137,7 +137,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> gd <Plug>(coc-definition)
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
+  if has("gui_macvim")  
+    nnoremap <silent> <C-M-j> :<C-u>CocList diagnostics<cr>
+  endif
   set shortmess+=c     
+  inoremap <c-c> <ESC> 
 
 " ncm2 https://github.com/ncm2
 " Plug 'ncm2/ncm2'
@@ -154,7 +158,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " Plug 'honza/vim-snippets'
   
   " set shortmess+=c 
-  inoremap <c-c> <ESC>
+  " inoremap <c-c> <ESC>
   " let g:ncm2#complete_delay = 100
   " let g:ncm2#popup_delay = 100
   " let g:ncm2#matcher = 'prefix'
@@ -431,7 +435,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || has("gui_vimr") 
+if has("gui_macvim")
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
 else
