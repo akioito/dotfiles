@@ -50,20 +50,8 @@ Plug 'dannyob/quickfixstatus'
 
 Plug 'dag/vim-fish'
 Plug 'chrisbra/vim-diff-enhanced'
-Plug 'rust-lang/rust.vim'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
-
-Plug 'racer-rust/vim-racer' "{
-  let g:racer_cmd = "$HOME/.cargo/bin/racer"
-  let g:racer_experimental_completer = 1
-  let g:racer_insert_paren = 1
-  augroup racer
-    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
-    autocmd FileType rust nmap <F1> <Plug>(rust-doc)
-    autocmd FileType rustdoc noremap <buffer> q :q<cr>
-  augroup end
-"}
 
 Plug 'cespare/vim-toml'
 Plug 'LnL7/vim-nix'
@@ -135,17 +123,13 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 " ncm2 https://github.com/ncm2
 Plug 'ncm2/ncm2'
-  " Plug 'akioito/ncm2-jedi' " Caution: Error when editing python2 file with # -*- coding: future_fstrings -*-
-  Plug 'rizzatti/dash.vim'
+  Plug 'ncm2/ncm2-vim-lsp'
   Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
   Plug 'ncm2/ncm2-cssomni'  
   Plug 'ncm2/ncm2-path'
   Plug 'ncm2/ncm2-racer'  
-  "  " Plug 'ncm2/ncm2-ultisnips'
-  " Plug 'SirVer/ultisnips'
-  " Plug 'honza/vim-snippets'
   
   set shortmess+=c 
   inoremap <c-c> <ESC>
@@ -162,6 +146,26 @@ Plug 'ncm2/ncm2'
     autocmd TextChangedI * call ncm2#auto_trigger()
   augroup end   
 
+" vim-lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ryanolsonx/vim-lsp-python'
+if executable('rls') " rust
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif 
+
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer' "{
+  augroup racer
+    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
+    autocmd FileType rust nmap <F1> <Plug>(rust-doc)
+    autocmd FileType rustdoc noremap <buffer> q :q<cr>
+  augroup end
+"}    
 
 Plug 'rhysd/clever-f.vim'
 Plug 'roxma/nvim-yarp'
