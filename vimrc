@@ -14,7 +14,6 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
   set antialias 
-  " set linespace=-3
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 endif
@@ -50,24 +49,10 @@ Plug 'dannyob/quickfixstatus'
 
 Plug 'dag/vim-fish'
 Plug 'chrisbra/vim-diff-enhanced'
-Plug 'rust-lang/rust.vim'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-Plug 'racer-rust/vim-racer' "{
-  let g:racer_cmd = "$HOME/.cargo/bin/racer"
-  let g:racer_experimental_completer = 1
-  let g:racer_insert_paren = 1
-  augroup racer
-    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
-    autocmd FileType rust nmap <F1> <Plug>(rust-doc)
-    autocmd FileType rustdoc noremap <buffer> q :q<cr>
-  augroup end
-"}
-Plug 'ncm2/ncm2-racer'
 Plug 'cespare/vim-toml'
-Plug 'LnL7/vim-nix'
-
 Plug 'keith/swift.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-markdown'
@@ -81,7 +66,6 @@ Plug 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
-" Plug 'kana/vim-smartinput'
 Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
@@ -94,8 +78,6 @@ Plug 'tomtom/tcomment_vim' "{
 
 " Plug 'tpope/vim-fugitive'
 Plug 'akioito/vim-project-files'
-" Plug 'akioito/vim-mysql'
-" Plug 'akioito/vim-myshell'
 Plug 'walm/jshint.vim'
 Plug 'mkitt/browser-refresh.vim'
 Plug 'vim-scripts/a.vim'
@@ -133,51 +115,57 @@ Plug 'junegunn/vim-easy-align' "{
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  nmap <silent> gd <Plug>(coc-definition)
-  " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  if has("gui_macvim")  
-    nnoremap <silent> <C-M-j> :<C-u>CocList diagnostics<cr>
-  endif
-  set shortmess+=c     
-  inoremap <c-c> <ESC> 
-
 " ncm2 https://github.com/ncm2
-" Plug 'ncm2/ncm2'
-  " Plug 'roxma/nvim-yarp'
-  " Plug 'akioito/ncm2-jedi' " Caution: Error when editing python2 file with # -*- coding: future_fstrings -*-
-  " Plug 'rizzatti/dash.vim'
-  " Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-  " Plug 'ncm2/ncm2-bufword'
-  " Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-  " Plug 'ncm2/ncm2-cssomni'  
-  " Plug 'ncm2/ncm2-path'
-  " Plug 'ncm2/ncm2-ultisnips'
-  " Plug 'SirVer/ultisnips'
-  " Plug 'honza/vim-snippets'
+Plug 'ncm2/ncm2'
+  Plug 'akioito/ncm2-jedi'
+  Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+  Plug 'ncm2/ncm2-cssomni'  
+  Plug 'ncm2/ncm2-path'
+  Plug 'ncm2/ncm2-racer'  
   
-  " set shortmess+=c 
-  " inoremap <c-c> <ESC>
-  " let g:ncm2#complete_delay = 100
-  " let g:ncm2#popup_delay = 100
-  " let g:ncm2#matcher = 'prefix'
-  "
-  " augroup xncm2
-  "   autocmd BufEnter * call ncm2#enable_for_buffer()
-  "   autocmd User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-  "   autocmd User Ncm2PopupClose set completeopt=menuone 
-  "   autocmd TextChangedI * call ncm2#auto_trigger()
-  " augroup end   
+  set shortmess+=c 
+  inoremap <c-c> <ESC>
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  let g:ncm2#complete_delay = 100
+  let g:ncm2#popup_delay = 100
+  let g:ncm2#matcher = 'prefix'
 
+  augroup xncm2
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    autocmd User Ncm2PopupOpen  set completeopt=noinsert,menuone,noselect
+    autocmd User Ncm2PopupClose set completeopt=menuone 
+    autocmd TextChangedI * call ncm2#auto_trigger()
+  augroup end   
+
+" vim-lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+  Plug 'ryanolsonx/vim-lsp-python'
+  if executable('rls') " rust
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'rls',
+          \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+          \ 'whitelist': ['rust'],
+          \ })
+  endif 
+
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer' "{
+  augroup racer
+    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
+    autocmd FileType rust nmap <F1>  <Plug>(rust-doc)
+    autocmd FileType rustdoc noremap <buffer> q :q<cr>
+  augroup end
+"}    
 
 Plug 'rhysd/clever-f.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'gorkunov/smartpairs.vim'
-" Plug 'tmsvg/pear-tree'
 Plug 'tacroe/unite-mark' "{
  let g:unite_source_mark_marks =
   \   "abcdefghijklmnopqrstuvwxyz"
@@ -196,8 +184,8 @@ Plug 'tacroe/unite-mark' "{
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
   nnoremap ct           :MRU prj<CR>
-  nnoremap unu          :Unite neobundle/update
-  nnoremap mm          :Unite output:map<CR>
+  nnoremap unu          :PlugUpdate<CR>
+  nnoremap mm           :Unite output:map<CR>
   
   " Custom mappings for the unite buffer
   
@@ -225,7 +213,7 @@ Plug 'tacroe/unite-mark' "{
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
     \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfwnowrap! --left function"'],
-    \['  lfProjects       <Space>p / <F5>',   'exe "Leaderfwnowrap! --top mru --input prj"'],
+    \['  lfProjects       <Space>p / <F5>',   'normal ct'],
     \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
     \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
@@ -250,8 +238,11 @@ Plug 'tacroe/unite-mark' "{
 "}   
 
 Plug 'yegappan/mru' " usage as :MRU prj
+  let MRU_Max_Entries = 2500
+  let MRU_Window_Height = 30 
+  let MRU_Max_Menu_Entries = 30  
+
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
-  let g:Lf_MruMaxFiles = 2500
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
   let g:Lf_ShowRelativePath = 0
@@ -263,6 +254,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
   let g:Lf_CommandMap = {
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
+  
   nnoremap <space>f  :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
@@ -270,14 +262,17 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>p  :<C-u>Leaderfwnowrap! --top mru --input prj<cr>
-  nnoremap <F5>      :<C-u>Leaderfwnowrap! --top mru --input prj<cr>
+  nnoremap <space>p  :<C-u>:MRU prj<CR>
+  nnoremap <F5>      :<C-u>:MRU prj<CR>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
     \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
+  
+  Plug 'hilarryxu/LeaderF-funky'
+  Plug 'Yggdroot/LeaderF-marks'
 "}
 
 Plug 'godlygeek/csapprox'
@@ -317,11 +312,6 @@ let html_no_rendering     = 1
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 let loaded_quickfixsigns  = 100
-
-" ----------------------------------------------------------------------------
-let MRU_Max_Entries = 2500
-let MRU_Window_Height = 30 
-let MRU_Max_Menu_Entries = 30
 
 " ----------------------------------------------------------------------------
 " Grep
@@ -504,7 +494,7 @@ augroup my_autocmd
 
     " Problem with Japanese IME / 例: 中 (tyuu) 
     autocmd VimEnter * set imdisable
-                    
+    
     autocmd FileType html setlocal indentkeys-=*<Return>
 
     " Trim Trailing Whitespace
