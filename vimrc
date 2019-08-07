@@ -151,14 +151,17 @@ Plug 'prabirshrestha/vim-lsp'
           \ 'whitelist': ['rust'],
           \ })
   endif 
-
+  augroup vim-lsp
+    autocmd FileType python noremap gd   :LspDefinition<cr>
+    autocmd FileType python noremap <F6> :LspReferences<cr>
+  augroup end 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
-    autocmd FileType rust nmap <C-m> <Plug>(rust-def)
-    autocmd FileType rust nmap <F1>  <Plug>(rust-doc)
+    autocmd FileType rust noremap gd    <Plug>(rust-def)
+    autocmd FileType rust noremap <F1>  <Plug>(rust-doc)
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
-  augroup end
+augroup end
 "}    
 
 Plug 'rhysd/clever-f.vim'
