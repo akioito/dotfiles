@@ -565,6 +565,13 @@ endfunction
 command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
 
 " ----------------------------------------------------------------------------
+function! Iterm()
+  silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
+  echo "open -a iTerm ".getcwd() 
+endfunction
+command! -nargs=* Iterm call Iterm()
+
+" ----------------------------------------------------------------------------
 function! s:MoveVToNonBlank(UpDown)
   let cursorPos = col('.')
   let total_lines = line('$')
