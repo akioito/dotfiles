@@ -152,13 +152,13 @@ Plug 'prabirshrestha/vim-lsp'
           \ })
   endif 
   augroup vim-lsp
-    autocmd FileType python noremap gd   :LspDefinition<cr>
-    autocmd FileType python noremap <F6> :LspReferences<cr>
+    autocmd FileType python noremap jd   :LspDefinition<cr>
+    autocmd FileType python noremap jr   :LspReferences<cr>
   augroup end 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
-    autocmd FileType rust noremap gd    <Plug>(rust-def)
+    autocmd FileType rust noremap jd    <Plug>(rust-def)
     autocmd FileType rust noremap <F1>  <Plug>(rust-doc)
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
 augroup end
@@ -373,8 +373,8 @@ nnoremap ff ; "
 " previous searched char when fchar
 nnoremap FF ,
 
-nnoremap <C-J> <C-D>
-nnoremap <C-K> <C-U>
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
 
 " Insert / Normal Mode
 " Ctrl + c or [ = ESC 
