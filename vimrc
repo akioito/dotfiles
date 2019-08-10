@@ -144,25 +144,19 @@ Plug 'ncm2/ncm2'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
-  if executable('rls') " rust
-      au User lsp_setup call lsp#register_server({
-          \ 'name': 'rls',
-          \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-          \ 'whitelist': ['rust'],
-          \ })
-  endif 
   augroup vim-lsp
-    autocmd FileType python noremap jd   :LspPeekDefinition<cr>
+    autocmd FileType python noremap jd   :LspDefinition<cr>
     autocmd FileType python noremap jr   :LspReferences<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
+
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
     autocmd FileType rust noremap jd    <Plug>(rust-def)
     autocmd FileType rust noremap <F1>  <Plug>(rust-doc)
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
-augroup end
+  augroup end
 "}    
 
 Plug 'rhysd/clever-f.vim'
