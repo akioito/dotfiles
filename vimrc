@@ -376,6 +376,8 @@ nnoremap <C-K> <C-W>k
 inoremap jk        <ESC>l
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
+" overwrite <ESC> <C-t> mapped by vim-lsp  
+nnoremap <ESC>  <ESC>
 nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 
 " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
