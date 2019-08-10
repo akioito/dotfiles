@@ -152,8 +152,9 @@ Plug 'prabirshrestha/vim-lsp'
           \ })
   endif 
   augroup vim-lsp
-    autocmd FileType python noremap jd   :LspDefinition<cr>
+    autocmd FileType python noremap jd   :LspPeekDefinition<cr>
     autocmd FileType python noremap jr   :LspReferences<cr>
+    autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
@@ -520,6 +521,8 @@ augroup my_autocmd
     autocmd FileType unite call s:unite_settings() 
 
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
+    " Don't wrap in quickfix, and don't show in buffer list
+    autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
 augroup end 
 
 " QuickFix Close or Search
