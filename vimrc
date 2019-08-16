@@ -134,6 +134,7 @@ Plug 'ncm2/ncm2'
   let g:ncm2#matcher = 'prefix'
 
   augroup xncm2
+    autocmd!
     autocmd BufEnter * call ncm2#enable_for_buffer()
     autocmd User Ncm2PopupOpen  set completeopt=noinsert,menuone,noselect
     autocmd User Ncm2PopupClose set completeopt=menuone 
@@ -145,14 +146,16 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
-    autocmd FileType python noremap jd   :LspDefinition<cr>
-    autocmd FileType python noremap jr   :LspReferences<cr>
+    autocmd!
+    autocmd FileType python noremap jd   :LspDefinition<cr> 
+    autocmd FileType python noremap jr   :LspReferences<cr> 
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
+    autocmd! 
     autocmd FileType rust noremap jd    <Plug>(rust-def)
     autocmd FileType rust noremap <F1>  <Plug>(rust-doc)
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
