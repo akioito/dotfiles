@@ -143,13 +143,12 @@ Plug 'ncm2/ncm2'
 
 " vim-lsp
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'akioito/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
-  command! MyLspReferences call lsp#ui#vim#references() |sleep 1 | call feedkeys("\<C-w>k") 
   augroup vim-lsp
     autocmd!
     autocmd FileType python noremap jd   :LspDefinition<cr> 
-    autocmd FileType python noremap jr   :MyLspReferences<cr>
+    autocmd FileType python noremap jr   :LspReferences<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 
