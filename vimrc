@@ -116,6 +116,9 @@ Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 Plug 'ycm-core/YouCompleteMe'
+  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+  let g:ycm_min_num_of_chars_for_completion = 3
+  let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " ncm2 https://github.com/ncm2
 " Plug 'ncm2/ncm2'
