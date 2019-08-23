@@ -189,7 +189,7 @@ Plug 'dense-analysis/ale'
 
 " vim-lsp
 Plug 'prabirshrestha/async.vim'
-Plug 'akioito/vim-lsp'
+Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
