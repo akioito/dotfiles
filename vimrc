@@ -119,6 +119,47 @@ Plug 'ycm-core/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
   let g:ycm_autoclose_preview_window_after_insertion = 1
+  function! s:CustomizeYcmQuickFixWindow()
+    " Set the window height to 10.
+    10wincmd _
+    call feedkeys("\<C-w>k")
+    echo " "
+  endfunction
+
+  augroup ycm
+    autocmd!    
+    autocmd FileType python noremap jr   :YcmCompleter GoToReferences<cr>
+    " no autoclose - https://github.com/ycm-core/YouCompleteMe/issues/3272 
+    autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
+    autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow() 
+  augroup end
+
+" ale
+Plug 'dense-analysis/ale'
+  let g:ale_linters_explicit = 1
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_insert_leave = 0
+  " You can disable this option too
+  " if you don't want linters to run on opening a file
+  let g:ale_lint_on_enter = 0
+  " Write this in your vimrc file
+  " let g:ale_set_loclist = 0
+  " let g:ale_set_quickfix = 1
+  " let g:ale_open_list = 1
+  " Set this if you want to.
+  " This can be useful if you are combining ALE with
+  " some other plugin which sets quickfix errors, etc.
+  " let g:ale_keep_list_window_open = 1
+  let g:ale_python_pyls_executable = 'pyls'
+  " let g:ale_python_pyls_use_global = 1
+  let g:ale_linters = {'python': ['pyls']}
+  " let g:ale_completion_enabled = 1
+  augroup ale
+    autocmd!
+    autocmd FileType python noremap jd   :ALEGoToDefinition<cr>  
+    " autocmd FileType python noremap jr   :ALEFindReferences<cr>  
+    " autocmd FileType python noremap jh   :ALEHover<cr> 
+  augroup end
 
 " ncm2 https://github.com/ncm2
 " Plug 'ncm2/ncm2'
@@ -152,8 +193,8 @@ Plug 'akioito/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
-    autocmd FileType python noremap jd   :LspDefinition<cr> 
-    autocmd FileType python noremap jr   :LspReferences<cr>
+    " autocmd FileType python noremap jd   :LspDefinition<cr> 
+    " autocmd FileType python noremap jr   :LspReferences<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 
