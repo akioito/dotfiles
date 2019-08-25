@@ -115,12 +115,12 @@ Plug 'junegunn/vim-easy-align' "{
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-Plug 'ycm-core/YouCompleteMe'
+" YouCompleteMe (Autocomplete and GoToRerecences)
+Plug 'puremourning/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
-  let g:ycm_autoclose_preview_window_after_insertion = 1
+  set completeopt-=preview
   function! s:CustomizeYcmQuickFixWindow()
-    " Set the window height to 10.
     10wincmd _
     call feedkeys("\<C-w>k")
     echo " "
@@ -134,68 +134,26 @@ Plug 'ycm-core/YouCompleteMe'
     autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow() 
   augroup end
 
-" ale
+" ale (GotoDefinition)
 Plug 'dense-analysis/ale'
   let g:ale_linters_explicit = 1
   let g:ale_lint_on_text_changed = 'never'
   let g:ale_lint_on_insert_leave = 0
-  " You can disable this option too
-  " if you don't want linters to run on opening a file
   let g:ale_lint_on_enter = 0
-  " Write this in your vimrc file
-  " let g:ale_set_loclist = 0
-  " let g:ale_set_quickfix = 1
-  " let g:ale_open_list = 1
-  " Set this if you want to.
-  " This can be useful if you are combining ALE with
-  " some other plugin which sets quickfix errors, etc.
-  " let g:ale_keep_list_window_open = 1
   let g:ale_python_pyls_executable = 'pyls'
-  " let g:ale_python_pyls_use_global = 1
   let g:ale_linters = {'python': ['pyls']}
-  " let g:ale_completion_enabled = 1
   augroup ale
     autocmd!
     autocmd FileType python noremap jd   :ALEGoToDefinition<cr> 
     autocmd FileType python nnoremap <2-LeftMouse> :ALEGoToDefinition<cr>  
-    " autocmd FileType python noremap jr   :ALEFindReferences<cr>  
-    " autocmd FileType python noremap jh   :ALEHover<cr> 
   augroup end
 
-" ncm2 https://github.com/ncm2
-" Plug 'ncm2/ncm2'
-"   Plug 'akioito/ncm2-jedi'
-"   Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-"   Plug 'ncm2/ncm2-bufword'
-"   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
-"   Plug 'ncm2/ncm2-cssomni'  
-"   Plug 'ncm2/ncm2-path'
-"   Plug 'ncm2/ncm2-racer'  
-  
-  " set shortmess+=c 
-  " inoremap <c-c> <ESC>
-  " inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-  " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  " let g:ncm2#complete_delay = 100
-  " let g:ncm2#popup_delay = 100
-  " let g:ncm2#matcher = 'prefix'
-  "
-  " augroup xncm2
-  "   autocmd!
-  "   autocmd BufEnter * call ncm2#enable_for_buffer()
-  "   autocmd User Ncm2PopupOpen  set completeopt=noinsert,menuone,noselect
-  "   autocmd User Ncm2PopupClose set completeopt=menuone 
-  "   autocmd TextChangedI * call ncm2#auto_trigger()
-  " augroup end   
-
-" vim-lsp
+" vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
-    " autocmd FileType python noremap jd   :LspDefinition<cr> 
-    " autocmd FileType python noremap jr   :LspReferences<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 
