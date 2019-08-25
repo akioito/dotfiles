@@ -156,7 +156,8 @@ Plug 'dense-analysis/ale'
   " let g:ale_completion_enabled = 1
   augroup ale
     autocmd!
-    autocmd FileType python noremap jd   :ALEGoToDefinition<cr>  
+    autocmd FileType python noremap jd   :ALEGoToDefinition<cr> 
+    autocmd FileType python nnoremap <2-LeftMouse> :ALEGoToDefinition<cr>  
     " autocmd FileType python noremap jr   :ALEFindReferences<cr>  
     " autocmd FileType python noremap jh   :ALEHover<cr> 
   augroup end
