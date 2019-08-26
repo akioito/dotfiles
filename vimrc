@@ -120,40 +120,16 @@ Plug 'puremourning/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview
-  function! s:CustomizeYcmQuickFixWindow()
-    10wincmd _
-    call feedkeys("\<C-w>k")
-    echo " "
-  endfunction
-
-  augroup ycm
-    autocmd!    
-    autocmd FileType python noremap jr   :YcmCompleter GoToReferences<cr>
-    " no autoclose - https://github.com/ycm-core/YouCompleteMe/issues/3272 
-    autocmd User YcmQuickFixOpened autocmd! ycmquickfix WinLeave
-    autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow() 
-  augroup end
-
-" ale (GotoDefinition)
-Plug 'dense-analysis/ale'
-  let g:ale_linters_explicit = 1
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_insert_leave = 0
-  let g:ale_lint_on_enter = 0
-  let g:ale_python_pyls_executable = 'pyls'
-  let g:ale_linters = {'python': ['pyls']}
-  augroup ale
-    autocmd!
-    autocmd FileType python noremap jd   :ALEGoToDefinition<cr> 
-    autocmd FileType python nnoremap <2-LeftMouse> :ALEGoToDefinition<cr>  
-  augroup end
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+" original 'kdevlab/vim-lsp'
+Plug 'akioito/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
+    autocmd FileType python noremap jr   :LspReferences<cr>
+    autocmd FileType python noremap jd   :LspDefinition<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
   augroup end 
 
