@@ -66,7 +66,7 @@ Plug 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
-Plug 'jiangmiao/auto-pairs' "{
+" Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
@@ -115,7 +115,7 @@ Plug 'junegunn/vim-easy-align' "{
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-" YouCompleteMe (Autocomplete and GoToRerecences)
+" YouCompleteMe (Autocomplete)
 Plug 'puremourning/YouCompleteMe'
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
@@ -123,8 +123,8 @@ Plug 'puremourning/YouCompleteMe'
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
-" original 'kdevlab/vim-lsp'
-Plug 'akioito/vim-lsp'
+  " Plug 'kdevlab/vim-lsp'
+  Plug 'akioito/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
@@ -467,9 +467,9 @@ augroup my_autocmd
     autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
-    autocmd BufEnter *.py  :match defLine /def\ .*$/ 
+    " autocmd BufEnter *.py  :match defLine /def\ .*$/ 
     autocmd BufEnter *.js  :match defLine /.*function.*$/ 
-    " autocmd BufEnter * :syntax sync fromstart
+    autocmd BufEnter * :syntax sync fromstart
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
