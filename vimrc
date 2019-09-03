@@ -123,14 +123,14 @@ Plug 'puremourning/YouCompleteMe'
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
-  " Plug 'kdevlab/vim-lsp'
-  Plug 'akioito/vim-lsp'
+  Plug 'kdevlab/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   augroup vim-lsp
     autocmd!
     autocmd FileType python noremap jr   :LspReferences<cr>
     autocmd FileType python noremap jd   :LspDefinition<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
+    autocmd FileType qf call feedkeys("\<C-w>k")
   augroup end 
 
 Plug 'rust-lang/rust.vim'
