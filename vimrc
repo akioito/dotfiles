@@ -66,7 +66,7 @@ Plug 'tpope/vim-surround' "{
   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
   " gvS' ･･･ visual surroud with char
 "}
-" Plug 'jiangmiao/auto-pairs' "{
+Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
@@ -116,7 +116,7 @@ Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 " YouCompleteMe (Autocomplete)
-Plug 'puremourning/YouCompleteMe'
+Plug 'puremourning/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview

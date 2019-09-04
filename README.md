@@ -17,6 +17,7 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 pip3 install neovim
 pip3 install flake8 
 pip3 install jedi
+pip3 install python-language-server --upgrade
 ```
 
 Install MacVim:
@@ -42,7 +43,7 @@ Enjoy!
 --------------------------------------------------  
 Speed-up LeaderF
 ```  
-cd ~/.vim/bundle/LeaderF/
+cd ~/.vim/plugged/LeaderF
 ./install.sh
 ```  
 
@@ -76,12 +77,17 @@ Ctl-P General menu command
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix<br> 
 Shift Cursor Select and Enter for Align column<br>  
 Cmd-1 for Comment/Uncomment<br> 
+
+For Python (vim-lsp-python):<br>
+jr   LspReferences (Cmd J/Cmd K for navigation)<br> 
+jd   LspDefinition (Ctr-o to back)<br> 
+jh   LspHover<br> 
 For other commands also see .vimrc
 
 # Project management
 see mybundle/vim-project-files or https://github.com/akioito/vim-project-files<br> 
 open sample.vim-prj<br>
-:PyOpenProject
+:PyOpenProject (or op)
 
 
 
@@ -107,4 +113,9 @@ Symlink (Only for first time)
 ```  
 cd /Applications
 ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .   
-```  
+``` 
+
+mvim Command Line Alias
+``` 
+alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+``` 
