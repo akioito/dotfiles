@@ -132,7 +132,8 @@ Plug 'prabirshrestha/async.vim'
     autocmd FileType python noremap jh   :LspHover<cr>
     autocmd FileType qf call feedkeys("\<C-w>k")
   augroup end 
-
+  noremap jd nope " When not supported...
+  
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
