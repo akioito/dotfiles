@@ -125,6 +125,7 @@ Plug 'puremourning/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
 Plug 'prabirshrestha/async.vim'
   Plug 'kdevlab/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
+  let g:lsp_highlight_references_enabled = 1
   augroup vim-lsp
     autocmd!
     autocmd FileType python noremap jr   :LspReferences<cr>
