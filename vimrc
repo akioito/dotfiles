@@ -264,7 +264,8 @@ augroup END
 
   nnoremap  <F5> :call fzf#run({
   \   'source': 'grep prj $HOME/.vim_mru_files',
-  \   'sink': 'e '
+  \   'sink': 'e ',
+  \   'options': '-m --prompt "Projects> "',
   \ })<CR>
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
