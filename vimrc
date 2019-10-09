@@ -116,7 +116,7 @@ Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 " YouCompleteMe (Autocomplete)
-Plug 'puremourning/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
+Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview
@@ -226,8 +226,12 @@ Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Window_Height = 30 
   let MRU_Max_Menu_Entries = 30  
 
-Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-Plug 'lotabout/skim.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+  nnoremap  <F5> :call fzf#run({
+  \   'source': 'grep prj $HOME/.vim_mru_files',
+  \   'sink': 'e '
+  \ })<CR>
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_WindowPosition  = "top"
@@ -250,7 +254,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>p  :<C-u>:MRU prj<CR>
-  nnoremap <F5>      :<C-u>:MRU prj<CR>
+  " nnoremap <F5>      :<C-u>:MRU prj<CR>
   nnoremap <space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
