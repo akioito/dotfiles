@@ -226,6 +226,9 @@ Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Window_Height = 30 
   let MRU_Max_Menu_Entries = 30  
 
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+Plug 'lotabout/skim.vim'
+
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
