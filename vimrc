@@ -234,7 +234,7 @@ Plug 'junegunn/fzf.vim'
   let g:fzf_layout = { 'up': '~40%' }
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:221,hl+:33'
   nnoremap  <F5> :call fzf#run({
-  \   'source': 'grep prj $HOME/.vim_mru_files',
+  \   'source': 'rg prj $HOME/.vim_mru_files',
   \   'sink': 'e ',
   \   'options': '--prompt "Projects> "',
   \   'up':    20
