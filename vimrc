@@ -224,7 +224,10 @@ Plug 'tacroe/unite-mark' "{
 Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Entries = 2500
   let MRU_Window_Height = 30 
-  let MRU_Max_Menu_Entries = 30  
+  let MRU_Max_Menu_Entries = 30 
+  " Caution! This save only .vim-prj or .prj
+  let MRU_Exclude_Files = '*.*'
+  let MRU_Include_Files = '\.vim-prj$\|\.prj$'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
