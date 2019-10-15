@@ -123,7 +123,7 @@ Plug 'puremourning/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
-  Plug 'kdevlab/vim-lsp'
+  Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
   let g:lsp_highlight_references_enabled = 1
   augroup vim-lsp
