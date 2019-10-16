@@ -227,7 +227,7 @@ Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Menu_Entries = 30 
   " Caution! This save only .vim-prj or .prj
   let MRU_Exclude_Files = '*.*'
-  let MRU_Include_Files = '\.vim-prj$\|\.prj$'
+  let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
