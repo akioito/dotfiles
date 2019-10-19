@@ -258,7 +258,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <C-L>     :<C-u>Leaderfx buffer<cr> 
+  nnoremap <C-L>     :<C-u>Leaderfx buffer<cr>
   nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <space>p  :<C-u>:MRU prj<CR>
   " nnoremap <F5>      :<C-u>:MRU prj<CR>
