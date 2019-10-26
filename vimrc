@@ -196,10 +196,10 @@ Plug 'tacroe/unite-mark' "{
     \}
   let g:unite_source_menu_menus.mycmds.command_candidates = [
     \['LeaderF            Shortcut/Command',  ''],
-    \['  lfFunction       <Space>f / <C-Space> / <C-R>', 'exe "Leaderfwnowrap! --left function"'],
-    \['  lfProjects       <Space>p / <F5>',   'normal ct'],
-    \['  lfBuffers        <Space>b / <C-L>',  'exe "Leaderfx buffer"'], 
-    \['  lfLeaderf        <Space>l',          'exe "Leaderfx self"'],
+    \['  lfFunction       <leader>f / <C-Space> / <C-R>', 'exe "Leaderfwnowrap! --left function"'],
+    \['  lfProjects       <Space>p /  <F5>',   'exe "call feedkeys(\"\<F5>\")<CR>"'],
+    \['  lfBuffers        <leader>b / <C-L>',  'exe "Leaderfx buffer"'], 
+    \['  lfLeaderf        <Space>l',           'exe "Leaderfx self"'],
     \['Direct Command           ',            ''],
     \['  Project Open     :PyOpenProject / op', 'exe "PyOpenProject"'],
     \['  vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
@@ -217,8 +217,9 @@ Plug 'tacroe/unite-mark' "{
     \['  jump             :Unite jump',       'exe "Unite jump"'],
     \['  change           :Unite change',     'exe "Unite change"'], 
     \]
-  nnoremap <C-p>    :Unite -silent -start-insert menu:mycmds<CR>
-  noremap op        :PyOpenProject<CR> 
+  nnoremap <C-p>        :Unite -silent -start-insert menu:mycmds<CR>
+  noremap op            :PyOpenProject<CR>
+  noremap <Space>o      :PyOpenProject<CR>
 "}   
 
 Plug 'yegappan/mru' " usage as :MRU prj
@@ -253,16 +254,16 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' } "{ https://github.com/Yggdroot
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
   
-  nnoremap <space>f  :<C-u>Leaderfwnowrap! --left function<cr>
+  nnoremap <Space>f  :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-L>     :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <space>p  :<C-u>:MRU prj<CR>
+  nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
+  nnoremap <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
   " nnoremap <F5>      :<C-u>:MRU prj<CR>
-  nnoremap <space>l  :<C-u>Leaderfx self<cr> 
+  nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
@@ -361,7 +362,7 @@ iabbrev xrm # testIto remove after test...
 
 " ----------------------------------------------------------------------------
 " Maps
-"let mapleader=','
+let mapleader = "\<Space>"
 nnoremap ; :
 " next searched char when fchar
 nnoremap ff ; " 
@@ -411,8 +412,8 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
-nnoremap <Space>   <C-f>
-nnoremap <S-Space> <C-b>
+" nnoremap <Space>   <C-f>
+" nnoremap <S-Space> <C-b>
 " noremap! ¥ \
 " noremap! \ ¥
 
