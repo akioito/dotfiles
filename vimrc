@@ -677,9 +677,8 @@ set number
 
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
-set redrawtime=10000
 set ttyfast
-set timeoutlen=200                      " <leader> don't work with low timeoutlen, but high slowdown next search
+set timeoutlen=400                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set updatetime=500
 set noundofile
 
