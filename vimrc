@@ -238,9 +238,14 @@ Plug 'liuchengxu/vim-which-key'
   let g:which_key_map.m = {
     \ 'name' : '+Menu' ,
     \ 'b' : [':Leaderfx buffer',                    'Buffer List'],
+    \ 'c' : ['<F4>',                                'Close or QSearchToggle word at curosr'], 
+    \ 'd' : ['jd',                                  'LspDefinition'],
     \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
+    \ 'g' : ['<F3>',                                'GrepBuffer word at curosr'],
+    \ 'm' : ['<C-p>',                               'Menu'], 
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
     \ 'p' : ['<F5>',                                'Projects'],
+    \ 'r' : ['jr',                                  'LspReferences'],
     \ }
 
 Plug 'yegappan/mru' " usage as :MRU prj
