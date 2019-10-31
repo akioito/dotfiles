@@ -222,6 +222,27 @@ Plug 'tacroe/unite-mark' "{
   noremap <Space>o      :PyOpenProject<CR>
 "}   
 
+Plug 'liuchengxu/vim-which-key'
+  let g:mapleader="\<Space>"
+  nnoremap <silent> <leader>  :<c-u>WhichKey '<Space>'<CR>
+  let g:which_key_vertical = 1
+   
+  let g:which_key_map =  {}
+  augroup my_which_keyh 
+    autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
+  augroup end 
+  
+  let g:which_key_map.d = 'which_key_ignore'
+  let g:which_key_map.r = 'which_key_ignore'
+
+  let g:which_key_map.m = {
+    \ 'name' : '+Menu' ,
+    \ 'b' : [':Leaderfx buffer',                    'Buffer List'],
+    \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
+    \ 'o' : [':PyOpenProject',                      'Open Project'],  
+    \ 'p' : ['<F5>',                                'Projects'],
+    \ }
+
 Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Entries = 2500
   let MRU_Window_Height = 30 
@@ -362,7 +383,7 @@ iabbrev xrm # testIto remove after test...
 
 " ----------------------------------------------------------------------------
 " Maps
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 nnoremap ; :
 " next searched char when fchar
 nnoremap ff ; " 
