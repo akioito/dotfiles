@@ -224,7 +224,7 @@ Plug 'tacroe/unite-mark' "{
 
 Plug 'liuchengxu/vim-which-key'
   let g:mapleader="\<Space>"
-  nnoremap <silent> <leader>  :<c-u>WhichKey '<Space>'<CR>
+  nnoremap <silent> <leader>  :WhichKey! g:which_key_map.m<cr>
   let g:which_key_vertical = 1
    
   let g:which_key_map =  {}
