@@ -128,8 +128,10 @@ Plug 'prabirshrestha/async.vim'
   let g:lsp_highlight_references_enabled = 1
   augroup vim-lsp
     autocmd!
-    autocmd FileType python noremap jr   :LspReferences<cr>
-    autocmd FileType python noremap jd   :LspDefinition<cr>
+    autocmd FileType python noremap jr        :LspReferences<cr>
+    autocmd FileType python noremap <Space>r  :LspReferences<cr> 
+    autocmd FileType python noremap jd        :LspDefinition<cr>
+    autocmd FileType python noremap <Space>d  :LspDefinition<cr>
     autocmd FileType python noremap jh   :LspHover<cr>
     autocmd FileType qf call feedkeys("\<C-w>k")
   augroup end 
