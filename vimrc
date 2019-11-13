@@ -165,7 +165,7 @@ Plug 'tacroe/unite-mark' "{
   let g:unite_prompt                        = '» '
   
   nnoremap uf           :Unite -auto-resize buffer<CR>    
-  nnoremap jf           :Unite buffer<CR>
+  " nnoremap jf           :Unite buffer<CR>
   nnoremap fj           :Unite buffer<CR>
   nnoremap um           :Unite mark<CR>
   nnoremap us           :Unite source<CR>
@@ -402,6 +402,8 @@ nnoremap <C-K> <C-W>k
 
 " Insert / Normal Mode
 " Ctrl + c or [ = ESC 
+nnoremap jf        <ESC>
+inoremap jf        <ESC>l
 inoremap jk        <ESC>l
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
