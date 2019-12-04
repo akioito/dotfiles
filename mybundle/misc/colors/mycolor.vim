@@ -89,5 +89,5 @@ hi DiffText   ctermfg=233  ctermbg=189  guifg=#000033 guibg=#DDDDFF gui=none cte
 hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    cterm=none
 " }}}
 
-" Rust
-hi rustCommentLineDoc guifg=#28C101 
+" LeaderF
+highlight def Lf_hl_cursorline guifg=Black ctermfg=226
