@@ -269,12 +269,7 @@ Plug 'junegunn/fzf.vim'
   \   'up':    20
   \ })<CR>
 
-<<<<<<< HEAD
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
-=======
-Plug 'Yggdroot/LeaderF', {'tag': 'v1.21', 'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
-Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF 
->>>>>>> 2fbce17f0309ee16dcd642fec81ee0892750c0a0
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
   let g:Lf_ShowRelativePath = 0
