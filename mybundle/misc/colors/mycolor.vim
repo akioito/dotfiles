@@ -48,16 +48,10 @@ hi pythonSpecial         guifg=Blue
 hi pythonPreCondit       guifg=#487e52
 hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
 
-" Pony
-hi ponyDocumentString    guifg=darkgreen
-hi ponyComment           guifg=#F09868 "Green variant
-hi ponyString            guifg=#0BB634
-hi ponyStringX           guifg=#0BB634
-hi ponyKwFunction        guifg=#28C101  gui=bold "guibg=#fff8f8 
 
 " HTML / JS
 hi htmlString            guifg=#0BB634
-hi jsStringS              guifg=#0BB634
+hi jsStringS             guifg=#0BB634
 
 " :call HexHighlight() to see the Color
 
@@ -91,3 +85,9 @@ hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    
 
 " LeaderF
 highlight def Lf_hl_cursorline guifg=Black ctermfg=226
+
+" Rust
+" hi rustCommentLineDoc      guifg=darkgreen
+hi rustSelf                guifg=#0100C8    gui=bold
+hi rustString              guifg=#28C101 
+" hi rustKeyword              guifg=#28C101  gui=bold 
