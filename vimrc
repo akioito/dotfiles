@@ -133,8 +133,20 @@ Plug 'prabirshrestha/async.vim'
     autocmd FileType python noremap <Space>r  :LspReferences<cr> 
     autocmd FileType python noremap jd        :LspDefinition<cr>
     autocmd FileType python noremap <Space>d  :LspDefinition<cr>
-    autocmd FileType python noremap jh   :LspHover<cr>
+    autocmd FileType python noremap jh        :LspHover<cr>
     autocmd FileType qf call feedkeys("\<C-w>k")
+
+    autocmd FileType rust   noremap jr        :LspReferences<cr> 
+    autocmd FileType rust   noremap jh        :LspHover<cr> 
+
+    if executable('rls')
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'rls',
+            \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+            \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+            \ 'whitelist': ['rust'],
+            \ })
+    endif
   augroup end 
   noremap jd nope " When not supported...
   
@@ -142,8 +154,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
     autocmd! 
-    autocmd FileType rust noremap jd    <Plug>(rust-def)
-    autocmd FileType rust noremap <F1>  <Plug>(rust-doc)
+    autocmd FileType rust noremap jd    :call racer#GoToDefinition()<CR>  
+    autocmd FileType rust noremap <F1>  :call racer#ShowDocumentation()<cr>
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
   augroup end
 "}    
