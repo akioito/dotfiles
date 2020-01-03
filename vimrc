@@ -123,24 +123,24 @@ Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-  let g:LanguageClient_serverCommands = {
-    \ 'rust': ['ra_lsp_server'],
-    \ }
-  let g:LanguageClient_selectionUI = "quickfix" 
-  augroup LanguageClient
-    autocmd! 
-    autocmd FileType rust noremap jr        :call LanguageClient#textDocument_references()<cr>
-    autocmd FileType rust noremap <Space>r  :call LanguageClient#textDocument_references()<cr>
-    autocmd FileType rust noremap jd        :call LanguageClient#textDocument_definition()<cr>  
-    autocmd FileType rust noremap <Space>d  :call LanguageClient#textDocument_definition()<cr> 
-    autocmd FileType rust noremap jh        :call LanguageClient#textDocument_hover()<cr>
-    autocmd FileType rust noremap <Space>h  :call LanguageClient#textDocument_hover()<cr> 
-    autocmd FileType rustdoc noremap <buffer> q :q<cr>
-  augroup end
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+"   let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['ra_lsp_server'],
+"     \ }
+"   let g:LanguageClient_selectionUI = "quickfix" 
+"   augroup LanguageClient
+"     autocmd! 
+"     autocmd FileType rust noremap jr        :call LanguageClient#textDocument_references()<cr>
+"     autocmd FileType rust noremap <Space>r  :call LanguageClient#textDocument_references()<cr>
+"     autocmd FileType rust noremap jd        :call LanguageClient#textDocument_definition()<cr>  
+"     autocmd FileType rust noremap <Space>d  :call LanguageClient#textDocument_definition()<cr> 
+"     autocmd FileType rust noremap jh        :call LanguageClient#textDocument_hover()<cr>
+"     autocmd FileType rust noremap <Space>h  :call LanguageClient#textDocument_hover()<cr> 
+"     autocmd FileType rustdoc noremap <buffer> q :q<cr>
+"   augroup end
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
@@ -164,20 +164,21 @@ Plug 'prabirshrestha/async.vim'
     autocmd FileType qf call feedkeys("\<C-w>k") 
   augroup end 
   noremap jd nope " When not supported...
-"   
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer' "{
-"   augroup racer
-"     autocmd! 
-"     autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-"     autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-"     autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
-"     autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
-"     autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
-"     autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
-"     autocmd FileType rustdoc noremap <buffer> q :q<cr>
-"   augroup end
-" "}    
+
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer' "{
+  augroup racer
+    autocmd! 
+    autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
+    autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
+    autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
+    autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
+    autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
+    autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
+    autocmd FileType rustdoc noremap <buffer> q :q<cr>
+  augroup end
+"}    
+
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'rhysd/clever-f.vim'
