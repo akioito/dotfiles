@@ -134,19 +134,7 @@ Plug 'prabirshrestha/async.vim'
     autocmd FileType python noremap jd        :LspDefinition<cr>
     autocmd FileType python noremap <Space>d  :LspDefinition<cr>
     autocmd FileType python noremap jh        :LspHover<cr>
-    autocmd FileType qf call feedkeys("\<C-w>k")
-
-    autocmd FileType rust   noremap jr        :LspReferences<cr> 
-    autocmd FileType rust   noremap jh        :LspHover<cr> 
-
-    if executable('rls')
-        au User lsp_setup call lsp#register_server({
-            \ 'name': 'rls',
-            \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-            \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-            \ 'whitelist': ['rust'],
-            \ })
-    endif
+    autocmd FileType qf call feedkeys("\<C-w>k") 
   augroup end 
   noremap jd nope " When not supported...
   
@@ -154,8 +142,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
     autocmd! 
-    autocmd FileType rust noremap jd    :call racer#GoToDefinition()<CR>  
-    autocmd FileType rust noremap <F1>  :call racer#ShowDocumentation()<cr>
+    autocmd FileType rust noremap jr        :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
+    autocmd FileType rust noremap <Space>r  :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
+    autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
+    autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
+    autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
+    autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
   augroup end
 "}    
@@ -257,6 +249,7 @@ Plug 'liuchengxu/vim-which-key'
     \ 'd' : ['jd',                                  'LspDefinition'],
     \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
     \ 'g' : ['<F3>',                                'GrepBuffer word at curosr'],
+    \ 'h' : ['jh',                                  'Doc Help'], 
     \ 'm' : ['<C-p>',                               'Menu'], 
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
     \ 'p' : ['<F5>',                                'Projects'],
