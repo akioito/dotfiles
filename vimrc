@@ -89,6 +89,7 @@ if has('mac')
   let Grep_Path = '/usr/local/bin/rg --vimgrep'
 endif
 "}
+Plug 'mhinz/vim-grepper'
 
 Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
@@ -142,8 +143,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer' "{
   augroup racer
     autocmd! 
-    autocmd FileType rust noremap jr        :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-    autocmd FileType rust noremap <Space>r  :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
+    autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
+    autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
     autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
     autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
     autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
@@ -151,7 +152,8 @@ Plug 'racer-rust/vim-racer' "{
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
   augroup end
 "}    
-
+Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
 Plug 'rhysd/clever-f.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
@@ -506,8 +508,8 @@ nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 
 " nmap    <F7>       :call HexHighlight()<Return>
 
-inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
-nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
+" inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
+" nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
 
 " MacVim - move cursor word left
 map <S-w> <M-Left>
