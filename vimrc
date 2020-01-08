@@ -19,11 +19,8 @@ if has("gui_macvim")
 endif
 Plug 'Shougo/unite.vim'
 Plug 'Yggdroot/indentLine' "{
-  let g:indentLine_char = '¦'
-  " let g:indentLine_color_gui = '#0BB634'
   let g:indentLine_color_gui = '#EFEFEF'
-  set list lcs=tab:\|\ 
-"}
+" "}
 
 Plug 'tacroe/unite-mark'
 Plug 'othree/javascript-libraries-syntax.vim' 
@@ -150,12 +147,6 @@ Plug 'prabirshrestha/async.vim'
   let g:lsp_highlight_references_enabled = 1
   augroup vim-lsp
     autocmd!
-    " autocmd User lsp_setup call lsp#register_server({
-    "     \ 'name': 'rls',
-    "     \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-    "     \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-    "     \ 'whitelist': ['rust'],
-    "     \ })
     autocmd FileType python noremap jr        :LspReferences<cr>
     autocmd FileType python noremap <Space>r  :LspReferences<cr> 
     autocmd FileType python noremap jd        :LspDefinition<cr>
@@ -178,6 +169,23 @@ Plug 'racer-rust/vim-racer' "{
     autocmd FileType rustdoc noremap <buffer> q :q<cr>
   augroup end
 "}    
+
+" https://github.com/fatih/vim-go-tutorial
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_list_type = "quickfix"
+  " let g:go_metalinter_autosave = 1
+  let g:go_auto_sameids = 1
+  augroup go
+    autocmd!  
+    autocmd FileType go noremap jr        :GoReferrerst<cr>
+    autocmd FileType go noremap <Space>r  :GoReferrers<cr>  
+    autocmd FileType go noremap jd        :GoDef<cr>  
+    autocmd FileType go noremap <Space>d  :GoDef<cr> 
+  augroup end 
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1

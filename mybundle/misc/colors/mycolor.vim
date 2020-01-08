@@ -87,7 +87,13 @@ hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    
 highlight def Lf_hl_cursorline guifg=Black ctermfg=226
 
 " Rust
-hi rustCommentLineDoc      guifg=darkgreen
-hi rustSelf                guifg=#0100C8    gui=bold
-hi rustString              guifg=#28C101 
+hi rustCommentLineDoc       guifg=darkgreen
+hi rustSelf                 guifg=#0100C8    gui=bold
+hi rustString               guifg=#28C101 
 " hi rustKeyword              guifg=#28C101  gui=bold 
+
+" Go
+hi goString                 guifg=#28C101  
+hi goRawString              guifg=#28C101
+hi def link goSameId        guibg=#f4f597
+" End
