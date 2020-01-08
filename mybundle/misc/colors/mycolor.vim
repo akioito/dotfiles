@@ -95,5 +95,5 @@ hi rustString               guifg=#28C101
 " Go
 hi goString                 guifg=#28C101  
 hi goRawString              guifg=#28C101
-hi def link goSameId        guibg=#f4f597
+hi goSameId                 guibg=#f4f597
 " End

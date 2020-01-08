@@ -178,7 +178,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   let g:go_highlight_function_calls = 1
   let g:go_list_type = "quickfix"
   " let g:go_metalinter_autosave = 1
-  let g:go_auto_sameids = 1
+  " let g:go_auto_sameids = 1 " type n is working, why?
   augroup go
     autocmd!  
     autocmd FileType go noremap jr        :GoReferrers<cr>
