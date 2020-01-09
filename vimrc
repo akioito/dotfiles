@@ -115,7 +115,7 @@ Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 " YouCompleteMe (Autocomplete)
-Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py --go-completer' }
+Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview
@@ -178,7 +178,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   let g:go_highlight_function_calls = 1
   let g:go_list_type = "quickfix"
   " let g:go_metalinter_autosave = 1
-  " let g:go_auto_sameids = 1 " type n is working, why?
+  let g:go_auto_sameids = 1 
   augroup go
     autocmd!  
     autocmd FileType go noremap jr        :GoReferrers<cr>
