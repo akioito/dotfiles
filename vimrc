@@ -120,55 +120,46 @@ Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_min_num_of_chars_for_completion = 3
   set completeopt-=preview
 
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-"   let g:LanguageClient_serverCommands = {
-"     \ 'rust': ['ra_lsp_server'],
-"     \ }
-"   let g:LanguageClient_selectionUI = "quickfix" 
-"   augroup LanguageClient
-"     autocmd! 
-"     autocmd FileType rust noremap jr        :call LanguageClient#textDocument_references()<cr>
-"     autocmd FileType rust noremap <Space>r  :call LanguageClient#textDocument_references()<cr>
-"     autocmd FileType rust noremap jd        :call LanguageClient#textDocument_definition()<cr>  
-"     autocmd FileType rust noremap <Space>d  :call LanguageClient#textDocument_definition()<cr> 
-"     autocmd FileType rust noremap jh        :call LanguageClient#textDocument_hover()<cr>
-"     autocmd FileType rust noremap <Space>h  :call LanguageClient#textDocument_hover()<cr> 
-"     autocmd FileType rustdoc noremap <buffer> q :q<cr>
-"   augroup end
-
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
+  if executable('ra_lsp_server')
+     au User lsp_setup call lsp#register_server({
+       \ 'name': 'ra_lsp_server',
+       \ 'cmd': {server_info->['ra_lsp_server']},
+       \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
+       \ 'whitelist': ['rust'],
+       \ })
+   endif
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
   augroup vim-lsp
     autocmd!
-    autocmd FileType python noremap jr        :LspReferences<cr>
-    autocmd FileType python noremap <Space>r  :LspReferences<cr> 
-    autocmd FileType python noremap jd        :LspDefinition<cr>
-    autocmd FileType python noremap <Space>d  :LspDefinition<cr>
-    autocmd FileType python noremap jh        :LspHover<cr>
-    autocmd FileType qf call feedkeys("\<C-w>k") 
+    autocmd FileType python,rust noremap jr        :LspReferences<cr>
+    autocmd FileType python,rust noremap <Space>r  :LspReferences<cr> 
+    autocmd FileType python,rust noremap jd        :LspDefinition<cr>
+    autocmd FileType python,rust noremap <Space>d  :LspDefinition<cr>
+    autocmd FileType python,rust noremap jh        :LspHover<cr>
+    autocmd FileType python,rust noremap <Space>h  :LspHover<cr> 
+    " autocmd FileType qf call feedkeys("\<C-w>k") 
+    autocmd FileType rust set signcolumn=no
   augroup end 
   noremap jd nope " When not supported...
 
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer' "{
-  augroup racer
-    autocmd! 
-    autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-    autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-    autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
-    autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
-    autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
-    autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
-    autocmd FileType rustdoc noremap <buffer> q :q<cr>
-  augroup end
-"}    
+" Plug 'rust-lang/rust.vim'
+" Plug 'racer-rust/vim-racer' "{
+"   augroup racer
+"     autocmd! 
+"     " autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
+"     " autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
+"     " autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
+"     " autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
+"     autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
+"     autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
+"     autocmd FileType rustdoc noremap <buffer> <ESC> :q<cr>
+"   augroup end
+" "}    
 
 " https://github.com/fatih/vim-go-tutorial
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
