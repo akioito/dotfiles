@@ -147,7 +147,7 @@ Plug 'prabirshrestha/async.vim'
   augroup end 
   noremap jd nope " When not supported...
 
-" Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 " Plug 'racer-rust/vim-racer' "{
 "   augroup racer
 "     autocmd! 
