@@ -134,6 +134,7 @@ Plug 'prabirshrestha/async.vim'
    endif
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
+  let g:lsp_signs_enabled = 0
   augroup vim-lsp
     autocmd!
     autocmd FileType python,rust noremap jr        :LspReferences<cr>
@@ -142,24 +143,11 @@ Plug 'prabirshrestha/async.vim'
     autocmd FileType python,rust noremap <Space>d  :LspDefinition<cr>
     autocmd FileType python,rust noremap jh        :LspHover<cr>
     autocmd FileType python,rust noremap <Space>h  :LspHover<cr> 
-    " autocmd FileType qf call feedkeys("\<C-w>k") 
-    autocmd FileType rust set signcolumn=no
+    autocmd FileType qf call feedkeys("\<C-w>k") 
   augroup end 
   noremap jd nope " When not supported...
 
 Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer' "{
-"   augroup racer
-"     autocmd! 
-"     " autocmd FileType rust noremap jr        :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-"     " autocmd FileType rust noremap <Space>r  :Grepper -tool rg -cword -noprompt -buffer -highlight<cr>
-"     " autocmd FileType rust noremap jd        :call racer#GoToDefinition()<cr>  
-"     " autocmd FileType rust noremap <Space>d  :call racer#GoToDefinition()<cr> 
-"     autocmd FileType rust noremap jh        :call racer#ShowDocumentation()<cr>
-"     autocmd FileType rust noremap <Space>h  :call racer#ShowDocumentation()<cr> 
-"     autocmd FileType rustdoc noremap <buffer> <ESC> :q<cr>
-"   augroup end
-" "}    
 
 " https://github.com/fatih/vim-go-tutorial
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
