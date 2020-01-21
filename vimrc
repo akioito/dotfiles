@@ -282,7 +282,8 @@ Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+Plug 'lotabout/skim.vim'
   let g:fzf_layout = { 'up': '~40%' }
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:221,hl+:33'
   nnoremap  <F5> :call fzf#run({
