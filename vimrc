@@ -270,6 +270,7 @@ Plug 'liuchengxu/vim-which-key'
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
     \ 'p' : ['<F5>',                                'Projects'],
     \ 'r' : ['jr',                                  'LspReferences'],
+    \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
     \ }
 
 Plug 'yegappan/mru' " usage as :MRU prj
@@ -287,7 +288,7 @@ Plug 'junegunn/fzf.vim'
   nnoremap  <F5> :call fzf#run({
   \   'source': 'rg prj $HOME/.vim_mru_files',
   \   'sink': 'e ',
-  \   'options': '--prompt "Projects> "',
+  \   'options': '--exact --prompt "Projects> "',
   \   'up':    20
   \ })<CR>
 
