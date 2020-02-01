@@ -387,13 +387,8 @@ augroup my_autocmd_misc
   autocmd! 
   autocmd CursorHold * let g:syntax = SyntaxItem()
   autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
-  " Go to last file if invoked without arguments.
-  autocmd VimEnter * nested if
-    \ argc() == 0 &&
-    \ bufname("%") == "" &&
-    \ bufname("2" + 0) != "" |
-    \   exe "normal! `0" |
-    \ endif   
+  " Go to last file/position.
+  autocmd VimEnter * call feedkeys("\<C-O>\<C-O>")
   au FocusGained * checktime
 augroup end
 
