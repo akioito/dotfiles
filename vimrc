@@ -388,7 +388,7 @@ augroup my_autocmd_misc
   autocmd CursorHold * let g:syntax = SyntaxItem()
   autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   " Go to last file/position.
-  autocmd VimEnter * call feedkeys("\<C-O>\<C-O>zm")
+  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
   au FocusGained * checktime
 augroup end
 
