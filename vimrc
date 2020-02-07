@@ -406,6 +406,9 @@ set statusline+=%5*%y%*                            " file type
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
+" Special map for my custom keyboard
+inoremap <C-S> '
+inoremap <C-D> "
 
 " ----------------------------------------------------------------------------
 " Maps
