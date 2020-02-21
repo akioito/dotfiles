@@ -148,23 +148,24 @@ Plug 'prabirshrestha/async.vim'
   noremap jd nope " When not supported...
 
 Plug 'rust-lang/rust.vim'
+Plug 'arzg/vim-rust-syntax-ext'
 
 " https://github.com/fatih/vim-go-tutorial
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_list_type = "quickfix"
-  " let g:go_metalinter_autosave = 1
-  let g:go_auto_sameids = 1 
-  augroup go
-    autocmd!  
-    autocmd FileType go noremap jr        :GoReferrers<cr>
-    autocmd FileType go noremap <Space>r  :GoReferrers<cr>  
-    autocmd FileType go noremap jd        :GoDef<cr>  
-    autocmd FileType go noremap <Space>d  :GoDef<cr> 
-  augroup end 
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"   let g:go_highlight_types = 1
+"   let g:go_highlight_fields = 1
+"   let g:go_highlight_functions = 1
+"   let g:go_highlight_function_calls = 1
+"   let g:go_list_type = "quickfix"
+"   " let g:go_metalinter_autosave = 1
+"   let g:go_auto_sameids = 1 
+"   augroup go
+"     autocmd!  
+"     autocmd FileType go noremap jr        :GoReferrers<cr>
+"     autocmd FileType go noremap <Space>r  :GoReferrers<cr>  
+"     autocmd FileType go noremap jd        :GoDef<cr>  
+"     autocmd FileType go noremap <Space>d  :GoDef<cr> 
+"   augroup end 
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
