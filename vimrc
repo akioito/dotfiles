@@ -566,6 +566,7 @@ augroup my_autocmd
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
+    autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
     autocmd FileType unite call s:unite_settings() 
