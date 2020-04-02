@@ -115,10 +115,37 @@ Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
 " YouCompleteMe (Autocomplete)
-Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
-  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-  let g:ycm_min_num_of_chars_for_completion = 3
-  set completeopt-=preview
+" Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
+"   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+"   let g:ycm_min_num_of_chars_for_completion = 3
+"   set completeopt-=preview
+
+
+" ncm2 https://github.com/ncm2
+Plug 'ncm2/ncm2'
+  Plug 'akioito/ncm2-jedi'
+  Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+  Plug 'ncm2/ncm2-bufword'
+  Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
+  Plug 'ncm2/ncm2-cssomni'  
+  Plug 'ncm2/ncm2-path'
+  " Plug 'ncm2/ncm2-racer'  
+
+  set shortmess+=c 
+  inoremap <c-c> <ESC>
+  inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  let g:ncm2#complete_delay = 100
+  let g:ncm2#popup_delay = 100
+  let g:ncm2#matcher = 'prefix'
+
+  augroup xncm2
+    autocmd!
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    autocmd User Ncm2PopupOpen  set completeopt=noinsert,menuone,noselect
+    autocmd User Ncm2PopupClose set completeopt=menuone 
+    autocmd TextChangedI * call ncm2#auto_trigger()
+  augroup end  
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
