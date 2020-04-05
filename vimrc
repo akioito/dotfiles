@@ -120,6 +120,8 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 "   let g:ycm_min_num_of_chars_for_completion = 3
 "   set completeopt-=preview
 
+Plug 'SirVer/ultisnips'  
+Plug 'honza/vim-snippets'
 
 " ncm2 https://github.com/ncm2
 Plug 'ncm2/ncm2'
@@ -129,6 +131,7 @@ Plug 'ncm2/ncm2'
   Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim'
   Plug 'ncm2/ncm2-cssomni'  
   Plug 'ncm2/ncm2-path'
+  Plug 'ncm2/ncm2-ultisnips'
   " Plug 'ncm2/ncm2-racer'  
 
   set shortmess+=c 
