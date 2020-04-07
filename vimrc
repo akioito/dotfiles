@@ -130,14 +130,7 @@ Plug 'honza/vim-snippets'
 Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-python'
-  if executable('ra_lsp_server')
-     au User lsp_setup call lsp#register_server({
-       \ 'name': 'ra_lsp_server',
-       \ 'cmd': {server_info->['ra_lsp_server']},
-       \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
-       \ 'whitelist': ['rust'],
-       \ })
-   endif
+  Plug 'mattn/vim-lsp-settings'
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
   let g:lsp_signs_enabled = 0
