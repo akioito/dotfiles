@@ -621,7 +621,7 @@ command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
 function! Iterm()
   " silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
   " echo "open -a iTerm ".getcwd() 
-  silent exec "!open -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
+  silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
   echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
 endfunction
 command! -nargs=* Iterm call Iterm()
