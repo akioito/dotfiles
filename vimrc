@@ -117,14 +117,14 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 " YouCompleteMe (Autocomplete)
 Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
-  let g:ycm_min_num_of_chars_for_completion = 3
+  let g:ycm_min_num_of_chars_for_completion = 2
   set completeopt-=preview
 
 Plug 'SirVer/ultisnips'  
-Plug 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger ="<m-tab>" 
-  let g:UltiSnipsJumpForwardTrigger = "<tab>" 
-  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" Plug 'honza/vim-snippets'
+  let g:UltiSnipsExpandTrigger='<c-k>'
+  let g:UltiSnipsJumpForwardTrigger='<c-k>'
+  let g:UltiSnipsJumpBackwardTrigger='<c-j>'
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
