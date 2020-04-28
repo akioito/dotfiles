@@ -113,6 +113,7 @@ Plug 'junegunn/vim-easy-align' "{
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'leafOfTree/vim-svelte-plugin'
 
 " YouCompleteMe (Autocomplete)
 Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
@@ -122,7 +123,7 @@ Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   set completeopt-=preview
 
 Plug 'SirVer/ultisnips'  
-" Plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
