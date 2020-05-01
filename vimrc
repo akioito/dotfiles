@@ -120,7 +120,17 @@ Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
   let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
   let g:ycm_min_num_of_chars_for_completion = 2
+  let g:ycm_auto_hover = ''
   set completeopt-=preview
+  let g:ycm_language_server =
+  \ [
+  \   {
+  \     'name': 'rust',
+  \     'cmdline': ['rust-analyzer'],
+  \     'filetypes': ['rust'],
+  \     'project_root_files': ['Cargo.toml']
+  \   }
+  \ ]
 
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
