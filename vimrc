@@ -116,27 +116,29 @@ Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 Plug 'leafOfTree/vim-svelte-plugin'
 
 " YouCompleteMe (Autocomplete)
-Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
-  let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-  let g:ycm_min_num_of_chars_for_completion = 2
-  let g:ycm_auto_hover = ''
-  set completeopt-=preview
-  let g:ycm_language_server =
-  \ [
-  \   {
-  \     'name': 'rust',
-  \     'cmdline': ['rust-analyzer'],
-  \     'filetypes': ['rust'],
-  \     'project_root_files': ['Cargo.toml']
-  \   }
-  \ ]
+" Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
+"   let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+"   let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+"   let g:ycm_min_num_of_chars_for_completion = 2
+"   let g:ycm_auto_hover = ''
+"   set completeopt-=preview
+"   let g:ycm_language_server =
+"   \ [
+"   \   {
+"   \     'name': 'rust',
+"   \     'cmdline': ['rust-analyzer'],
+"   \     'filetypes': ['rust'],
+"   \     'project_root_files': ['Cargo.toml']
+"   \   }
+"   \ ]
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+    let g:deoplete#enable_at_startup = 1
 
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
@@ -367,6 +369,8 @@ inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
 
 nnoremap <C-N>          :tabnew<cr> 
 
