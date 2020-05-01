@@ -299,7 +299,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'lotabout/skim.vim'
   let g:fzf_layout = { 'up': '~40%' }
-  let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:221,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
+  let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
   nnoremap  <F5> :call fzf#run({
   \   'source': 'rg prj $HOME/.vim_mru_files',
   \   'sink': 'e ',
