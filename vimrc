@@ -183,8 +183,6 @@ Plug 'arzg/vim-rust-syntax-ext'
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'rhysd/clever-f.vim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tacroe/unite-mark' "{
