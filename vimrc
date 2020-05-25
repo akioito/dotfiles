@@ -455,6 +455,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " Ctrl + i = Tab
 " Ctrl 6 or Ctrl ^ switches to the last visited buffer
 " Ctrl o / Ctrl i Jump previously visited location 
+" Ctrl v -> Shift cursor movements / 'c' / Select vertically
 " Back to tag equ CTR-T
 " Cursor movements / scroll relative 
 "  H - top         / zh or zt
