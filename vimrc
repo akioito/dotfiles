@@ -137,6 +137,7 @@ Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
     let g:deoplete#enable_at_startup = 1
+    set completeopt-=preview 
 
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
