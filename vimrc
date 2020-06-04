@@ -257,6 +257,7 @@ Plug 'tacroe/unite-mark' "{
   noremap <Space>o      :PyOpenProject<CR>
 "}   
 
+Plug 'amadeus/vim-convert-color-to'
 Plug 'liuchengxu/vim-which-key'
   let g:mapleader="\<Space>"
   nnoremap <silent> <leader>  :WhichKey! g:which_key_map.m<cr>
