@@ -132,6 +132,7 @@ Plug 'leafOfTree/vim-svelte-plugin'
 "   \   }
 "   \ ]
 
+Plug 'Galicarnax/vim-regex-syntax'
 Plug 'Shougo/deoplete.nvim'
 Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'roxma/nvim-yarp'
