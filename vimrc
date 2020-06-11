@@ -146,7 +146,7 @@ Plug 'honza/vim-snippets'
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
-  Plug 'ryanolsonx/vim-lsp-python'
+  " Plug 'ryanolsonx/vim-lsp-python'
   Plug 'mattn/vim-lsp-settings'
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
