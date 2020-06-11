@@ -571,7 +571,7 @@ augroup my_autocmd
     autocmd FileType html setlocal indentkeys-=*<Return>
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,js,html,css} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
