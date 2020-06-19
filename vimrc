@@ -498,7 +498,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim")
+if has("gui_macvim") || has("gui_vimr") 
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
 else
