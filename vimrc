@@ -140,6 +140,22 @@ Plug 'roxma/vim-hug-neovim-rpc'
     let g:deoplete#enable_at_startup = 1
     set completeopt-=preview 
 
+Plug 'el-iot/buffer-tree'
+Plug 'dhruvasagar/vim-table-mode'
+    function! s:isAtStartOfLine(mapping)
+      let text_before_cursor = getline('.')[0 : col('.')-1]
+      let mapping_pattern = '\V' . escape(a:mapping, '\')
+      let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+      return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+    endfunction
+
+    inoreabbrev <expr> <bar><bar>
+              \ <SID>isAtStartOfLine('\|\|') ?
+              \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+    inoreabbrev <expr> __
+              \ <SID>isAtStartOfLine('__') ?
+              \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
 
