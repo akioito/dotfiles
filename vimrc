@@ -156,6 +156,18 @@ Plug 'dhruvasagar/vim-table-mode'
               \ <SID>isAtStartOfLine('__') ?
               \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
+Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+    function! s:SetupGhostBuffer()
+        if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
+            set ft=markdown
+        endif
+    endfunction
+
+    augroup vim-ghost
+        au!
+        au User vim-ghost#connected call s:SetupGhostBuffer()
+    augroup end
+
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
 
