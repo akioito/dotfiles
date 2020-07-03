@@ -13,7 +13,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
-  set antialias 
+  " set antialias 
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 endif
@@ -45,7 +45,7 @@ Plug 'dannyob/quickfixstatus'
 
 
 Plug 'dag/vim-fish'
-Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/vim-diff-enhanced'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
