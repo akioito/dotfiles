@@ -791,5 +791,6 @@ set iskeyword+=-                        " treat dashes as part of word
 set wildmenu
 set laststatus=2
 set t_Co=256
+set linespace=-3
 
 " End
