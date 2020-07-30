@@ -45,7 +45,7 @@ Plug 'dannyob/quickfixstatus'
 
 
 Plug 'dag/vim-fish'
-" Plug 'chrisbra/vim-diff-enhanced'
+Plug 'chrisbra/vim-diff-enhanced'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
@@ -114,23 +114,7 @@ Plug 'junegunn/vim-easy-align' "{
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 Plug 'leafOfTree/vim-svelte-plugin'
-
-" YouCompleteMe (Autocomplete)
-" Plug 'ycm-core/YouCompleteMe', { 'do': '/usr/local/bin/python3 install.py' }
-"   let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-"   let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-"   let g:ycm_min_num_of_chars_for_completion = 2
-"   let g:ycm_auto_hover = ''
-"   set completeopt-=preview
-"   let g:ycm_language_server =
-"   \ [
-"   \   {
-"   \     'name': 'rust',
-"   \     'cmdline': ['rust-analyzer'],
-"   \     'filetypes': ['rust'],
-"   \     'project_root_files': ['Cargo.toml']
-"   \   }
-"   \ ]
+Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 Plug 'Shougo/deoplete.nvim'
@@ -791,6 +775,6 @@ set iskeyword+=-                        " treat dashes as part of word
 set wildmenu
 set laststatus=2
 set t_Co=256
-set linespace=-3
+set linespace=-5
 
 " End
