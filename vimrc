@@ -492,6 +492,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " gi Resumes inserting at the last place  
 " Smart way to move buffer
 " mvim -d -g filea fileb (vimdiff)
+
 noremap zh zt
 noremap zm zz
 noremap zl zb
@@ -720,6 +721,7 @@ if has("gui_macvim")
   " set guifont=SF\ Mono:h14
   " set guifont=Fira\ Code\ Retina:h14
   set guifont=Courier:h18
+  " set guifont=Hack\ Regular:h16
   " set guifont=Hack\ Regular:h14
   " set guifont=Fira\ Mono:h14
   " set guifont=M+\ 1m:h18
@@ -765,7 +767,7 @@ set number
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
-set timeoutlen=400                      " <leader> don't work with low timeoutlen, but high slowdown next search
+set timeoutlen=500                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set updatetime=500
 set noundofile
 
@@ -775,6 +777,6 @@ set iskeyword+=-                        " treat dashes as part of word
 set wildmenu
 set laststatus=2
 set t_Co=256
-set linespace=-5
+set linespace=-3
 
 " End
