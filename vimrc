@@ -113,7 +113,7 @@ Plug 'junegunn/vim-easy-align' "{
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
