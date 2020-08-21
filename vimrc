@@ -457,7 +457,7 @@ nnoremap <C-K> <C-W>k
 nnoremap jf        <ESC>
 inoremap jf        <ESC>l
 inoremap jk        <ESC>l
-inoremap <ESC>     <ESC>:call feedkeys('l')<CR>
+inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp  
@@ -598,6 +598,7 @@ augroup my_autocmd
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
+    autocmd BufWritePost *.svelte silent execute '!npm run format' |  call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
