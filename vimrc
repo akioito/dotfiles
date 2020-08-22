@@ -655,8 +655,8 @@ command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
 function! Iterm()
   " silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
   " echo "open -a iTerm ".getcwd() 
-  silent exec "!Alacritty --working-directory '".getcwd()."'" | redraw! 
-  echo "Alacritty --working-directory ".getcwd()  
+  silent exec "!open -n -a  Alacritty --args --working-directory '".getcwd()."'" | redraw! 
+  echo "open -n -a Alacritty --args --working-directory ".getcwd()  
   " silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
   " echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
 endfunction
