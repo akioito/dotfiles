@@ -71,6 +71,7 @@ Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
+ let g:tcomment#filetype#guess_svelte = 1 
 "} 
 
 " Plug 'tpope/vim-fugitive'
@@ -113,7 +114,8 @@ Plug 'junegunn/vim-easy-align' "{
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
@@ -770,7 +772,7 @@ set number
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
-set timeoutlen=500                      " <leader> don't work with low timeoutlen, but high slowdown next search
+set timeoutlen=300                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set updatetime=500
 set noundofile
 
