@@ -167,12 +167,12 @@ Plug 'prabirshrestha/async.vim'
   let g:lsp_signs_enabled = 0
   augroup vim-lsp
     autocmd!
-    autocmd FileType python,rust noremap jr        :LspReferences<cr>
-    autocmd FileType python,rust noremap <Space>r  :LspReferences<cr> 
-    autocmd FileType python,rust noremap jd        :LspDefinition<cr>
-    autocmd FileType python,rust noremap <Space>d  :LspDefinition<cr>
-    autocmd FileType python,rust noremap jh        :LspHover<cr>
-    autocmd FileType python,rust noremap <Space>h  :LspHover<cr> 
+    autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
+    autocmd FileType python,rust,svelte noremap <Space>r  :LspReferences<cr> 
+    autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
+    autocmd FileType python,rust,svelte noremap <Space>d  :LspDefinition<cr>
+    autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
+    autocmd FileType python,rust,svelte noremap <Space>h  :LspHover<cr> 
     autocmd FileType qf call feedkeys("\<C-w>k") 
   augroup end 
   noremap jd nope " When not supported...
