@@ -67,6 +67,8 @@ Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
+Plug 'alvan/vim-closetag'
+  let g:closetag_filetypes = 'html,svelte,xhtml,phtml'
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
