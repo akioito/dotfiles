@@ -726,7 +726,7 @@ if has("gui_macvim")
   " set guifont=SF\ Mono:h14
   " set guifont=Fira\ Code\ Retina:h14
   " set guifont=Courier:h18
-  set guifont=JetBrains\ Mono\ NL:h16
+  set guifont=JetBrains\ Mono\ NL:h17
   " set guifont=Hack\ Regular:h16
   " set guifont=Hack\ Regular:h14
   " set guifont=Fira\ Mono:h14
@@ -784,6 +784,7 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 set vb t_vb=
+set linespace=-3
 
 " highlight Normal guibg=#FCF9EC gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
 
