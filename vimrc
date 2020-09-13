@@ -603,7 +603,7 @@ augroup my_autocmd
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
-    autocmd BufWritePost *.svelte silent execute '!npm run format' |  call feedkeys("\<Esc>")
+    autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
