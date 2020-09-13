@@ -67,8 +67,8 @@ Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
-Plug 'alvan/vim-closetag'
-  let g:closetag_filetypes = 'html,svelte,xhtml,phtml'
+Plug 'rstacruz/sparkup' 
+  " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment
  vnoremap <D-1> <ESC>gv:TComment<cr>
@@ -586,6 +586,7 @@ augroup my_autocmd
     autocmd VimEnter * set imdisable
     
     autocmd FileType html setlocal indentkeys-=*<Return>
+    autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Trim Trailing Whitespace
     autocmd BufWritePre *.{py,rs,js,html,css} %s/\s\+$//e
