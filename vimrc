@@ -762,7 +762,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-set columns=150
+set columns=180
 set lines=80
 set autowrite
 set nobackup
