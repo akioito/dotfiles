@@ -279,8 +279,9 @@ Plug 'tacroe/unite-mark' "{
 Plug 'amadeus/vim-convert-color-to'
 Plug 'liuchengxu/vim-which-key'
   let g:mapleader="\<Space>"
+  let g:which_key_hspace = 2 
+  let g:which_key_use_floating_win = 1
   nnoremap <silent> <leader>  :WhichKey! g:which_key_map.m<cr>
-  let g:which_key_vertical = 1
    
   let g:which_key_map =  {}
   augroup my_which_keyh 
@@ -293,10 +294,10 @@ Plug 'liuchengxu/vim-which-key'
   let g:which_key_map.m = {
     \ 'name' : '+Menu' ,
     \ 'b' : [':Leaderfx buffer',                    'Buffer List'],
-    \ 'c' : ['<F4>',                                'Close or QSearchToggle word at curosr'], 
+    \ 'c' : ['<F4>',                                'Close or QSearchToggle word at cursor'], 
     \ 'd' : ['jd',                                  'LspDefinition'],
     \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
-    \ 'g' : ['<F3>',                                'GrepBuffer word at curosr'],
+    \ 'g' : ['<F3>',                                'GrepBuffer word at cursor'],
     \ 'h' : ['jh',                                  'Doc Help'], 
     \ 'm' : ['<C-p>',                               'Menu'], 
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
@@ -461,6 +462,7 @@ nnoremap <C-K> <C-W>k
 nnoremap jf        <ESC>
 inoremap jf        <ESC>l
 inoremap jk        <ESC>l
+inoremap <C-F>     <ESC>l
 inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
