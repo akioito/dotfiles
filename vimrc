@@ -293,25 +293,19 @@ Plug 'liuchengxu/vim-which-key'
 
   let g:which_key_map.m = {
     \ 'name' : '+Menu' ,
-    \ 'b' : [':Clap buffers',                       'Buffer List'],
+    \ 'b' : [':Buffers',                            'Buffer List'],
     \ 'c' : ['<F4>',                                'Close or QSearchToggle word at cursor'], 
     \ 'd' : ['jd',                                  'LspDefinition'],
     \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
     \ 'g' : ['<F3>',                                'GrepBuffer word at cursor'],
     \ 'h' : ['jh',                                  'Doc Help'], 
+    \ 'l' : [':LS',                                 'ls files in current dir'],
     \ 'm' : ['<C-p>',                               'Menu'], 
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
     \ 'p' : ['<F5>',                                'Projects'],
     \ 'r' : ['jr',                                  'LspReferences'],
     \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
     \ }
-
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-  let g:clap_theme = 'solarized_light'
-  let g:clap_layout = { 'width': '70%', 'height': '70%', 'row': '25%', 'col': '15%'  }
-  let g:clap_default_external_filter = 'fzf'
-  nmap <silent> <leader>s :Clap providers<CR>
-  nmap <silent> <leader>j :Clap buffers<CR>
 
 Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Entries = 2500
@@ -323,15 +317,19 @@ Plug 'yegappan/mru' " usage as :MRU prj
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-  let g:fzf_layout = { 'up': '~40%' }
   let g:fzf_preview_window = ''
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
   nnoremap  <F5> :call fzf#run({
   \   'source': 'rg prj $HOME/.vim_mru_files',
   \   'sink': 'e ',
   \   'options': '--exact --prompt "Projects> "',
-  \   'up':    20
+  \   'up':    20,
+  \   'window': { 'width': 0.9, 'height': 0.6 }
   \ })<CR>
+  nmap <silent> <leader>l :LS<CR>
+  nmap <silent> <leader>s :Commands<CR> 
+  command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
@@ -351,11 +349,11 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <C-L>     :<C-u>Leaderfx buffer<cr>
+  nnoremap <C-L>     :<C-u>Buffers<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
   " nnoremap <F5>      :<C-u>:MRU prj<CR>
-  nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
+  " nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
@@ -785,7 +783,7 @@ set number
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
-set timeoutlen=300                      " <leader> don't work with low timeoutlen, but high slowdown next search
+set timeoutlen=250                      " <leader> don't work with low timeoutlen, but high slowdown next search
 set updatetime=500
 set noundofile
 
