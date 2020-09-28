@@ -293,7 +293,7 @@ Plug 'liuchengxu/vim-which-key'
 
   let g:which_key_map.m = {
     \ 'name' : '+Menu' ,
-    \ 'b' : [':Leaderfx buffer',                    'Buffer List'],
+    \ 'b' : [':Clap buffers',                       'Buffer List'],
     \ 'c' : ['<F4>',                                'Close or QSearchToggle word at cursor'], 
     \ 'd' : ['jd',                                  'LspDefinition'],
     \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
@@ -305,6 +305,13 @@ Plug 'liuchengxu/vim-which-key'
     \ 'r' : ['jr',                                  'LspReferences'],
     \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
     \ }
+
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+  let g:clap_theme = 'solarized_light'
+  let g:clap_layout = { 'width': '70%', 'height': '70%', 'row': '25%', 'col': '15%'  }
+  let g:clap_default_external_filter = 'fzf'
+  nmap <silent> <leader>s :Clap providers<CR>
+  nmap <silent> <leader>j :Clap buffers<CR>
 
 Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Entries = 2500
