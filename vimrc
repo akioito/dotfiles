@@ -86,10 +86,9 @@ Plug 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
-  let Grep_Path = '/usr/local/bin/rg --vimgrep'
+  " let Grep_Path = '/usr/local/bin/rg --vimgrep'
 endif
 "}
-Plug 'mhinz/vim-grepper'
 
 Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
@@ -284,7 +283,7 @@ Plug 'liuchengxu/vim-which-key'
   nnoremap <silent> <leader>  :WhichKey! g:which_key_map.m<cr>
    
   let g:which_key_map =  {}
-  augroup my_which_keyh 
+  augroup my_which_key 
     autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
   augroup end 
   
@@ -303,6 +302,7 @@ Plug 'liuchengxu/vim-which-key'
     \ 'm' : ['<C-p>',                               'Menu'], 
     \ 'o' : [':PyOpenProject',                      'Open Project'],  
     \ 'p' : ['<F5>',                                'Projects'],
+    \ 'q' : [':Quickfix',                           'fzf-quickfix'],  
     \ 'r' : ['jr',                                  'LspReferences'],
     \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
     \ }
@@ -330,7 +330,7 @@ Plug 'junegunn/fzf.vim'
   nmap <silent> <leader>l :LS<CR>
   nmap <silent> <leader>s :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
-
+Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
@@ -550,8 +550,14 @@ nnoremap   <F2>             :Unite bookmark<CR>
 " use ctrl-d to delete bookmark
 nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
-inoremap <silent> <F3>  <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
+" ----------------------------------------------------------------------------
+function! XGrep()
+  execute "normal! *:Bgrep\<CR>\<CR>" 
+endfunction
+
+inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
+" nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
+nnoremap <silent> <F3>       :call XGrep()<CR> <bar> :Quickfix<CR>
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
@@ -565,9 +571,6 @@ nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 " augroup end
 
 " nmap    <F7>       :call HexHighlight()<Return>
-
-" inoremap <silent> <F12> <ESC>:GrepBuffer <C-R>=expand("<cword>")<CR><CR>
-" nnoremap <silent> <F12>      :GrepBuffer <C-R>=expand("<cword>")<CR><CR>h
 
 " MacVim - move cursor word left
 map <S-w> <M-Left>
