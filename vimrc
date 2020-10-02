@@ -305,6 +305,7 @@ Plug 'liuchengxu/vim-which-key'
     \ 'q' : [':Quickfix',                           'fzf-quickfix'],  
     \ 'r' : ['jr',                                  'LspReferences'],
     \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
+    \ 'z' : [':Fzm',                                'Fuzzy Menu'],
     \ }
 
 Plug 'yegappan/mru' " usage as :MRU prj
@@ -331,6 +332,9 @@ Plug 'junegunn/fzf.vim'
   nmap <silent> <leader>s :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
+Plug 'laher/fuzzymenu.vim'
+  let g:fuzzymenu_position =  'window'
+  let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
