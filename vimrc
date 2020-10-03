@@ -225,13 +225,50 @@ Plug 'junegunn/fzf.vim'
   \   'up':    20,
   \   'window': { 'width': 0.9, 'height': 0.6 }
   \ })<CR>
-  nmap <silent> <leader>l :LS<CR>
   nmap <silent> <leader>s :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_position =  'window'
   let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
+
+" ---------------------------------------------------------------------------- 
+" MyMenu
+  let myMenuList = [
+    \'Buffers         <leader>b / <C-L> |:Buffers', 
+    \'Close or QSearchToggle       <F4> |:call feedkeys("\<F4>")', 
+    \'Delete Buffer                     |:bdelete',   
+    \'Doc Help                       jh |:call feedkeys("jh")', 
+    \'Functions                <Space>f |:Leaderfwnowrap! --left function',
+    \'Fuzzy Menu               <Space>z |:Fzm', 
+    \'GrepBuffer word at cursor    <F3> |:call XGrep()',
+    \'LspDefinition                  jd |:call feedkeys("jd")',   
+    \'LspReferences                  jr |:call feedkeys("jr")', 
+    \'Open Project                   op |:PyOpenProject',  
+    \'PlugUpdate                        |:PlugUpdate', 
+    \'Projects          <Space>p / <F5> |:call feedkeys("\<F5>")',
+    \'Reveal in Finder                  |:Reveal',  
+    \'fzf-quickfix                      |:Quickfix',
+    \'iTerm Alacritty                   |:Iterm',
+    \'ls files in current dir           |:LS',  
+    \'vimrc                             |:e ~/.vimrc',
+    \]
+
+  function! MyMenu_sink(lines)
+    if len(a:lines) < 1
+      return
+    endif
+    let cmd = split(a:lines[0], '|')[1]
+    execute cmd
+  endfunction    
+
+  nnoremap  <Space> :call fzf#run({
+    \   'source': myMenuList,
+    \   'sink*': function('MyMenu_sink'),
+    \   'options': '--exact --prompt "Select cmd> "',
+    \   'up':    20,
+    \   'window': { 'width': 0.9, 'height': 0.6 }
+    \ })<CR>     
 
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
@@ -316,44 +353,6 @@ set tags=./tags,./../tags,./*/tags
 nmap t <C-]>
 nmap T :pop<CR>
 
-" ---------------------------------------------------------------------------- 
-" MyMenu
-function! MyMenu_sink(lines)
-  if len(a:lines) < 1
-    return
-  endif
-  let cmd = split(a:lines[0], '|')[1]
-  execute cmd
-endfunction
-
-let menuList = [
-  \'Buffers         <leader>b / <C-L> |:Buffers', 
-  \'Close or QSearchToggle       <F4> |:call feedkeys("\<F4>")', 
-  \'Delete Buffer                     |:bdelete',   
-  \'Doc Help                       jh |:call feedkeys("jh")', 
-  \'Functions                <Space>f |:Leaderfwnowrap! --left function',
-  \'Fuzzy Menu               <Space>z |:Fzm', 
-  \'GrepBuffer word at cursor    <F3> |:call XGrep()',
-  \'LspDefinition                  jd |:call feedkeys("jd")',   
-  \'LspReferences                  jr |:call feedkeys("jr")', 
-  \'Open Project                   op |:PyOpenProject',  
-  \'PlugUpdate                        |:PlugUpdate', 
-  \'Projects          <Space>p / <F5> |:call feedkeys("\<F5>")',
-  \'Reveal in Finder                  |:Reveal',  
-  \'fzf-quickfix                      |:Quickfix',
-  \'iTerm Alacritty                   |:Iterm',
-  \'ls files in current dir           |:LS',  
-  \'vimrc                             |:e ~/.vimrc',
-  \]
-
-nnoremap  <Space> :call fzf#run({
-  \   'source': menuList,
-  \   'sink*': function('MyMenu_sink'),
-  \   'options': '--exact --prompt "Select cmd> "',
-  \   'up':    20,
-  \   'window': { 'width': 0.9, 'height': 0.6 }
-  \ })<CR> 
-
 " ----------------------------------------------------------------------------
 " Status Line
 function! SyntaxItem()
@@ -392,7 +391,7 @@ inoremap <C-D> "
 
 " ----------------------------------------------------------------------------
 " Maps
-" let mapleader = "\<Space>"
+let mapleader = "\<Space>"
 nnoremap ; :
 " next searched char when fchar
 nnoremap ff ; " 
@@ -447,8 +446,6 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
-" nnoremap <Space>   <C-f>
-" nnoremap <S-Space> <C-b>
 " noremap! ¥ \
 " noremap! \ ¥
 
