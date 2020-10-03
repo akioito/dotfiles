@@ -555,13 +555,14 @@ nnoremap   <F2>             :Unite bookmark<CR>
 nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
 " ----------------------------------------------------------------------------
-function! XGrep()
-  execute "normal! *:Bgrep\<CR>\<CR>" 
-endfunction
+" function! XGrep()
+"   execute "normal! *:Bgrep\<CR>\<CR>" 
+" endfunction
 
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
+noremap  <silent> <F3>       :Bgrep<CR><CR>  
 " nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-nnoremap <silent> <F3>       :call XGrep()<CR> <bar> :Quickfix<CR>
+" nnoremap <silent> <F3>       :call XGrep()<CR> <bar> :Quickfix<CR>
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR> 
