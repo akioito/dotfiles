@@ -165,11 +165,11 @@ Plug 'prabirshrestha/async.vim'
   let g:lsp_signs_enabled = 0
   augroup vim-lsp
     autocmd!
-    autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
+    " autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
     autocmd FileType python,rust,svelte noremap <Space>r  :LspReferences<cr> 
-    autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
+    " autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
     autocmd FileType python,rust,svelte noremap <Space>d  :LspDefinition<cr>
-    autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
+    " autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
     autocmd FileType python,rust,svelte noremap <Space>h  :LspHover<cr> 
     autocmd FileType qf call feedkeys("\<C-w>k") 
   augroup end 
@@ -231,22 +231,22 @@ Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_position =  'window'
   let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
-
+  nmap <Space>z :call fuzzymenu#Run({})<cr>
 " ---------------------------------------------------------------------------- 
 " MyMenu
   let myMenuList = [
-    \'Buffers         <leader>b / <C-L> |:Buffers', 
-    \'Close or QSearchToggle       <F4> |:call feedkeys("\<F4>")', 
+    \'Buffers                  <Space>b |<C-L>', 
+    \'Close or QSearchToggle            |<F4>', 
     \'Delete Buffer                     |:bdelete',   
-    \'Doc Help                       jh |:call feedkeys("jh")', 
-    \'Functions                <Space>f |:Leaderfwnowrap! --left function',
-    \'Fuzzy Menu               <Space>z |:Fzm', 
-    \'GrepBuffer word at cursor    <F3> |:call XGrep()',
-    \'LspDefinition                  jd |:call feedkeys("jd")',   
-    \'LspReferences                  jr |:call feedkeys("jr")', 
+    \'LspHover                          |<Space>h', 
+    \'Functions      <C-R> or <C-Space> |<Space>f',
+    \'Fuzzy Menu                        |<Space>z', 
+    \'GrepBuffer word at cursor         |<F3>',
+    \'LspDefinition                     |<Space>d',                                      
+    \'LspReferences                     |<Space>r', 
     \'Open Project                   op |:PyOpenProject',  
     \'PlugUpdate                        |:PlugUpdate', 
-    \'Projects          <Space>p / <F5> |:call feedkeys("\<F5>")',
+    \'Projects            <C-P> or <F5> |<Space>p',
     \'Reveal in Finder                  |:Reveal',  
     \'fzf-quickfix                      |:Quickfix',
     \'iTerm Alacritty                   |:Iterm',
@@ -259,7 +259,20 @@ Plug 'laher/fuzzymenu.vim'
       return
     endif
     let cmd = split(a:lines[0], '|')[1]
-    execute cmd
+    let prefix = cmd[0]
+    if prefix == ':' 
+        execute cmd  
+    else
+        if prefix == '<'
+            let x = 'call feedkeys("\'.cmd.'")'
+        else
+            let x =  'call feedkeys("'.cmd.'")' 
+        endif
+        execute x 
+    endif
+
+    " Todo: problem with neovim/VimR when call fzf commands...
+    " execute cmd
   endfunction    
 
   nnoremap  <Space> :call fzf#run({
@@ -291,6 +304,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   nnoremap <C-L>     :<C-u>Buffers<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
+  nnoremap <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
   " nnoremap <F5>      :<C-u>:MRU prj<CR>
   " nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
 
