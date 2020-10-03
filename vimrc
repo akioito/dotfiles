@@ -335,6 +335,7 @@ Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_position =  'window'
   let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
+
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
   " let g:Lf_WindowHeight = 0.30
@@ -417,6 +418,40 @@ set tags=./tags,./../tags,./*/tags
 " Press 't' to follow tag under cursor, 'T' to go back up the tag stack
 nmap t <C-]>
 nmap T :pop<CR>
+
+" ---------------------------------------------------------------------------- 
+" MyMenu
+function! MyMenu_sink(lines)
+  if len(a:lines) < 1
+    return
+  endif
+  let cmd = split(a:lines[0], '|')[1]
+  execute cmd
+endfunction
+
+let menuList = [
+  \'Buffers         <leader>b / <C-L> |:Buffers', 
+  \'Close or QSearchToggle       <F4> |:call feedkeys("\<F4>")', 
+  \'Doc Help                       jh |:call feedkeys("jh")', 
+  \'Functions                <Space>f |:Leaderfwnowrap! --left function',
+  \'Fuzzy Menu               <Space>z |:Fzm', 
+  \'GrepBuffer word at cursor    <F3> |:call XGrep()',
+  \'LspDefinition                  jd |:call feedkeys("jd")',   
+  \'LspReferences                  jr |:call feedkeys("jr")', 
+  \'Open Project                   op |:PyOpenProject',  
+  \'Projects          <Space>p / <F5> |:call feedkeys("\<F5>")',
+  \'fzf-quickfix                      |:Quickfix',
+  \'ls files in current dir           |:LS',  
+  \'vimrc                             |:e ~/.vimrc',
+  \]
+
+nnoremap  <Space><Space> :call fzf#run({
+  \   'source': menuList,
+  \   'sink*': function('MyMenu_sink'),
+  \   'options': '--exact --prompt "Select cmd> "',
+  \   'up':    20,
+  \   'window': { 'width': 0.9, 'height': 0.6 }
+  \ })<CR> 
 
 " ----------------------------------------------------------------------------
 " Status Line
@@ -555,9 +590,9 @@ nnoremap   <F2>             :Unite bookmark<CR>
 nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
 " ----------------------------------------------------------------------------
-" function! XGrep()
-"   execute "normal! *:Bgrep\<CR>\<CR>" 
-" endfunction
+function! XGrep()
+  execute "normal! *:Bgrep\<CR>\<CR>" 
+endfunction
 
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 noremap  <silent> <F3>       :Bgrep<CR><CR>  
