@@ -17,12 +17,10 @@ if has("gui_macvim")
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 endif
-Plug 'Shougo/unite.vim'
 Plug 'Yggdroot/indentLine' "{
   let g:indentLine_color_gui = '#EFEFEF'
 " "}
 
-Plug 'tacroe/unite-mark'
 Plug 'othree/javascript-libraries-syntax.vim' 
 
 Plug 'osyo-manga/vim-watchdogs' 
@@ -161,7 +159,6 @@ Plug 'honza/vim-snippets'
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
-  " Plug 'ryanolsonx/vim-lsp-python'
   Plug 'mattn/vim-lsp-settings'
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
@@ -203,110 +200,10 @@ Plug 'romainl/vim-cool'
 Plug 'rhysd/clever-f.vim'
 
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tacroe/unite-mark' "{
- let g:unite_source_mark_marks =
-  \   "abcdefghijklmnopqrstuvwxyz"
-  \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  \ . "0123456789.'`^<>[]{}()\""
-"}
-" Unite "{
-  let g:unite_enable_start_insert           = 1
-  let g:unite_source_buffer_time_format     = ''
-  let g:unite_winheight                     = 40
-  let g:unite_prompt                        = '» '
-  
-  nnoremap uf           :Unite -auto-resize buffer<CR>    
-  " nnoremap jf           :Unite buffer<CR>
-  nnoremap fj           :Unite buffer<CR>
-  nnoremap um           :Unite mark<CR>
-  nnoremap us           :Unite source<CR>
-  nnoremap ct           :MRU prj<CR>
-  nnoremap unu          :PlugUpdate<CR>
-  nnoremap mm           :Unite output:map<CR>
-  
-  " Custom mappings for the unite buffer
-  
-  function! s:unite_settings()
-    nunmap <silent><buffer> <Space>
-    " Enable navigation with control-j and control-k in insert mode
-    imap <buffer> <D-k>   <Plug>(unite_select_previous_line)
-    imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-    imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-    imap <buffer> <D-j>   <Plug>(unite_select_next_line)
-    imap <buffer> <ESC>oA <Plug>(unite_select_previous_line)
-    imap <buffer> <ESC>oB <Plug>(unite_select_next_line)
-
-    nmap <buffer> <Space> <Plug>(unite_do_default_action)
-
-    imap <buffer> <ESC>   <Plug>(unite_exit)
-    imap <buffer> jk      <Plug>(unite_insert_leave)
-  endfunction
-  
-  let g:unite_source_menu_menus = get(g:,'unite_source_menu_menus',{})
-  let g:unite_source_menu_menus.mycmds = {
-    \ 'description' : '          Menu Commands
-    \                            Ctrl-p',
-    \}
-  let g:unite_source_menu_menus.mycmds.command_candidates = [
-    \['LeaderF            Shortcut/Command',  ''],
-    \['  lfFunction       <leader>f / <C-Space> / <C-R>', 'exe "Leaderfwnowrap! --left function"'],
-    \['  lfProjects       <Space>p /  <F5>',   'exe "call feedkeys(\"\<F5>\")<CR>"'],
-    \['  lfBuffers        <leader>b / <C-L>',  'exe "Leaderfx buffer"'], 
-    \['  lfLeaderf        <Space>l',           'exe "Leaderfx self"'],
-    \['Direct Command           ',            ''],
-    \['  Project Open     :PyOpenProject / op', 'exe "PyOpenProject"'],
-    \['  vimrc            :e ~/.vimrc',       'exe "e ~/.vimrc"'],
-    \['Legacy                    ',           ''],
-    \['  python def            ',             'exe "Unite line -input=def\\ "'],
-    \['  Functions        <C-@>',             'exe "TagbarToggle"'],
-    \['  Projects         ct',                'normal ct'], 
-    \['  Buffers          fj/<C-l>',          'exe "Unite buffer"'],
-    \['  Update plugins   unu',               'exe "PlugUpdate"'],
-    \['  messages         :messages',         'exe "messages"'],
-    \['  keyboard map     mm',                'normal mm'],
-    \['  bookmars         <F2>',              'exe "Unite bookmark"'],
-    \['  marks            um',                'exe "Unite mark"'],
-    \['  unite source     us',                'exe "Unite source"'],
-    \['  jump             :Unite jump',       'exe "Unite jump"'],
-    \['  change           :Unite change',     'exe "Unite change"'], 
-    \]
-  nnoremap <C-p>        :Unite -silent -start-insert menu:mycmds<CR>
   noremap op            :PyOpenProject<CR>
-  noremap <Space>o      :PyOpenProject<CR>
 "}   
 
 Plug 'amadeus/vim-convert-color-to'
-Plug 'liuchengxu/vim-which-key'
-  let g:mapleader="\<Space>"
-  let g:which_key_hspace = 2 
-  let g:which_key_use_floating_win = 1
-  nnoremap <silent> <leader>  :WhichKey! g:which_key_map.m<cr>
-   
-  let g:which_key_map =  {}
-  augroup my_which_key 
-    autocmd VimEnter * call which_key#register('<Space>', "g:which_key_map")
-  augroup end 
-  
-  let g:which_key_map.d = 'which_key_ignore'
-  let g:which_key_map.r = 'which_key_ignore'
-
-  let g:which_key_map.m = {
-    \ 'name' : '+Menu' ,
-    \ 'b' : [':Buffers',                            'Buffer List'],
-    \ 'c' : ['<F4>',                                'Close or QSearchToggle word at cursor'], 
-    \ 'd' : ['jd',                                  'LspDefinition'],
-    \ 'f' : [':Leaderfwnowrap! --left function',    'Functions'],
-    \ 'g' : ['<F3>',                                'GrepBuffer word at cursor'],
-    \ 'h' : ['jh',                                  'Doc Help'], 
-    \ 'l' : [':LS',                                 'ls files in current dir'],
-    \ 'm' : ['<C-p>',                               'Menu'], 
-    \ 'o' : [':PyOpenProject',                      'Open Project'],  
-    \ 'p' : ['<F5>',                                'Projects'],
-    \ 'q' : [':Quickfix',                           'fzf-quickfix'],  
-    \ 'r' : ['jr',                                  'LspReferences'],
-    \ 's' : [':call lsp#stop_server(''ra_lsp_server'')', 'Stop Rust LSP server'],
-    \ 'z' : [':Fzm',                                'Fuzzy Menu'],
-    \ }
 
 Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Max_Entries = 2500
@@ -432,6 +329,7 @@ endfunction
 let menuList = [
   \'Buffers         <leader>b / <C-L> |:Buffers', 
   \'Close or QSearchToggle       <F4> |:call feedkeys("\<F4>")', 
+  \'Delete Buffer                     |:bdelete',   
   \'Doc Help                       jh |:call feedkeys("jh")', 
   \'Functions                <Space>f |:Leaderfwnowrap! --left function',
   \'Fuzzy Menu               <Space>z |:Fzm', 
@@ -439,13 +337,16 @@ let menuList = [
   \'LspDefinition                  jd |:call feedkeys("jd")',   
   \'LspReferences                  jr |:call feedkeys("jr")', 
   \'Open Project                   op |:PyOpenProject',  
+  \'PlugUpdate                        |:PlugUpdate', 
   \'Projects          <Space>p / <F5> |:call feedkeys("\<F5>")',
+  \'Reveal in Finder                  |:Reveal',  
   \'fzf-quickfix                      |:Quickfix',
+  \'iTerm Alacritty                   |:Iterm',
   \'ls files in current dir           |:LS',  
   \'vimrc                             |:e ~/.vimrc',
   \]
 
-nnoremap  <Space><Space> :call fzf#run({
+nnoremap  <Space> :call fzf#run({
   \   'source': menuList,
   \   'sink*': function('MyMenu_sink'),
   \   'options': '--exact --prompt "Select cmd> "',
@@ -531,7 +432,6 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 "nnoremap <C-[>     <C-t>
 "q: " Open cmd line history
 ":colder, restore QuickFix after :QFGrep
-"mA to mark / um to Unite mark
 "git log -GsearchString --all
 ":Errors for syntastic quickfix
 ":Reveal to reveal the current file in the OS X Finder.
@@ -584,10 +484,6 @@ vnoremap > >gv
 " Function Key
 " nnoremap <F1> <ESC>
 " imap     <F1> <ESC>l
-
-nnoremap   <F2>             :Unite bookmark<CR> 
-" use ctrl-d to delete bookmark
-nnoremap <S-F2>             :UniteBookmarkAdd<CR><CR>
 
 " ----------------------------------------------------------------------------
 function! XGrep()
@@ -657,8 +553,6 @@ augroup my_autocmd
     autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
-    autocmd FileType unite call s:unite_settings() 
-
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
