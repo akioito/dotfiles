@@ -253,7 +253,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Projects            <C-P> or <F5> |<Space>p',
     \'Reveal in Finder                  |:Reveal',  
     \'fzf-quickfix                      |:Quickfix',
-    \'iTerm Alacritty                   |:Iterm',
+    \'iTerm kitty                       |:Iterm',
     \'ls files in current dir           |:LS',  
     \'vimrc                             |:e ~/.vimrc',
     \]
@@ -619,10 +619,10 @@ command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
 function! Iterm()
   " silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
   " echo "open -a iTerm ".getcwd() 
-  silent exec "!open -n -a  Alacritty --args --working-directory '".getcwd()."'" | redraw! 
-  echo "open -n -a Alacritty --args --working-directory ".getcwd()  
-  " silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
-  " echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
+  " silent exec "!open -n -a  Alacritty --args --working-directory '".getcwd()."'" | redraw! 
+  " echo "open -n -a Alacritty --args --working-directory ".getcwd()  
+  silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
+  echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
 endfunction
 command! -nargs=* Iterm call Iterm()
 
