@@ -258,7 +258,7 @@ Plug 'laher/fuzzymenu.vim'
     \'vimrc                             |:e ~/.vimrc',
     \]
 
-  function! MyMenu_sink(lines)
+  function! MyMenu_sink(lines, timer)
     if len(a:lines) < 1
       return
     endif
@@ -272,14 +272,19 @@ Plug 'laher/fuzzymenu.vim'
         else
             let x =  'call feedkeys("'.cmd.'")' 
         endif
-	" Todo: problem with neovim/VimR when call fzf commands...
         execute 'silent' x 
     endif
-  endfunction    
+  endfunction 
   
+  function! DelayedMyMenu_sink(lines)                                                      
+    " Resolve problem with neovim/VimR when call fzf commands...
+    " https://github.com/junegunn/fzf.vim/issues/872 
+    call timer_start(1, function('MyMenu_sink', [a:lines]))                                                                           
+  endfunction 
+
   command! MyMenu call fzf#run({
     \   'source': myMenuList,  
-    \   'sink*': function('MyMenu_sink'),
+    \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],          
     \   'up':    20,
     \   'window': { 'width': 0.9, 'height': 0.6 }
