@@ -267,12 +267,8 @@ Plug 'laher/fuzzymenu.vim'
     if prefix == ':' 
         execute 'silent' cmd  
     else
-        if prefix == '<'
-            let x = 'call feedkeys("\'.cmd.'")'
-        else
-            let x =  'call feedkeys("'.cmd.'")' 
-        endif
-        execute 'silent' x 
+        let escaped_cmd = substitute(cmd, '<', '\\<', "g")
+        execute 'silent call feedkeys("'.escaped_cmd.'")'  
     endif
   endfunction 
   
