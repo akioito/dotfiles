@@ -113,8 +113,8 @@ Plug 'junegunn/vim-easy-align' "{
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-" Plug 'evanleck/vim-svelte', {'branch': 'main'}
-Plug 'leafoftree/vim-svelte-plugin'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
@@ -217,32 +217,36 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-  let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
-  nnoremap  <F5> :call fzf#run({
+  let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33' 
+  nnoremap <silent> <F5> :call fzf#run({
   \   'source': 'rg prj $HOME/.vim_mru_files',
-  \   'sink': 'e ',
-  \   'options': '--exact --prompt "Projects> "',
+  \   'sink': 'e',
+  \   'options': ['--exact', '--prompt', 'Projects> '],
   \   'up':    20,
   \   'window': { 'width': 0.9, 'height': 0.6 }
   \ })<CR>
-  nmap <silent> <leader>s :Commands<CR> 
+
+  nnoremap <silent> <leader>s :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
+
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_position =  'window'
   let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
   nmap <Space>z :call fuzzymenu#Run({})<cr>
+
 " ---------------------------------------------------------------------------- 
 " MyMenu
   let myMenuList = [
     \'Buffers                  <Space>b |<C-L>', 
     \'Close or QSearchToggle            |<F4>', 
+    \'Commands                          |:Commands',
     \'Delete Buffer                     |:bdelete',   
-    \'LspHover                          |<Space>h', 
     \'Functions      <C-R> or <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z', 
     \'GrepBuffer word at cursor         |<F3>',
     \'LspDefinition                     |<Space>d',                                      
+    \'LspHover                          |<Space>h', 
     \'LspReferences                     |<Space>r', 
     \'Open Project                   op |:PyOpenProject',  
     \'PlugUpdate                        |:PlugUpdate', 
@@ -261,27 +265,26 @@ Plug 'laher/fuzzymenu.vim'
     let cmd = split(a:lines[0], '|')[1]
     let prefix = cmd[0]
     if prefix == ':' 
-        execute cmd  
+        execute 'silent' cmd  
     else
         if prefix == '<'
             let x = 'call feedkeys("\'.cmd.'")'
         else
             let x =  'call feedkeys("'.cmd.'")' 
         endif
-        execute x 
+	" Todo: problem with neovim/VimR when call fzf commands...
+        execute 'silent' x 
     endif
-
-    " Todo: problem with neovim/VimR when call fzf commands...
-    " execute cmd
   endfunction    
-
-  nnoremap  <Space> :call fzf#run({
-    \   'source': myMenuList,
+  
+  command! MyMenu call fzf#run({
+    \   'source': myMenuList,  
     \   'sink*': function('MyMenu_sink'),
-    \   'options': '--exact --prompt "Select cmd> "',
+    \   'options': ['--exact', '--prompt', 'Select cmd>'],          
     \   'up':    20,
     \   'window': { 'width': 0.9, 'height': 0.6 }
-    \ })<CR>     
+    \ })    
+  nnoremap <silent> <Space> :MyMenu<CR> 
 
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
@@ -301,10 +304,10 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <C-L>     :<C-u>Buffers<cr>
+  nnoremap <silent>  <C-L>     :<C-u>Buffers<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
-  nnoremap <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
+  nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
+  nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
   " nnoremap <F5>      :<C-u>:MRU prj<CR>
   " nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
 
@@ -319,7 +322,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
 
 Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
-
+          
 Plug '~/.vim/mybundle/misc' 
 Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
