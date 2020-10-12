@@ -541,6 +541,7 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.arc set filetype=arc
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead *.dyon set filetype=rust
+    autocmd BufNewFile,BufRead *.rn set filetype=rust
     autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
     " Problem with Japanese IME / 例: 中 (tyuu) 
@@ -564,7 +565,7 @@ augroup my_autocmd
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
-    autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
+    autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :!npm run format<cr>
     autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
