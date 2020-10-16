@@ -113,8 +113,8 @@ Plug 'junegunn/vim-easy-align' "{
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
-" Plug 'leafoftree/vim-svelte-plugin'
+" Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
@@ -565,7 +565,8 @@ augroup my_autocmd
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
-    autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :!npm run format<cr>
+    " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
+    autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
