@@ -9,7 +9,7 @@ end
 " For Command T/W
 macmenu &File.New\ Tab key=<nop>
 macmenu &File.Close key=<nop>
-macmenu Edit.Find.Find\.\.\. key=<D-g>
+" macmenu Edit.Find.Find\.\.\. key=<D-g>
 
 nmap <D-w> :CommandW<CR>
 imap <D-w> <Esc>:CommandW<CR>
