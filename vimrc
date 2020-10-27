@@ -573,6 +573,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end 
 
 " QuickFix Close or Search
@@ -703,7 +705,6 @@ endif
 
 colorscheme mycolor 
 
-set nocompatible                       " More stuff
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
 set smartcase
@@ -737,7 +738,9 @@ set number
 set selection=exclusive
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
-set timeoutlen=250                      " <leader> don't work with low timeoutlen, but high slowdown next search
+set timeout ttimeout         " separate mapping and keycode timeouts
+set timeoutlen=500           " mapping timeout 500ms  (adjust for preference)
+set ttimeoutlen=20           " keycode timeout 20ms
 set updatetime=500
 set noundofile
 
