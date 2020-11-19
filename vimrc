@@ -76,6 +76,7 @@ Plug 'tomtom/tcomment_vim' "{
 
 " Plug 'tpope/vim-fugitive'
 Plug 'akioito/vim-project-files'
+  noremap op :PyOpenProject<CR>
 Plug 'walm/jshint.vim'
 Plug 'mkitt/browser-refresh.vim'
 Plug 'vim-scripts/a.vim'
@@ -126,6 +127,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
     set completeopt-=preview 
 
 Plug 'el-iot/buffer-tree'
+  let g:buffertree_compress = 1 
 Plug 'dhruvasagar/vim-table-mode'
     function! s:isAtStartOfLine(mapping)
       let text_before_cursor = getline('.')[0 : col('.')-1]
@@ -200,9 +202,6 @@ Plug 'romainl/vim-cool'
 Plug 'rhysd/clever-f.vim'
 
 Plug 'AndrewRadev/splitjoin.vim'
-  noremap op            :PyOpenProject<CR>
-"}   
-
 Plug 'amadeus/vim-convert-color-to'
 
 Plug 'yegappan/mru' " usage as :MRU prj
@@ -464,7 +463,7 @@ noremap zh zt
 noremap zm zz
 noremap zl zb
 nnoremap  b<Space> :b<Space>
-" noremap! ¥ \
+noremap! ¥ \
 " noremap! \ ¥
 
 " Buffer Navigation
@@ -573,8 +572,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end 
 
 " QuickFix Close or Search
@@ -689,7 +688,8 @@ if has("gui_macvim")
   " set guifont=Menlo:h14    
   " set guifont=Ubuntu\ Mono:h18
   " set guifont=Inconsolata\ for\ Powerline:h18
-  set guifont=SF\ Mono:h17
+  " set guifont=SF\ Mono:h17
+  set guifont=IBM\ Plex\ Mono:h17
   " set guifont=Fira\ Code\ Retina:h14
   " set guifont=Courier:h18
   " set guifont=JetBrains\ Mono\ NL:h17
@@ -751,7 +751,7 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 set vb t_vb=
-set linespace=-1
+set linespace=-4
 
 " highlight Normal guibg=#FCF9EC gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
 
