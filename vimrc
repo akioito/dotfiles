@@ -752,7 +752,7 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 set linespace=-4
-
+set scl=no   " force the signcolumn to disappear
 " highlight Normal guibg=#FCF9EC gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
 
 " End
