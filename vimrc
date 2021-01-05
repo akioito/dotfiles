@@ -165,6 +165,15 @@ Plug 'prabirshrestha/async.vim'
   let g:lsp_highlights_enabled = 1
   let g:lsp_highlight_references_enabled = 1
   let g:lsp_signs_enabled = 0
+  let g:lsp_settings = {
+  \   'pyls-all': {
+  \     'workspace_config': {
+  \       'pyls': {
+  \         'configurationSources': ['flake8']
+  \       }
+  \     }
+  \   },
+  \}
   augroup vim-lsp
     autocmd!
     " autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
@@ -752,7 +761,7 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 set linespace=-4
-set scl=no   " force the signcolumn to disappear
+" set scl=no   " force the signcolumn to disappear
 " highlight Normal guibg=#FCF9EC gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
 
 " End
