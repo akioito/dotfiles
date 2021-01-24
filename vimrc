@@ -85,7 +85,7 @@ Plug 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
-  " let Grep_Path = '/usr/local/bin/rg --vimgrep'
+  let Grep_Path = 'rg --vimgrep'
 endif
 "}
 
