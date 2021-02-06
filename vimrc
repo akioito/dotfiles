@@ -36,11 +36,6 @@ Plug 'dannyob/quickfixstatus'
   let g:quickrun_config["python/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/flake8"
   \} 
-  " let g:quickrun_config["css/watchdogs_checker"] = {
-  " \	"type" : "watchdogs_checker/csslint",
-  " \	"cmdopt" : "--ignore=order-alphabetical,box-sizing,unqualified-attributes,fallback-colors,compatible-vendor-prefixes,adjoining-classes"
-  " \}  
-
 
 Plug 'dag/vim-fish'
 Plug 'chrisbra/vim-diff-enhanced'
@@ -119,12 +114,12 @@ Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
-Plug 'Shougo/deoplete.nvim'
-Plug 'lighttiger2505/deoplete-vim-lsp'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-    let g:deoplete#enable_at_startup = 1
-    set completeopt-=preview 
+"     let g:deoplete#enable_at_startup = 1
+"     set completeopt-=preview 
 
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
@@ -158,73 +153,69 @@ Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
 
-" vim-lsp (Hover and highlight word at cursor references)
-Plug 'prabirshrestha/async.vim'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'mattn/vim-lsp-settings'
-  let g:lsp_highlights_enabled = 1
-  let g:lsp_highlight_references_enabled = 1
-  let g:lsp_signs_enabled = 0
-  let g:lsp_settings = {
-  \   'pyls-all': {
-  \     'workspace_config': {
-  \       'pyls': {
-  \         'configurationSources': ['flake8']
-  \       }
-  \     }
-  \   },
-  \}
-  if executable("typescript-language-server")
-    " グローバルインストールされたnpmモジュールの保存場所
-    let s:npm_root = trim(system("npm root -g"))
-
-    " vim-lspのinitialization_optionsを使用して、typescript-deno-pluginのインストール場所をtypescript-language-serverへ伝えます
-    let s:has_typescript_deno_plugin = isdirectory(s:npm_root . "/typescript-deno-plugin")
-    let s:plugins = s:has_typescript_deno_plugin
-      \ ? [{ "name": "typescript-deno-plugin", "location": s:npm_root }]
-      \ : []
-    augroup LspTypeScript
-      autocmd!
-      autocmd User lsp_setup call lsp#register_server({
-      \   "name": "typescript-language-server",
-      \   "cmd": {server_info -> ["typescript-language-server", "--stdio"]},
-      \   "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-      \   "whitelist": ["typescript", "typescript.tsx"],
-      \   "initialization_options": { "plugins": s:plugins },
-      \ })
-    augroup END
-  endif
-  augroup vim-lsp
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gr <Plug>(coc-references)
+  
+  augroup coc
     autocmd!
-    " autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
-    autocmd FileType python,rust,svelte noremap <Space>r  :LspReferences<cr> 
-    " autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
-    autocmd FileType python,rust,svelte noremap <Space>d  :LspDefinition<cr>
-    " autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
-    autocmd FileType python,rust,svelte noremap <Space>h  :LspHover<cr> 
-    autocmd FileType qf call feedkeys("\<C-w>k") 
+    autocmd FileType qf call feedkeys("\<C-w>k")
+    autocmd CursorHold * silent call CocActionAsync('highlight')
   augroup end 
   noremap jd nope " When not supported...
 
+" vim-lsp (Hover and highlight word at cursor references)
+" Plug 'prabirshrestha/async.vim'
+"   Plug 'prabirshrestha/vim-lsp'
+"   Plug 'mattn/vim-lsp-settings'
+"   let g:lsp_highlights_enabled = 1
+"   let g:lsp_highlight_references_enabled = 1
+"   let g:lsp_signs_enabled = 0
+"   let g:lsp_settings = {
+"   \   'pyls-all': {
+"   \     'workspace_config': {
+"   \       'pyls': {
+"   \         'configurationSources': ['flake8']
+"   \       }
+"   \     }
+"   \   },
+"   \}
+"   if executable("typescript-language-server")
+"     " グローバルインストールされたnpmモジュールの保存場所
+"     let s:npm_root = trim(system("npm root -g"))
+"
+"     " vim-lspのinitialization_optionsを使用して、typescript-deno-pluginのインストール場所をtypescript-language-serverへ伝えます
+"     let s:has_typescript_deno_plugin = isdirectory(s:npm_root . "/typescript-deno-plugin")
+"     let s:plugins = s:has_typescript_deno_plugin
+"       \ ? [{ "name": "typescript-deno-plugin", "location": s:npm_root }]
+"       \ : []
+"     augroup LspTypeScript
+"       autocmd!
+"       autocmd User lsp_setup call lsp#register_server({
+"       \   "name": "typescript-language-server",
+"       \   "cmd": {server_info -> ["typescript-language-server", "--stdio"]},
+"       \   "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+"       \   "whitelist": ["typescript", "typescript.tsx"],
+"       \   "initialization_options": { "plugins": s:plugins },
+"       \ })
+"     augroup END
+"   endif
+"   augroup vim-lsp
+"     autocmd!
+"     " autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
+"     autocmd FileType python,rust,svelte noremap <Space>r  :LspReferences<cr> 
+"     " autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
+"     autocmd FileType python,rust,svelte noremap <Space>d  :LspDefinition<cr>
+"     " autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
+"     autocmd FileType python,rust,svelte noremap <Space>h  :LspHover<cr> 
+"     autocmd FileType qf call feedkeys("\<C-w>k") 
+"   augroup end 
+"   noremap jd nope " When not supported...
+
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
-
-" https://github.com/fatih/vim-go-tutorial
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-"   let g:go_highlight_types = 1
-"   let g:go_highlight_fields = 1
-"   let g:go_highlight_functions = 1
-"   let g:go_highlight_function_calls = 1
-"   let g:go_list_type = "quickfix"
-"   " let g:go_metalinter_autosave = 1
-"   let g:go_auto_sameids = 1 
-"   augroup go
-"     autocmd!  
-"     autocmd FileType go noremap jr        :GoReferrers<cr>
-"     autocmd FileType go noremap <Space>r  :GoReferrers<cr>  
-"     autocmd FileType go noremap jd        :GoDef<cr>  
-"     autocmd FileType go noremap <Space>d  :GoDef<cr> 
-"   augroup end 
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
@@ -273,9 +264,9 @@ Plug 'laher/fuzzymenu.vim'
     \'Functions      <C-R> or <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z', 
     \'GrepBuffer word at cursor         |<F3>',
-    \'LspDefinition                     |<Space>d',                                      
+    \'LspDefinition                     |gd',                                      
     \'LspHover                          |<Space>h', 
-    \'LspReferences                     |<Space>r', 
+    \'LspReferences                     |gr', 
     \'Open Project                   op |:PyOpenProject',  
     \'PlugUpdate                        |:PlugUpdate', 
     \'Projects            <C-P> or <F5> |<Space>p',
