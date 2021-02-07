@@ -161,6 +161,9 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
   nmap <silent> gy <Plug>(coc-type-definition)
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> gh :call CocAction('doHover')<cr>
+  let $BAT_THEME = 'GitHub'
+  let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
   
   augroup coc
     autocmd!
@@ -268,7 +271,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Fuzzy Menu                        |<Space>z', 
     \'GrepBuffer word at cursor         |<F3>',
     \'LspDefinition                     |gd',                                      
-    \'LspHover                          |<Space>h', 
+    \'LspHover                          |gh', 
     \'LspReferences                     |gr', 
     \'Open Project                   op |:PyOpenProject',  
     \'PlugUpdate                        |:PlugUpdate', 
@@ -420,6 +423,7 @@ set statusline+=%5*\ %=%{g:syntax}               " only for debug
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
+set statusline+=%{coc#status()}
 " set statusline+=%5*\ %{Uptime(2)}
 
 " ----------------------------------------------------------------------------
