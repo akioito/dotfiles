@@ -612,7 +612,9 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
-" nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
+if has("gui_macvim") || has("gui_vimr") 
+    nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
+endif
 
 " Used to track the quickfix window.
 augroup QSearchToggle
