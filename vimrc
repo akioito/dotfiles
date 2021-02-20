@@ -659,6 +659,13 @@ endfunction
 command! -nargs=* Iterm call Iterm()
 
 " ----------------------------------------------------------------------------
+function! Gitup() 
+  silent exec "!/usr/local/bin/gitup"
+  echo "!/usr/local/bin/gitup"
+endfunction
+command! -nargs=* Gup call Gitup()
+
+" ----------------------------------------------------------------------------
 function! s:MoveVToNonBlank(UpDown)
   let cursorPos = col('.')
   let total_lines = line('$')
