@@ -222,6 +222,7 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 
 Plug 'rust-lang/rust.vim'
 Plug 'arzg/vim-rust-syntax-ext'
+Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
@@ -525,6 +526,9 @@ vnoremap > >gv
 " Function Key
 " nnoremap <F1> <ESC>
 " imap     <F1> <ESC>l
+
+" Scroll for terminal
+tnoremap <Esc><Esc> <C-\><C-n>
 
 " ----------------------------------------------------------------------------
 function! XGrep()
