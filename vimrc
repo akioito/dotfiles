@@ -114,12 +114,9 @@ Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'lighttiger2505/deoplete-vim-lsp'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-"     let g:deoplete#enable_at_startup = 1
-"     set completeopt-=preview 
+ 
 
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
@@ -172,55 +169,8 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
   augroup end 
   noremap jd nope " When not supported...
 
-" vim-lsp (Hover and highlight word at cursor references)
-" Plug 'prabirshrestha/async.vim'
-"   Plug 'prabirshrestha/vim-lsp'
-"   Plug 'mattn/vim-lsp-settings'
-"   let g:lsp_highlights_enabled = 1
-"   let g:lsp_highlight_references_enabled = 1
-"   let g:lsp_signs_enabled = 0
-"   let g:lsp_settings = {
-"   \   'pyls-all': {
-"   \     'workspace_config': {
-"   \       'pyls': {
-"   \         'configurationSources': ['flake8']
-"   \       }
-"   \     }
-"   \   },
-"   \}
-"   if executable("typescript-language-server")
-"     " グローバルインストールされたnpmモジュールの保存場所
-"     let s:npm_root = trim(system("npm root -g"))
-"
-"     " vim-lspのinitialization_optionsを使用して、typescript-deno-pluginのインストール場所をtypescript-language-serverへ伝えます
-"     let s:has_typescript_deno_plugin = isdirectory(s:npm_root . "/typescript-deno-plugin")
-"     let s:plugins = s:has_typescript_deno_plugin
-"       \ ? [{ "name": "typescript-deno-plugin", "location": s:npm_root }]
-"       \ : []
-"     augroup LspTypeScript
-"       autocmd!
-"       autocmd User lsp_setup call lsp#register_server({
-"       \   "name": "typescript-language-server",
-"       \   "cmd": {server_info -> ["typescript-language-server", "--stdio"]},
-"       \   "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-"       \   "whitelist": ["typescript", "typescript.tsx"],
-"       \   "initialization_options": { "plugins": s:plugins },
-"       \ })
-"     augroup END
-"   endif
-"   augroup vim-lsp
-"     autocmd!
-"     " autocmd FileType python,rust,svelte noremap jr        :LspReferences<cr>
-"     autocmd FileType python,rust,svelte noremap <Space>r  :LspReferences<cr> 
-"     " autocmd FileType python,rust,svelte noremap jd        :LspDefinition<cr>
-"     autocmd FileType python,rust,svelte noremap <Space>d  :LspDefinition<cr>
-"     " autocmd FileType python,rust,svelte noremap jh        :LspHover<cr>
-"     autocmd FileType python,rust,svelte noremap <Space>h  :LspHover<cr> 
-"     autocmd FileType qf call feedkeys("\<C-w>k") 
-"   augroup end 
-"   noremap jd nope " When not supported...
-
 Plug 'rust-lang/rust.vim'
+  let g:rustfmt_autosave = 1
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 
@@ -236,8 +186,8 @@ Plug 'yegappan/mru' " usage as :MRU prj
   let MRU_Window_Height = 30 
   let MRU_Max_Menu_Entries = 30 
   " Caution! This save only .vim-prj or .prj
-  let MRU_Exclude_Files = '*.*'
-  let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
+  " let MRU_Exclude_Files = '*.*'
+  " let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -792,7 +742,5 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 set linespace=-4
-" set scl=no   " force the signcolumn to disappear
-" highlight Normal guibg=#FCF9EC gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
 
 " End
