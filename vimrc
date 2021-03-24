@@ -173,6 +173,7 @@ Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
 Plug 'arzg/vim-rust-syntax-ext'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
+Plug 'chiedo/vim-case-convert'
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
