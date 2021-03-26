@@ -19,6 +19,7 @@ if has("gui_macvim")
 endif
 Plug 'Yggdroot/indentLine' "{
   let g:indentLine_color_gui = '#EFEFEF'
+  let g:indentLine_fileType = ['html', 'python']
 " "}
 
 Plug 'othree/javascript-libraries-syntax.vim' 
@@ -421,6 +422,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " Ctrl 6 or Ctrl ^ switches to the last visited buffer
 " Ctrl o / Ctrl i Jump previously visited location 
 " Ctrl v -> Shift cursor movements / 'c' / Select vertically
+" Shift v -> Select line
 " Back to tag equ CTR-T
 " Cursor movements / scroll relative 
 "  H - top         / zh or zt
