@@ -73,6 +73,7 @@ Plug 'tomtom/tcomment_vim' "{
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
+Plug 'mhinz/vim-signify'
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
 Plug 'walm/jshint.vim'
@@ -178,8 +179,6 @@ Plug 'arzg/vim-rust-syntax-ext'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim' 
-Plug 'jreybert/vimagit'
-Plug 'mhinz/vim-signify'
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
