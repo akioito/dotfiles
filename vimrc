@@ -183,7 +183,8 @@ Plug 'vmchale/just-vim'
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
 let g:NERDTreeQuitOnOpen=1
-nnoremap <D-t> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['target', '\~$']
+nnoremap <D-t> :NERDTreeToggleVCS<CR>
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
