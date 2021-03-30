@@ -180,6 +180,13 @@ Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim' 
 
+Plug 'preservim/nerdtree'
+let g:NERDTreeMouseMode=3
+let g:NERDTreeQuitOnOpen=1
+nnoremap <D-t> :NERDTreeToggle<CR>
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 Plug 'rhysd/clever-f.vim'
