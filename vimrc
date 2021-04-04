@@ -49,6 +49,10 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' "{
+  " Assuming | as a cursor
+    " fo|o - ysiw' - 'foo'
+    " 'fo|o' - ds' - foo
+    " 'fo|o' - cs'" - "foo"
   " ds ･･･ d(delete)s(surround)
   " di ･･･ d(delete)i(inside)
   " cs ･･･ c(change)s(surround)
@@ -179,6 +183,8 @@ Plug 'arzg/vim-rust-syntax-ext'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim' 
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-rooter'
 
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
@@ -526,7 +532,7 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd! 
-    autocmd BufEnter * lcd %:p:h " Current Directory
+    " autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
     " autocmd BufEnter *.py  :match defLine /def\ .*$/ 
