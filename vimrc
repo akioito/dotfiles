@@ -185,6 +185,10 @@ Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim' 
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-rooter'
+Plug 'tyru/open-browser.vim'
+  let g:netrw_nogx = 1 " disable netrw's gx mapping.
+  nmap gj <Plug>(openbrowser-open)
+  vmap gj <Plug>(openbrowser-open)
 
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
