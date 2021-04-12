@@ -144,7 +144,7 @@ Plug 'dhruvasagar/vim-table-mode'
               \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-  let g:ghost_autostart = 1
+  " let g:ghost_autostart = 1
   " Shortcut for browser textarea -> Shit+Cmd+k
     function! s:SetupGhostBuffer()
         if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
