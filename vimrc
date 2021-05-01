@@ -467,7 +467,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 "
 " :GhostStart  (Cmd + shift + k)
 " :TableModeToggle
-" :TableModeRealign
+" :TableModeRealign or Shift-V <Enter> *|
 "
 
 noremap zh zt
