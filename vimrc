@@ -129,6 +129,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
 Plug 'dhruvasagar/vim-table-mode'
+    let g:table_mode_delimiter = '\t'
     function! s:isAtStartOfLine(mapping)
       let text_before_cursor = getline('.')[0 : col('.')-1]
       let mapping_pattern = '\V' . escape(a:mapping, '\')
