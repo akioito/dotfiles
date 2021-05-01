@@ -463,6 +463,11 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " gi Resumes inserting at the last place  
 " Smart way to move buffer
 " mvim -d -g filea fileb (vimdiff)
+"
+" :GhostStart  (Cmd + shift + k)
+" :TableModeToggle
+" :TableModeRealign
+"
 
 noremap zh zt
 noremap zm zz
