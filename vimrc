@@ -6,7 +6,7 @@ endif
 syntax enable
 
 " Required:
-call plug#begin('~/.vim/plugged')
+call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Add or remove your Bundles here:
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -747,8 +747,10 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
+if has("gui_macvim")   
 set columns=180
 set lines=80
+endif
 set autowrite
 set nobackup
 set noswapfile
