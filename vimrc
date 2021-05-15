@@ -45,6 +45,7 @@ Plug 'elzr/vim-json'
 
 Plug 'godlygeek/tabular'
 Plug 'gabrielelana/vim-markdown'
+Plug 'rhysd/vim-gfm-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   
 Plug 'cespare/vim-toml'
