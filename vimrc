@@ -44,8 +44,7 @@ Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-  let g:vim_markdown_folding_disabled = 1
+Plug 'gabrielelana/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   
 Plug 'cespare/vim-toml'
@@ -132,21 +131,6 @@ Plug 'roxma/vim-hug-neovim-rpc'
 
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
-Plug 'dhruvasagar/vim-table-mode'
-    let g:table_mode_delimiter = '\t'
-    function! s:isAtStartOfLine(mapping)
-      let text_before_cursor = getline('.')[0 : col('.')-1]
-      let mapping_pattern = '\V' . escape(a:mapping, '\')
-      let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-      return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-    endfunction
-
-    inoreabbrev <expr> <bar><bar>
-              \ <SID>isAtStartOfLine('\|\|') ?
-              \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-    inoreabbrev <expr> __
-              \ <SID>isAtStartOfLine('__') ?
-              \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
   " let g:ghost_autostart = 1
@@ -469,9 +453,6 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " mvim -d -g filea fileb (vimdiff)
 "
 " :GhostStart  (Cmd + shift + k)
-" :TableModeToggle
-" :TableModeRealign or Shift-V <Enter> *|
-" :TableFormat
 " :MarkdownPreview
 " :MarkdownPreviewStop
 " 
