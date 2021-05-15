@@ -43,10 +43,14 @@ Plug 'chrisbra/vim-diff-enhanced'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+  let g:vim_markdown_folding_disabled = 1
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+  
 Plug 'cespare/vim-toml'
 Plug 'keith/swift.vim'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' "{
   " Assuming | as a cursor
@@ -467,7 +471,10 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " :GhostStart  (Cmd + shift + k)
 " :TableModeToggle
 " :TableModeRealign or Shift-V <Enter> *|
-"
+" :TableFormat
+" :MarkdownPreview
+" :MarkdownPreviewStop
+" 
 
 noremap zh zt
 noremap zm zz
