@@ -181,6 +181,7 @@ Plug 'tyru/open-browser.vim'
   nmap gb <Plug>(openbrowser-open)
   vmap gb <Plug>(openbrowser-open)
 
+Plug 'leafgarland/typescript-vim'
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
 " let g:NERDTreeQuitOnOpen=1

@@ -36,7 +36,7 @@ hi Function     guifg=Blue                      gui=bold
 hi pythonStatement       guifg=#0100C8    gui=bold
 hi pythonRepeat          guifg=#0100C8    gui=bold
 hi pythonConditional     guifg=#0100C8    gui=bold
-hi pythonComment         guifg=#F09868 "Green variant
+hi pythonComment         guifg=#F09868 
 hi pythonFunction        guifg=#0100C8    gui=bold
 hi pythonTripleString    guifg=darkgreen
 hi pythonString          guifg=#28C101 "#0BB634
@@ -90,7 +90,7 @@ highlight def Lf_hl_cursorline guifg=Black ctermfg=226
 hi rustCommentLineDoc       guifg=darkgreen
 hi rustSelf                 guifg=#0100C8    gui=bold
 hi rustString               guifg=#28C101 
-" hi rustKeyword              guifg=#28C101  gui=bold 
+hi rustCommentLine          guifg=#F09868 
 
 " Go
 hi goString                 guifg=#28C101  
@@ -99,5 +99,9 @@ hi goSameId                 guibg=#f4f597
 
 " TypeScript
 hi typescriptString               guifg=#28C101
+hi typescriptStringD              guifg=#28C101  
+hi typescriptDocComment           guifg=darkgreen
+hi typescriptLineComment          guifg=#F09868
+hi typescriptDocTags              guifg=#690dad  
 
 " End
