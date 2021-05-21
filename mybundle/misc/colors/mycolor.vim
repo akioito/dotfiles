@@ -96,4 +96,8 @@ hi rustString               guifg=#28C101
 hi goString                 guifg=#28C101  
 hi goRawString              guifg=#28C101
 hi goSameId                 guibg=#f4f597
+
+" TypeScript
+hi typescriptString               guifg=#28C101
+
 " End

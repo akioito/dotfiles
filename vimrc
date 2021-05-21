@@ -183,7 +183,7 @@ Plug 'tyru/open-browser.vim'
 
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
-let g:NERDTreeQuitOnOpen=1
+" let g:NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['target', '\~$']
 nnoremap <D-t> :NERDTreeToggleVCS<CR>
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
