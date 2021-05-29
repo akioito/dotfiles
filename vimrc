@@ -738,8 +738,8 @@ set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
 if has("gui_macvim")   
-set columns=180
-set lines=80
+    set columns=180
+    set lines=100
 endif
 set autowrite
 set nobackup
