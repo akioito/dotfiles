@@ -218,7 +218,7 @@ Plug 'junegunn/fzf.vim'
   \   'window': { 'width': 0.9, 'height': 0.6 }
   \ })<CR>
 
-  nnoremap <silent> <leader>s :Commands<CR> 
+nnoremap <silent> <leader>c :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 
 Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
@@ -277,7 +277,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'up':    20,
     \   'window': { 'width': 0.9, 'height': 0.6 }
     \ })    
-  nnoremap <silent> <Space> :MyMenu<CR> 
+  nnoremap <silent> <leader><Space> :MyMenu<CR> 
 
 Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition  = "top"
@@ -402,7 +402,8 @@ inoremap <C-D> "
 
 " ----------------------------------------------------------------------------
 " Maps
-let mapleader = "\<Space>"
+map , <Leader>
+
 nnoremap ; :
 " next searched char when fchar
 nnoremap ff ; " 
@@ -563,7 +564,7 @@ augroup my_autocmd
     " Fast Cursor / nocursorline in Insert Mode
     " autocmd CursorHold * setlocal cursorline
     " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
-  
+    
     " ESC to not append 'g' when save in insert mode
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
     autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
