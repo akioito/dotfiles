@@ -98,9 +98,9 @@ endif
 
 Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
-Plug 'andymass/vim-matchup' "{
-  let g:matchup_matchparen_deferred = 1
-"}
+" Plug 'andymass/vim-matchup' "{
+"   let g:matchup_matchparen_deferred = 1
+" "}
 Plug 'junegunn/vim-easy-align' "{
   " Shift + V, select and Enter
   vnoremap <Enter> :EasyAlign
