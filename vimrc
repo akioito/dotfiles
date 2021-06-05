@@ -402,9 +402,8 @@ inoremap <C-D> "
 
 " ----------------------------------------------------------------------------
 " Maps
-map , <Leader>
+map <Space> <Leader>
 
-nnoremap ; :
 " next searched char when fchar
 nnoremap ff ; " 
 " previous searched char when fchar
