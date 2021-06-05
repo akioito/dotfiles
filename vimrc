@@ -230,7 +230,7 @@ Plug 'laher/fuzzymenu.vim'
 " ---------------------------------------------------------------------------- 
 " MyMenu
   let myMenuList = [
-    \'Buffers                  <Space>b |<C-L>', 
+    \'Buffers                  <Space>b |<Space>l', 
     \'Close or QSearchToggle            |<F4>', 
     \'Commands                          |:Commands',
     \'Delete Buffer                     |:bdelete',   
@@ -246,6 +246,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Reveal in Finder                  |:Reveal',  
     \'fzf-quickfix                      |:Quickfix',
     \'iTerm kitty                       |:Iterm',
+
     \'ls files in current dir           |:LS',  
     \'vimrc                             |:e ~/.vimrc',
     \]
@@ -292,12 +293,12 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
   
-  nnoremap <Space>f  :<C-u>Leaderfwnowrap! --left function<cr>
+  nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <silent>  <C-L>     :<C-u>Buffers<cr>
+  nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
   nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
