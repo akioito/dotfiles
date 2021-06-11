@@ -246,7 +246,6 @@ Plug 'laher/fuzzymenu.vim'
     \'Reveal in Finder                  |:Reveal',  
     \'fzf-quickfix                      |:Quickfix',
     \'iTerm kitty                       |:Iterm',
-
     \'ls files in current dir           |:LS',  
     \'vimrc                             |:e ~/.vimrc',
     \]
@@ -299,6 +298,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
   inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
+  nnoremap <silent>  <C-l>         :<C-u>Buffers<cr> 
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
   nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
@@ -489,7 +489,7 @@ nnoremap <leader>w       <C-w>v<C-w>l
 nnoremap zr              zRzz
 " Browser refresh
 let g:RefreshRunningBrowserReturnFocus = 0
-let g:RefreshRunningBrowserDefault     = 'chrome'
+let g:RefreshRunningBrowserDefault     = 'firefox'
 nnoremap rr :call RefreshRunningBrowser()<CR>
 
 " visual shifting
