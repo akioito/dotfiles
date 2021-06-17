@@ -36,7 +36,10 @@ Plug 'dannyob/quickfixstatus'
   \        'hook/qfsigns_update/priority_exit': 3,},}
   let g:quickrun_config["python/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/flake8"
-  \} 
+  \}
+    let g:quickrun_config["javascript/watchdogs_checker"] = {
+  \	"type" : "watchdogs_checker/eslint"
+  \}  
 
 Plug 'dag/vim-fish'
 Plug 'chrisbra/vim-diff-enhanced'
