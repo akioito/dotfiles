@@ -73,6 +73,8 @@ hi Pmenu        guifg=#fd8900 guibg=#ffffa2
 " 
 " hi javascriptString    guifg=black    gui=bold
 hi javascriptAServices guifg=darkblue gui=bold
+hi jsString            guifg=#28C101 
+hi jsComment           guifg=#F09868  
 
 " http://www.unpack.site/cash.me
 
