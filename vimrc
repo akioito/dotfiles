@@ -22,7 +22,7 @@ Plug 'Yggdroot/indentLine' "{
   let g:indentLine_fileType = ['html', 'python']
 " "}
 
-Plug 'othree/javascript-libraries-syntax.vim' 
+" Plug 'othree/javascript-libraries-syntax.vim' 
 
 Plug 'osyo-manga/vim-watchdogs' 
 Plug 'thinca/vim-quickrun'
@@ -47,7 +47,6 @@ Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
 Plug 'godlygeek/tabular'
-Plug 'gabrielelana/vim-markdown'
 Plug 'rhysd/vim-gfm-syntax'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   
@@ -123,7 +122,7 @@ Plug 'junegunn/vim-easy-align' "{
 "}
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
-Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+" Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 " Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
@@ -234,22 +233,26 @@ Plug 'laher/fuzzymenu.vim'
 " MyMenu
   let myMenuList = [
     \'Buffers                  <Space>b |<Space>l', 
+    \'#',
     \'Close or QSearchToggle            |<F4>', 
     \'Commands                          |:Commands',
     \'Delete Buffer                     |:bdelete',   
     \'Functions      <C-R> or <C-Space> |<Space>f',
+    \'#',     
     \'Fuzzy Menu                        |<Space>z', 
+    \'Fzf-quickfix                      |:Quickfix',
     \'GrepBuffer word at cursor         |<F3>',
+    \'ITerm                            |:Iterm',
+    \'Ls files in current dir           |:LS',  
+    \'#',     
     \'LspDefinition                     |gd',                                      
     \'LspHover                          |gh', 
     \'LspReferences                     |gr', 
+    \'#',     
     \'Open Project                   op |:PyOpenProject',  
     \'PlugUpdate                        |:PlugUpdate', 
     \'Projects            <C-P> or <F5> |<Space>p',
     \'Reveal in Finder                  |:Reveal',  
-    \'fzf-quickfix                      |:Quickfix',
-    \'iTerm kitty                       |:Iterm',
-    \'ls files in current dir           |:LS',  
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -257,10 +260,13 @@ Plug 'laher/fuzzymenu.vim'
     if len(a:lines) < 1
       return
     endif
+    if a:lines[0] == '#'
+      return
+    endif
     let cmd = split(a:lines[0], '|')[1]
     let prefix = cmd[0]
     if prefix == ':' 
-        execute 'silent' cmd  
+        execute 'silent' cmd 
     else
         let escaped_cmd = substitute(cmd, '<', '\\<', "g")
         execute 'silent call feedkeys("'.escaped_cmd.'")'  
@@ -630,12 +636,12 @@ command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
 
 " ----------------------------------------------------------------------------
 function! Iterm()
-  " silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
-  " echo "open -a iTerm ".getcwd() 
+  silent exec "!open -a iTerm '".getcwd()."'" | redraw! 
+  echo "open -a iTerm ".getcwd() 
   " silent exec "!open -n -a  Alacritty --args --working-directory '".getcwd()."'" | redraw! 
   " echo "open -n -a Alacritty --args --working-directory ".getcwd()  
-  silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
-  echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
+  " silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
+  " echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
 endfunction
 command! -nargs=* Iterm call Iterm()
 
@@ -771,6 +777,6 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 set vb t_vb=
-set linespace=-4
+set linespace=-3
 
 " End
