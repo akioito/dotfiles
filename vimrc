@@ -236,13 +236,13 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'Close or QSearchToggle            |<F4>', 
     \'Commands                          |:Commands',
-    \'Delete Buffer                     |:bdelete',   
+    \'Delete Buffer                     |:bdelete', 
+    \'#', 
     \'Functions      <C-R> or <C-Space> |<Space>f',
-    \'#',     
     \'Fuzzy Menu                        |<Space>z', 
     \'Fzf-quickfix                      |:Quickfix',
     \'GrepBuffer word at cursor         |<F3>',
-    \'ITerm                            |:Iterm',
+    \'ITerm                             |:Iterm',
     \'Ls files in current dir           |:LS',  
     \'#',     
     \'LspDefinition                     |gd',                                      
@@ -549,6 +549,8 @@ augroup my_autocmd
     
     " autocmd BufEnter *.py  :match defLine /def\ .*$/ 
     autocmd BufEnter *.js  :match defLine /.*function.*$/ 
+    autocmd BufEnter *.js nnoremap <leader>f  :<C-u>BLines function<cr> 
+    autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr> 
     autocmd BufEnter * :syntax sync fromstart
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
