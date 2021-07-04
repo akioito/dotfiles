@@ -22,7 +22,7 @@ Plug 'Yggdroot/indentLine' "{
   let g:indentLine_fileType = ['html', 'python']
 " "}
 
-" Plug 'othree/javascript-libraries-syntax.vim' 
+Plug 'othree/javascript-libraries-syntax.vim' 
 
 Plug 'osyo-manga/vim-watchdogs' 
 Plug 'thinca/vim-quickrun'
@@ -122,8 +122,8 @@ Plug 'junegunn/vim-easy-align' "{
 "}
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
-" Plug 'pangloss/vim-javascript', {'for': ['javascript']}
-" Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
