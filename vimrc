@@ -86,7 +86,7 @@ Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
 Plug 'mhinz/vim-signify'
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
-Plug 'walm/jshint.vim'
+" Plug 'walm/jshint.vim'
 Plug 'mkitt/browser-refresh.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/python_match.vim'
@@ -845,5 +845,6 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 set linespace=-3
+set termguicolors
 
 " End
