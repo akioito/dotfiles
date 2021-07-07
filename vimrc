@@ -827,9 +827,11 @@ set virtualedit=all
 set shortmess=oO
 set number
 
-set selection=exclusive
+if !has("nvim")
+  set selection=exclusive
+endif
 set lazyredraw                          " to avoid scrolling problems
-set re=0                                " to avoid nvim excessive redrawing
+" set re=0                                " to avoid nvim excessive redrawing
 set ttyfast
 set timeout ttimeout         " separate mapping and keycode timeouts
 set timeoutlen=500           " mapping timeout 500ms  (adjust for preference)
