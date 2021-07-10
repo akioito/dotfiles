@@ -104,6 +104,12 @@ hi typescriptString               guifg=#28C101
 hi typescriptStringD              guifg=#28C101  
 hi typescriptDocComment           guifg=darkgreen
 hi typescriptLineComment          guifg=#F09868
-hi typescriptDocTags              guifg=#690dad  
+hi typescriptDocTags              guifg=#690dad 
+
+" vem-tabline
+highlight VemTablineNormal           term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none 
+highlight VemTablineSelected         term=bold    cterm=bold ctermfg=0   ctermbg=255 guifg=#242424 guibg=yellow  gui=bold
+highlight VemTablineNumber           term=reverse cterm=none ctermfg=239 ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
+highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 
 " End

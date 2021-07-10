@@ -3,26 +3,51 @@ if !&compatible
   set nocompatible
 endif
 
-syntax enable
-
 " Required:
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
-" Add or remove your Bundles here:
+if has("nvim")
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>    
+
+lua <<EOF
+    require'nvim-treesitter.configs'.setup {
+      highlight = {
+        enable = true,
+      }
+    }
+    require'nvim_lsp'.tsserver.setup{}
+EOF
+endif
+
+Plug 'pacha/vem-tabline' 
+  let g:vem_tabline_show_number = 'buffnr'
+  " let g:vem_tabline_show_number = 'index'
+  
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-if has("gui_macvim")
+if has("gui_macvim") || has("gui_vimr")  
   let macvim_hig_shift_movement = 1
   " set antialias 
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>  
 endif
-Plug 'Yggdroot/indentLine' "{
-  let g:indentLine_color_gui = '#EFEFEF'
-  let g:indentLine_fileType = ['html', 'python']
-" "}
 
-Plug 'othree/javascript-libraries-syntax.vim' 
+if !has("nvim")
+  syntax enable  
+  Plug 'Yggdroot/indentLine' 
+    let g:indentLine_color_gui = '#EFEFEF'
+    let g:indentLine_fileType = ['html', 'python']
+  Plug 'othree/javascript-libraries-syntax.vim' 
+  Plug 'pangloss/vim-javascript', {'for': ['javascript']}  
+endif
 
 Plug 'osyo-manga/vim-watchdogs' 
 Plug 'thinca/vim-quickrun'
@@ -122,7 +147,6 @@ Plug 'junegunn/vim-easy-align' "{
 "}
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
-Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
@@ -152,24 +176,28 @@ Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
 
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  nmap <silent> gh :call CocAction('doHover')<cr>
-  let $BAT_THEME = 'GitHub'
-  let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
-  
-  augroup coc
-    autocmd!
-    autocmd FileType qf call feedkeys("\<C-w>k")
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-  augroup end 
-  noremap jd nope " When not supported...
+if !has("nvim")  
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+      nmap <silent> gd <Plug>(coc-definition)
+      nmap <silent> gy <Plug>(coc-type-definition)
+      nmap <silent> gi <Plug>(coc-implementation)
+      nmap <silent> gr <Plug>(coc-references)
+      nmap <silent> gh :call CocAction('doHover')<cr> 
+endif  
+
+let $BAT_THEME = 'GitHub'
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
+
+augroup coc
+  autocmd!
+  autocmd FileType qf call feedkeys("\<C-w>k")
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup end 
+noremap jd nope " When not supported...
+
 
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
@@ -384,8 +412,8 @@ let g:currentTag = '???'
 
 augroup my_autocmd_misc
   autocmd! 
-  autocmd CursorHold * let g:syntax = SyntaxItem()
-  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  " autocmd CursorHold * let g:syntax = SyntaxItem()
+  " autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
   au FocusGained * checktime
@@ -395,12 +423,12 @@ augroup end
 set statusline=%L\ column\ %c
 " set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name  
-set statusline+=%3*\ %{g:currentTag}\ 
-set statusline+=%5*\ %=%{g:syntax}               " only for debug
+" set statusline+=%3*\ %{g:currentTag}\ 
+" set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
-set statusline+=%{coc#status()}
+" set statusline+=%{coc#status()}
 " set statusline+=%5*\ %{Uptime(2)}
 
 " ----------------------------------------------------------------------------
@@ -548,7 +576,7 @@ augroup my_autocmd
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
     " autocmd BufEnter *.py  :match defLine /def\ .*$/ 
-    autocmd BufEnter *.js  :match defLine /.*function.*$/ 
+    " autocmd BufEnter *.js  :match defLine /.*function.*$/ 
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr> 
     autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr> 
     autocmd BufEnter * :syntax sync fromstart
@@ -826,7 +854,6 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
-
 if !has("nvim")
   set selection=exclusive
 endif
@@ -834,19 +861,21 @@ set lazyredraw                          " to avoid scrolling problems
 " set re=0                                " to avoid nvim excessive redrawing
 set ttyfast
 set timeout ttimeout         " separate mapping and keycode timeouts
-set timeoutlen=500           " mapping timeout 500ms  (adjust for preference)
+set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
 set ttimeoutlen=20           " keycode timeout 20ms
-set updatetime=500
+set updatetime=300
 set noundofile
 
 set breakindent
 set breakindentopt=shift:2 
 set iskeyword+=-                        " treat dashes as part of word 
 set wildmenu
-set laststatus=2
+set laststatus=2  
 set t_Co=256
 set vb t_vb=
-set linespace=-3
+if !has("nvim")
+  set linespace=-3
+endif
 set termguicolors
 
 " End
