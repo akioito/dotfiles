@@ -652,18 +652,6 @@ function! s:ToggleNumberMode()
 endfunc  
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR> 
 
-" ----------------------------------------------------------------------------
-" function! GrepQuickFix(pat)
-"   let all = getqflist()
-"   for d in all
-"     if bufname(d['bufnr']) !~ a:pat && d['text'] !~ a:pat
-"         call remove(all, index(all,d))
-"     endif
-"   endfor
-"   call setqflist(all)
-" endfunction
-" command! -nargs=* QFGrep call GrepQuickFix(<q-args>)
-
 " ----------------------------------------------------------------------------  
 " cfilter.vim: Plugin to filter entries from a quickfix/location list
 " Last Change: Aug 23, 2018
@@ -680,54 +668,17 @@ nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 "       last used search pattern is used.
 "   :Lfilter[!] /{pat}/
 "       Same as :Cfilter but operates on the current location list.
-"
-if exists("loaded_cfilter")
-    finish
-endif
-let loaded_cfilter = 1
 
-func s:Qf_filter(qf, searchpat, bang)
-    if a:qf
-	let Xgetlist = function('getqflist')
-	let Xsetlist = function('setqflist')
-	let cmd = ':Cfilter' . a:bang
-    else
-	let Xgetlist = function('getloclist', [0])
-	let Xsetlist = function('setloclist', [0])
-	let cmd = ':Lfilter' . a:bang
-    endif
+packadd cfilter  
 
-    let firstchar = a:searchpat[0]
-    let lastchar = a:searchpat[-1:]
-    if firstchar == lastchar &&
-		\ (firstchar == '/' || firstchar == '"' || firstchar == "'")
-	let pat = a:searchpat[1:-2]
-	if pat == ''
-	    " Use the last search pattern
-	    let pat = @/
-	endif
-    else
-	let pat = a:searchpat
-    endif
-
-    if pat == ''
-	return
-    endif
-
-    if a:bang == '!'
-	let cond = 'v:val.text !~# pat && bufname(v:val.bufnr) !~# pat'
-    else
-	let cond = 'v:val.text =~# pat || bufname(v:val.bufnr) =~# pat'
-    endif
-
-    let items = filter(Xgetlist(), cond)
-    let title = cmd . ' /' . pat . '/'
-    call Xsetlist([], ' ', {'title' : title, 'items' : items})
+func s:Qf_grep(searchpat, bang)
+  if a:bang == '!'
+    call feedkeys(":Cfilter! ". a:searchpat . "\<CR>")
+  else
+    call feedkeys(":Cfilter ".  a:searchpat . "\<CR>")   
+  endif       
 endfunc
-
-com! -nargs=+ -bang Cfilter call s:Qf_filter(1, <q-args>, <q-bang>)
-com! -nargs=+ -bang Lfilter call s:Qf_filter(0, <q-args>, <q-bang>)
-com! -nargs=+ -bang QFGrep  call s:Qf_filter(1, <q-args>, <q-bang>)     
+com! -nargs=+ -bang QFGrep  call s:Qf_grep(<q-args>, <q-bang>)  
 
 " ----------------------------------------------------------------------------
 function! Iterm()
