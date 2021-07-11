@@ -8,6 +8,7 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
   nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -15,7 +16,7 @@ if has("nvim")
   nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
   nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
   nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>    
+  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>   
 
 lua <<EOF
     require'nvim-treesitter.configs'.setup {
@@ -23,7 +24,6 @@ lua <<EOF
         enable = true,
       }
     }
-    require'nvim_lsp'.tsserver.setup{}
 EOF
 endif
 
@@ -194,7 +194,7 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 augroup coc
   autocmd!
   autocmd FileType qf call feedkeys("\<C-w>k")
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end 
 noremap jd nope " When not supported...
 
