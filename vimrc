@@ -11,9 +11,10 @@ if has("nvim")
 
 lua <<EOF
     require'nvim-treesitter.configs'.setup {
-      highlight = {
-        enable = true,
-      }
+      highlight = { enable = true },
+      incremental_selection = { enable = true },
+      indent = { enable = true },
+      rainbow = { enable = true },
     }
 EOF
 endif
@@ -505,6 +506,8 @@ nnoremap bd :bdelete
 if has("gui_macvim") || has("gui_vimr") 
   nnoremap <D-j>           :cn<cr>ztkj
   nnoremap <D-k>           :cp<cr>ztkj
+  nnoremap <C-j>           :lnext<cr>
+  nnoremap <C-k>           :lprev<cr>  
 else
   nnoremap <C-j>           :cn<cr>ztkj
   nnoremap <C-k>           :cp<cr>ztkj
@@ -618,9 +621,9 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
-if has("gui_macvim") || has("gui_vimr") 
-    nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
-endif
+" if has("gui_macvim") || has("gui_vimr") 
+"     nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
+" endif
 
 " Used to track the quickfix window.
 augroup QSearchToggle
