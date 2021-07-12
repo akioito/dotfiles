@@ -26,7 +26,6 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 if has("gui_macvim") || has("gui_vimr")  
   let macvim_hig_shift_movement = 1
-  " set antialias 
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR> 
   vnoremap <BS> d
