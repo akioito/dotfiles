@@ -112,4 +112,8 @@ highlight VemTablineSelected         term=bold    cterm=bold ctermfg=0   ctermbg
 highlight VemTablineNumber           term=reverse cterm=none ctermfg=239 ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 
+" treesitter
+hi jsLineComment guifg=#F09868   
+hi jsCommonJS    guifg=#ff00ff 
+
 " End
