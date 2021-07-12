@@ -18,10 +18,6 @@ lua <<EOF
     }
 EOF
 endif
-
-Plug 'pacha/vem-tabline' 
-  let g:vem_tabline_show_number = 'buffnr'
-  " let g:vem_tabline_show_number = 'index'
   
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
