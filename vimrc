@@ -6,19 +6,13 @@ endif
 " Required:
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
-if has("nvim")
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" if has("nvim")
+"   Plug 'nvim-treesitter/nvim-treesitter'
+" endif
 
-lua <<EOF
-    require'nvim-treesitter.configs'.setup {
-      highlight = { enable = true },
-      incremental_selection = { enable = true },
-      indent = { enable = true },
-      rainbow = { enable = true },
-    }
-EOF
-endif
-  
+" Apple Silicon
+let g:python3_host_prog = '/opt/homebrew/bin/python3'  
+
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 if has("gui_macvim") || has("gui_vimr")  
@@ -87,9 +81,13 @@ Plug 'jiangmiao/auto-pairs' "{
 Plug 'rstacruz/sparkup' 
   " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
- noremap  <D-1> <ESC>:TComment
+ noremap  <D-1> <ESC>:TComment<cr>
  vnoremap <D-1> <ESC>gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
+
+ noremap  <Leader>k <ESC>:TComment<cr>
+ vnoremap <Leader>k <ESC>gv:TComment<cr>
+ inoremap <Leader>k <ESC>:TComment<cr>
  let g:tcomment#filetype#guess_svelte = 1 
 "} 
 
@@ -481,7 +479,8 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " :GhostStart  (Cmd + shift + k)
 " :MarkdownPreview
 " :MarkdownPreviewStop
-" 
+"
+" :BufferTree
 
 noremap zh zt
 noremap zm zz
@@ -745,8 +744,8 @@ if has("gui_macvim")
   " set guifont=Menlo:h14    
   " set guifont=Ubuntu\ Mono:h18
   " set guifont=Inconsolata\ for\ Powerline:h18
-  " set guifont=SF\ Mono:h17
-  set guifont=IBM\ Plex\ Mono:h17
+  set guifont=SF\ Mono:h17
+  " set guifont=IBM\ Plex\ Mono:h17
   " set guifont=Fira\ Code\ Retina:h14
   " set guifont=Courier:h18
   " set guifont=JetBrains\ Mono\ NL:h17
@@ -797,7 +796,7 @@ if !has("nvim")
   set selection=exclusive
 endif
 set lazyredraw                          " to avoid scrolling problems
-" set re=0                                " to avoid nvim excessive redrawing
+set regexpengine=0                                " to avoid nvim excessive redrawing
 set ttyfast
 set timeout ttimeout         " separate mapping and keycode timeouts
 set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
@@ -813,7 +812,7 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 if !has("nvim")
-  set linespace=-3
+  set linespace=-2
 endif
 set termguicolors
 
