@@ -42,7 +42,7 @@ Plug 'dannyob/quickfixstatus'
   \        'hook/qfsigns_update/enable_exit':   1,
   \        'hook/qfsigns_update/priority_exit': 3,},}
   let g:quickrun_config["python/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/flake8"
+  \	"type" : "watchdogs_checker/pyflakes"
   \}
     let g:quickrun_config["javascript/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/eslint"
