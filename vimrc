@@ -235,7 +235,7 @@ Plug 'junegunn/fzf.vim'
 nnoremap <silent> <leader>c :Commands<CR> 
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 
-Plug 'fszymanski/fzf-quickfix', {'on': 'Quickfix'}
+Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_position =  'window'
   let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
