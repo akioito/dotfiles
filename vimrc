@@ -499,13 +499,13 @@ map <SwipeDown>    <C-b>
 nnoremap bd :bdelete
 
 if has("gui_macvim") || has("gui_vimr") 
-  nnoremap <D-j>           :cn<cr>ztkj
-  nnoremap <D-k>           :cp<cr>ztkj
+  nnoremap <D-j>           :cn<cr>zmkj
+  nnoremap <D-k>           :cp<cr>zmkj
   nnoremap <C-j>           :lnext<cr>
   nnoremap <C-k>           :lprev<cr>  
 else
-  nnoremap <C-j>           :cn<cr>ztkj
-  nnoremap <C-k>           :cp<cr>ztkj
+  nnoremap <C-j>           :cn<cr>zmkj
+  nnoremap <C-k>           :cp<cr>zmkj
 endif
 
 nnoremap <leader>v       0<C-v>$
