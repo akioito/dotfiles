@@ -481,6 +481,10 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " :MarkdownPreviewStop
 "
 " :BufferTree
+" neovide 
+"  - y yank
+"  - p past
+"  - ctr+r* paste to command line
 
 noremap zh zt
 noremap zm zz
