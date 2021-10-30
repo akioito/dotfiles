@@ -250,7 +250,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Commands                          |:Commands',
     \'Delete Buffer                     |:bdelete', 
     \'#', 
-    \'Functions      <C-R> or <C-Space> |<Space>f',
+    \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z', 
     \'Fzf-quickfix                      |:Quickfix',
     \'GrepBuffer word at cursor         |<F3>',
@@ -316,8 +316,8 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
-  inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
+  " nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
+  " inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
   nnoremap <silent>  <C-l>         :<C-u>Buffers<cr> 
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
@@ -481,10 +481,10 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " :MarkdownPreviewStop
 "
 " :BufferTree
-" neovide 
+" neovim 
 "  - y yank
 "  - p past
-"  - ctr+r* paste to command line
+"  - ctr+r* paste to command line or in insert mode
 
 noremap zh zt
 noremap zm zz
