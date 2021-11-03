@@ -562,7 +562,7 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd! 
-    autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
+    " autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
     " autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
@@ -601,7 +601,7 @@ augroup my_autocmd
     autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
-    autocmd BufWritePost *.rs  call feedkeys("\<Esc>")
+    autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
 
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc 
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
