@@ -748,7 +748,7 @@ if has("gui_macvim")
   " set guifont=Menlo:h14    
   " set guifont=Ubuntu\ Mono:h18
   " set guifont=Inconsolata\ for\ Powerline:h18
-  set guifont=SF\ Mono:h17
+  set guifont=SF\ Mono:h16
   " set guifont=IBM\ Plex\ Mono:h17
   " set guifont=Fira\ Code\ Retina:h14
   " set guifont=Courier:h18
