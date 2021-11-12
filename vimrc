@@ -482,9 +482,14 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 "
 " :BufferTree
 " neovim 
-"  - y yank
+"  - vey yank word 
+"  - y yank selected   
 "  - p past
 "  - ctr+r* paste to command line or in insert mode
+
+" neovim paste 
+inoremap <C-v> <C-r>*
+noremap  <C-v> <Esc>hp
 
 noremap zh zt
 noremap zm zz
