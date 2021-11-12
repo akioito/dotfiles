@@ -490,6 +490,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " neovim paste 
 inoremap <C-v> <C-r>*
 noremap  <C-v> <Esc>hp
+nnoremap <c-w> :w<cr>
 
 noremap zh zt
 noremap zm zz
