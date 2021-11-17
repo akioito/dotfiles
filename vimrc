@@ -490,6 +490,8 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " neovim paste 
 inoremap <C-v> <C-r>*
 noremap  <C-v> <Esc>hp
+nnoremap <leader>w :<C-u>w<cr>h 
+inoremap <Space>w <Esc>:<C-u>w<cr>l
 
 noremap zh zt
 noremap zm zz
@@ -518,7 +520,7 @@ else
 endif
 
 nnoremap <leader>v       0<C-v>$
-nnoremap <leader>w       <C-w>v<C-w>l
+" nnoremap <leader>w       <C-w>v<C-w>l
 nnoremap zr              zRzz
 " Browser refresh
 let g:RefreshRunningBrowserReturnFocus = 0
