@@ -105,7 +105,7 @@ Plug 'vim-scripts/grep.vim' "{
 if has('mac')
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
-  let Grep_Path = 'rg --vimgrep'
+  " let Grep_Path = 'rg --vimgrep'
 endif
 "}
 
@@ -755,7 +755,7 @@ if has("gui_macvim")
   " set guifont=Menlo:h14    
   " set guifont=Ubuntu\ Mono:h18
   " set guifont=Inconsolata\ for\ Powerline:h18
-  set guifont=SF\ Mono:h16
+  set guifont=SF\ Mono:h17
   " set guifont=IBM\ Plex\ Mono:h17
   " set guifont=Fira\ Code\ Retina:h14
   " set guifont=Courier:h18
