@@ -489,6 +489,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 
 " neovim paste 
 inoremap <C-v> <C-r>*
+cnoremap <C-v> <C-r>*
 noremap  <C-v> <Esc>hp
 nnoremap <leader>w :<C-u>w<cr>h 
 inoremap <Space>w <Esc>:<C-u>w<cr>l
