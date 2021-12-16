@@ -433,9 +433,6 @@ nnoremap FF ,
 
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
-
-" Insert / Normal Mode
-" Ctrl + c or [ = ESC 
 nnoremap jf        <ESC>
 inoremap jf        <ESC>l
 inoremap jk        <ESC>l
@@ -482,11 +479,16 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 "
 " :BufferTree
 " neovim 
-"  - vey yank word 
+"  - vey yank word (start) 
+"  - viwy yank work
 "  - y yank selected   
 "  - p past
 "  - ctr+r* paste to command line or in insert mode
 
+if has("clipboard")
+  set clipboard^=unnamed,unnamedplus
+endif
+   
 " neovim paste 
 inoremap <C-v> <C-r>*
 cnoremap <C-v> <C-r>*
