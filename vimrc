@@ -6,9 +6,9 @@ endif
 " Required:
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
-" if has("nvim")
-"   Plug 'nvim-treesitter/nvim-treesitter'
-" endif
+if has("nvim")
+  Plug 'nvim-treesitter/nvim-treesitter'
+endif
 
 " Apple Silicon
 let g:python3_host_prog = '/opt/homebrew/bin/python3'  
@@ -22,14 +22,11 @@ if has("gui_macvim") || has("gui_vimr")
   vnoremap <BS> d
 endif
 
-if !has("nvim")
-  syntax enable  
-  Plug 'Yggdroot/indentLine' 
-    let g:indentLine_color_gui = '#EFEFEF'
-    let g:indentLine_fileType = ['html', 'python']
-  Plug 'othree/javascript-libraries-syntax.vim' 
-  Plug 'pangloss/vim-javascript', {'for': ['javascript']}  
-endif
+Plug 'Yggdroot/indentLine' 
+  let g:indentLine_color_gui = '#EFEFEF'
+  let g:indentLine_fileType = ['html', 'python']
+Plug 'othree/javascript-libraries-syntax.vim' 
+Plug 'pangloss/vim-javascript', {'for': ['javascript']}  
 
 Plug 'osyo-manga/vim-watchdogs' 
 Plug 'thinca/vim-quickrun'
@@ -102,11 +99,8 @@ Plug 'mkitt/browser-refresh.vim'
 Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/python_match.vim'
 Plug 'vim-scripts/grep.vim' "{
-if has('mac')
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
-  " let Grep_Path = 'rg --vimgrep'
-endif
 "}
 
 Plug 'AndrewRadev/simple_bookmarks.vim'
@@ -126,9 +120,7 @@ Plug 'junegunn/vim-easy-align' "{
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
   let g:tagbar_width       = 25
-  if has("mac") 
-    let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
-  endif
+  let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
   nnoremap <C-@>      :TagbarToggle<CR> 
 "}
 
@@ -517,8 +509,6 @@ if has("gui_macvim") || has("gui_vimr")
   nnoremap <D-k>           :cp<cr>zmkj
   nnoremap <C-j>           :cn<cr>zmkj
   nnoremap <C-k>           :cp<cr>zmkj 
-  " nnoremap <C-j>           :lnext<cr>
-  " nnoremap <C-k>           :lprev<cr>  
 else
   nnoremap <C-j>           :cn<cr>zmkj
   nnoremap <C-k>           :cp<cr>zmkj
@@ -631,10 +621,6 @@ function! QSearchToggle(forced)
         execute "normal! *:Bgrep\<CR>\<CR>"
     endif
 endfunction
-
-" if has("gui_macvim") || has("gui_vimr") 
-"     nnoremap <C-k>       :Bgrep <!\-\-\ \.<CR> " Search <!-- .templateEntry --> entry in MyTemplate
-" endif
 
 " Used to track the quickfix window.
 augroup QSearchToggle
@@ -756,25 +742,17 @@ if has("gui_macvim")
   " set macligatures
   nmap <D-w> :CommandW<CR>
   imap <D-w> <Esc>:CommandW<CR> 
-
-  " set guifont=Menlo:h14    
-  " set guifont=Ubuntu\ Mono:h18
-  " set guifont=Inconsolata\ for\ Powerline:h18
-  set guifont=SF\ Mono:h17
-  " set guifont=IBM\ Plex\ Mono:h17
-  " set guifont=Fira\ Code\ Retina:h14
-  " set guifont=Courier:h18
-  " set guifont=JetBrains\ Mono\ NL:h17
-  " set guifont=Hack\ Regular:h16
-  " set guifont=Hack\ Regular:h14
-  " set guifont=Fira\ Mono:h14
-  " set guifont=M+\ 1m:h18
-  " set guifont=Osaka-Mono:h18
-  " set guifont=Inconsolata\ XL:h16
-  " set guifont=Monaco:h14
-  " set guifont=Source\ Code\ Pro:h15
 endif
 
+" set guifont=Menlo:h14    
+" set guifont=Ubuntu\ Mono:h18
+" set guifont=SF\ Mono:h17
+" set guifont=IBM\ Plex\ Mono:h17
+" set guifont=Fira\ Code\ Retina:h14
+" set guifont=Courier:h18
+set guifont=JetBrainsMono\ Nerd\ Font:h18
+
+set background=light
 colorscheme mycolor 
 
 set hlsearch                           " Highlight search
@@ -796,7 +774,7 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-if has("gui_macvim")   
+if has("gui_macvim")    
     set columns=180
     set lines=100
 endif
@@ -810,6 +788,7 @@ set shortmess=oO
 set number
 if !has("nvim")
   set selection=exclusive
+  set linespace=-2 
 endif
 set lazyredraw                          " to avoid scrolling problems
 set regexpengine=0                                " to avoid nvim excessive redrawing
@@ -827,9 +806,6 @@ set wildmenu
 set laststatus=2  
 set t_Co=256
 set vb t_vb=
-if !has("nvim")
-  set linespace=-2
-endif
 set termguicolors
 
 " End
