@@ -11,8 +11,10 @@ endif
 
 if system('arch') == "arm64"
     let g:python3_host_prog = '/opt/homebrew/bin/python3'  
+    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
 else
     let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
 endif
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -122,7 +124,6 @@ Plug 'junegunn/vim-easy-align' "{
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
   let g:tagbar_width       = 25
-  let g:tagbar_ctags_bin   = '/usr/local/bin/ctags'
   nnoremap <C-@>      :TagbarToggle<CR> 
 "}
 
