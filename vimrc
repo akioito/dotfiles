@@ -1,5 +1,4 @@
 if !&compatible
-  " Enable no Vi compatible commands.
   set nocompatible
 endif
 
@@ -10,8 +9,11 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter'
 endif
 
-" Apple Silicon
-let g:python3_host_prog = '/opt/homebrew/bin/python3'  
+if system('arch') == "arm64"
+    let g:python3_host_prog = '/opt/homebrew/bin/python3'  
+else
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
 
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
@@ -137,19 +139,21 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
 
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-  " let g:ghost_autostart = 1
-  " Shortcut for browser textarea -> Shit+Cmd+k
-    function! s:SetupGhostBuffer()
-        if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
-            set ft=markdown
-        endif
-    endfunction
+if has("gui_macvim")
+  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+    " let g:ghost_autostart = 1
+    " Shortcut for browser textarea -> Shit+Cmd+k
+      function! s:SetupGhostBuffer()
+          if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
+              set ft=markdown
+          endif
+      endfunction
 
-    augroup vim-ghost
-        au!
-        au User vim-ghost#connected call s:SetupGhostBuffer()
-    augroup end
+      augroup vim-ghost
+          au!
+          au User vim-ghost#connected call s:SetupGhostBuffer()
+      augroup end
+end
 
 Plug 'SirVer/ultisnips'  
 Plug 'honza/vim-snippets'
@@ -308,15 +312,11 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr> 
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  " nnoremap <C-R>     :<C-u>Leaderfwnowrap! --right function<cr> 
-  " inoremap <C-R>     <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
   nnoremap <silent>  <C-l>         :<C-u>Buffers<cr> 
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
   nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR> 
   nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR> 
-  " nnoremap <F5>      :<C-u>:MRU prj<CR>
-  " nnoremap <Space>l  :<C-u>Leaderfx self<cr> 
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
@@ -388,8 +388,8 @@ let g:currentTag = '???'
 
 augroup my_autocmd_misc
   autocmd! 
-  " autocmd CursorHold * let g:syntax = SyntaxItem()
-  " autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  autocmd CursorHold * let g:syntax = SyntaxItem()
+  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
   au FocusGained * checktime
@@ -399,8 +399,8 @@ augroup end
 set statusline=%L\ column\ %c
 " set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name  
-" set statusline+=%3*\ %{g:currentTag}\ 
-" set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
+set statusline+=%3*\ %{g:currentTag}\ 
+set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
