@@ -6,7 +6,9 @@ endif
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 if has("nvim")
-  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+     nmap ,, :TSHighlightCapturesUnderCursor<cr>
 endif
 
 if system('arch') == "arm64"
@@ -26,9 +28,9 @@ if has("gui_macvim") || has("gui_vimr")
   vnoremap <BS> d
 endif
 
-Plug 'Yggdroot/indentLine' 
-  let g:indentLine_color_gui = '#EFEFEF'
-  let g:indentLine_fileType = ['html', 'python']
+" Plug 'Yggdroot/indentLine' 
+"   let g:indentLine_color_gui = '#EFEFEF'
+"   let g:indentLine_fileType = ['html', 'python']
 Plug 'othree/javascript-libraries-syntax.vim' 
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}  
 
@@ -175,7 +177,7 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 augroup coc
   autocmd!
   autocmd FileType qf call feedkeys("\<C-w>k")
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end 
 noremap jd nope " When not supported...
 
@@ -390,7 +392,11 @@ let g:currentTag = '???'
 augroup my_autocmd_misc
   autocmd! 
   autocmd CursorHold * let g:syntax = SyntaxItem()
-  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  if has("gui_macvim") 
+    autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  else
+    autocmd CursorHold * let g:currentTag = nvim_treesitter#statusline()
+  end    
   " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
   au FocusGained * checktime
@@ -399,7 +405,7 @@ augroup end
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c
 " set statusline +=\ %{fugitive#statusline()}
-set statusline+=%5*\ %f\                           " file name  
+" set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
 set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
 set statusline+=%5*\ %=%{&ff}\                     " file format

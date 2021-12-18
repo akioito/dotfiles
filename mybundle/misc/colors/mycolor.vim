@@ -116,4 +116,7 @@ highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg
 hi jsLineComment guifg=#F09868   
 hi jsCommonJS    guifg=#ff00ff 
 
+hi TSString             guifg=#28C101 "#0BB634
+hi TSVariableBuiltin    guifg=#0100C8    gui=bold
+hi TSComment            guifg=#F09868
 " End
