@@ -1,0 +1,9 @@
+# vim_dotfile.vim-prj
+
+README.md
+install.sh
+.stow-local-ignore
+vim/.gitgnore
+
+
+# End
