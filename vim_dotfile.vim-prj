@@ -2,8 +2,9 @@
 
 README.md
 install.sh
-.stow-local-ignore
-vim/.gitgnore
-
+vim/.config/nvim/init.vim
+vim/.config/nvim/lua/configs.lua
+vim/.vim/mybundle/misc/colors/mycolor.vim
+vim/.vimrc
 
 # End
