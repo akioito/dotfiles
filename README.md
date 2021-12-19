@@ -1,13 +1,14 @@
-# My MacVim dotfile
+# My MacVim/Vimr/Neovide dotfile
 
 
 Install HomeBrew  / https://brew.sh/ 
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Install python + packages:
 ```
+brew install stow
 brew install neovim
 brew install cmake
 brew install python
@@ -20,26 +21,38 @@ pip3 install jedi
 pip3 install python-language-server --upgrade
 ```
 
-Install MacVim:
+Install MacVim: (or Vimr, Neovide...)
 ```  
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
 ```  
 
 Clone this repository to  home directory:
 
+(Backup your ~/.vim and ~/.vimrc)
+
 ```  
 cd ~
 git clone https://github.com/akioito/dotfiles.git
-./dotfiles/install.sh
+cd dotfiles
+./install.sh
 
 mvim 
 :PlugInstall# wait until end plugin installation -> :quit
 
 mvim
+:CocUpdate
 ```  
 
 Enjoy!
 
+If you want o uninstall:
+```  
+cd ~/dotfiles
+stow -D vim
+(Restore you Backup - ~/.vim and ~/.vimrc)
+(Eventually you need to remove ~/.config/nvim/autoload/plug.vim)
+
+```  
 --------------------------------------------------  
 Speed-up LeaderF
 ```  
@@ -50,38 +63,37 @@ cd ~/.vim/plugged/LeaderF
 # Usual commands:
 Normal mode     
 ```  
-Ctl-P General menu command
-   LeaderF            Shortcut/Command
-     lfFunction       <Space>f / <C-Space> / <C-R>
-     lfProjects       <Space>p
-     lfBuffers        <Space>b
-     lfLeaderf        <Space>l
-   Direct Command           
-     Project Open     :PyOpenProject
-     vimrc            :e ~/.vimrc
-   Legacy              
-     python def            
-     Functions        <C-@>
-     Projects         ct
-     Buffers          fj/<C-l>
-     Update plugins   unu
-     messages         :messages
-     keyboard map     mm
-     bookmars         <F2>
-     marks            um
-     unite source     us
-     jump             :Unite jump
-     change           :Unite change
+<Space><Space> General menu command
+  let myMenuList = [
+    \'Buffers                  <Space>b |<Space>l', 
+    \'#',
+    \'Close or QSearchToggle            |<F4>', 
+    \'Commands                          |:Commands',
+    \'Delete Buffer                     |:bdelete', 
+    \'#', 
+    \'Functions               <C-Space> |<Space>f',
+    \'Fuzzy Menu                        |<Space>z', 
+    \'Fzf-quickfix                      |:Quickfix',
+    \'GrepBuffer word at cursor         |<F3>',
+    \'ITerm                             |:Iterm',
+    \'Ls files in current dir           |:LS',  
+    \'#',     
+    \'LspDefinition                     |gd',                                      
+    \'LspHover                          |gh', 
+    \'LspReferences                     |gr', 
+    \'#',     
+    \'Open Project                   op |:PyOpenProject',  
+    \'PlugUpdate                        |:PlugUpdate', 
+    \'Projects            <C-P> or <F5> |<Space>p',
+    \'Reveal in Finder                  |:Reveal',  
+    \'vimrc                             |:e ~/.vimrc',
+    \]     
 ```  
 
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix<br> 
 Shift Cursor Select and Enter for Align column<br>  
 Cmd-1 for Comment/Uncomment<br> 
 
-For Python (vim-lsp-python):<br>
-jr   LspReferences (Cmd J/Cmd K for navigation)<br> 
-jd   LspDefinition (Ctr-o to back)<br> 
-jh   LspHover<br> 
 For other commands also see .vimrc
 
 # Project management
@@ -90,32 +102,13 @@ open sample.vim-prj<br>
 :PyOpenProject (or op)
 
 
-
-# Visual trick:
-```  
-Terminal
-defaults write org.vim.MacVim MMTextInsetLeft  5
-defaults write org.vim.MacVim MMTextInsetRight 2 
-```  
-
-
-# If you want to compile your MacVim
+# If you want to compile your MacVim (fish shell)
 ```  
 git clone https://github.com/macvim-dev/macvim.git (first time)
 # git pull        
 # make distclean
 cd macvim
-CFLAGS=-O3 ./configure --enable-python3interp 
+set -x CFLAGS -O3;set -x CC gcc; ./configure  --enable-python3interp --with-features=huge --enable-multibyte --with-python3-command=python3
 make
 ```  
 
-Symlink (Only for first time)
-```  
-cd /Applications
-ln -s $HOME/macvim/src/MacVim/build/Release/MacVim.app .   
-``` 
-
-mvim Command Line Alias
-``` 
-alias mvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
-``` 
