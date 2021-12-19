@@ -21,6 +21,10 @@ pip3 install jedi
 pip3 install python-language-server --upgrade
 ```
 
+Install JetBrainsMono Nerd Font (or Ajust for your guifont)<br>
+https://www.nerdfonts.com/font-downloads <br><br>
+
+       
 Install MacVim: (or Vimr, Neovide...)
 ```  
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
