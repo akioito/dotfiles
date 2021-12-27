@@ -20,8 +20,6 @@ else
     let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
 endif
 
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-
 if has("gui_macvim") || has("gui_vimr")  
   let macvim_hig_shift_movement = 1
   " Text-to-speech
@@ -53,16 +51,17 @@ Plug 'dannyob/quickfixstatus'
   \}  
 
 Plug 'dag/vim-fish'
-Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/vim-diff-enhanced'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
 Plug 'godlygeek/tabular'
 Plug 'rhysd/vim-gfm-syntax'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'thinca/vim-zenspace'
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   
 Plug 'cespare/vim-toml'
-Plug 'keith/swift.vim'
+" Plug 'keith/swift.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' "{
@@ -101,10 +100,8 @@ Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
 Plug 'mhinz/vim-signify'
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
-" Plug 'walm/jshint.vim'
 Plug 'mkitt/browser-refresh.vim'
 Plug 'vim-scripts/a.vim'
-Plug 'vim-scripts/python_match.vim'
 Plug 'vim-scripts/grep.vim' "{
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
@@ -115,10 +112,10 @@ Plug 'henrik/vim-reveal-in-finder'
 " Plug 'andymass/vim-matchup' "{
 "   let g:matchup_matchparen_deferred = 1
 " "}
-Plug 'junegunn/vim-easy-align' "{
-  " Shift + V, select and Enter
-  vnoremap <Enter> :EasyAlign
-"}
+" Plug 'junegunn/vim-easy-align' "{
+"   " Shift + V, select and Enter
+"   vnoremap <Enter> :EasyAlign
+" "}
 
 " Plug 'majutsushi/tagbar' "{ Some customization
   let g:tagbar_autoclose   = 1
@@ -188,7 +185,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim' 
-Plug 'frazrepo/vim-rainbow'
+if !has("nvim") 
+    Plug 'frazrepo/vim-rainbow'
+endif
 Plug 'airblade/vim-rooter'
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
