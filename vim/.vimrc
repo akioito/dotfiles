@@ -55,7 +55,8 @@ Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-Plug 'godlygeek/tabular'
+Plug 'dhruvasagar/vim-table-mode'
+" Plug 'godlygeek/tabular'
 Plug 'rhysd/vim-gfm-syntax'
 Plug 'thinca/vim-zenspace'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -81,7 +82,7 @@ Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
-Plug 'rstacruz/sparkup' 
+" Plug 'rstacruz/sparkup' 
   " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> <ESC>:TComment<cr>
@@ -156,8 +157,8 @@ if has("gui_macvim")
       augroup end
 end
 
-Plug 'SirVer/ultisnips'  
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'  
+" Plug 'honza/vim-snippets'
 
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -336,7 +337,7 @@ Plug 'tpope/vim-sensible'
 Plug '~/.vim/mybundle/misc' 
 Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
-Plug '~/.vim/mybundle/tablify'
+" Plug '~/.vim/mybundle/tablify'
 Plug '~/.vim/mybundle/vim-command-w' 
 
 call plug#end()
@@ -475,6 +476,9 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " :GhostStart  (Cmd + shift + k)
 " :MarkdownPreview
 " :MarkdownPreviewStop
+"
+" :TableModeToggle
+" :Tableize   convert from CSV
 "
 " :BufferTree
 " neovim 
