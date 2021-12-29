@@ -163,6 +163,19 @@ end
 
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+      \'coc-css',
+      \'coc-fzf-preview',
+      \'coc-html',
+      \'coc-json',
+      \'coc-lists',
+      \'coc-markdownlint',
+      \'coc-prettier', 
+      \'coc-pyright', 
+      \'coc-rust-analyzer', 
+      \'coc-snippets', 
+      \'coc-tsserver'
+      \]
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     nmap <silent> gd <Plug>(coc-definition)
