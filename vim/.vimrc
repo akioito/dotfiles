@@ -55,8 +55,7 @@ Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'vim-pandoc/vim-pandoc'
+Plug 'liuchengxu/vista.vim'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'godlygeek/tabular'
 Plug 'rhysd/vim-gfm-syntax'

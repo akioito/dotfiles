@@ -1,0 +1,19 @@
+{
+  "rust-analyzer.updates.channel": "nightly",
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.diagnostics.enable": true,
+  "rust-analyzer.inlayHints.chainingHints": false,
+  "rust-analyzer.inlayHints.typeHints": false,  
+  "prettier.requireConfig": true,
+  "python.pythonPath": "/opt/homebrew/bin/python3",
+  "markdownlint.config": {
+    "line_length": false
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "css",
+    "markdown",
+    "typescript",
+    "json"
+  ]
+}    
