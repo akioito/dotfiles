@@ -31,7 +31,7 @@ Clone this repository to  home directory:
 
 (Backup your ~/.vim and ~/.vimrc)
 
-```  
+```fish  
 cd ~
 git clone https://github.com/akioito/dotfiles.git
 cd dotfiles
