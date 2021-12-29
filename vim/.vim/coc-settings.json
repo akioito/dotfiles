@@ -5,7 +5,7 @@
   "rust-analyzer.inlayHints.chainingHints": false,
   "rust-analyzer.inlayHints.typeHints": false,  
   "prettier.requireConfig": true,
-  "python.pythonPath": "/opt/homebrew/bin/python3",
+  "session.saveOnVimLeave": false,
   "markdownlint.config": {
     "line_length": false
   },
