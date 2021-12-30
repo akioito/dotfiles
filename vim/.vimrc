@@ -126,7 +126,9 @@ Plug 'henrik/vim-reveal-in-finder'
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
   let g:tagbar_width       = 25
-  nnoremap <C-@>      :TagbarToggle<CR> 
+  if !has("nvim")
+    nnoremap <C-@>      :TagbarToggle<CR> 
+  endif
 "}
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
@@ -351,7 +353,9 @@ Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
           
 Plug '~/.vim/mybundle/misc' 
+if !has("nvim")
 Plug '~/.vim/mybundle/tagbar'
+endif
 Plug '~/.vim/mybundle/sbd.vim'
 " Plug '~/.vim/mybundle/tablify'
 Plug '~/.vim/mybundle/vim-command-w' 
@@ -409,7 +413,7 @@ let g:currentTag = '???'
 augroup my_autocmd_misc
   autocmd! 
   autocmd CursorHold * let g:syntax = SyntaxItem()
-  if has("gui_macvim") 
+  if !has("nvim") 
     autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   else
     autocmd CursorHold * let g:currentTag = nvim_treesitter#statusline()
@@ -604,7 +608,9 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead *.dyon set filetype=rust
     autocmd BufNewFile,BufRead *.rn set filetype=rust
-    autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
+    if !has("nvim")
+      autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
+    endif
 
     " Problem with Japanese IME / 例: 中 (tyuu) 
     autocmd VimEnter * set imdisable
@@ -951,7 +957,7 @@ if !has("nvim")
   set linespace=-2 
 endif
 set lazyredraw                          " to avoid scrolling problems
-set regexpengine=0                                " to avoid nvim excessive redrawing
+set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
 set timeout ttimeout         " separate mapping and keycode timeouts
 set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
