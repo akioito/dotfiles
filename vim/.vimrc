@@ -236,7 +236,11 @@ let g:NERDTreeMouseMode=3
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
-nnoremap <F6> :call MyNerdToggle()<CR> 
+if has("nvim")
+  nnoremap <F6> :<C-u>CHADopen<CR>
+else
+  nnoremap <F6> :call MyNerdToggle()<CR>  
+endif
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
@@ -444,7 +448,7 @@ augroup my_autocmd_misc
 augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
-set statusline=%L\ column\ %c
+set statusline=%L\ column\ %c\ %p%%\ 
 " set statusline +=\ %{fugitive#statusline()}
 " set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
