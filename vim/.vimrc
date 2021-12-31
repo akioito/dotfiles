@@ -10,6 +10,8 @@ if has("nvim")
   Plug 'nvim-treesitter/playground'
      nmap ,, :TSHighlightCapturesUnderCursor<cr>
   Plug 'p00f/nvim-ts-rainbow'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'folke/todo-comments.nvim'
 endif
 
 if system('arch') == "arm64"
@@ -506,6 +508,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 "  - y yank selected   
 "  - p past
 "  - ctr+r* paste to command line or in insert mode
+"  :TodoQuickFix
 
 if has("clipboard")
   set clipboard^=unnamed,unnamedplus
@@ -626,8 +629,8 @@ augroup my_autocmd
     autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
 
     " Fast Cursor / nocursorline in Insert Mode
-    " autocmd CursorHold * setlocal cursorline
-    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+    autocmd CursorHold * setlocal cursorline
+    autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
     
     " ESC to not append 'g' when save in insert mode
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
