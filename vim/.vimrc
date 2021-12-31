@@ -12,6 +12,9 @@ if has("nvim")
   Plug 'p00f/nvim-ts-rainbow'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'folke/todo-comments.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
+  Plug 'ggandor/lightspeed.nvim'
 endif
 
 if system('arch') == "arm64"
@@ -213,12 +216,26 @@ Plug 'tyru/open-browser.vim'
   nmap gb <Plug>(openbrowser-open)
   vmap gb <Plug>(openbrowser-open)
 
+" NERDTree
+let g:mynerdtree = 0
+function! MyNerdToggle()
+    if g:mynerdtree == 0
+        execute "normal! :NERDTree\<CR>:normal P\<CR>:normal O\<CR>"
+         let g:mynerdtree = 1
+    else
+        execute "normal! *:NERDTreeClose\<CR>"
+        let g:mynerdtree = 0
+    endif
+endfunction 
+
 Plug 'leafgarland/typescript-vim'
 Plug 'preservim/nerdtree'
 let g:NERDTreeMouseMode=3
 " let g:NERDTreeQuitOnOpen=1
-let NERDTreeIgnore=['target', '\~$']
-nnoremap <D-t> :NERDTreeToggleVCS<CR>
+let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI=1
+let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
+nnoremap <F6> :call MyNerdToggle()<CR> 
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 

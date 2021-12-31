@@ -1,4 +1,5 @@
 -- configs.lua
+local map = vim.api.nvim_set_keymap
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained",
@@ -19,10 +20,7 @@ require'nvim-treesitter.configs'.setup {
     }
 }
 
-require("todo-comments").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-}
+require("todo-comments").setup {}
+require('pqf').setup()
 
 -- End
