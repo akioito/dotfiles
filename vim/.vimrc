@@ -851,6 +851,7 @@ if has("nvim")
       hi TSKeywordFunction    guifg=#28C101  
       hi TSVariable           guifg=#000000
       hi TSParameter          guifg=#000000 
+      " hi TSComment            guifg=#FFBC97
     endfunction
 
     augroup EdgeCustom
