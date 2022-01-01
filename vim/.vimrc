@@ -14,7 +14,7 @@ if has("nvim")
   Plug 'folke/todo-comments.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-  Plug 'ggandor/lightspeed.nvim'
+  Plug 'phaazon/hop.nvim'
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 endif
 
