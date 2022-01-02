@@ -373,7 +373,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
 if has("nvim")
     Plug 'sainnhe/edge'
 endif
-Plug 'godlygeek/csapprox'
+" Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
           
 Plug '~/.vim/mybundle/misc' 
@@ -450,7 +450,7 @@ augroup end
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c\ %p%%\ 
 " set statusline +=\ %{fugitive#statusline()}
-" set statusline+=%5*\ %f\                           " file name  
+set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
 set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
 set statusline+=%5*\ %=%{&ff}\                     " file format
@@ -803,7 +803,7 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR> 
 endif
 
-" set guifont=Menlo:h14    
+" set guifont=Menlo:h18    
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
@@ -845,7 +845,8 @@ if has("nvim")
       "
       hi PmenuSel     guifg=#dddd00 guibg=#1f82cd
       hi Pmenu        guifg=#fd8900 guibg=#ffffa2
-
+      hi CocFloating  guifg=#fd8900 guibg=#ffffa2
+      
       " treesitter
       hi TSString             guifg=#28C101 
       hi TSKeywordFunction    guifg=#28C101  
