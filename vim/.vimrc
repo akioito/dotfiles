@@ -71,20 +71,24 @@ Plug 'thinca/vim-zenspace'
 Plug 'cespare/vim-toml'
 " Plug 'keith/swift.vim'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround' "{
-  " Assuming | as a cursor
-    " fo|o - ysiw' - 'foo'
-    " 'fo|o' - ds' - foo
-    " 'fo|o' - cs'" - "foo"
-  " ds ･･･ d(delete)s(surround)
-  " di ･･･ d(delete)i(inside)
-  " cs ･･･ c(change)s(surround)
-  " ci ･･･ c(change)i(inside)
-  " ys$ ･･･y(yank)s(surround)line
-  " ysiw ･･･ y(yank)s(surrond)iw(inner word)
-  " gvS' ･･･ visual surroud with char
-"}
+" Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-surround' "{
+"   " Assuming | as a cursor
+"     " fo|o - ysiw' - 'foo'
+"     " 'fo|o' - ds' - foo
+"     " 'fo|o' - cs'" - "foo"
+"   " ds ･･･ d(delete)s(surround)
+"   " di ･･･ d(delete)i(inside)
+"   " cs ･･･ c(change)s(surround)
+"   " ci ･･･ c(change)i(inside)
+"   " ys$ ･･･y(yank)s(surround)line
+"   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
+"   " gvS' ･･･ visual surroud with char
+" "}
+Plug 'machakann/vim-sandwich'
+  " saiw - add insert word
+  " sd / sdb - delete
+  " sr / sdb - replace
 Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
@@ -373,6 +377,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
 if has("nvim")
     Plug 'sainnhe/edge'
 endif
+Plug 'farmergreg/vim-lastplace'
 " Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
           
