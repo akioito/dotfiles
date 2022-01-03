@@ -869,6 +869,7 @@ if has("nvim")
 else
     colorscheme mycolor 
 endif
+hi CocHighlightText guibg=#f8edeb ctermbg=Cyan
 
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
