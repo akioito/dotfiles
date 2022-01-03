@@ -813,8 +813,9 @@ set guifont=JetBrainsMono\ Nerd\ Font:h18
 
 set background=light
 if has("nvim") 
-    let g:edge_style = 'aura'
     let g:edge_enable_italic = 1
+    let g:edge_transparent_background = 1
+    let g:edge_better_performance = 1
     " let g:edge_disable_italic_comment = 1
 
     function! s:edge_custom() abort
@@ -822,12 +823,13 @@ if has("nvim")
       hi StatusLine   guifg=#ffffff   guibg=#43c464   gui=bold
       hi StatusLineNC guifg=#9bd4a9   guibg=#51b069
       hi VertSplit    guifg=#fafafa   guibg=#fafafa
-      " hi Folded       guifg=#808080   guibg=white 
-      " hi SignColumn   guibg=white
       hi CursorLine   guibg=#ffffa2
       hi MatchParen   guibg=#cddae5
       hi Visual       guibg=Yellow
-      hi LineNr       guifg=#c10b23 guibg=#f9f9f9 gui=NONE
+
+      hi Folded       guifg=#808080   guibg=#ffffff 
+      hi SignColumn   guibg=#ffffff 
+      hi LineNr       guifg=#c10b23 guibg=#ffffff 
 
       " :call HexHighlight() to see the Color
 
@@ -853,6 +855,9 @@ if has("nvim")
       hi TSVariable           guifg=#000000
       hi TSParameter          guifg=#000000 
       " hi TSComment            guifg=#FFBC97
+   
+      hi normal guibg=none ctermbg=none
+      hi endofbuffer guibg=none ctermbg=none    
     endfunction
 
     augroup EdgeCustom
@@ -860,7 +865,7 @@ if has("nvim")
       autocmd ColorScheme edge call s:edge_custom()
     augroup END
 
-    colorscheme edge 
+    colorscheme edge
 else
     colorscheme mycolor 
 endif
@@ -916,6 +921,8 @@ set wildmenu
 set laststatus=2  
 set t_Co=256
 set vb t_vb=
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
 
 " End
