@@ -11,18 +11,19 @@ endif
 let colors_name = "mycolor"
 
 " Interface Elements
+hi CursorLine   guibg=#ffffa2
+hi endofbuffer  guibg=white 
+hi Folded       guifg=#808080   guibg=white 
+hi LineNr       guifg=#c10b23 guibg=#ffffff 
+hi MatchParen   guibg=#cddae5
+hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
+hi SignColumn   guibg=white
 hi StatusLine   guifg=#ffffff   guibg=#43c464   gui=bold
 hi StatusLineNC guifg=#9bd4a9   guibg=#51b069
 hi VertSplit    guifg=#fafafa   guibg=#fafafa
-"hi Folded       guifg=#808080   guibg=white 
-hi SignColumn   guibg=white
-hi CursorLine   guibg=#ffffa2
-hi MatchParen   guibg=#cddae5
 hi Visual       guibg=Yellow
-hi LineNr       guifg=#808080 guibg=#f2f2f2 gui=NONE
-hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
-hi defLine      guibg=#fff2f2
-"hi defLine      guibg=#fff8f8
+" hi defLine      guibg=#fff2f2
+" hi defLine      guibg=#fff8f8   
 
 " Specials
 hi Todo         guifg=#e50808   guibg=#dbf3cd   gui=bold
@@ -30,24 +31,23 @@ hi Title        guifg=#000000   gui=bold
 hi Special      guifg=#fd8900
 
 " Syntax Elements
-hi Function     guifg=Blue                      gui=bold
+hi Function     guifg=Blue                      
 
 " Python Highlighting
-hi pythonStatement       guifg=#0100C8    gui=bold
-hi pythonRepeat          guifg=#0100C8    gui=bold
-hi pythonConditional     guifg=#0100C8    gui=bold
-hi pythonComment         guifg=#F09868 
-hi pythonFunction        guifg=#0100C8    gui=bold
-hi pythonTripleString    guifg=darkgreen
-hi pythonString          guifg=#28C101 "#0BB634
+hi pythonBuiltinFunc     guifg=Red
 hi pythonBuiltinObj      guifg=Red
+hi pythonComment         guifg=#747d8f 
+hi pythonConditional     guifg=#9f40c0
+hi pythonFunction        guifg=#3f63b0    
 hi pythonMethod          guifg=Darkorange
 hi pythonNumber          guifg=Orangered
-hi pythonBuiltinFunc     guifg=Red
-hi pythonSpecial         guifg=Blue
 hi pythonPreCondit       guifg=#487e52
+hi pythonRepeat          guifg=#0100C8
+hi pythonSpecial         guifg=Blue
+hi pythonStatement       guifg=#2f7a71
 hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
-
+hi pythonString          guifg=#28C101 "#0BB634
+hi pythonTripleString    guifg=darkgreen
 
 " HTML / JS
 hi htmlString            guifg=#0BB634
@@ -69,8 +69,9 @@ hi User0 guifg=#ffffff  guibg=#094afe
 "
 hi PmenuSel     guifg=#dddd00 guibg=#1f82cd
 hi Pmenu        guifg=#fd8900 guibg=#ffffa2
+hi CocFloating  guifg=#fd8900 guibg=#ffffa2
+hi CocHighlightText guibg=#f8edeb ctermbg=Cyan
 
-" 
 " hi javascriptString    guifg=black    gui=bold
 hi javascriptAServices guifg=darkblue gui=bold
 hi jsString            guifg=#28C101 
@@ -116,10 +117,15 @@ highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg
 hi jsLineComment guifg=#F09868   
 hi jsCommonJS    guifg=#ff00ff 
 
+hi TSComment            guifg=#747d8f
+hi TSConditional        guifg=#0100C8  
+hi TSConstBuiltin       guifg=#2f7a71 
+hi TSConstant           guifg=#c34146
+hi TSKeywordFunction    guifg=#28C101
+hi TSMethod             guifg=#3f63b0
 hi TSString             guifg=#28C101 
-hi TSVariableBuiltin    guifg=#0100C8  gui=bold
-hi TSComment            guifg=#F09868
-hi TSKeywordFunction    guifg=#28C101  gui=bold 
-hi TSConditional        guifg=#0100C8  gui=bold 
+hi TSType               guifg=#ae6b09 
+hi TSTypeBuiltin        guifg=#ae6b09
+hi TSVariableBuiltin    guifg=#0100C8
 
 " End

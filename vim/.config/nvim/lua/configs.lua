@@ -1,10 +1,11 @@
 -- configs.lua
 local map = vim.api.nvim_set_keymap
 
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
     ensure_installed = "maintained",
     highlight = {
         enable = true,
+         disable = { "vim" },
     },
     indent = {
         enable = true

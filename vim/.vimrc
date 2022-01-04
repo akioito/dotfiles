@@ -374,9 +374,6 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   Plug 'hilarryxu/LeaderF-funky'
   Plug 'Yggdroot/LeaderF-marks'
 "}
-if has("nvim")
-    Plug 'sainnhe/edge'
-endif
 Plug 'farmergreg/vim-lastplace'
 " Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
@@ -817,64 +814,7 @@ endif
 set guifont=JetBrainsMono\ Nerd\ Font:h18
 
 set background=light
-if has("nvim") 
-    let g:edge_enable_italic = 1
-    let g:edge_transparent_background = 1
-    let g:edge_better_performance = 1
-    " let g:edge_disable_italic_comment = 1
-
-    function! s:edge_custom() abort
-      " Interface Elements
-      hi StatusLine   guifg=#ffffff   guibg=#43c464   gui=bold
-      hi StatusLineNC guifg=#9bd4a9   guibg=#51b069
-      hi VertSplit    guifg=#fafafa   guibg=#fafafa
-      hi CursorLine   guibg=#ffffa2
-      hi MatchParen   guibg=#cddae5
-      hi Visual       guibg=Yellow
-
-      hi Folded       guifg=#808080   guibg=#ffffff 
-      hi SignColumn   guibg=#ffffff 
-      hi LineNr       guifg=#c10b23 guibg=#ffffff 
-
-      " :call HexHighlight() to see the Color
-
-      " Status Line
-      hi User1 guifg=#ffdad8  guibg=#880c0e
-      hi User2 guifg=#000000  guibg=#F4905C
-      hi User3 guifg=#292b00  guibg=#f4f597
-      hi User4 guifg=#112605  guibg=#aefe7B
-      hi User5 guifg=#051d00  guibg=#7dcc7d
-      hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
-      hi User8 guifg=#ffffff  guibg=#5b7fbb
-      hi User9 guifg=#ffffff  guibg=#810085
-      hi User0 guifg=#ffffff  guibg=#094afe   
-
-      "
-      hi PmenuSel     guifg=#dddd00 guibg=#1f82cd
-      hi Pmenu        guifg=#fd8900 guibg=#ffffa2
-      hi CocFloating  guifg=#fd8900 guibg=#ffffa2
-      
-      " treesitter
-      hi TSString             guifg=#28C101 
-      hi TSKeywordFunction    guifg=#28C101  
-      hi TSVariable           guifg=#000000
-      hi TSParameter          guifg=#000000 
-      " hi TSComment            guifg=#FFBC97
-   
-      hi normal guibg=none ctermbg=none
-      hi endofbuffer guibg=none ctermbg=none    
-    endfunction
-
-    augroup EdgeCustom
-      autocmd!
-      autocmd ColorScheme edge call s:edge_custom()
-    augroup END
-
-    colorscheme edge
-else
-    colorscheme mycolor 
-endif
-hi CocHighlightText guibg=#f8edeb ctermbg=Cyan
+colorscheme mycolor
 
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
