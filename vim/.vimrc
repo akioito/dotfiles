@@ -374,7 +374,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   Plug 'hilarryxu/LeaderF-funky'
   Plug 'Yggdroot/LeaderF-marks'
 "}
-Plug 'farmergreg/vim-lastplace'
+" Plug 'farmergreg/vim-lastplace'
 " Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
           
@@ -438,11 +438,11 @@ let g:currentTag = '???'
 
 augroup my_autocmd_misc
   autocmd! 
-  autocmd CursorHold * let g:syntax = SyntaxItem()
-  if !has("nvim") 
-    autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  if has("nvim") 
+    autocmd CursorHold * let g:currentTag = nvim_treesitter#statusline() 
   else
-    autocmd CursorHold * let g:currentTag = nvim_treesitter#statusline()
+    autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+    autocmd CursorHold * let g:syntax = SyntaxItem() 
   end    
   " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
@@ -454,7 +454,9 @@ set statusline=%L\ column\ %c\ %p%%\
 " set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name  
 set statusline+=%3*\ %{g:currentTag}\ 
-set statusline+=%5*\ %=%{g:syntax}               " only for debug, use :echo SyntaxItem()
+if !has("nvim")
+    set statusline+=%5*\ %=%{g:syntax}             " for nvim use ,,  
+end
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
@@ -811,7 +813,7 @@ endif
 " set guifont=IBM\ Plex\ Mono:h17
 " set guifont=Fira\ Code\ Retina:h14
 " set guifont=Courier:h18
-set guifont=JetBrainsMono\ Nerd\ Font:h18
+set guifont=JetBrainsMono\ Nerd\ Font:h16
 
 set background=light
 colorscheme mycolor
