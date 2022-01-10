@@ -813,7 +813,7 @@ endif
 " set guifont=IBM\ Plex\ Mono:h17
 " set guifont=Fira\ Code\ Retina:h14
 " set guifont=Courier:h18
-set guifont=JetBrainsMono\ Nerd\ Font:h16
+set guifont=JetBrainsMono\ Nerd\ Font:h17
 
 set background=light
 colorscheme mycolor
@@ -849,7 +849,10 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
-if !has("nvim")
+if has("nvim")
+  set fillchars=eob:\  
+else
+  hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
   set linespace=-2 
 endif
