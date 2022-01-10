@@ -850,7 +850,7 @@ set virtualedit=all
 set shortmess=oO
 set number
 if has("nvim")
-  set fillchars=eob:\  
+  let &fillchars='eob: '
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
