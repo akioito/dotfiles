@@ -40,6 +40,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}  
 
 Plug 'osyo-manga/vim-watchdogs' 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'thinca/vim-quickrun'
 Plug 'osyo-manga/shabadou.vim'
 Plug 'KazuakiM/vim-qfsigns'
