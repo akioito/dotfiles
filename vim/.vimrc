@@ -209,7 +209,9 @@ noremap jd nope " When not supported...
 
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
-
+  set foldlevel=999 
+  nmap fj za
+  
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
@@ -377,7 +379,6 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   Plug 'hilarryxu/LeaderF-funky'
   Plug 'Yggdroot/LeaderF-marks'
 "}
-" Plug 'farmergreg/vim-lastplace'
 " Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'                                      
           
@@ -448,7 +449,7 @@ augroup my_autocmd_misc
     autocmd CursorHold * let g:syntax = SyntaxItem() 
   end    
   " Go to last file/position.
-  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zm") | endif
+  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zz") | endif
   au FocusGained * checktime
 augroup end
 
@@ -567,13 +568,13 @@ map <SwipeDown>    <C-b>
 nnoremap bd :bdelete
 
 if has("gui_macvim") || has("gui_vimr") 
-  nnoremap <D-j>           :cn<cr>zmkj
-  nnoremap <D-k>           :cp<cr>zmkj
-  nnoremap <C-j>           :cn<cr>zmkj
-  nnoremap <C-k>           :cp<cr>zmkj 
+  nnoremap <D-j>           :cn<cr>kj
+  nnoremap <D-k>           :cp<cr>kj
+  nnoremap <C-j>           :cn<cr>kj
+  nnoremap <C-k>           :cp<cr>kj 
 else
-  nnoremap <C-j>           :cn<cr>zmkj
-  nnoremap <C-k>           :cp<cr>zmkj
+  nnoremap <C-j>           :cn<cr>kj
+  nnoremap <C-k>           :cp<cr>kj
 endif
 
 nnoremap <leader>v       0<C-v>$
