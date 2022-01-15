@@ -207,6 +207,8 @@ augroup coc
 augroup end 
 noremap jd nope " When not supported...
 
+Plug 'kalekundert/vim-coiled-snake'
+Plug 'Konfekt/FastFold'
 
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
