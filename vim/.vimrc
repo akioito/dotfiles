@@ -662,8 +662,8 @@ augroup my_autocmd
     autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
 
     " Fast Cursor / nocursorline in Insert Mode
-    autocmd CursorHold * setlocal cursorline
-    autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
+    " autocmd CursorHold * setlocal cursorline
+    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif 
     
     " ESC to not append 'g' when save in insert mode
     autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
@@ -677,8 +677,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end 
 
 " QuickFix Close or Search
