@@ -508,7 +508,7 @@ nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 " Back to tag equ CTR-T
 " Cursor movements / scroll relative 
 "  H - top         / zh or zt
-"  M - middle      / zm or zz
+"  M - middle      / zz
 "  L - Bottom      / zl or zb
 "nnoremap <C-[>     <C-t>
 "q: " Open cmd line history
@@ -552,8 +552,11 @@ nnoremap <leader>w :<C-u>w<cr>h
 inoremap <Space>w <Esc>:<C-u>w<cr>l
 
 noremap zh zt
-noremap zm zz
 noremap zl zb
+
+noremap zm zM m
+noremap zr zR
+
 nnoremap  b<Space> :b<Space>
 noremap! ¥ \
 " noremap! \ ¥
@@ -674,8 +677,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end 
 
 " QuickFix Close or Search
