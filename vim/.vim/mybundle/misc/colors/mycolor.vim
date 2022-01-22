@@ -12,6 +12,7 @@ let colors_name = "mycolor"
 
 " Interface Elements
 hi CursorLine   guibg=#ffffa2
+hi Cursor       guifg=#ffffff guibg=#f26c17
 hi endofbuffer  guibg=white 
 hi Folded       guifg=#808080   guibg=white 
 hi LineNr       guifg=#c10b23 guibg=#ffffff 
