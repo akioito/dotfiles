@@ -571,7 +571,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || has("gui_vimr") 
+if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
   nnoremap <C-j>           :cn<cr>kj
