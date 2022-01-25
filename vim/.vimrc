@@ -858,7 +858,14 @@ set virtualedit=all
 set shortmess=oO
 set number
 if has("nvim")
-  let &fillchars='eob: '
+  let fillchars='eob: '
+  if exists('g:neovide')
+    let g:eovide_remember_window_size = v:true
+    let g:neovide_input_use_logo=v:true
+    noremap <D-s>  :w<CR>
+    noremap <D-c>  y
+    noremap <D-v>  hp 
+  endif
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
