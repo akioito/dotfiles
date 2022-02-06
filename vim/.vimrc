@@ -488,7 +488,7 @@ nnoremap jf        <ESC>
 inoremap jf        <ESC>l
 inoremap jk        <ESC>l
 inoremap <C-F>     <ESC>l
-inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
+" inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp  
