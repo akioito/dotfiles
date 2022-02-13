@@ -155,7 +155,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
 
-if has("gui_macvim")
+if has("gui_macvim") || has("gui_vimr") 
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
     " Shortcut for browser textarea -> Shit+Cmd+k
@@ -302,6 +302,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z', 
     \'Fzf-quickfix                      |:Quickfix',
+    \'GhostStart                        |:GhostStart',
     \'GrepBuffer word at cursor         |<F3>',
     \'ITerm                             |:Iterm',
     \'Ls files in current dir           |:LS',  
@@ -314,6 +315,9 @@ Plug 'laher/fuzzymenu.vim'
     \'PlugUpdate                        |:PlugUpdate', 
     \'Projects            <C-P> or <F5> |<Space>p',
     \'Reveal in Finder                  |:Reveal',  
+    \'Tableize - Convert from CSV       |:Tableize',
+    \'TableModeToggle                   |:TableModeToggle',
+    \'TodoQuickFix                      |:TodoQuickFix',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
