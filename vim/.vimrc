@@ -16,6 +16,7 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'phaazon/hop.nvim'
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+  Plug 'm-demare/hlargs.nvim'
 endif
 
 if system('arch') == "arm64"

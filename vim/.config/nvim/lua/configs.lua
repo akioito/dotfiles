@@ -28,4 +28,16 @@ require('hop').setup()
     map('',  't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
     map('',  'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 
+require('hlargs').setup {
+  color = "#FA58B6",
+  excluded_filetypes = {},
+  paint_arg_declarations = true,
+  paint_arg_usages = true,
+  performance = {
+    parse_delay = 1,
+    max_iterations = 400
+  }
+}
+require('hlargs').enable()
+
 -- End
