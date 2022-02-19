@@ -171,41 +171,52 @@ if has("gui_macvim") || has("gui_vimr")
           au User vim-ghost#connected call s:SetupGhostBuffer()
       augroup end
 end
+     
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
+  Plug 'ray-x/lsp_signature.nvim'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'onsails/lspkind-nvim'
+  Plug 'ray-x/cmp-treesitter'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'simrat39/rust-tools.nvim'
+else
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = [
+        \'coc-css',
+        \'coc-fzf-preview',
+        \'coc-html',
+        \'coc-json',
+        \'coc-lists',
+        \'coc-markdownlint',
+        \'coc-prettier', 
+        \'coc-pyright', 
+        \'coc-rust-analyzer', 
+        \'coc-snippets', 
+        \'coc-tsserver'
+        \]
+  Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+      inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+      nmap <silent> gd <Plug>(coc-definition)
+      nmap <silent> gy <Plug>(coc-type-definition)
+      nmap <silent> gi <Plug>(coc-implementation)
+      nmap <silent> gr <Plug>(coc-references)
+      nmap <silent> gh :call CocAction('doHover')<cr> 
 
-" Plug 'SirVer/ultisnips'  
-" Plug 'honza/vim-snippets'
+  let $BAT_THEME = 'GitHub'
+  let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-      \'coc-css',
-      \'coc-fzf-preview',
-      \'coc-html',
-      \'coc-json',
-      \'coc-lists',
-      \'coc-markdownlint',
-      \'coc-prettier', 
-      \'coc-pyright', 
-      \'coc-rust-analyzer', 
-      \'coc-snippets', 
-      \'coc-tsserver'
-      \]
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-    nmap <silent> gh :call CocAction('doHover')<cr> 
-
-let $BAT_THEME = 'GitHub'
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
-
-augroup coc
-  autocmd!
-  autocmd FileType qf call feedkeys("\<C-w>k")
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup end 
+  augroup coc
+    autocmd!
+    autocmd FileType qf call feedkeys("\<C-w>k")
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+  augroup end 
+endif
 noremap jd nope " When not supported...
 
 Plug 'kalekundert/vim-coiled-snake'

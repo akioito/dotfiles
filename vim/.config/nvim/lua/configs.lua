@@ -40,4 +40,93 @@ require('hlargs').setup {
 }
 require('hlargs').enable()
 
+require('lspconfig').pyright.setup{}
+
+local nvim_lsp = require('lspconfig')
+
+local server_configs = {
+  ["gopls"] = {
+  }
+}
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    if server_configs[server.name] then
+      opts = vim.tbl_deep_extend('force', opts, server_configs[server.name])
+    end
+    opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+    server:setup(opts)
+    vim.cmd [[ do User LspAttachBuffers ]]
+end)
+
+local cmp = require('cmp')
+
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col(".") - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
+end
+
+cmp.setup {
+    -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
+    formatting = {
+        format = function(entry, vim_item)
+            -- fancy icons and a name of kind
+            vim_item.kind = require("lspkind").presets.default[vim_item.kind] ..
+                                " " .. vim_item.kind
+            -- set a name for each source
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                ultisnips = "[UltiSnips]",
+                nvim_lua = "[Lua]",
+                path = "[Path]",
+                emoji = "[Emoji]"
+            })[entry.source.name]
+            return vim_item
+        end
+    },
+    sources = {
+        {name = 'buffer'}, 
+        {name = 'nvim_lsp'}, 
+        {name = "ultisnips"},
+        {name = "nvim_lua"}, 
+        {name = "path"},
+        {name = "emoji"}
+    },    
+    mapping = {
+        ['<Up>'] = cmp.mapping.select_prev_item(),
+        ['<Down>'] = cmp.mapping.select_next_item(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true
+        }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+          if cmp.visible() then
+            local entry = cmp.get_selected_entry()
+        if not entry then
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        else
+          cmp.confirm()
+        end
+          else
+            fallback()
+          end
+        end, {"i","s","c",}),
+    },
+    snippet = {expand = function(args) vim.fn["UltiSnips#Anon"](args.body) end},
+    completion = {completeopt = 'menu,menuone,noinsert'}
+}
+
+require('rust-tools').setup({})
+
 -- End
