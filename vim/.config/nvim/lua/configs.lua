@@ -96,7 +96,8 @@ cmp.setup {
         {name = "ultisnips"},
         {name = "nvim_lua"}, 
         {name = "path"},
-        {name = "emoji"}
+        {name = 'cmdline'},
+        {name = 'fish'}
     },    
     mapping = {
         ['<Up>'] = cmp.mapping.select_prev_item(),

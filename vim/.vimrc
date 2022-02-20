@@ -185,6 +185,7 @@ if has('nvim')
   Plug 'ray-x/cmp-treesitter'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'simrat39/rust-tools.nvim'
+  Plug 'mtoohey31/cmp-fish'
 else
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
