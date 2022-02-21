@@ -38,9 +38,19 @@ require('hlargs').setup {
 }
 require('hlargs').enable()
 
-require('lspconfig').pyright.setup{}
-
-local nvim_lsp = require('lspconfig')
+local servers = {
+    'cssls', 
+    'eslint',
+    'html', 
+    'pyright',
+    'rust_analyzer', 
+    'sumneko_lua', 
+    'svelte', 
+    'tsserver' 
+}
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup{}
+end
 
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
