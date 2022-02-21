@@ -2,13 +2,11 @@
 local map = vim.api.nvim_set_keymap
 
 require("nvim-treesitter.configs").setup {
+    yati = { enable = true },
     ensure_installed = "maintained",
     highlight = {
         enable = true,
-         disable = { "vim" },
-    },
-    indent = {
-        enable = true
+        disable = { "vim" },
     },
     rainbow = {
         enable = true,
@@ -82,7 +80,6 @@ cmp.setup {
             vim_item.menu = ({
                 buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
-                ultisnips = "[UltiSnips]",
                 nvim_lua = "[Lua]",
                 path = "[Path]",
                 emoji = "[Emoji]"
@@ -93,7 +90,6 @@ cmp.setup {
     sources = {
         {name = 'buffer'}, 
         {name = 'nvim_lsp'}, 
-        {name = "ultisnips"},
         {name = "nvim_lua"}, 
         {name = "path"},
         {name = 'cmdline'},
@@ -129,5 +125,6 @@ cmp.setup {
 }
 
 require('rust-tools').setup({})
+require("better_escape").setup({})
 
 -- End

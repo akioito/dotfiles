@@ -183,9 +183,10 @@ if has('nvim')
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'onsails/lspkind-nvim'
   Plug 'ray-x/cmp-treesitter'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'simrat39/rust-tools.nvim'
   Plug 'mtoohey31/cmp-fish'
+  Plug 'yioneko/nvim-yati'
+  Plug 'max397574/better-escape.nvim'
 else
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
@@ -501,10 +502,12 @@ nnoremap FF ,
 
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
-nnoremap jf        <ESC>
-inoremap jf        <ESC>l
-inoremap jk        <ESC>l
-inoremap <C-F>     <ESC>l
+if !has("nvim") 
+  nnoremap jf        <ESC>
+  inoremap jf        <ESC>l
+  inoremap jk        <ESC>l
+  inoremap <C-F>     <ESC>l
+endif
 " inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
