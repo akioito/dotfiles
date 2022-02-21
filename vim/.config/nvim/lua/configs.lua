@@ -42,18 +42,10 @@ require('lspconfig').pyright.setup{}
 
 local nvim_lsp = require('lspconfig')
 
-local server_configs = {
-  ["gopls"] = {
-  }
-}
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
     local opts = {}
-    if server_configs[server.name] then
-      opts = vim.tbl_deep_extend('force', opts, server_configs[server.name])
-    end
     opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
     server:setup(opts)
     vim.cmd [[ do User LspAttachBuffers ]]
 end)
