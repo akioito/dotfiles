@@ -14,7 +14,7 @@ let colors_name = "mycolor"
 hi CursorLine   guibg=#ffffa2
 hi Cursor       guifg=#ffffff guibg=#f26c17
 hi endofbuffer  guibg=white 
-hi Folded       guifg=#808080   guibg=white 
+hi Folded       guifg=#808080 guibg=white 
 hi LineNr       guifg=#c10b23 guibg=#ffffff 
 hi MatchParen   guibg=#cddae5
 hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
@@ -35,24 +35,24 @@ hi Special      guifg=#fd8900
 hi Function     guifg=Blue                      
 
 " Python Highlighting
-hi pythonBuiltinFunc     guifg=Red
-hi pythonBuiltinObj      guifg=Red
-hi pythonComment         guifg=#747d8f 
-hi pythonConditional     guifg=#9f40c0
-hi pythonFunction        guifg=#3f63b0    
-hi pythonMethod          guifg=Darkorange
-hi pythonNumber          guifg=Orangered
-hi pythonPreCondit       guifg=#487e52
-hi pythonRepeat          guifg=#0100C8
-hi pythonSpecial         guifg=Blue
-hi pythonStatement       guifg=#2f7a71
-hi pythonStatementSpecial guifg=#28C101  gui=bold "guibg=#fff8f8
-hi pythonString          guifg=#28C101 "#0BB634
-hi pythonTripleString    guifg=darkgreen
+hi pythonBuiltinFunc     guifg=Red gui=italic
+hi pythonBuiltinObj      guifg=Red gui=italic
+hi pythonComment         guifg=#747d8f gui=italic 
+hi pythonConditional     guifg=#9f40c0 gui=italic
+hi pythonFunction        guifg=#3f63b0 gui=italic    
+hi pythonMethod          guifg=Darkorange gui=italic
+hi pythonNumber          guifg=Orangered gui=italic
+hi pythonPreCondit       guifg=#487e52 gui=italic
+hi pythonRepeat          guifg=#0100C8 gui=italic
+hi pythonSpecial         guifg=Blue gui=italic
+hi pythonStatement       guifg=#2f7a71 gui=italic
+hi pythonStatementSpecial guifg=#28C101 gui=italic 
+hi pythonString          guifg=#28C101  gui=italic
+hi pythonTripleString    guifg=darkgreen gui=italic
 
 " HTML / JS
-hi htmlString            guifg=#0BB634
-hi jsStringS             guifg=#0BB634
+hi htmlString            guifg=#0BB634 gui=italic   
+hi jsStringS             guifg=#0BB634 gui=italic
 
 " :call HexHighlight() to see the Color
 
@@ -75,8 +75,8 @@ hi CocHighlightText guibg=#f8edeb ctermbg=Cyan
 
 " hi javascriptString    guifg=black    gui=bold
 hi javascriptAServices guifg=darkblue gui=bold
-hi jsString            guifg=#28C101 
-hi jsComment           guifg=#F09868  
+hi jsString            guifg=#28C101 gui=italic 
+hi jsComment           guifg=#F09868 gui=italic  
 
 " http://www.unpack.site/cash.me
 
@@ -84,17 +84,17 @@ hi jsComment           guifg=#F09868
 hi DiffAdd    ctermfg=233 ctermbg=194 guifg=#003300 guibg=#DDFFDD gui=none cterm=none
 hi DiffChange ctermbg=255  guibg=#ececec gui=none   cterm=none
 hi DiffText   ctermfg=233  ctermbg=189  guifg=#000033 guibg=#DDDDFF gui=none cterm=none
-hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none    cterm=none
+hi DiffDelete ctermfg=252 ctermbg=224   guifg=#DDCCCC guibg=#FFDDDD gui=none cterm=none
 " }}}
 
 " LeaderF
 highlight def Lf_hl_cursorline guifg=Black ctermfg=226
 
 " Rust
-hi rustCommentLineDoc       guifg=darkgreen
-hi rustSelf                 guifg=#0100C8    gui=bold
-hi rustString               guifg=#28C101 
-hi rustCommentLine          guifg=#F09868 
+hi rustCommentLineDoc       guifg=darkgreen gui=italic
+hi rustSelf                 guifg=#0100C8 gui=italic
+hi rustString               guifg=#28C101 gui=italic 
+hi rustCommentLine          guifg=#F09868 gui=italic 
 
 " Go
 hi goString                 guifg=#28C101  
@@ -102,11 +102,11 @@ hi goRawString              guifg=#28C101
 hi goSameId                 guibg=#f4f597
 
 " TypeScript
-hi typescriptString               guifg=#28C101
-hi typescriptStringD              guifg=#28C101  
-hi typescriptDocComment           guifg=darkgreen
-hi typescriptLineComment          guifg=#F09868
-hi typescriptDocTags              guifg=#690dad 
+hi typescriptString               guifg=#28C101 gui=italic
+hi typescriptStringD              guifg=#28C101 gui=italic  
+hi typescriptDocComment           guifg=darkgreen gui=italic
+hi typescriptLineComment          guifg=#F09868 gui=italic
+hi typescriptDocTags              guifg=#690dad gui=italic 
 
 " vem-tabline
 highlight VemTablineNormal           term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none 
@@ -115,18 +115,19 @@ highlight VemTablineNumber           term=reverse cterm=none ctermfg=239 ctermbg
 highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 
 " treesitter
-hi jsLineComment guifg=#F09868   
-hi jsCommonJS    guifg=#ff00ff 
+hi jsLineComment guifg=#F09868 gui=italic   
+hi jsCommonJS    guifg=#ff00ff gui=italic 
 
-hi TSComment            guifg=#747d8f
-hi TSConditional        guifg=#0100C8  
-hi TSConstBuiltin       guifg=#2f7a71 
-hi TSConstant           guifg=#c34146
-hi TSKeywordFunction    guifg=#28C101
-hi TSMethod             guifg=#3f63b0
-hi TSString             guifg=#28C101 
-hi TSType               guifg=#ae6b09 
-hi TSTypeBuiltin        guifg=#ae6b09
-hi TSVariableBuiltin    guifg=#0100C8
+hi TSComment            guifg=#747d8f gui=italic
+hi TSConditional        guifg=#0100C8 gui=italic  
+hi TSConstBuiltin       guifg=#2f7a71 gui=italic 
+hi TSConstant           guifg=#c34146 gui=italic
+hi TSKeywordFunction    guifg=#28C101 gui=italic
+hi TSMethod             guifg=#3f63b0 gui=italic
+hi TSString             guifg=#28C101 gui=italic 
+hi TSType               guifg=#ae6b09 gui=italic 
+hi TSTypeBuiltin        guifg=#ae6b09 gui=italic
+hi TSVariableBuiltin    guifg=#0100C8 gui=italic
+hi TSVariable                         gui=italic
 
 " End
