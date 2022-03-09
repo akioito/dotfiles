@@ -17,7 +17,8 @@ if has("nvim")
   Plug 'phaazon/hop.nvim'
   Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
   Plug 'm-demare/hlargs.nvim'
-  Plug 'max397574/better-escape.nvim'
+  Plug 'nathom/filetype.nvim'
+  " Plug 'max397574/better-escape.nvim'
 endif
 
 if system('arch') == "arm64"

@@ -37,6 +37,7 @@ require('hlargs').setup {
   }
 }
 require('hlargs').enable()
-require("better_escape").setup({})
+require("filetype").setup({})  
+-- require("better_escape").setup({})
 
 -- End
