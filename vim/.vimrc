@@ -22,10 +22,12 @@ if has("nvim")
 endif
 
 if system('arch') == "arm64"
-    let g:python3_host_prog = '/opt/homebrew/bin/python3'  
+    if has("nvim")
+      let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"  
+    endif
     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
 else
-    let g:python3_host_prog =  $HOME . "/.pyenv/versions/neovim3/bin/python3"
+    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
     let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
 endif
 
