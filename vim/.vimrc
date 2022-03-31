@@ -686,8 +686,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup end 
 
 " QuickFix Close or Search
@@ -872,7 +872,7 @@ if has("nvim")
     let g:neovide_input_use_logo=v:true
     noremap <D-s>  :w<CR>
     noremap <D-c>  y
-    noremap <D-v>  hp 
+    noremap <D-v>  hp
   endif
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
