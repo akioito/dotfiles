@@ -15,7 +15,6 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'phaazon/hop.nvim'
-  Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
   Plug 'm-demare/hlargs.nvim'
   Plug 'nathom/filetype.nvim'
   " Plug 'max397574/better-escape.nvim'
@@ -247,11 +246,7 @@ let g:NERDTreeMouseMode=3
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
-if has("nvim")
-  nnoremap <F6> :<C-u>CHADopen<CR>
-else
   nnoremap <F6> :call MyNerdToggle()<CR>  
-endif
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
