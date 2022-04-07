@@ -894,4 +894,8 @@ if has('termguicolors')
     set termguicolors
 endif
 
+" Add a bit extra margin to the left
+set foldcolumn=1
+highlight FoldColumn guibg=white guifg=blue
+
 " End
