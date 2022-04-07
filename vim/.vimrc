@@ -448,9 +448,12 @@ augroup my_autocmd_misc
   else
     autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
     autocmd CursorHold * let g:syntax = SyntaxItem() 
+    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
   end    
   " Go to last file/position.
-  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>zz") | endif
+  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
+  " Return to last edit position when opening files (You want this!)
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   au FocusGained * checktime
 augroup end
 
