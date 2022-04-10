@@ -865,6 +865,9 @@ set shortmess=oO
 set number
 if has("nvim")
   let fillchars='eob: '
+  " Add a bit extra margin to the left
+  set foldcolumn=1
+  highlight FoldColumn guibg=white guifg=blue   
   if exists('g:neovide')
     let g:eovide_remember_window_size = v:true
     let g:neovide_input_use_logo=v:true
@@ -896,9 +899,5 @@ set vb t_vb=
 if has('termguicolors')
     set termguicolors
 endif
-
-" Add a bit extra margin to the left
-set foldcolumn=1
-highlight FoldColumn guibg=white guifg=blue
 
 " End
