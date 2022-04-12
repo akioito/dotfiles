@@ -37,6 +37,7 @@ if has("gui_macvim") || has("gui_vimr")
   vnoremap <BS> d
 endif
 
+Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'Yggdroot/indentLine' 
 "   let g:indentLine_color_gui = '#EFEFEF'
 "   let g:indentLine_fileType = ['html', 'python']
