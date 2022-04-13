@@ -549,7 +549,7 @@ inoremap <D-s>  <ESC>:w<CR>
 "  :TodoQuickFix
 
 if has("clipboard")
-  set clipboard^=unnamed,unnamedplus
+  set clipboard+=unnamedplus
 endif
    
 " neovim paste 
@@ -875,6 +875,7 @@ if has("nvim")
     noremap <D-s>  :w<CR>
     noremap <D-c>  y
     noremap <D-v>  hp
+    inoremap <D-v>  <ESC>p 
   endif
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
