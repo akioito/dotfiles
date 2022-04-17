@@ -115,7 +115,7 @@ Plug 'tomtom/tcomment_vim' "{
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
 Plug 'mkitt/browser-refresh.vim'
@@ -204,7 +204,7 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 augroup coc
   autocmd!
   autocmd FileType qf call feedkeys("\<C-w>k")
-  " autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end 
 
 noremap jd nope " When not supported...
