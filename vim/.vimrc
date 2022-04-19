@@ -15,9 +15,9 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'phaazon/hop.nvim'
-  Plug 'm-demare/hlargs.nvim'
+  " Plug 'm-demare/hlargs.nvim'  " input problem with vimr, quick input  test -> ttt
   Plug 'nathom/filetype.nvim'
-  " Plug 'max397574/better-escape.nvim'
+  Plug 'max397574/better-escape.nvim'
 endif
 
 if system('arch') == "arm64"
@@ -204,7 +204,7 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 augroup coc
   autocmd!
   autocmd FileType qf call feedkeys("\<C-w>k")
-  autocmd CursorHold * silent call CocActionAsync('highlight')
+  " autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end 
 
 noremap jd nope " When not supported...
@@ -868,7 +868,7 @@ if has("nvim")
   let fillchars='eob: '
   " Add a bit extra margin to the left
   " set foldcolumn=1
-  " highlight FoldColumn guibg=white guifg=blue   
+  highlight FoldColumn guibg=white guifg=blue   
   if exists('g:neovide')
     let g:eovide_remember_window_size = v:true
     let g:neovide_input_use_logo=v:true
