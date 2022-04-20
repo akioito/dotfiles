@@ -15,9 +15,7 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'phaazon/hop.nvim'
-  " Plug 'm-demare/hlargs.nvim'  " input problem with vimr, quick input  test -> ttt
   Plug 'nathom/filetype.nvim'
-  Plug 'max397574/better-escape.nvim'
 endif
 
 if system('arch') == "arm64"
