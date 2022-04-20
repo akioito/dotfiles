@@ -185,7 +185,7 @@ let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-markdownlint',
       \'coc-prettier', 
-      \'coc-pyright', 
+      \'coc-jedi',
       \'coc-rust-analyzer', 
       \'coc-snippets', 
       \'coc-tsserver'
@@ -204,7 +204,7 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 augroup coc
   autocmd!
   autocmd FileType qf call feedkeys("\<C-w>k")
-  " autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end 
 
 noremap jd nope " When not supported...
