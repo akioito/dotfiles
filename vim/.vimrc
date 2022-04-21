@@ -181,6 +181,7 @@ let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-markdownlint',
       \'coc-prettier', 
+      \'coc-pyright',
       \'coc-rust-analyzer', 
       \'coc-snippets', 
       \'coc-tsserver'
