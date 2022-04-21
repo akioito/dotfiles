@@ -880,7 +880,7 @@ augroup FastEscape
     au InsertEnter * set timeoutlen=20
     au InsertLeave * set timeoutlen=500
 augroup END
-" set updatetime=300
+set updatetime=300
 set noundofile
 
 set breakindent
