@@ -53,9 +53,9 @@ Plug 'dannyob/quickfixstatus'
   \        "runner/vimproc/updatetime" : 40,
   \        'hook/qfsigns_update/enable_exit':   1,
   \        'hook/qfsigns_update/priority_exit': 3,},}
-  " let g:quickrun_config["python/watchdogs_checker"] = {
-  " \	"type" : "watchdogs_checker/pyflakes"
-  " \}
+  let g:quickrun_config["python/watchdogs_checker"] = {
+  \	"type" : "watchdogs_checker/pyflakes"
+  \}
     let g:quickrun_config["javascript/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/eslint"
   \}  
@@ -101,11 +101,11 @@ Plug 'jiangmiao/auto-pairs' "{
   " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> :TComment<cr>
- vnoremap <D-1> gv:TComment<cr>
+ vnoremap <D-1> <ESC>gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
 
  noremap  <Leader>k :TComment<cr>
- vnoremap <Leader>k gv:TComment<cr>
+ vnoremap <Leader>k <ESC>gv:TComment<cr>
  inoremap <Leader>k <ESC>:TComment<cr>
  let g:tcomment#filetype#guess_svelte = 1 
 "} 
