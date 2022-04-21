@@ -100,12 +100,12 @@ Plug 'jiangmiao/auto-pairs' "{
 " Plug 'rstacruz/sparkup' 
   " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
- noremap  <D-1> <ESC>:TComment<cr>
- vnoremap <D-1> <ESC>gv:TComment<cr>
+ noremap  <D-1> :TComment<cr>
+ vnoremap <D-1> gv:TComment<cr>
  inoremap <D-1> <ESC>:TComment<cr> 
 
- noremap  <Leader>k <ESC>:TComment<cr>
- vnoremap <Leader>k <ESC>gv:TComment<cr>
+ noremap  <Leader>k :TComment<cr>
+ vnoremap <Leader>k gv:TComment<cr>
  inoremap <Leader>k <ESC>:TComment<cr>
  let g:tcomment#filetype#guess_svelte = 1 
 "} 
@@ -882,6 +882,9 @@ endif
 set lazyredraw                          " to avoid scrolling problems
 set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
+set timeout
+set ttimeout
+set timeoutlen=500
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=20
