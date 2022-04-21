@@ -140,9 +140,7 @@ Plug 'henrik/vim-reveal-in-finder'
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
   let g:tagbar_width       = 25
-  if !has("nvim")
-    nnoremap <C-@>      :TagbarToggle<CR> 
-  endif
+  nnoremap <C-@>      :TagbarToggle<CR> 
 "}
 
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
@@ -382,9 +380,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
 Plug 'tpope/vim-sensible'                                      
           
 Plug '~/.vim/mybundle/misc' 
-if !has("nvim")
 Plug '~/.vim/mybundle/tagbar'
-endif
 Plug '~/.vim/mybundle/sbd.vim'
 " Plug '~/.vim/mybundle/tablify'
 Plug '~/.vim/mybundle/vim-command-w' 
@@ -441,13 +437,9 @@ let g:currentTag = '???'
 
 augroup my_autocmd_misc
   autocmd! 
-  if has("nvim") 
-    autocmd CursorHold * let g:currentTag = nvim_treesitter#statusline() 
-  else
-    autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
-    autocmd CursorHold * let g:syntax = SyntaxItem() 
-    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
-  end    
+  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+  autocmd CursorHold * let g:syntax = SyntaxItem() 
+  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
   " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
@@ -649,9 +641,7 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead *.dyon set filetype=rust
     autocmd BufNewFile,BufRead *.rn set filetype=rust
-    if !has("nvim")
-      autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
-    endif
+    autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
     " Problem with Japanese IME / 例: 中 (tyuu) 
     autocmd VimEnter * set imdisable
