@@ -53,9 +53,9 @@ Plug 'dannyob/quickfixstatus'
   \        "runner/vimproc/updatetime" : 40,
   \        'hook/qfsigns_update/enable_exit':   1,
   \        'hook/qfsigns_update/priority_exit': 3,},}
-  let g:quickrun_config["python/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/pyflakes"
-  \}
+  " let g:quickrun_config["python/watchdogs_checker"] = {
+  " \	"type" : "watchdogs_checker/pyflakes"
+  " \}
     let g:quickrun_config["javascript/watchdogs_checker"] = {
   \	"type" : "watchdogs_checker/eslint"
   \}  
@@ -183,7 +183,6 @@ let g:coc_global_extensions = [
       \'coc-lists',
       \'coc-markdownlint',
       \'coc-prettier', 
-      \'coc-jedi',
       \'coc-rust-analyzer', 
       \'coc-snippets', 
       \'coc-tsserver'
@@ -884,8 +883,9 @@ set lazyredraw                          " to avoid scrolling problems
 set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
 set timeout ttimeout         " separate mapping and keycode timeouts
-set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
-set ttimeoutlen=20           " keycode timeout 20ms
+set timeoutlen=300 ttimeoutlen=20
+" set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
+" set ttimeoutlen=20           " keycode timeout 20ms
 set updatetime=300
 set noundofile
 
