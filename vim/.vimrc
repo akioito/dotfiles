@@ -882,11 +882,12 @@ endif
 set lazyredraw                          " to avoid scrolling problems
 set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
-set timeout ttimeout         " separate mapping and keycode timeouts
-set timeoutlen=300 ttimeoutlen=20
-" set timeoutlen=300           " mapping timeout 500ms  (adjust for preference)
-" set ttimeoutlen=20           " keycode timeout 20ms
-set updatetime=300
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=20
+    au InsertLeave * set timeoutlen=500
+augroup END
+" set updatetime=300
 set noundofile
 
 set breakindent
