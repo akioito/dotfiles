@@ -186,10 +186,12 @@ Plug 'mattn/vim-lsp-settings'
   
 
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
-  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
   let g:ycm_min_num_of_chars_for_completion = 3
-  set completeopt-=preview
-  let g:ycm_use_ultisnips_completer = 1
+  if has("nvim")
+    set completeopt-=preview
+  endif
+  let g:ycm_autoclose_preview_window_after_insertion = 1
 
 noremap jd nope " When not supported...
 
