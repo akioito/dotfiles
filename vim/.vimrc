@@ -176,14 +176,13 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+  noremap gr   :LspReferences<cr>
+  noremap gd   :LspDefinition<cr>
+  noremap gh   :LspHover<cr>
   augroup vim-lsp
     autocmd!
-    autocmd FileType python noremap gr   :LspReferences<cr>
-    autocmd FileType python noremap gd   :LspDefinition<cr>
-    autocmd FileType python noremap gh   :LspHover<cr>
     autocmd FileType qf call feedkeys("\<C-w>k")
   augroup end 
-  
 
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
   let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
@@ -865,11 +864,11 @@ set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
 set timeout
 set ttimeout
-set timeoutlen=500
+set timeoutlen=300
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=20
-    au InsertLeave * set timeoutlen=500
+    au InsertLeave * set timeoutlen=300
 augroup END
 set updatetime=300
 set noundofile
