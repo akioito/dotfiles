@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 
 require("nvim-treesitter.configs").setup {
     yati = { enable = true },
-    ensure_installed = "maintained",
+    -- ensure_installed = "all",
     highlight = {
         enable = true,
         disable = { "vim" },

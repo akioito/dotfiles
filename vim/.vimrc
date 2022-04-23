@@ -151,8 +151,6 @@ Plug 'chr4/nginx.vim'
 Plug 'Galicarnax/vim-regex-syntax'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
- 
-
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1 
 
@@ -172,36 +170,26 @@ if has("gui_macvim") || has("gui_vimr")
       augroup end
 end
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-      \'coc-css',
-      \'coc-fzf-preview',
-      \'coc-html',
-      \'coc-json',
-      \'coc-lists',
-      \'coc-markdownlint',
-      \'coc-prettier', 
-      \'coc-pyright',
-      \'coc-rust-analyzer', 
-      \'coc-snippets', 
-      \'coc-tsserver'
-      \]
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gi <Plug>(coc-implementation)
-    nmap <silent> gr <Plug>(coc-references)
-    nmap <silent> gh :call CocAction('doHover')<cr> 
-
 let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
-augroup coc
-  autocmd!
-  autocmd FileType qf call feedkeys("\<C-w>k")
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-augroup end 
+" vim-lsp (Hover and highlight word at cursor references)
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+  augroup vim-lsp
+    autocmd!
+    autocmd FileType python noremap gr   :LspReferences<cr>
+    autocmd FileType python noremap gd   :LspDefinition<cr>
+    autocmd FileType python noremap gh   :LspHover<cr>
+    autocmd FileType qf call feedkeys("\<C-w>k")
+  augroup end 
+  
+
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
+  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+  let g:ycm_min_num_of_chars_for_completion = 3
+  set completeopt-=preview
+  let g:ycm_use_ultisnips_completer = 1
 
 noremap jd nope " When not supported...
 
@@ -489,7 +477,7 @@ endif
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp  
-nnoremap <ESC>  <ESC>
+" nnoremap <ESC>  <ESC>
 nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 inoremap <D-s>  <ESC>:w<CR>
 
