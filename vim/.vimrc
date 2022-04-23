@@ -176,6 +176,10 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+  let g:lsp_diagnostics_echo_cursor = 1
+  let g:lsp_diagnostics_float_cursor = 1
+  let g:lsp_diagnostics_highlights_enabled = 0
+  let g:lsp_diagnostics_virtual_text_enabled = 0
   noremap gr   :LspReferences<cr>
   noremap gd   :LspDefinition<cr>
   noremap gh   :LspHover<cr>
@@ -184,15 +188,8 @@ Plug 'mattn/vim-lsp-settings'
     autocmd FileType qf call feedkeys("\<C-w>k")
   augroup end 
 
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
-  let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-  let g:ycm_min_num_of_chars_for_completion = 3
-  if has("nvim")
-    set completeopt-=preview
-  endif
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-
-noremap jd nope " When not supported...
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
@@ -560,8 +557,8 @@ nnoremap bd :bdelete
 if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
-  nnoremap <C-j>           :cn<cr>kj
-  nnoremap <C-k>           :cp<cr>kj 
+  nnoremap <C-j>           :LspNextDiagnostic<cr>
+  nnoremap <C-k>           :LspPreviousDiagnostic<cr> 
 else
   nnoremap <C-j>           :cn<cr>kj
   nnoremap <C-k>           :cp<cr>kj
