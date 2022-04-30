@@ -796,7 +796,11 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR> 
 endif
 
-set guifont=Monaco:h17    
+if exists('g:neovide')
+  set guifont=Monaco:h17 
+else
+  set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
+endif
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
@@ -854,7 +858,7 @@ if has("nvim")
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
-  set linespace=-2 
+  " set linespace=-2 
 endif
 set lazyredraw                          " to avoid scrolling problems
 set regexpengine=0                      " to avoid nvim excessive redrawing
