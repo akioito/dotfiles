@@ -35,6 +35,7 @@ if has("gui_macvim") || has("gui_vimr")
   vnoremap <BS> d
 endif
 
+Plug 'rhysd/conflict-marker.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'Yggdroot/indentLine' 
 "   let g:indentLine_color_gui = '#EFEFEF'
@@ -797,7 +798,7 @@ if has("gui_macvim")
 endif
 
 if exists('g:neovide')
-  set guifont=Monaco:h17 
+  set guifont=Monaco:h17
 else
   set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
 endif
