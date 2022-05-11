@@ -14,7 +14,6 @@ if has("nvim")
   Plug 'folke/todo-comments.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-  Plug 'phaazon/hop.nvim'
   Plug 'nathom/filetype.nvim'
 endif
 
@@ -34,7 +33,7 @@ if has("gui_macvim") || has("gui_vimr")
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR> 
   vnoremap <BS> d
 endif
-
+  
 Plug 'rhysd/conflict-marker.vim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'Yggdroot/indentLine' 
