@@ -524,6 +524,9 @@ inoremap <D-s>  <ESC>:w<CR>
 "  - ctr+r* paste to command line or in insert mode
 "  :TodoQuickFix
 
+" Save read-only file :w!!<enter> 
+cmap w!! w !sudo tee % >/dev/null
+
 if has("clipboard")
   set clipboard+=unnamedplus
 endif
