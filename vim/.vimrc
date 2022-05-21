@@ -801,6 +801,7 @@ endif
 
 if exists('g:neovide')
   set guifont=Monaco:h17
+  set title
 else
   set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
 endif
