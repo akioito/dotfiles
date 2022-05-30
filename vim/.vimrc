@@ -617,7 +617,7 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd! 
-    " autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
+    autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
     " autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
     
