@@ -186,10 +186,17 @@ Plug 'mattn/vim-lsp-settings'
   augroup vim-lsp
     autocmd!
     autocmd FileType qf call feedkeys("\<C-w>k")
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+        \ 'name': 'file',
+        \ 'allowlist': ['*'],
+        \ 'priority': 10,
+        \ 'completor': function('asyncomplete#sources#file#completor')
+        \ }))
   augroup end 
 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
 
 Plug 'kalekundert/vim-coiled-snake'
 Plug 'Konfekt/FastFold'
@@ -508,6 +515,7 @@ inoremap <D-s>  <ESC>:w<CR>
 " Smart way to move buffer
 " mvim -d -g filea fileb (vimdiff)
 "
+" Ctrl-X Ctrl-F Complete file
 " :GhostStart  (Cmd + shift + k)
 " :MarkdownPreview
 " :MarkdownPreviewStop
