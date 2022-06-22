@@ -893,7 +893,7 @@ set wildmenu
 set laststatus=2  
 set t_Co=256
 set vb t_vb=
-set list listchars=tab:»¯,trail:°,extends:»,precedes:«
+set list listchars=tab:»-,trail:°,extends:»,precedes:«
 hi NonText guifg=blue guibg=white
 if has('termguicolors')
     set termguicolors
