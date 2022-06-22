@@ -873,15 +873,13 @@ else
   " set linespace=-2 
 endif
 set lazyredraw                          " to avoid scrolling problems
-set regexpengine=0                      " to avoid nvim excessive redrawing
+" set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
-set timeout
-set ttimeout
-set timeoutlen=300
+set timeout timeoutlen=1200 ttimeoutlen=50
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=20
-    au InsertLeave * set timeoutlen=300
+    au InsertLeave * set timeoutlen=1200
 augroup END
 set updatetime=300
 set noundofile
