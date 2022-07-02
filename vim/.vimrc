@@ -861,12 +861,18 @@ if has("nvim")
   " set foldcolumn=1
   highlight FoldColumn guibg=white guifg=blue
   if exists('g:neovide')
-    let g:eovide_remember_window_size = v:true
-    let g:neovide_input_use_logo=v:true
+    let g:neovide_remember_window_size = v:true
     noremap <D-s>  :w<CR>
-    noremap <D-c>  y
-    noremap <D-v>  hp
-    inoremap <D-v>  <ESC>p
+    " noremap <D-c>  y
+    " noremap <D-v>  hp
+    " inoremap <D-v>  <ESC>p
+
+    " https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
+    let g:neovide_input_use_logo = 1
+    map <D-v> "+p<CR>
+    map! <D-v> <C-R>+
+    tmap <D-v> <C-R>+
+    vmap <D-c> "+y<CR>
   endif
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
