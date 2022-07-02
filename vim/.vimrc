@@ -809,10 +809,12 @@ endif
 
 if exists('g:neovide')
   "https://github.com/neovide/neovide/issues/913#issuecomment-1094876896
-  set guifont=Cascadia\ Mono\ PL:h18
+  " set guifont=Cascadia\ Mono\ PL:h18
+  set guifont=Lekton\ Nerd\ Font:h20
   set title
 else
-  set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
+  " set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
+  set guifont=Lekton\ Nerd\ Font:h20
 endif
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
