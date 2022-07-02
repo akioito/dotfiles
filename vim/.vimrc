@@ -808,7 +808,8 @@ if has("gui_macvim")
 endif
 
 if exists('g:neovide')
-  set guifont=Monaco:h17
+  "https://github.com/neovide/neovide/issues/913#issuecomment-1094876896
+  set guifont=Cascadia\ Mono\ PL:h18
   set title
 else
   set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
