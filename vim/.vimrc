@@ -436,10 +436,13 @@ augroup my_autocmd_misc
   if has("gui_macvim")
     autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
   endif
-  " Go to last file/position.
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " https://vi.stackexchange.com/questions/31782/jumping-to-last-position-when-reopening-file-how-to-place-line-in-center-instea
+  au BufWinEnter *
+                \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+                \ |   exe 'normal! g`"zz'
+                \ | endif
   autocmd FocusGained * checktime
 augroup end
 
