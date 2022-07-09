@@ -27,7 +27,7 @@ else
     let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
 endif
 
-if has("gui_macvim") || has("gui_vimr")
+if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>
@@ -154,7 +154,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1
 
-if has("gui_macvim") || has("gui_vimr")
+if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
     " Shortcut for browser textarea -> Shit+Cmd+k
@@ -870,9 +870,6 @@ if has("nvim")
   if exists('g:neovide')
     let g:neovide_remember_window_size = v:true
     noremap <D-s>  :w<CR>
-    " noremap <D-c>  y
-    " noremap <D-v>  hp
-    " inoremap <D-v>  <ESC>p
 
     " https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
     let g:neovide_input_use_logo = 1
