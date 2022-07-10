@@ -31,6 +31,7 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say '. shellescape(@x) .' &')<CR>
+  vnoremap <silent><C-l> "xy:call system('say '. shellescape(@x) .' &')<CR>
   vnoremap <BS> d
 endif
 
@@ -367,7 +368,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
     \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
 
-  Plug 'hilarryxu/LeaderF-funky'
+  " Plug 'hilarryxu/LeaderF-funky'
   Plug 'Yggdroot/LeaderF-marks'
 "}
 " Plug 'godlygeek/csapprox'
