@@ -15,12 +15,16 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'nathom/filetype.nvim'
 
-  Plug 'jinh0/eyeliner.nvim'
   Plug 'p00f/nvim-ts-rainbow'
 else
-  Plug 'rhysd/clever-f.vim'
   Plug 'frazrepo/vim-rainbow'
 endif
+
+Plug 'unblevable/quick-scope'
+  augroup qs_colors
+    autocmd!
+    autocmd ColorScheme * highlight QuickScopePrimary guifg='#f800fe' gui=bold ctermfg=155 cterm=underline
+  augroup END
 
 if system('arch') == "arm64"
     if has("nvim")
