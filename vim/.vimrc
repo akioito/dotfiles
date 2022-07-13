@@ -9,12 +9,17 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
      nmap ,, :TSHighlightCapturesUnderCursor<cr>
-  Plug 'p00f/nvim-ts-rainbow'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'folke/todo-comments.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'nathom/filetype.nvim'
+
+  Plug 'jinh0/eyeliner.nvim'
+  Plug 'p00f/nvim-ts-rainbow'
+else
+  Plug 'rhysd/clever-f.vim'
+  Plug 'frazrepo/vim-rainbow'
 endif
 
 if system('arch') == "arm64"
@@ -209,9 +214,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Alse used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'vmchale/just-vim'
-if !has("nvim")
-    Plug 'frazrepo/vim-rainbow'
-endif
 Plug 'airblade/vim-rooter'
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -243,7 +245,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
-Plug 'rhysd/clever-f.vim'
 
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'amadeus/vim-convert-color-to'
@@ -517,6 +518,7 @@ inoremap <D-s>  <ESC>:w<CR>
 " :%s/foo/bar/gc
 " gUw  : Change to end of current WORD from lower to upper
 " zR ulfold all
+" b start of current word
 " gi Resumes inserting at the last place
 " Smart way to move buffer
 " mvim -d -g filea fileb (vimdiff)
@@ -815,11 +817,9 @@ endif
 
 if exists('g:neovide')
   "https://github.com/neovide/neovide/issues/913#issuecomment-1094876896
-  " set guifont=Cascadia\ Mono\ PL:h18
   set guifont=Lekton\ Nerd\ Font:h20
   set title
 else
-  " set guifont=Cascadia\ Mono\ PL\ Regular\ Light:h18
   set guifont=Lekton\ Nerd\ Font:h20
 endif
 " set guifont=Ubuntu\ Mono:h18
