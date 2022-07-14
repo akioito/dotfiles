@@ -20,6 +20,4 @@ require('pqf').setup()
 
 require("filetype").setup({})  
 
-require('eyeliner').setup {}
-
 -- End
