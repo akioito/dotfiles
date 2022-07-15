@@ -190,6 +190,16 @@ Plug 'mattn/vim-lsp-settings'
   let g:lsp_diagnostics_float_cursor = 1
   let g:lsp_diagnostics_highlights_enabled = 0
   let g:lsp_diagnostics_virtual_text_enabled = 0
+  " https://github.com/mattn/vim-lsp-settings
+  let g:lsp_settings = {
+\   'pylsp-all': {
+\     'workspace_config': {
+\       'pylsp': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
   noremap gr   :LspReferences<cr>
   noremap gd   :LspDefinition<cr>
   noremap gh   :LspHover<cr>
