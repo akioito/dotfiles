@@ -52,40 +52,17 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-" Plug 'osyo-manga/vim-watchdogs'
-" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-" Plug 'thinca/vim-quickrun'
-" Plug 'osyo-manga/shabadou.vim'
-" Plug 'KazuakiM/vim-qfsigns'
-" Plug 'dannyob/quickfixstatus'
-"   let g:quickrun_config = {
-"   \    'watchdogs_checker/_' : {
-"   \        "runner/vimproc/updatetime" : 40,
-"   \        'hook/qfsigns_update/enable_exit':   1,
-"   \        'hook/qfsigns_update/priority_exit': 3,},}
-"   let g:quickrun_config["python/watchdogs_checker"] = {
-"   \	"type" : "watchdogs_checker/pyflakes"
-"   \}
-"     let g:quickrun_config["javascript/watchdogs_checker"] = {
-"   \	"type" : "watchdogs_checker/eslint"
-"   \}
-
 Plug 'dag/vim-fish'
-" Plug 'chrisbra/vim-diff-enhanced'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
 Plug 'liuchengxu/vista.vim'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'godlygeek/tabular'
 Plug 'rhysd/vim-gfm-syntax'
-" Plug 'thinca/vim-zenspace'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'cespare/vim-toml'
-" Plug 'keith/swift.vim'
 Plug 'tpope/vim-sleuth'
-" Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-surround' "{
 "   " Assuming | as a cursor
 "     " fo|o - ysiw' - 'foo'
@@ -99,16 +76,10 @@ Plug 'tpope/vim-sleuth'
 "   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
 "   " gvS' ･･･ visual surroud with char
 " "}
-" Plug 'machakann/vim-sandwich'
-  " saiw - add insert word
-  " sd / sdb - delete
-  " sr / sdb - replace
 Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
-" Plug 'rstacruz/sparkup'
-  " https://github.com/rstacruz/sparkup
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> :TComment<cr>
  vnoremap <D-1> <ESC>gv:TComment<cr>
@@ -123,7 +94,6 @@ Plug 'tomtom/tcomment_vim' "{
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
-" Plug 'mhinz/vim-signify'
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
 Plug 'mkitt/browser-refresh.vim'
@@ -135,9 +105,6 @@ Plug 'vim-scripts/grep.vim' "{
 
 Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
-" Plug 'andymass/vim-matchup' "{
-"   let g:matchup_matchparen_deferred = 1
-" "}
 " Plug 'junegunn/vim-easy-align' "{
 "   " Shift + V, select and Enter
 "   vnoremap <Enter> :EasyAlign
@@ -217,11 +184,6 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
-
-" Plug 'kalekundert/vim-coiled-snake'
-" Plug 'Konfekt/FastFold'
-"   set foldlevel=999
-"   nmap fj za
 
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
@@ -383,16 +345,13 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
     \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
 
-  " Plug 'hilarryxu/LeaderF-funky'
   Plug 'Yggdroot/LeaderF-marks'
 "}
-" Plug 'godlygeek/csapprox'
 Plug 'tpope/vim-sensible'
 
 Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
-" Plug '~/.vim/mybundle/tablify'
 Plug '~/.vim/mybundle/vim-command-w'
 
 call plug#end()
