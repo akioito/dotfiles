@@ -52,23 +52,23 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
-Plug 'osyo-manga/vim-watchdogs'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'thinca/vim-quickrun'
-Plug 'osyo-manga/shabadou.vim'
-Plug 'KazuakiM/vim-qfsigns'
-Plug 'dannyob/quickfixstatus'
-  let g:quickrun_config = {
-  \    'watchdogs_checker/_' : {
-  \        "runner/vimproc/updatetime" : 40,
-  \        'hook/qfsigns_update/enable_exit':   1,
-  \        'hook/qfsigns_update/priority_exit': 3,},}
-  let g:quickrun_config["python/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/pyflakes"
-  \}
-    let g:quickrun_config["javascript/watchdogs_checker"] = {
-  \	"type" : "watchdogs_checker/eslint"
-  \}
+" Plug 'osyo-manga/vim-watchdogs'
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'thinca/vim-quickrun'
+" Plug 'osyo-manga/shabadou.vim'
+" Plug 'KazuakiM/vim-qfsigns'
+" Plug 'dannyob/quickfixstatus'
+"   let g:quickrun_config = {
+"   \    'watchdogs_checker/_' : {
+"   \        "runner/vimproc/updatetime" : 40,
+"   \        'hook/qfsigns_update/enable_exit':   1,
+"   \        'hook/qfsigns_update/priority_exit': 3,},}
+"   let g:quickrun_config["python/watchdogs_checker"] = {
+"   \	"type" : "watchdogs_checker/pyflakes"
+"   \}
+"     let g:quickrun_config["javascript/watchdogs_checker"] = {
+"   \	"type" : "watchdogs_checker/eslint"
+"   \}
 
 Plug 'dag/vim-fish'
 " Plug 'chrisbra/vim-diff-enhanced'
@@ -79,7 +79,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'dhruvasagar/vim-table-mode'
 " Plug 'godlygeek/tabular'
 Plug 'rhysd/vim-gfm-syntax'
-Plug 'thinca/vim-zenspace'
+" Plug 'thinca/vim-zenspace'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'cespare/vim-toml'
@@ -99,7 +99,7 @@ Plug 'tpope/vim-sleuth'
 "   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
 "   " gvS' ･･･ visual surroud with char
 " "}
-Plug 'machakann/vim-sandwich'
+" Plug 'machakann/vim-sandwich'
   " saiw - add insert word
   " sd / sdb - delete
   " sr / sdb - replace
@@ -218,10 +218,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
 
-Plug 'kalekundert/vim-coiled-snake'
-Plug 'Konfekt/FastFold'
-  set foldlevel=999
-  nmap fj za
+" Plug 'kalekundert/vim-coiled-snake'
+" Plug 'Konfekt/FastFold'
+"   set foldlevel=999
+"   nmap fj za
 
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
