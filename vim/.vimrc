@@ -20,6 +20,8 @@ else
   Plug 'frazrepo/vim-rainbow'
 endif
 
+" https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
+Plug 'skanehira/gh.vim'
 Plug 'unblevable/quick-scope'
   augroup qs_colors
     autocmd!
