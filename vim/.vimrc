@@ -22,6 +22,9 @@ endif
 
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 Plug 'skanehira/gh.vim'
+Plug 'itchyny/vim-cursorword'
+    let g:cursorword_highlight = 0
+    let g:cursorword_delay = 300
 Plug 'gisphm/vim-gitignore'
 Plug 'unblevable/quick-scope'
   augroup qs_colors
@@ -351,7 +354,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   Plug 'Yggdroot/LeaderF-marks'
 "}
 Plug 'tpope/vim-sensible'
-
+Plug 'godlygeek/csapprox'
 Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
@@ -657,6 +660,8 @@ augroup my_autocmd
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave * let g:cursorword = 1
+    autocmd BufLeave,FocusLost,InsertEnter   * let g:cursorword = 0
 augroup end
 
 " QuickFix Close or Search
@@ -881,7 +886,9 @@ set laststatus=2
 set t_Co=256
 set vb t_vb=
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
-hi NonText guifg=blue guibg=white
+highlight NonText guifg=blue guibg=white
+highlight CursorWord0 guibg=#ffffa2
+highlight CursorWord1 guifg=#ffffa2
 if has('termguicolors')
     set termguicolors
 endif
