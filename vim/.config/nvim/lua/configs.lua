@@ -18,6 +18,6 @@ require("nvim-treesitter.configs").setup {
 require("todo-comments").setup {}
 require('pqf').setup()
 
-require("filetype").setup({})  
+require("filetype").setup({})
 
 -- End

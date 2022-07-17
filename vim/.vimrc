@@ -424,7 +424,7 @@ augroup my_autocmd_misc
 augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
-set statusline=%L\ column\ %c\ %p%%\
+set statusline=%L\ column\ %c\ %p%%
 " set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name
 set statusline+=%3*\ %{g:currentTag}\
@@ -642,9 +642,9 @@ augroup my_autocmd
     " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
 
     " ESC to not append 'g' when save in insert mode
-    autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
-    autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
-    autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
+    " autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
+    " autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
+    " autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
