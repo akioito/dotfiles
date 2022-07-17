@@ -11,7 +11,7 @@ endif
 let colors_name = "mycolor"
 
 " Interface Elements
-hi CursorLine   guibg=#ffffa2
+" hi CursorLine   guibg=#ffffa2
 hi Cursor       guifg=#ffffff guibg=#f26c17
 hi endofbuffer  guibg=white 
 hi Folded       guifg=#808080 guibg=white 

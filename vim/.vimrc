@@ -660,8 +660,8 @@ augroup my_autocmd
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    autocmd BufEnter,FocusGained,InsertLeave * let g:cursorword = 1
-    autocmd BufLeave,FocusLost,InsertEnter   * let g:cursorword = 0
+    autocmd InsertLeave * let g:cursorword = 1
+    autocmd InsertEnter * let g:cursorword = 0
 augroup end
 
 " QuickFix Close or Search
