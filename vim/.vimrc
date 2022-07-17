@@ -22,6 +22,7 @@ endif
 
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 Plug 'skanehira/gh.vim'
+Plug 'gisphm/vim-gitignore'
 Plug 'unblevable/quick-scope'
   augroup qs_colors
     autocmd!
@@ -622,6 +623,7 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead *.dyon set filetype=rust
     autocmd BufNewFile,BufRead *.rn set filetype=rust
+    autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
     autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
     " Problem with Japanese IME / 例: 中 (tyuu)
