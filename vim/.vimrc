@@ -15,6 +15,7 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'nathom/filetype.nvim'
   Plug 'yioneko/nvim-yati'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
 
   Plug 'p00f/nvim-ts-rainbow'
 else
@@ -432,7 +433,7 @@ augroup end
 set statusline=%L\ column\ %c\ %p%%
 " set statusline +=\ %{fugitive#statusline()}
 set statusline+=%5*\ %f\                           " file name
-set statusline+=%3*\ %{g:currentTag}\
+set statusline+=%3*\ %{g:currentTag}
 if !has("nvim")
     set statusline+=%5*\ %=%{g:syntax}             " for nvim use ,,
 end
