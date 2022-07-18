@@ -19,6 +19,7 @@ require("todo-comments").setup {}
 require('pqf').setup()
 require('treesitter-context').setup()
 require('scrollview').setup()
+require('nvim-lastplace').setup()
 
 require("filetype").setup({})
 
