@@ -16,6 +16,7 @@ if has("nvim")
   Plug 'nathom/filetype.nvim'
   Plug 'yioneko/nvim-yati'
   Plug 'nvim-treesitter/nvim-treesitter-context'
+  Plug 'dstein64/nvim-scrollview'
 
   Plug 'p00f/nvim-ts-rainbow'
 else
@@ -891,6 +892,7 @@ set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 highlight CursorWord0 guibg=#ffffa2
 highlight CursorWord1 guifg=#ffffa2
+highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
 endif
