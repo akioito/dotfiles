@@ -14,6 +14,7 @@ if has("nvim")
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'nathom/filetype.nvim'
+  Plug 'yioneko/nvim-yati'
 
   Plug 'p00f/nvim-ts-rainbow'
 else
