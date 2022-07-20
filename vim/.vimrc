@@ -18,6 +18,7 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'dstein64/nvim-scrollview'
   Plug 'ethanholz/nvim-lastplace'
+  Plug 'github/copilot.vim'
 
   Plug 'p00f/nvim-ts-rainbow'
 else
