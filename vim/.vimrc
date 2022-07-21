@@ -421,6 +421,8 @@ augroup my_autocmd_misc
   autocmd CursorHold * let g:syntax = SyntaxItem()
   if has("gui_macvim")
     autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
+  else
+    autocmd VimEnter * :Copilot disable
   endif
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
