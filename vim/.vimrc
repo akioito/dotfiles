@@ -19,6 +19,9 @@ if has("nvim")
   Plug 'dstein64/nvim-scrollview'
   Plug 'ethanholz/nvim-lastplace'
   Plug 'github/copilot.vim'
+    imap <M-j> <Plug>(copilot-next)
+    imap <M-k> <Plug>(copilot-previous)
+    let g:copilot_enabled = v:false
 
   Plug 'p00f/nvim-ts-rainbow'
 else
@@ -421,8 +424,6 @@ augroup my_autocmd_misc
   autocmd CursorHold * let g:syntax = SyntaxItem()
   if has("gui_macvim")
     autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
-  else
-    autocmd VimEnter * :Copilot disable
   endif
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
