@@ -6,6 +6,7 @@ endif
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 if has("nvim")
+  Plug 'lewis6991/impatient.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/playground'
      nmap ,, :TSHighlightCapturesUnderCursor<cr>
