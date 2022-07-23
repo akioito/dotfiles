@@ -361,7 +361,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
 
   Plug 'Yggdroot/LeaderF-marks'
 "}
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 Plug 'godlygeek/csapprox'
 Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/tagbar'
@@ -428,10 +428,11 @@ augroup my_autocmd_misc
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
   " https://vi.stackexchange.com/questions/31782/jumping-to-last-position-when-reopening-file-how-to-place-line-in-center-instea
-  au BufWinEnter *
+  autocmd BufWinEnter *
                 \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
                 \ |   exe 'normal! g`"zz'
                 \ | endif
+  autocmd BufReadPost * silent! normal! g`"zv'
   autocmd FocusGained * checktime
 augroup end
 
