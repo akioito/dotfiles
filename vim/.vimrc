@@ -91,7 +91,8 @@ Plug 'tpope/vim-repeat'
 "   " gvS' ･･･ visual surroud with char
 " "}
 Plug 'jiangmiao/auto-pairs' "{
-  " <M-e> Fast Wrap (|)'hello' -> ('hello')
+  let g:AutoPairsShortcutFastWrap='<C-e>'
+  " <C-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
 Plug 'tomtom/tcomment_vim' "{
