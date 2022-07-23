@@ -91,8 +91,7 @@ Plug 'tpope/vim-repeat'
 "   " gvS' ･･･ visual surroud with char
 " "}
 Plug 'jiangmiao/auto-pairs' "{
-  let g:AutoPairsShortcutFastWrap='<C-e>'
-  " <C-e> Fast Wrap (|)'hello' -> ('hello')
+  " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
 Plug 'tomtom/tcomment_vim' "{
@@ -865,6 +864,7 @@ if has("nvim")
 
     " https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
     let g:neovide_input_use_logo = 1
+    let g:neovide_input_macos_alt_is_meta=v:true
     map <D-v> "+p<CR>
     map! <D-v> <C-R>+
     tmap <D-v> <C-R>+
