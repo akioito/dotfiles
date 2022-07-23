@@ -17,7 +17,6 @@ if has("nvim")
   Plug 'yioneko/nvim-yati'
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'dstein64/nvim-scrollview'
-  Plug 'ethanholz/nvim-lastplace'
   Plug 'github/copilot.vim'
     imap <M-j> <Plug>(copilot-next)
     imap <M-k> <Plug>(copilot-previous)
@@ -427,12 +426,10 @@ augroup my_autocmd_misc
   endif
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
   " Return to last edit position when opening files (You want this!)
-  " https://vi.stackexchange.com/questions/31782/jumping-to-last-position-when-reopening-file-how-to-place-line-in-center-instea
-  autocmd BufWinEnter *
-                \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-                \ |   exe 'normal! g`"zz'
-                \ | endif
-  autocmd BufReadPost * silent! normal! g`"zv'
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
   autocmd FocusGained * checktime
 augroup end
 
@@ -662,7 +659,9 @@ augroup my_autocmd
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
-
+    if exists('g:neovide')
+        autocmd BufWritePost * :wshada
+    endif
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
