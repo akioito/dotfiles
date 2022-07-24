@@ -19,11 +19,11 @@ if has("nvim")
   Plug 'yioneko/nvim-yati'
   Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'dstein64/nvim-scrollview'
+
   Plug 'github/copilot.vim'
     imap <M-j> <Plug>(copilot-next)
     imap <M-k> <Plug>(copilot-previous)
     let g:copilot_enabled = v:false
-
   Plug 'p00f/nvim-ts-rainbow'
 else
   Plug 'frazrepo/vim-rainbow'
@@ -87,6 +87,22 @@ else
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
+endif
+
+if has('nvim')
+  function! UpdateRemotePlugins(...)
+    " Needed to refresh runtime files
+    let &rtp=&rtp
+    UpdateRemotePlugins
+  endfunction
+
+  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
+else
+  Plug 'gelguy/wilder.nvim'
+
+  " To use Python remote plugin features in Vim, can be skipped
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
@@ -201,8 +217,8 @@ Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1
 
