@@ -5,6 +5,7 @@ endif
 " Required:
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
+" Treesitter
 if has("nvim")
   Plug 'lewis6991/impatient.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -26,6 +27,62 @@ if has("nvim")
   Plug 'p00f/nvim-ts-rainbow'
 else
   Plug 'frazrepo/vim-rainbow'
+endif
+
+" LSP
+if has('nvim')
+    " LSP Support
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+
+    " Autocompletion
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-nvim-lua'
+
+    "  Snippets
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
+
+    Plug 'VonHeikemen/lsp-zero.nvim'
+else
+    " vim-lsp (Hover and highlight word at cursor references)
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    let g:lsp_diagnostics_echo_cursor = 1
+    let g:lsp_diagnostics_float_cursor = 1
+    let g:lsp_diagnostics_highlights_enabled = 0
+    let g:lsp_diagnostics_virtual_text_enabled = 0
+    " https://github.com/mattn/vim-lsp-settings
+    let g:lsp_settings = {
+    \   'pylsp-all': {
+    \     'workspace_config': {
+    \       'pylsp': {
+    \         'configurationSources': ['flake8']
+    \       }
+    \     }
+    \   },
+    \}
+    noremap gr   :LspReferences<cr>
+    noremap gd   :LspDefinition<cr>
+    noremap gh   :LspHover<cr>
+    augroup vim-lsp
+      autocmd!
+      autocmd FileType qf call feedkeys("\<C-w>k")
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+          \ 'name': 'file',
+          \ 'allowlist': ['*'],
+          \ 'priority': 10,
+          \ 'completor': function('asyncomplete#sources#file#completor')
+          \ }))
+    augroup end
+
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'prabirshrestha/asyncomplete-file.vim'
 endif
 
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
@@ -164,40 +221,7 @@ end
 let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
-" vim-lsp (Hover and highlight word at cursor references)
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-  let g:lsp_diagnostics_echo_cursor = 1
-  let g:lsp_diagnostics_float_cursor = 1
-  let g:lsp_diagnostics_highlights_enabled = 0
-  let g:lsp_diagnostics_virtual_text_enabled = 0
-  " https://github.com/mattn/vim-lsp-settings
-  let g:lsp_settings = {
-\   'pylsp-all': {
-\     'workspace_config': {
-\       'pylsp': {
-\         'configurationSources': ['flake8']
-\       }
-\     }
-\   },
-\}
-  noremap gr   :LspReferences<cr>
-  noremap gd   :LspDefinition<cr>
-  noremap gh   :LspHover<cr>
-  augroup vim-lsp
-    autocmd!
-    autocmd FileType qf call feedkeys("\<C-w>k")
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-        \ 'name': 'file',
-        \ 'allowlist': ['*'],
-        \ 'priority': 10,
-        \ 'completor': function('asyncomplete#sources#file#completor')
-        \ }))
-  augroup end
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
 
 Plug 'rust-lang/rust.vim'
   let g:rustfmt_autosave = 1
