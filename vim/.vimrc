@@ -75,7 +75,7 @@ else
     noremap gh   :LspHover<cr>
     augroup vim-lsp
       autocmd!
-      autocmd FileType qf call feedkeys("\<C-w>k")
+
       au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
           \ 'name': 'file',
           \ 'allowlist': ['*'],
@@ -476,6 +476,7 @@ augroup my_autocmd_misc
     \ |   exe "normal! g`\""
     \ | endif
   autocmd FocusGained * checktime
+  autocmd FileType qf call feedkeys("\<C-w>k")
 augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
@@ -904,6 +905,7 @@ if has("nvim")
   " set foldcolumn=1
   highlight FoldColumn guibg=white guifg=blue
   if exists('g:neovide')
+    " see ~/.local/share/nvim/neovide-settings.json
     let g:neovide_remember_window_size = v:true
     noremap <D-s>  :w<CR>
 
