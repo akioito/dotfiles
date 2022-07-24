@@ -34,6 +34,10 @@ if has('nvim')
     " LSP Support
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
+      " :LspInstallInfo
+      " :LspInstall
+      " :LspInstallLog
+      " :LspPrintInstalled
 
     " Autocompletion
     Plug 'hrsh7th/nvim-cmp'
