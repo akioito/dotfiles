@@ -1,5 +1,4 @@
 -- configs.lua
-local map = vim.api.nvim_set_keymap
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {
@@ -23,6 +22,24 @@ require("nvim-treesitter.configs").setup {
 -- LSP
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
+
+lsp.set_preferences({
+  set_lsp_keymaps = false
+})
+
+lsp.on_attach(function(client, bufnr)
+    local noremap = {buffer = bufnr, remap = false}
+    local bind = vim.keymap.set
+    -- LSP actions
+    bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
+    bind('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
+    bind('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
+    -- Diagnostics
+    bind('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
+    bind('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
+    bind('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
+end)
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 local cmp = require('cmp')
 local cmp_default_maps = lsp.defaults.cmp_mappings()

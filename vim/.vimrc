@@ -607,8 +607,13 @@ nnoremap bd :bdelete
 if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
-  nnoremap <C-j>           :LspNextDiagnostic<cr>
-  nnoremap <C-k>           :LspPreviousDiagnostic<cr>
+  if has("gui_mac")
+    nnoremap <C-j>           :LspNextDiagnostic<cr>
+    nnoremap <C-k>           :LspPreviousDiagnostic<cr>
+  else
+    nnoremap <C-j>           :lnext<cr>
+    nnoremap <C-k>           :lprev<cr>
+  endif
 else
   nnoremap <C-j>           :cn<cr>kj
   nnoremap <C-k>           :cp<cr>kj
