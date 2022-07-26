@@ -27,7 +27,7 @@ lsp.set_preferences({
   set_lsp_keymaps = false
 })
 
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
     local noremap = {buffer = bufnr, remap = false}
     local bind = vim.keymap.set
     -- LSP actions
@@ -55,6 +55,16 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.setup()
+
+require'lspconfig'.sumneko_lua.setup {
+    settings = {
+       Lua = {
+          diagnostics = {
+            globals = {'vim'}
+          }
+        },
+    }
+}
 
 -- Others
 require("todo-comments").setup {}
