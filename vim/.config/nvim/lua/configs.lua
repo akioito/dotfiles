@@ -67,6 +67,7 @@ require'lspconfig'.sumneko_lua.setup {
 }
 
 -- Others
+vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup {}
 require('pqf').setup()
 require('treesitter-context').setup()
