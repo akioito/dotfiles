@@ -904,8 +904,8 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
+let fillchars='eob: '
 if has("nvim")
-  let fillchars='eob: '
   " Add a bit extra margin to the left
   " set foldcolumn=1
   highlight FoldColumn guibg=white guifg=blue
