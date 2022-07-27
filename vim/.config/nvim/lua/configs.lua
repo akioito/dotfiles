@@ -15,7 +15,7 @@ require("nvim-treesitter.configs").setup {
     },
     completion = {
         keyword_length = 2,
-        completeopt = "menu,noselect"
+        completeopt = "menu,menuone,noselect"
   },
 }
 
