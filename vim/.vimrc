@@ -105,6 +105,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'mechatroner/rainbow_csv'
+  let g:disable_rainbow_key_mappings = 1
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 Plug 'skanehira/gh.vim'
 Plug 'itchyny/vim-cursorword'
