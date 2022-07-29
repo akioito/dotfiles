@@ -25,6 +25,7 @@ if has("nvim")
         imap <M-k> <Plug>(copilot-previous)
         let g:copilot_enabled = v:false
     Plug 'p00f/nvim-ts-rainbow'
+    Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
     Plug 'frazrepo/vim-rainbow'
 endif
