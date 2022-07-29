@@ -680,6 +680,7 @@ augroup my_autocmd
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
     autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
     autocmd BufEnter * :syntax sync fromstart
+    autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
