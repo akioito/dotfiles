@@ -17,7 +17,7 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
   Plug 'nathom/filetype.nvim'
   Plug 'yioneko/nvim-yati'
-  Plug 'nvim-treesitter/nvim-treesitter-context'
+  " Plug 'nvim-treesitter/nvim-treesitter-context'
   Plug 'dstein64/nvim-scrollview'
 
   Plug 'github/copilot.vim'
