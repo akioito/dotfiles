@@ -19,8 +19,6 @@ if has("nvim")
     Plug 'yioneko/nvim-yati'
     " Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'dstein64/nvim-scrollview'
-    Plug 'phaazon/hop.nvim'
-        noremap f :HopWord<CR>
 
     Plug 'github/copilot.vim'
         imap <M-j> <Plug>(copilot-next)
@@ -28,9 +26,6 @@ if has("nvim")
         let g:copilot_enabled = v:false
     Plug 'p00f/nvim-ts-rainbow'
 else
-    Plug 'rhysd/clever-f.vim'
-        let g:clever_f_across_no_line = 1
-        let g:clever_f_ignore_case = 1
     Plug 'frazrepo/vim-rainbow'
 endif
 
@@ -109,6 +104,10 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+Plug 'easymotion/vim-easymotion'
+  nmap f <Plug>(easymotion-overwin-f2)
+  let g:EasyMotion_smartcase = 1
 
 Plug 'mechatroner/rainbow_csv'
   let g:disable_rainbow_key_mappings = 1
