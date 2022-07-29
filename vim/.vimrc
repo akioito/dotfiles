@@ -7,26 +7,31 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Treesitter
 if has("nvim")
-  Plug 'lewis6991/impatient.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/playground'
-     nmap ,, :TSHighlightCapturesUnderCursor<cr>
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'folke/todo-comments.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-  Plug 'nathom/filetype.nvim'
-  Plug 'yioneko/nvim-yati'
-  " Plug 'nvim-treesitter/nvim-treesitter-context'
-  Plug 'dstein64/nvim-scrollview'
+    Plug 'lewis6991/impatient.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/playground'
+        nmap ,, :TSHighlightCapturesUnderCursor<cr>
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'folke/todo-comments.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
+    Plug 'nathom/filetype.nvim'
+    Plug 'yioneko/nvim-yati'
+    " Plug 'nvim-treesitter/nvim-treesitter-context'
+    Plug 'dstein64/nvim-scrollview'
+    Plug 'phaazon/hop.nvim'
+        noremap f :HopWord<CR>
 
-  Plug 'github/copilot.vim'
-    imap <M-j> <Plug>(copilot-next)
-    imap <M-k> <Plug>(copilot-previous)
-    let g:copilot_enabled = v:false
-  Plug 'p00f/nvim-ts-rainbow'
+    Plug 'github/copilot.vim'
+        imap <M-j> <Plug>(copilot-next)
+        imap <M-k> <Plug>(copilot-previous)
+        let g:copilot_enabled = v:false
+    Plug 'p00f/nvim-ts-rainbow'
 else
-  Plug 'frazrepo/vim-rainbow'
+    Plug 'rhysd/clever-f.vim'
+        let g:clever_f_across_no_line = 1
+        let g:clever_f_ignore_case = 1
+    Plug 'frazrepo/vim-rainbow'
 endif
 
 " LSP
@@ -108,16 +113,11 @@ endif
 Plug 'mechatroner/rainbow_csv'
   let g:disable_rainbow_key_mappings = 1
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
-Plug 'skanehira/gh.vim'
+" Plug 'skanehira/gh.vim'
 Plug 'itchyny/vim-cursorword'
     let g:cursorword_highlight = 0
     let g:cursorword_delay = 300
 Plug 'gisphm/vim-gitignore'
-Plug 'unblevable/quick-scope'
-  augroup qs_colors
-    autocmd!
-    autocmd ColorScheme * highlight QuickScopePrimary guifg='#f800fe' gui=bold ctermfg=155 cterm=underline
-  augroup END
 
 if system('arch') == "arm64"
     if has("nvim")
