@@ -19,6 +19,8 @@ if has("nvim")
     Plug 'yioneko/nvim-yati'
     " Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'dstein64/nvim-scrollview'
+    Plug 'simrat39/symbols-outline.nvim'
+        " :SymbolsOutline
 
     " Plug 'github/copilot.vim'
     "     imap <M-j> <Plug>(copilot-next)
