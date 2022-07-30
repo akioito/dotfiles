@@ -20,10 +20,10 @@ if has("nvim")
     " Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'dstein64/nvim-scrollview'
 
-    Plug 'github/copilot.vim'
-        imap <M-j> <Plug>(copilot-next)
-        imap <M-k> <Plug>(copilot-previous)
-        let g:copilot_enabled = v:false
+    " Plug 'github/copilot.vim'
+    "     imap <M-j> <Plug>(copilot-next)
+    "     imap <M-k> <Plug>(copilot-previous)
+    "     let g:copilot_enabled = v:false
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else

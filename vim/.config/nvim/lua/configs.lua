@@ -72,10 +72,6 @@ require("todo-comments").setup {}
 require('pqf').setup()
 -- require('treesitter-context').setup()
 require('scrollview').setup()
-require('hop').setup({
-    -- current_line_only = true,
-})
-
 require('wilder').setup()
 
 require("filetype").setup({})
