@@ -720,8 +720,8 @@ augroup my_autocmd
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     autocmd InsertLeave * let g:cursorword = 1
     autocmd InsertEnter * let g:cursorword = 0
 augroup end
