@@ -951,6 +951,7 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 set vb t_vb=
+set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 highlight CursorWord0 guibg=#ffffa2
