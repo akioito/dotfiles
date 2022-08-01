@@ -26,6 +26,8 @@ if has("nvim")
     "     imap <M-j> <Plug>(copilot-next)
     "     imap <M-k> <Plug>(copilot-previous)
     "     let g:copilot_enabled = v:false
+    Plug 'ibhagwan/fzf-lua' " http://neovimcraft.com/plugin/ibhagwan/fzf-lua/index.html
+        " :FzfLua
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
