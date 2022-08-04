@@ -581,7 +581,7 @@ inoremap <D-s>  <ESC>:w<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 if has("clipboard")
-  set clipboard+=unnamedplus
+  set clipboard^=unnamed,unnamedplus
 endif
 
 " neovim paste
