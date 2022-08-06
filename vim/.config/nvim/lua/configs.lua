@@ -70,9 +70,11 @@ require'lspconfig'.sumneko_lua.setup {
 vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup {}
 require('pqf').setup()
--- require('treesitter-context').setup()
 require('scrollview').setup()
 require('wilder').setup()
+require('dd').setup({
+  timeout = 1000
+})
 
 require("filetype").setup({})
 

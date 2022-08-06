@@ -17,7 +17,6 @@ if has("nvim")
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'nathom/filetype.nvim'
     Plug 'yioneko/nvim-yati'
-    " Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'dstein64/nvim-scrollview'
     Plug 'simrat39/symbols-outline.nvim'
         " :SymbolsOutline
@@ -28,6 +27,7 @@ if has("nvim")
     "     let g:copilot_enabled = v:false
     Plug 'ibhagwan/fzf-lua' " http://neovimcraft.com/plugin/ibhagwan/fzf-lua/index.html
         " :FzfLua
+    Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
