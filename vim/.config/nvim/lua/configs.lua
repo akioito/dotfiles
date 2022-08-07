@@ -77,5 +77,6 @@ require('dd').setup({
 })
 
 require("filetype").setup({})
+require("neogit").setup({})
 
 -- End
