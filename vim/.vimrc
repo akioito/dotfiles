@@ -911,7 +911,7 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
-let fillchars='eob: '
+set fillchars='eob: '
 if has("nvim")
   " Add a bit extra margin to the left
   " set foldcolumn=1
