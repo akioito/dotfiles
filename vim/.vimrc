@@ -28,6 +28,7 @@ if has("nvim")
     Plug 'ibhagwan/fzf-lua' " http://neovimcraft.com/plugin/ibhagwan/fzf-lua/index.html
         " :FzfLua
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
+    Plug 'kdheepak/lazygit.nvim'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
@@ -911,7 +912,7 @@ set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
-set fillchars='eob: '
+let fillchars='eob: '
 if has("nvim")
   " Add a bit extra margin to the left
   " set foldcolumn=1
