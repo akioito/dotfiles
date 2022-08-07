@@ -28,6 +28,8 @@ if has("nvim")
     Plug 'ibhagwan/fzf-lua' " http://neovimcraft.com/plugin/ibhagwan/fzf-lua/index.html
         " :FzfLua
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
+    Plug 'sindrets/diffview.nvim'
+        " :DiffviewFileHistory %
     Plug 'kdheepak/lazygit.nvim'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
