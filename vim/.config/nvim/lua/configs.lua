@@ -77,6 +77,10 @@ require('dd').setup({
 })
 
 require("filetype").setup({})
-require("neogit").setup({})
+require("neogit").setup({
+  integrations = {
+    diffview = true
+  },
+})
 
 -- End
