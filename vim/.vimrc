@@ -28,7 +28,6 @@ if has("nvim")
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'sindrets/diffview.nvim'
         " :DiffviewFileHistory %
-    Plug 'kdheepak/lazygit.nvim'
     Plug 'TimUntersberger/neogit'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
@@ -67,7 +66,6 @@ else
     let g:lsp_diagnostics_float_cursor = 1
     let g:lsp_diagnostics_highlights_enabled = 0
     let g:lsp_diagnostics_virtual_text_enabled = 0
-    " https://github.com/mattn/vim-lsp-settings
     let g:lsp_settings = {
     \   'pylsp-all': {
     \     'workspace_config': {
