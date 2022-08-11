@@ -25,8 +25,6 @@ if has("nvim")
     "     imap <M-j> <Plug>(copilot-next)
     "     imap <M-k> <Plug>(copilot-previous)
     "     let g:copilot_enabled = v:false
-    Plug 'ibhagwan/fzf-lua' " http://neovimcraft.com/plugin/ibhagwan/fzf-lua/index.html
-        " :FzfLua
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'sindrets/diffview.nvim'
         " :DiffviewFileHistory %
@@ -329,7 +327,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Buffers                  <Space>b |<Space>l',
     \'#',
     \'Close or QSearchToggle            |<F4>',
-    \'Commands                          |:Commands',
+    \'Commands                          |<Space>c',
     \'Delete Buffer                     |:bdelete',
     \'#',
     \'Functions               <C-Space> |<Space>f',
