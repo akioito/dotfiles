@@ -1,5 +1,17 @@
 -- configs.lua
 
+-- Neovide
+-- see ~/.local/share/nvim/neovide-settings.json  
+--     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137  
+vim.g.neovide_cursor_animation_length = 0.03
+vim.g.neovide_cursor_trail_size = 0.75
+vim.g.neovide_cursor_vfx_mode = "ripple"
+vim.g.neovide_remember_window_size = true
+vim.g.neovide_remember_window_position = true
+vim.g.neovide_cursor_antialiasing = true
+vim.g.neovide_input_use_logo = 1
+vim.g.neovide_input_macos_alt_is_meta=true
+
 -- Treesiter
 require("nvim-treesitter.configs").setup {
     yati = { enable = true },

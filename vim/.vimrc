@@ -917,13 +917,7 @@ if has("nvim")
   " set foldcolumn=1
   highlight FoldColumn guibg=white guifg=blue
   if exists('g:neovide')
-    " see ~/.local/share/nvim/neovide-settings.json
-    let g:neovide_remember_window_size = v:true
     noremap <D-s>  :w<CR>
-
-    " https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
-    let g:neovide_input_use_logo = 1
-    let g:neovide_input_macos_alt_is_meta=v:true
     map <D-v> "+p<CR>
     map! <D-v> <C-R>+
     tmap <D-v> <C-R>+
@@ -932,7 +926,6 @@ if has("nvim")
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
-  " set linespace=-2
 endif
 set lazyredraw                          " to avoid scrolling problems
 " set regexpengine=0                      " to avoid nvim excessive redrawing
