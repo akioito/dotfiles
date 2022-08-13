@@ -1,12 +1,28 @@
 -- configs.lua
 
+local map = vim.keymap.set
+
 -- Neovide
 -- see ~/.local/share/nvim/neovide-settings.json  
 --     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137  
-vim.g.neovide_remember_window_size = true
-vim.g.neovide_remember_window_position = true
-vim.g.neovide_input_use_logo = 1
-vim.g.neovide_input_macos_alt_is_meta=true
+if vim.g.neovide then
+  map('n', '<D-s>', ':w<CR>')  -- Save
+  map('v', '<D-c>', '"+y')     -- Copy
+  map('n', '<D-v>', 'h"+p')    -- Paste normal mode
+  map('i', '<D-v>', '<C-R>+')  -- Paste insert mode
+
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_remember_window_position = true
+  vim.g.neovide_input_use_logo = 1
+  vim.g.neovide_input_macos_alt_is_meta=true
+  vim.opt.title=true
+
+  vim.api.nvim_command([[
+    augroup Neovide
+      autocmd BufWritePost * :wshada
+    augroup END
+    ]])
+end
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {
@@ -37,15 +53,14 @@ lsp.set_preferences({
 
 lsp.on_attach(function(_, bufnr)
     local noremap = {buffer = bufnr, remap = false}
-    local bind = vim.keymap.set
     -- LSP actions
-    bind('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
-    bind('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
-    bind('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
+    map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
+    map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
+    map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
     -- Diagnostics
-    bind('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
-    bind('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
-    bind('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
+    map('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
+    map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
+    map('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
 end)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 

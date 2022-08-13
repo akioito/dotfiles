@@ -717,9 +717,6 @@ augroup my_autocmd
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
-    if exists('g:neovide')
-        autocmd BufWritePost * :wshada
-    endif
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
     autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
@@ -863,9 +860,6 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-if exists('g:neovide')
-  set title
-endif
 set guifont=Lekton\ Nerd\ Font:h20
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
@@ -909,16 +903,7 @@ set shortmess=oO
 set number
 let fillchars='eob: '
 if has("nvim")
-  " Add a bit extra margin to the left
-  " set foldcolumn=1
   highlight FoldColumn guibg=white guifg=blue
-  if exists('g:neovide')
-    noremap <D-s>  :w<CR>
-    map <D-v> "+p<CR>
-    map! <D-v> <C-R>+
-    tmap <D-v> <C-R>+
-    vmap <D-c> "+y<CR>
-  endif
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
