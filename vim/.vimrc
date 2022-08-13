@@ -864,12 +864,9 @@ if has("gui_macvim")
 endif
 
 if exists('g:neovide')
-  "https://github.com/neovide/neovide/issues/913#issuecomment-1094876896
-  set guifont=Lekton\ Nerd\ Font:h20
   set title
-else
-  set guifont=Lekton\ Nerd\ Font:h20
 endif
+set guifont=Lekton\ Nerd\ Font:h20
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
@@ -877,7 +874,6 @@ endif
 " set guifont=Courier:h18
 " set guifont=JetBrainsMono\ Nerd\ Font:h17
 
-set background=light
 colorscheme mycolor
 
 set hlsearch                           " Highlight search
