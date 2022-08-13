@@ -29,6 +29,7 @@ if has("nvim")
     Plug 'sindrets/diffview.nvim'
         " :DiffviewFileHistory %
     Plug 'TimUntersberger/neogit'
+    Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
@@ -141,8 +142,7 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   vnoremap <BS> d
 endif
 
-Plug 'rhysd/conflict-marker.vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
+" Plug 'rhysd/conflict-marker.vim'
 " Plug 'Yggdroot/indentLine'
 "   let g:indentLine_color_gui = '#EFEFEF'
 "   let g:indentLine_fileType = ['html', 'python']
