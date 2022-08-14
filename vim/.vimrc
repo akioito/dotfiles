@@ -228,10 +228,11 @@ Plug 'Galicarnax/vim-regex-syntax'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1
 
-if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
+if has("gui_vimr") || exists('g:neovide')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
-    " Shortcut for browser textarea -> Shit+Cmd+k
+    " :GhostStart
+    " Shortcut for browser textarea -> Shit+Cmd+V
       function! s:SetupGhostBuffer()
           if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
               set ft=markdown
