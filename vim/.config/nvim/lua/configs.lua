@@ -106,5 +106,14 @@ require("neogit").setup({
     diffview = true
   },
 })
+require("bufferline").setup({
+  options = {
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    indicator_icon = '|',
+    max_name_length = 12,
+    tab_size = 10,
+  }
+})
 
 -- End

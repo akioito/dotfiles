@@ -30,10 +30,12 @@ if has("nvim")
         " :DiffviewFileHistory %
     Plug 'TimUntersberger/neogit'
     Plug 'antoinemadec/FixCursorHold.nvim'
+    Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
+    Plug 'ap/vim-buftabline'
     Plug 'frazrepo/vim-rainbow'
 endif
 
@@ -112,7 +114,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'ap/vim-buftabline'
+
 
 Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
