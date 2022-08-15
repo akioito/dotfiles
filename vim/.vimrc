@@ -30,6 +30,7 @@ if has("nvim")
         " :DiffviewFileHistory %
     Plug 'TimUntersberger/neogit'
     Plug 'antoinemadec/FixCursorHold.nvim'
+
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
 else
@@ -110,6 +111,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+Plug 'ap/vim-buftabline'
 
 Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
@@ -582,7 +585,7 @@ inoremap <D-s>  <ESC>:w<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 if has("clipboard")
-  set clipboard^=unnamed,unnamedplus
+  set clipboard^=unnamedplus
 endif
 
 " neovim paste
