@@ -9,6 +9,7 @@ if vim.g.neovide then
   map('n', '<D-s>', ':w<CR>')  -- Save
   map('v', '<D-c>', '"+y')     -- Copy
   map('n', '<D-v>', 'h"+p')    -- Paste normal mode
+  map('c', '<D-v>', '<C-R>+')  -- Paste command mode
   map('i', '<D-v>', '<C-R>+')  -- Paste insert mode
 
   vim.g.neovide_remember_window_size = true
