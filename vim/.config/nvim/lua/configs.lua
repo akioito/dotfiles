@@ -79,9 +79,21 @@ lsp.setup_nvim_cmp({
   mapping = cmp_default_maps
 })
 
-lsp.setup()
+lsp.configure('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        flake8 = {enabled = true},
+        pycodestyle = {enabled = false},
+        pyflakes = {enabled = false},
+        pylint = {enabled = false},
+        mccabe = {enabled = false},
+      },
+    },
+  },
+})
 
-require'lspconfig'.sumneko_lua.setup {
+lsp.configure('sumneko_lua', {
     settings = {
        Lua = {
           diagnostics = {
@@ -89,7 +101,9 @@ require'lspconfig'.sumneko_lua.setup {
           }
         },
     }
-}
+})
+
+lsp.setup()
 
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign
