@@ -17,7 +17,7 @@ if has("nvim")
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'nathom/filetype.nvim'
     Plug 'yioneko/nvim-yati'
-    Plug 'dstein64/nvim-scrollview', { 'tag': 'v3.0.3'} " Problem with main screen size
+    Plug 'dstein64/nvim-scrollview'
     Plug 'simrat39/symbols-outline.nvim'
         " :SymbolsOutline
 
