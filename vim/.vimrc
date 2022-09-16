@@ -77,8 +77,8 @@ else
     \     }
     \   },
     \}
-    noremap gr   :LspReferences<cr>
-    noremap gd   :LspDefinition<cr>
+    noremap mr   :LspReferences<cr>
+    noremap md   :LspDefinition<cr>
     noremap gh   :LspHover<cr>
     augroup vim-lsp
       autocmd!
