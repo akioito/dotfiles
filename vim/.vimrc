@@ -33,6 +33,7 @@ if has("nvim")
 
     Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
+    Plug 'LhKipp/nvim-nu', {'do': ':TSInstall nu'}
 else
     Plug 'frazrepo/vim-rainbow'
 endif

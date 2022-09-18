@@ -121,5 +121,6 @@ require("neogit").setup({
     diffview = true
   },
 })
+require('nu').setup{}
 
 -- End
