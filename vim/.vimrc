@@ -705,7 +705,7 @@ augroup my_autocmd
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,nu} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
