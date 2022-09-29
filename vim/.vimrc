@@ -830,10 +830,10 @@ function! s:MoveVToNonBlank(UpDown)
     endif
   endwhile
 endfunction
-nnoremap <silent> K        :call <SID>MoveVToNonBlank('Up')<CR>hh
+nnoremap <silent> K        :call <SID>MoveVToNonBlank('Up')<CR>
 nnoremap <silent> J        :call <SID>MoveVToNonBlank('Down')<CR>
 nnoremap <silent> <C-Up>   :call <SID>MoveVToNonBlank('Up')<CR>
-nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>h
+nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>
 
 " ----------------------------------------------------------------------------
 " transparency
