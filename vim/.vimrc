@@ -941,9 +941,10 @@ highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
 endif
+set signcolumn=number
+highlight FoldColumn guibg=White
 if has("nvim")
-  set signcolumn=number
   set foldcolumn=1
-  highlight FoldColumn guibg=White
 endif
+
 " End
