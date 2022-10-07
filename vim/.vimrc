@@ -493,7 +493,7 @@ augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c\ %p%%
-" set statusline +=\ %{fugitive#statusline()}
+set statusline +=\ %{FugitiveStatusline()}
 set statusline+=%5*\ %f\                           " file name
 set statusline+=%3*\ %{g:currentTag}
 if !has("nvim")
