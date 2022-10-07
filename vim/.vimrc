@@ -11,6 +11,7 @@ if has("nvim")
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
         nmap ,, :TSHighlightCapturesUnderCursor<cr>
+    Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'

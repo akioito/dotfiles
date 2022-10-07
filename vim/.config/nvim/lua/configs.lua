@@ -107,7 +107,7 @@ lsp.setup()
 
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign
-require("todo-comments").setup {}
+require("todo-comments").setup({})
 require('pqf').setup()
 require('scrollview').setup()
 require('wilder').setup()
@@ -121,6 +121,6 @@ require("neogit").setup({
     diffview = true
   },
 })
-require('nu').setup{}
+require('nu').setup({})
 
 -- End
