@@ -879,7 +879,11 @@ colorscheme mycolor
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
 set smartcase
-set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
+if has("nvim")
+  set cmdheight=1
+else
+  set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
+endif
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
@@ -895,10 +899,6 @@ set hidden                             " Allow modified buffers to be hidden
 set iminsert=0
 set viminfo^=%                         " Remember buffer
 set imsearch=0
-if has("gui_macvim")
-    set columns=180
-    set lines=100
-endif
 set autowrite
 set nobackup
 set noswapfile
