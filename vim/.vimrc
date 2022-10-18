@@ -19,6 +19,7 @@ if has("nvim")
     Plug 'nathom/filetype.nvim'
     Plug 'yioneko/nvim-yati'
     Plug 'dstein64/nvim-scrollview'
+    Plug 'chr4/nginx.vim'
     Plug 'simrat39/symbols-outline.nvim'
         " :SymbolsOutline
 
@@ -693,6 +694,7 @@ augroup my_autocmd
     autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
     autocmd BufNewFile,BufRead *.arc set filetype=arc
+    autocmd BufNewFile,BufRead *.conf set filetype=nginx
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead *.dyon set filetype=rust
     autocmd BufNewFile,BufRead *.rn set filetype=rust
