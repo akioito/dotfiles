@@ -121,5 +121,9 @@ require("neogit").setup({
     diffview = true
   },
 })
+require("stickybuf").setup({}) 
+require('aerial').setup({
+  open_automatic = true,
+})
 
 -- End
