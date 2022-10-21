@@ -296,26 +296,26 @@ Plug 'romainl/vim-cool'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'amadeus/vim-convert-color-to'
 
-Plug 'yegappan/mru' " usage as :MRU prj
-  let MRU_Max_Entries = 2500
-  let MRU_Window_Height = 30
-  let MRU_Max_Menu_Entries = 30
-  " Caution! This save only .vim-prj or .prj
-  " let MRU_Exclude_Files = '*.*'
-  " let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
+" Plug 'yegappan/mru' " usage as :MRU prj
+"   let MRU_Max_Entries = 2500
+"   let MRU_Window_Height = 30
+"   let MRU_Max_Menu_Entries = 30
+"   " Caution! This save only .vim-prj or .prj
+"   " let MRU_Exclude_Files = '*.*'
+"   " let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
-  nnoremap <silent> <F5> :call fzf#run({
-  \   'source': 'rg prj $HOME/.vim_mru_files',
-  \   'sink': 'e',
-  \   'options': ['--exact', '--prompt', 'Projects> '],
-  \   'up':    20,
-  \   'window': { 'width': 0.9, 'height': 0.6 }
-  \ })<CR>
+  " nnoremap <silent> <F5> :call fzf#run({
+  " \   'source': 'rg prj $HOME/.vim_mru_files',
+  " \   'sink': 'e',
+  " \   'options': ['--exact', '--prompt', 'Projects> '],
+  " \   'up':    20,
+  " \   'window': { 'width': 0.9, 'height': 0.6 }
+  " \ })<CR>
 
 nnoremap <silent> <leader>c :Commands<CR>
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
@@ -389,9 +389,9 @@ Plug 'laher/fuzzymenu.vim'
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
-Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/LeaderF
-  let g:Lf_WindowPosition  = "top"
-  " let g:Lf_WindowHeight = 0.30
+Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
+  let g:Lf_WindowPosition = 'popup'
+  let g:Lf_MruMaxFiles = 2500
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
@@ -402,19 +402,21 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
-  nnoremap <leader>f :<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr>
-  inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
-  nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
-  nnoremap <silent>  <C-l>         :<C-u>Buffers<cr>
+  nnoremap <leader>f :<C-u>Leaderfx! function<cr>
+  nnoremap <C-Space> :<C-u>Leaderf! function<cr>
+  inoremap <C-Space> <ESC>:<C-u>Leaderf! function<cr>
+  nnoremap <silent>  <leader>l     :<C-u>Leaderfx! buffer<cr>
+  nnoremap <silent>  <C-l>         :<C-u>Leaderfx! buffer<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR>
+  " nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR>
+  nnoremap <silent> <Space>p   :<C-u>Leaderf mru --input "vim-prj "<cr>
+  nnoremap <silent> <F5>       :<C-u>Leaderf mru --input "vim-prj "<cr>
   nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR>
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
-    \  | vertical resize 45 | call feedkeys("<Tab>")
-  command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
-    \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab>")
+    \  | call feedkeys("<Tab>")
+  " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
+  "   \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab>")
 
   Plug 'Yggdroot/LeaderF-marks'
 "}
@@ -694,7 +696,7 @@ augroup my_autocmd
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
-    autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
+    " autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
     autocmd BufEnter * :syntax sync fromstart
     autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
