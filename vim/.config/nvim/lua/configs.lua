@@ -122,8 +122,5 @@ require("neogit").setup({
   },
 })
 require("stickybuf").setup({}) 
-require('aerial').setup({
-  open_automatic = true,
-})
 
 -- End
