@@ -538,6 +538,11 @@ nnoremap <C-[>     <C-t>
 nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 inoremap <D-s>  <ESC>:w<CR>
 
+if exists('g:neovide')
+  nnoremap <D-z> u
+  inoremap <D-z> <ESC>u
+endif
+
 " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
 "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
