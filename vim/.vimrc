@@ -402,7 +402,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
-  nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
+  nnoremap <leader>f :<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <C-Space> :<C-u>Leaderfwnowrap! --left function<cr>
   inoremap <C-Space> <ESC>:<C-u>Leaderfwnowrap! --left function<cr>
   nnoremap <silent>  <leader>l     :<C-u>Buffers<cr>
@@ -414,7 +414,7 @@ Plug 'Yggdroot/LeaderF', {'do': './install.sh' } "{ https://github.com/Yggdroot/
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | vertical resize 45 | call feedkeys("<Tab>")
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
-    \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab><Space>")
+    \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab>")
 
   Plug 'Yggdroot/LeaderF-marks'
 "}
