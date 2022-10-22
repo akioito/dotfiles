@@ -392,6 +392,9 @@ Plug 'laher/fuzzymenu.vim'
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition = 'popup'
   let g:Lf_MruMaxFiles = 2500
+  let g:Lf_PopupShowBorder = 1
+  let g:Lf_PopupHeight = 100
+  let g:Lf_PopupShowStatusline = 0
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
@@ -408,15 +411,12 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap <silent>  <leader>l     :<C-u>Leaderfx! buffer<cr>
   nnoremap <silent>  <C-l>         :<C-u>Leaderfx! buffer<cr>
   nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
-  " nnoremap <silent> <Space>p  <ESC>:call feedkeys("\<F5>")<CR>
   nnoremap <silent> <Space>p   :<C-u>Leaderf mru --input "vim-prj "<cr>
   nnoremap <silent> <F5>       :<C-u>Leaderf mru --input "vim-prj "<cr>
   nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR>
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | call feedkeys("<Tab>")
-  " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfwnowrap call leaderf#Any#start(<bang>0, <q-args>)
-  "   \  | setlocal nowrap | vertical resize 45 | call feedkeys("<Tab>")
 
   Plug 'Yggdroot/LeaderF-marks'
 "}
@@ -696,7 +696,6 @@ augroup my_autocmd
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
-    " autocmd BufLeave *.js nnoremap <leader>f  :<C-u>Leaderfwnowrap! --left function<cr>
     autocmd BufEnter * :syntax sync fromstart
     autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
     autocmd BufNewFile,BufRead *.l set filetype=picolisp
