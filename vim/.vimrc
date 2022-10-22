@@ -542,6 +542,8 @@ inoremap <D-s>  <ESC>:w<CR>
 if exists('g:neovide')
   nnoremap <D-z> u
   inoremap <D-z> <ESC>u
+  nnoremap <D-a> ggVG
+  inoremap <D-a> ggVG
 endif
 
 " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
