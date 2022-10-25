@@ -110,17 +110,12 @@ vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
 require('scrollview').setup()
-require('wilder').setup()
+require('wilder').setup({modes = {':', '/', '?'}})
 require('dd').setup({
   timeout = 1000
 })
 
 require("filetype").setup({})
-require("neogit").setup({
-  integrations = {
-    diffview = true
-  },
-})
 require("stickybuf").setup({}) 
 
 -- End

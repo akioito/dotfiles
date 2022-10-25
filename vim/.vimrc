@@ -28,9 +28,6 @@ if has("nvim")
     "     imap <M-k> <Plug>(copilot-previous)
     "     let g:copilot_enabled = v:false
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
-    Plug 'sindrets/diffview.nvim'
-        " :DiffviewFileHistory %
-    Plug 'TimUntersberger/neogit'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
     Plug 'p00f/nvim-ts-rainbow'
@@ -427,6 +424,10 @@ Plug '~/.vim/mybundle/sbd.vim'
 Plug '~/.vim/mybundle/vim-command-w'
 
 call plug#end()
+
+if !has("nvim")
+  call wilder#setup({'modes': [':', '/', '?']})
+endif
 
 " Required:
 filetype plugin indent on
