@@ -17,7 +17,6 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'nathom/filetype.nvim'
-    Plug 'yioneko/nvim-yati'
     Plug 'dstein64/nvim-scrollview'
     Plug 'chr4/nginx.vim'
     Plug 'simrat39/symbols-outline.nvim'
@@ -60,6 +59,7 @@ if has('nvim')
     Plug 'rafamadriz/friendly-snippets'
 
     Plug 'VonHeikemen/lsp-zero.nvim'
+    Plug 'alexaandru/nvim-lspupdate'
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
@@ -112,8 +112,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-
-
+Plug 'alvan/vim-closetag'
 Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1

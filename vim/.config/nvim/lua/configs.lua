@@ -28,7 +28,6 @@ end
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {
-    yati = { enable = true },
     ensure_installed = {"python","rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "css", "html"},
     highlight = {
         enable = true,
@@ -121,6 +120,6 @@ require('dd').setup({
 })
 
 require("filetype").setup({})
-require("stickybuf").setup({}) 
+require("stickybuf").setup({})
 
 -- End
