@@ -13,9 +13,9 @@ let colors_name = "mycolor"
 " Interface Elements
 " hi CursorLine   guibg=#ffffa2
 hi Cursor       guifg=#ffffff guibg=#f26c17
-hi endofbuffer  guibg=white 
-hi Folded       guifg=#808080 guibg=white 
-hi LineNr       guifg=#c10b23 guibg=#ffffff 
+hi endofbuffer  guibg=white
+hi Folded       guifg=#808080 guibg=white
+hi LineNr       guifg=#c10b23 guibg=#ffffff
 hi MatchParen   guibg=#cddae5
 hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
 hi SignColumn   guibg=white
@@ -24,7 +24,7 @@ hi StatusLineNC guifg=#9bd4a9   guibg=#51b069
 hi VertSplit    guifg=#fafafa   guibg=#fafafa
 hi Visual       guibg=Yellow
 " hi defLine      guibg=#fff2f2
-" hi defLine      guibg=#fff8f8   
+" hi defLine      guibg=#fff8f8
 
 " Specials
 hi Todo         guifg=#e50808   guibg=#dbf3cd   gui=bold
@@ -32,26 +32,26 @@ hi Title        guifg=#000000   gui=bold
 hi Special      guifg=#fd8900
 
 " Syntax Elements
-hi Function     guifg=Blue                      
+hi Function     guifg=Blue
 
 " Python Highlighting
 hi pythonBuiltinFunc     guifg=Red gui=italic
 hi pythonBuiltinObj      guifg=Red gui=italic
-hi pythonComment         guifg=#747d8f gui=italic 
+hi pythonComment         guifg=#747d8f gui=italic
 hi pythonConditional     guifg=#9f40c0 gui=italic
-hi pythonFunction        guifg=#3f63b0 gui=italic    
+hi pythonFunction        guifg=#3f63b0 gui=italic
 hi pythonMethod          guifg=Darkorange gui=italic
 hi pythonNumber          guifg=Orangered gui=italic
 hi pythonPreCondit       guifg=#487e52 gui=italic
 hi pythonRepeat          guifg=#0100C8 gui=italic
 hi pythonSpecial         guifg=Blue gui=italic
 hi pythonStatement       guifg=#2f7a71 gui=italic
-hi pythonStatementSpecial guifg=#28C101 gui=italic 
+hi pythonStatementSpecial guifg=#28C101 gui=italic
 hi pythonString          guifg=#28C101  gui=italic
 hi pythonTripleString    guifg=darkgreen gui=italic
 
 " HTML / JS
-hi htmlString            guifg=#0BB634 gui=italic   
+hi htmlString            guifg=#0BB634 gui=italic
 hi jsStringS             guifg=#0BB634 gui=italic
 
 " :call HexHighlight() to see the Color
@@ -75,8 +75,8 @@ hi CocHighlightText guibg=#f8edeb ctermbg=Cyan
 
 " hi javascriptString    guifg=black    gui=bold
 hi javascriptAServices guifg=darkblue gui=bold
-hi jsString            guifg=#28C101 gui=italic 
-hi jsComment           guifg=#F09868 gui=italic  
+hi jsString            guifg=#28C101 gui=italic
+hi jsComment           guifg=#F09868 gui=italic
 
 " http://www.unpack.site/cash.me
 
@@ -93,39 +93,39 @@ highlight def Lf_hl_cursorline guifg=Black ctermfg=226
 " Rust
 hi rustCommentLineDoc       guifg=darkgreen gui=italic
 hi rustSelf                 guifg=#0100C8 gui=italic
-hi rustString               guifg=#28C101 gui=italic 
-hi rustCommentLine          guifg=#F09868 gui=italic 
+hi rustString               guifg=#28C101 gui=italic
+hi rustCommentLine          guifg=#F09868 gui=italic
 
 " Go
-hi goString                 guifg=#28C101  
+hi goString                 guifg=#28C101
 hi goRawString              guifg=#28C101
 hi goSameId                 guibg=#f4f597
 
 " TypeScript
 hi typescriptString               guifg=#28C101 gui=italic
-hi typescriptStringD              guifg=#28C101 gui=italic  
+hi typescriptStringD              guifg=#28C101 gui=italic
 hi typescriptDocComment           guifg=darkgreen gui=italic
 hi typescriptLineComment          guifg=#F09868 gui=italic
-hi typescriptDocTags              guifg=#690dad gui=italic 
+hi typescriptDocTags              guifg=#690dad gui=italic
 
 " vem-tabline
-highlight VemTablineNormal           term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none 
+highlight VemTablineNormal           term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 highlight VemTablineSelected         term=bold    cterm=bold ctermfg=0   ctermbg=255 guifg=#242424 guibg=yellow  gui=bold
 highlight VemTablineNumber           term=reverse cterm=none ctermfg=239 ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg=251 guifg=#242424 guibg=#ffffff gui=none
 
 " treesitter
-hi jsLineComment guifg=#F09868 gui=italic   
-hi jsCommonJS    guifg=#ff00ff gui=italic 
+hi jsLineComment guifg=#F09868 gui=italic
+hi jsCommonJS    guifg=#ff00ff gui=italic
 
 hi TSComment            guifg=#747d8f gui=italic
-hi TSConditional        guifg=#0100C8 gui=italic  
-hi TSConstBuiltin       guifg=#2f7a71 gui=italic 
+hi TSConditional        guifg=#0100C8 gui=italic
+hi TSConstBuiltin       guifg=#2f7a71 gui=italic
 hi TSConstant           guifg=#c34146 gui=italic
 hi TSKeywordFunction    guifg=#64d4be gui=bold
 hi TSMethod             guifg=#3f63b0 gui=italic
-hi TSString             guifg=#28C101 gui=italic 
-hi TSType               guifg=#ae6b09 gui=italic 
+hi TSString             guifg=#28C101 gui=italic
+hi TSType               guifg=#ae6b09 gui=italic
 hi TSTypeBuiltin        guifg=#ae6b09 gui=italic
 hi TSVariableBuiltin    guifg=#0100C8 gui=italic
 hi TSVariable                         gui=italic

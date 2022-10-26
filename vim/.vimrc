@@ -104,6 +104,7 @@ if has('nvim')
   endfunction
 
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
+  Plug 'mcauley-penney/tidy.nvim'
 else
   Plug 'gelguy/wilder.nvim'
 
@@ -717,8 +718,10 @@ augroup my_autocmd
     autocmd FileType html setlocal indentkeys-=*<Return>
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
-    " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,nu} %s/\s\+$//e
+    " Trim Trailing Whitespace (tidy.nvim for nvim)
+    if !has("nvim")
+        autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,nu} %s/\s\+$//e
+    endif
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa

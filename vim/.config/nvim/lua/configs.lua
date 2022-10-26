@@ -3,8 +3,8 @@
 local map = vim.keymap.set
 
 -- Neovide
--- see ~/.local/share/nvim/neovide-settings.json  
---     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137  
+-- see ~/.local/share/nvim/neovide-settings.json
+--     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
 if vim.g.neovide then
   map('n', '<D-s>', ':w<CR>')  -- Save
   map('v', '<D-c>', '"+y')     -- Copy
@@ -121,5 +121,8 @@ require('dd').setup({
 
 require("filetype").setup({})
 require("stickybuf").setup({})
+require("tidy").setup({
+  filetype_exclude = { "markdown", "diff" },
+})
 
 -- End
