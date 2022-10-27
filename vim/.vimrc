@@ -401,15 +401,17 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
-  nnoremap <leader>f :<C-u>Leaderfx! function<cr>
-  nnoremap <C-Space> :<C-u>Leaderf! function<cr>
-  inoremap <C-Space> <ESC>:<C-u>Leaderf! function<cr>
-  nnoremap <silent>  <leader>l     :<C-u>Leaderfx! buffer<cr>
-  nnoremap <silent>  <C-l>         :<C-u>Leaderfx! buffer<cr>
-  nnoremap <leader>b  :<C-u>Leaderfx buffer<cr>
-  nnoremap <silent> <Space>p   :<C-u>Leaderf mru --input "vim-prj "<cr>
-  nnoremap <silent> <F5>       :<C-u>Leaderf mru --input "vim-prj "<cr>
-  nnoremap <silent>  <C-P>     <ESC>:call feedkeys("\<F5>")<CR>
+  nnoremap <leader>f            :<C-u>Leaderfx function --no-sort<cr>
+  nnoremap <C-Space>            :<C-u>Leaderfx function --no-sort<cr>
+  inoremap <C-Space>       <ESC>:<C-u>Leaderfx function --no-sort<cr>
+
+  nnoremap <silent> <leader>l   :<C-u>Leaderfx buffer   --no-sort<cr>
+  nnoremap <silent> <C-l>       :<C-u>Leaderfx buffer   --no-sort<cr>
+  nnoremap <silent> <leader>b   :<C-u>Leaderfx buffer   --no-sort<cr>
+
+  nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort<cr>
+  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort<cr>
+  nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
     \  | call feedkeys("<Tab>")
