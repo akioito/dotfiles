@@ -329,7 +329,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Buffers                  <Space>b |<Space>l',
     \'#',
     \'Close or QSearchToggle            |<F4>',
-    \'Commands                          |<Space>c',
+    \'Commands                          |:LeaderfCommand',
     \'Delete Buffer                     |:bdelete',
     \'#',
     \'Functions               <C-Space> |<Space>f',
