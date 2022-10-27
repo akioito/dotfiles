@@ -293,26 +293,11 @@ Plug 'romainl/vim-cool'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'amadeus/vim-convert-color-to'
 
-" Plug 'yegappan/mru' " usage as :MRU prj
-"   let MRU_Max_Entries = 2500
-"   let MRU_Window_Height = 30
-"   let MRU_Max_Menu_Entries = 30
-"   " Caution! This save only .vim-prj or .prj
-"   " let MRU_Exclude_Files = '*.*'
-"   " let MRU_Include_Files = '\.vim-prj$\|\.pyprj$'
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
   let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
-  " nnoremap <silent> <F5> :call fzf#run({
-  " \   'source': 'rg prj $HOME/.vim_mru_files',
-  " \   'sink': 'e',
-  " \   'options': ['--exact', '--prompt', 'Projects> '],
-  " \   'up':    20,
-  " \   'window': { 'width': 0.9, 'height': 0.6 }
-  " \ })<CR>
 
 nnoremap <silent> <leader>c :Commands<CR>
   command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
@@ -387,7 +372,7 @@ Plug 'laher/fuzzymenu.vim'
 
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_WindowPosition = 'popup'
-  let g:Lf_MruMaxFiles = 2500
+  let g:Lf_MruMaxFiles = 2500 " saved at ~/.LfCache/python3/mru
   let g:Lf_PopupShowBorder = 1
   let g:Lf_PopupHeight = 100
   let g:Lf_PopupShowStatusline = 0
