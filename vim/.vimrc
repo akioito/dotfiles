@@ -587,7 +587,7 @@ endif
 cmap w!! w !sudo tee % >/dev/null
 
 if has("clipboard")
-  set clipboard^=unnamedplus
+  set clipboard+=unnamedplus
 endif
 
 " neovim paste
