@@ -113,6 +113,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
 Plug 'alvan/vim-closetag'
 Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
