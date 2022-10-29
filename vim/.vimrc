@@ -398,7 +398,7 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap <silent> <leader>b   :<C-u>Leaderfx buffer   --no-sort<cr>
 
   nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort<cr>
-  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " <cr>
+  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort <cr>
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
   command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
