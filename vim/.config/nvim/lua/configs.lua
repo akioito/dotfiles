@@ -12,7 +12,7 @@ if vim.g.neovide then
   map('v', '<D-v>', '"+P') -- Paste visual mode
   map('c', '<D-v>', '<C-R>+') -- Paste command mode
   map('i', '<D-v>', '<ESC>+Pi') -- Paste insert mode
-  vim.api.nvim_set_option("clipboard","unnamed")
+  vim.api.nvim_set_option("clipboard", "unnamed")
 
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_remember_window_position = true
