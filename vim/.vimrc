@@ -39,8 +39,10 @@ endif
 " LSP
 if has('nvim')
     " LSP Support
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
+    " Plug 'williamboman/nvim-lsp-installer'
       " :LspInstallInfo
       " :LspInstall
       " :LspInstallLog

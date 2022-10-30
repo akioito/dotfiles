@@ -46,6 +46,16 @@ require("nvim-treesitter.configs").setup {
 }
 
 -- LSP
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+require("mason-lspconfig").setup({})
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
@@ -77,30 +87,6 @@ cmp_default_maps['<S-Tab>'] = cmp_map.select_prev_item(cmp_option)
 
 lsp.setup_nvim_cmp({
   mapping = cmp_default_maps
-})
-
-lsp.configure('pylsp', {
-  settings = {
-    pylsp = {
-      plugins = {
-        flake8 = { enabled = true },
-        pycodestyle = { enabled = false },
-        pyflakes = { enabled = false },
-        pylint = { enabled = false },
-        mccabe = { enabled = false },
-      },
-    },
-  },
-})
-
-lsp.configure('sumneko_lua', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    },
-  }
 })
 
 lsp.setup()
