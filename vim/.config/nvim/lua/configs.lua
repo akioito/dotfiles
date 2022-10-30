@@ -89,6 +89,20 @@ lsp.setup_nvim_cmp({
   mapping = cmp_default_maps
 })
 
+lsp.configure('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        flake8 = { enabled = true },
+        pycodestyle = { enabled = false },
+        pyflakes = { enabled = false },
+        pylint = { enabled = false },
+        mccabe = { enabled = false },
+      },
+    },
+  },
+})
+
 lsp.configure('sumneko_lua', {
   settings = {
     Lua = {
