@@ -118,4 +118,14 @@ highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg
 hi jsLineComment guifg=#F09868 gui=italic
 hi jsCommonJS    guifg=#ff00ff gui=italic
 
+hi Comment            guifg=#747d8f gui=italic
+hi Conditional        guifg=#0100C8 gui=italic
+hi Special            guifg=#2f7a71 gui=italic
+hi Constant           guifg=#c34146 gui=italic
+hi Keyword            guifg=#64d4be gui=bold
+hi Function           guifg=#3f63b0 gui=italic
+hi String             guifg=#28C101 gui=italic
+hi Type               guifg=#ae6b09 gui=italic
+hi Normal                           gui=italic
+
 " End

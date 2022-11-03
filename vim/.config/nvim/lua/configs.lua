@@ -8,7 +8,7 @@ local hl = function(group, opts)
 end
 
 -- feat!: remove obsolete TS* highlight groups
-https://github.com/nvim-treesitter/nvim-treesitter/commit/42ab95d5e11f247c6f0c8f5181b02e816caa4a4f#commitcomment-87014462
+-- https://github.com/nvim-treesitter/nvim-treesitter/commit/42ab95d5e11f247c6f0c8f5181b02e816caa4a4f#commitcomment-87014462
 
 -- Misc {{{
 hl('@comment', {link = 'Comment'})
