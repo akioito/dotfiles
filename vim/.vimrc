@@ -8,7 +8,8 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 " Treesitter
 if has("nvim")
     Plug 'lewis6991/impatient.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " https://www.reddit.com/r/neovim/comments/y5rofg/recent_treesitter_update_borked_highlighting/
+    Plug 'nvim-treesitter/nvim-treesitter', {'commit': '42ab95d', 'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
         nmap ,, :TSHighlightCapturesUnderCursor<cr>
     Plug 'jose-elias-alvarez/null-ls.nvim'
