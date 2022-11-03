@@ -29,10 +29,10 @@ hi Visual       guibg=Yellow
 " Specials
 hi Todo         guifg=#e50808   guibg=#dbf3cd   gui=bold
 hi Title        guifg=#000000   gui=bold
-hi Special      guifg=#fd8900
+" hi Special      guifg=#fd8900
 
 " Syntax Elements
-hi Function     guifg=Blue
+" hi Function     guifg=Blue
 
 " Python Highlighting
 hi pythonBuiltinFunc     guifg=Red gui=italic
@@ -119,13 +119,14 @@ hi jsLineComment guifg=#F09868 gui=italic
 hi jsCommonJS    guifg=#ff00ff gui=italic
 
 hi Comment            guifg=#747d8f gui=italic
-hi Conditional        guifg=#0100C8 gui=italic
+hi Conditional        guifg=#9f40c0 gui=italic
 hi Special            guifg=#2f7a71 gui=italic
 hi Constant           guifg=#c34146 gui=italic
 hi Keyword            guifg=#64d4be gui=bold
+hi KeywordFunction    guifg=#28C101 gui=italic
+hi KeywordOperator    guifg=#fd8900 gui=italic
 hi Function           guifg=#3f63b0 gui=italic
 hi String             guifg=#28C101 gui=italic
-hi Type               guifg=#ae6b09 gui=italic
 hi Normal                           gui=italic
 
 " End

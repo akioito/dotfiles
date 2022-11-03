@@ -54,8 +54,8 @@ hl('@parameter', {link = 'Identifier'})
 
 -- Keywords {{{
 hl('@keyword', {link = 'Keyword'})
-hl('@keyword.function', {link = 'Keyword'})
-hl('@keyword.operator', {link = 'Keyword'})
+hl('@keyword.function', {link = 'KeywordFunction'})
+hl('@keyword.operator', {link = 'KeywordOperator'})
 hl('@keyword.return', {link = 'Keyword'})
 
 hl('@conditional', {link = 'Conditional'})
