@@ -122,9 +122,10 @@ hi Comment            guifg=#747d8f gui=italic
 hi Conditional        guifg=#9f40c0 gui=italic
 hi Special            guifg=#2f7a71 gui=italic
 hi Constant           guifg=#c34146 gui=italic
-hi Keyword            guifg=#64d4be gui=bold
+hi Keyword            guifg=#2f7a71 gui=bold
 hi KeywordFunction    guifg=#28C101 gui=italic
 hi KeywordOperator    guifg=#fd8900 gui=italic
+hi KeywordReturn      guifg=#28C101 gui=italic
 hi Function           guifg=#3f63b0 gui=italic
 hi String             guifg=#28C101 gui=italic
 hi Normal                           gui=italic

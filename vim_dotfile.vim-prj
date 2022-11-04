@@ -4,7 +4,7 @@ README.md
 install.sh
 vim/.config/coc/ultisnips/*.snippets
 vim/.config/nvim/init.vim
-vim/.config/nvim/lua/configs.lua
+vim/.config/nvim/lua/*.lua
 vim/.vim/mybundle/misc/colors/mycolor.vim
 vim/.vimrc
 
