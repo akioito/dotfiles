@@ -563,7 +563,8 @@ endif
 ":Reveal to reveal the current file in the OS X Finder.
 "z/ to toggle highlighting all instance of word under cursor on/off
 " :%s/foo/bar/gc
-" gUw  : Change to end of current WORD from lower to upper
+" :%retab : replace all the tabs with spaces in the entire file
+"gUw  : Change to end of current WORD from lower to upper
 " zR ulfold all
 " b start of current word
 " gi Resumes inserting at the last place
