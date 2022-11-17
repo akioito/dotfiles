@@ -945,6 +945,7 @@ set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 highlight CursorWord0 guibg=#ffffa2
 highlight CursorWord1 guifg=#ffffa2
+highlight CursorWord  guibg=#ffffa2
 highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
