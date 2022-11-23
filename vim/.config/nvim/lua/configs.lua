@@ -29,7 +29,7 @@ end
 
 -- Treesiter
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue" , "html" },
+  ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
   highlight = {
     enable = true,
     disable = { "vim" },
@@ -114,6 +114,10 @@ lsp.configure('sumneko_lua', {
 })
 
 lsp.setup()
+require("null-ls").setup()
+require("mason-null-ls").setup({
+  automatic_setup = true,
+})
 
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign

@@ -47,6 +47,9 @@ if has('nvim')
       " :LspInstallLog
       " :LspPrintInstalled
 
+    Plug 'jayp0521/mason-null-ls.nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+
     " Autocompletion
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
