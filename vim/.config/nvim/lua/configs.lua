@@ -32,7 +32,6 @@ require("nvim-treesitter.configs").setup {
   ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
   highlight = {
     enable = true,
-    disable = { "vim" },
   },
   rainbow = {
     enable = true,
