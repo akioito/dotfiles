@@ -515,20 +515,6 @@ inoremap <C-D> "
 " Maps
 map <Space> <Leader>
 
-" next searched char when fchar
-nnoremap ff ; "
-" previous searched char when fchar
-nnoremap FF ,
-
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-if !has("nvim")
-  nnoremap jf        <ESC>
-  inoremap jf        <ESC>l
-  inoremap jk        <ESC>l
-  inoremap <C-F>     <ESC>l
-endif
-" inoremap <silent>  <ESC><ESC> :call feedkeys('l')<CR>
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp
