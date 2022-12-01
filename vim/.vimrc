@@ -117,6 +117,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
@@ -332,9 +333,9 @@ Plug 'laher/fuzzymenu.vim'
     \'ITerm                             |:Iterm',
     \'Ls files in current dir           |:LS',
     \'#',
-    \'LspDefinition                     |gd',
+    \'LspDefinition                     |md',
     \'LspHover                          |gh',
-    \'LspReferences                     |gr',
+    \'LspReferences                     |mr',
     \'#',
     \'Open Project                   op |:PyOpenProject',
     \'PlugUpdate                        |:PlugUpdate',
