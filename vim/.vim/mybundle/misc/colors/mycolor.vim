@@ -43,9 +43,9 @@ hi pythonFunction        guifg=#3f63b0 gui=italic
 hi pythonMethod          guifg=Darkorange gui=italic
 hi pythonNumber          guifg=Orangered gui=italic
 hi pythonPreCondit       guifg=#487e52 gui=italic
-hi pythonRepeat          guifg=#0100C8 gui=italic
+hi pythonRepeat          guifg=#9f40c0 gui=italic
 hi pythonSpecial         guifg=Blue gui=italic
-hi pythonStatement       guifg=#2f7a71 gui=italic
+hi pythonStatement       guifg=#9f40c0 gui=italic
 hi pythonStatementSpecial guifg=#28C101 gui=italic
 hi pythonString          guifg=#28C101  gui=italic
 hi pythonTripleString    guifg=darkgreen gui=italic
@@ -125,8 +125,9 @@ hi Constant           guifg=#c34146 gui=italic
 hi Keyword            guifg=#2f7a71 gui=bold
 hi KeywordFunction    guifg=#28C101 gui=italic
 hi KeywordOperator    guifg=#fd8900 gui=italic
-hi KeywordReturn      guifg=#28C101 gui=italic
+hi KeywordReturn      guifg=#9f40c0 gui=italic
 hi Function           guifg=#3f63b0 gui=italic
+hi Repeat             guifg=#9f40c0 gui=italic
 hi String             guifg=#28C101 gui=italic
 hi Normal                           gui=italic
 
