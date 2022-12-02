@@ -139,5 +139,6 @@ require("stickybuf").setup({})
 require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
+require("illuminate").setup({}) 
 
 -- End

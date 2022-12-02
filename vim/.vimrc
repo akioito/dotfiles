@@ -109,8 +109,12 @@ if has('nvim')
 
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
+  Plug 'RRethy/vim-illuminate'
 else
   Plug 'gelguy/wilder.nvim'
+  Plug 'itchyny/vim-cursorword'
+    let g:cursorword_highlight = 0
+    let g:cursorword_delay = 300
 
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -130,9 +134,7 @@ Plug 'mechatroner/rainbow_csv'
   let g:disable_rainbow_key_mappings = 1
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 " Plug 'skanehira/gh.vim'
-Plug 'itchyny/vim-cursorword'
-    let g:cursorword_highlight = 0
-    let g:cursorword_delay = 300
+
 Plug 'gisphm/vim-gitignore'
 
 if system('arch') == "arm64"
@@ -942,6 +944,9 @@ set signcolumn=number
 highlight FoldColumn guibg=White
 if has("nvim")
   set foldcolumn=1
+  highlight def IlluminatedWordText guibg=#ffffa2
+  highlight def IlluminatedWordRead guibg=#ffffa2
+  highlight def IlluminatedWordWrite guibg=#ffffa2
 endif
 
 " End
