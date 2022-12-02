@@ -116,6 +116,9 @@ else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'itchyny/vim-cursorword'
+    let g:cursorword_highlight = 0
+    let g:cursorword_delay = 300
 endif
 
 Plug 'mustache/vim-mustache-handlebars'
@@ -131,9 +134,7 @@ Plug 'mechatroner/rainbow_csv'
   let g:disable_rainbow_key_mappings = 1
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 " Plug 'skanehira/gh.vim'
-Plug 'itchyny/vim-cursorword'
-    let g:cursorword_highlight = 0
-    let g:cursorword_delay = 300
+
 Plug 'gisphm/vim-gitignore'
 
 if system('arch') == "arm64"
