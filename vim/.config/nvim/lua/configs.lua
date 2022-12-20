@@ -10,7 +10,7 @@ map('v', '<D-c>', '"+y') -- Copy
 map('n', '<D-v>', '"+P') -- Paste normal mode
 map('v', '<D-v>', '"+P') -- Paste visual mode
 map('c', '<D-v>', '<C-R>+') -- Paste command mode
-map('i', '<D-v>', '<ESC>"+Pli') -- Paste insert mode
+map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 if vim.g.neovide then
