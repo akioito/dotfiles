@@ -121,6 +121,7 @@ else
     let g:cursorword_delay = 300
 endif
 
+Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
 Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
