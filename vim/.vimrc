@@ -121,7 +121,7 @@ else
     let g:cursorword_delay = 300
 endif
 
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
@@ -130,12 +130,12 @@ Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1
 
-Plug 'mechatroner/rainbow_csv'
+Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
   let g:disable_rainbow_key_mappings = 1
 " https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
 " Plug 'skanehira/gh.vim'
 
-Plug 'gisphm/vim-gitignore'
+Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
 
 if system('arch') == "arm64"
     if has("nvim")
@@ -170,7 +170,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/vim-gfm-syntax'
 
-Plug 'cespare/vim-toml'
+Plug 'cespare/vim-toml', {'autoload': {'filetypes': 'toml'}}
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-surround' "{
@@ -233,7 +233,7 @@ Plug 'henrik/vim-reveal-in-finder'
 Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
-Plug 'chr4/nginx.vim'
+Plug 'chr4/nginx.vim', {'autoload': {'filetypes': 'nginx'}}
 
 Plug 'Galicarnax/vim-regex-syntax'
 " Plug 'roxma/nvim-yarp'
@@ -263,11 +263,11 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
 
 
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'autoload': {'filetypes': 'rust'}}
   let g:rustfmt_autosave = 1
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
-Plug 'vmchale/just-vim'
+Plug 'vmchale/just-vim', {'autoload': {'filetypes': 'justfile'}}
 Plug 'airblade/vim-rooter'
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -287,7 +287,7 @@ function! MyNerdToggle()
 endfunction
 
 Plug 'leafgarland/typescript-vim'
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree', { 'autoload': {'commands': 'NERDTreeToggle'}}
 let g:NERDTreeMouseMode=3
 let g:NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=1
