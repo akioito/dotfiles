@@ -27,6 +27,21 @@ if vim.g.neovide then
     ]])
 end
 
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.api.nvim_set_keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Next()', { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-k>", 'copilot#Previous()', { silent = true, expr = true })
+
+vim.g.copilot_filetypes = {
+  ["*"] = false,
+  ["javascript"] = true,
+  ["typescript"] = true,
+  ["lua"] = true,
+  ["rust"] = true,
+  ["python"] = true,
+}
+
 -- Treesiter
 require("nvim-treesitter.configs").setup {
   ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },

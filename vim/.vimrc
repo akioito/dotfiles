@@ -22,9 +22,6 @@ if has("nvim")
         " :SymbolsOutline
 
     Plug 'github/copilot.vim'
-        imap <M-j> <Plug>(copilot-next)
-        imap <M-k> <Plug>(copilot-previous)
-        let g:copilot_enabled = v:false
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
