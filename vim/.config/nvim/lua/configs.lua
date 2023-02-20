@@ -118,16 +118,7 @@ lsp.configure('pylsp', {
   },
 })
 
-lsp.configure('sumneko_lua', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    },
-  }
-})
-
+lsp.nvim_workspace()
 lsp.setup()
 require("null-ls").setup()
 require("mason-null-ls").setup({
