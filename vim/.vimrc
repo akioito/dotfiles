@@ -114,7 +114,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'itchyny/vim-cursorword'
-    let g:cursorword_highlight = 0
+    let g:cursorword_highlight = 1
     let g:cursorword_delay = 300
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
 endif
