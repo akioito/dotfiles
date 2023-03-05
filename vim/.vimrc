@@ -22,7 +22,6 @@ if has("nvim")
         " :SymbolsOutline
 
     Plug 'zbirenbaum/copilot.lua'
-    Plug 'zbirenbaum/copilot-cmp'
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
