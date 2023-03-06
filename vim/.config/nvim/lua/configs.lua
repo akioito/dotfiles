@@ -30,7 +30,7 @@ end
 -- Treesiter
 require("nvim-treesitter.configs").setup {
   ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
-  indent = { enable = true },
+  -- indent = { enable = true },
   highlight = {
     enable = true,
   },
@@ -84,8 +84,22 @@ cmp_default_maps['<Down>'] = cmp_map.select_next_item(cmp_option)
 cmp_default_maps['<Tab>'] = cmp_map.select_next_item(cmp_option)
 cmp_default_maps['<Up>'] = cmp_map.select_prev_item(cmp_option)
 cmp_default_maps['<S-Tab>'] = cmp_map.select_prev_item(cmp_option)
+cmp_default_maps['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    })
 
 lsp.setup_nvim_cmp({
+  sources = {
+    -- This one provides the data from copilot.
+    {name = 'copilot'},
+
+    --- These are the default sources for lsp-zero
+    {name = 'path'},
+    {name = 'nvim_lsp', keyword_length = 3},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+  },
   mapping = cmp_default_maps
 })
 
@@ -106,34 +120,8 @@ lsp.configure('pylsp', {
 lsp.nvim_workspace()
 lsp.setup()
 
-require('copilot').setup({
-  suggestion = {
-    enabled = true,
-    auto_trigger = false,
-    debounce = 75,
-    keymap = {
-      accept = "<C-,>",
-      accept_word = false,
-      accept_line = false,
-      next = "<C-J>",
-      prev = "<C-K>",
-      dismiss = "<C-]>",
-    },
-  },
-  filetypes = {
-    yaml = false,
-    markdown = false,
-    help = false,
-    gitcommit = false,
-    gitrebase = false,
-    hgcommit = false,
-    svn = false,
-    cvs = false,
-    ["."] = false,
-  },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
-  server_opts_overrides = {},
-})
+require('copilot').setup()
+require("copilot_cmp").setup({})
 
 require("null-ls").setup()
 require("mason-null-ls").setup({
