@@ -333,6 +333,7 @@ Plug 'laher/fuzzymenu.vim'
     \'ITerm                             |:Iterm',
     \'Ls files in current dir           |:LS',
     \'#',
+    \'diagnostic.setloclist()           |gl',
     \'LspDefinition                     |md',
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
