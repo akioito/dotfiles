@@ -26,11 +26,11 @@ if has("nvim")
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
-    Plug 'p00f/nvim-ts-rainbow'
+    " Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
 else
-    Plug 'frazrepo/vim-rainbow'
+    " Plug 'frazrepo/vim-rainbow'
 endif
 
 " LSP
@@ -61,6 +61,7 @@ if has('nvim')
 
     Plug 'VonHeikemen/lsp-zero.nvim'
     Plug 'alexaandru/nvim-lspupdate'
+    Plug 'utilyre/sentiment.nvim'
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
