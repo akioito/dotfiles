@@ -108,6 +108,8 @@ if has('nvim')
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'RRethy/vim-illuminate'
+  Plug 'SmiteshP/nvim-navic'
+  Plug 'utilyre/barbecue.nvim'
 else
   Plug 'gelguy/wilder.nvim'
 

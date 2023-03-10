@@ -150,5 +150,6 @@ require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
 require("sentiment").setup({})
+require("barbecue").setup({})
 
 -- End
