@@ -46,87 +46,87 @@ require("nvim-treesitter.configs").setup {
 }
 
 -- LSP
-require("mason").setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
-})
-require("mason-lspconfig").setup({})
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+-- require("mason").setup({
+--   ui = {
+--     icons = {
+--       package_installed = "✓",
+--       package_pending = "➜",
+--       package_uninstalled = "✗"
+--     }
+--   }
+-- })
+-- require("mason-lspconfig").setup({})
+-- local lsp = require('lsp-zero')
+-- lsp.preset('recommended')
+--
+-- lsp.set_preferences({
+--   set_lsp_keymaps = false
+-- })
+--
+-- lsp.on_attach(function(_, bufnr)
+--   local noremap = { buffer = bufnr, remap = false }
+--   -- LSP actions
+--   map('n', 'md', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
+--   map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
+--   map('n', 'mr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
+--   -- Diagnostics
+--   map('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
+--   map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
+--   map('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
+-- end)
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+--
+-- local cmp = require('cmp')
+-- local cmp_default_maps = lsp.defaults.cmp_mappings()
+-- local cmp_map = cmp.mapping
+-- local cmp_option = { behavior = cmp.SelectBehavior.Replace, select = true }
+-- cmp_default_maps['<Down>'] = cmp_map.select_next_item(cmp_option)
+-- cmp_default_maps['<Tab>'] = cmp_map.select_next_item(cmp_option)
+-- cmp_default_maps['<Up>'] = cmp_map.select_prev_item(cmp_option)
+-- cmp_default_maps['<S-Tab>'] = cmp_map.select_prev_item(cmp_option)
+-- cmp_default_maps['<CR>'] = cmp.mapping.confirm({
+--       behavior = cmp.ConfirmBehavior.Replace,
+--       select = false,
+--     })
 
-lsp.set_preferences({
-  set_lsp_keymaps = false
-})
+-- lsp.setup_nvim_cmp({
+--   sources = {
+--     -- This one provides the data from copilot.
+--     {name = 'copilot'},
+--
+--     --- These are the default sources for lsp-zero
+--     {name = 'path'},
+--     {name = 'nvim_lsp', keyword_length = 3},
+--     {name = 'buffer', keyword_length = 3},
+--     {name = 'luasnip', keyword_length = 2},
+--   },
+--   mapping = cmp_default_maps
+-- })
+--
+-- lsp.configure('pylsp', {
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         flake8 = { enabled = true },
+--         pycodestyle = { enabled = false },
+--         pyflakes = { enabled = false },
+--         pylint = { enabled = false },
+--         mccabe = { enabled = false },
+--       },
+--     },
+--   },
+-- })
+--
+-- lsp.nvim_workspace()
+-- lsp.setup()
+--
+-- require('copilot').setup()
+-- require("copilot_cmp").setup({})
 
-lsp.on_attach(function(_, bufnr)
-  local noremap = { buffer = bufnr, remap = false }
-  -- LSP actions
-  map('n', 'md', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
-  map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
-  map('n', 'mr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
-  -- Diagnostics
-  map('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
-  map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
-  map('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
-end)
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-
-local cmp = require('cmp')
-local cmp_default_maps = lsp.defaults.cmp_mappings()
-local cmp_map = cmp.mapping
-local cmp_option = { behavior = cmp.SelectBehavior.Replace, select = true }
-cmp_default_maps['<Down>'] = cmp_map.select_next_item(cmp_option)
-cmp_default_maps['<Tab>'] = cmp_map.select_next_item(cmp_option)
-cmp_default_maps['<Up>'] = cmp_map.select_prev_item(cmp_option)
-cmp_default_maps['<S-Tab>'] = cmp_map.select_prev_item(cmp_option)
-cmp_default_maps['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    })
-
-lsp.setup_nvim_cmp({
-  sources = {
-    -- This one provides the data from copilot.
-    {name = 'copilot'},
-
-    --- These are the default sources for lsp-zero
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 3},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2},
-  },
-  mapping = cmp_default_maps
-})
-
-lsp.configure('pylsp', {
-  settings = {
-    pylsp = {
-      plugins = {
-        flake8 = { enabled = true },
-        pycodestyle = { enabled = false },
-        pyflakes = { enabled = false },
-        pylint = { enabled = false },
-        mccabe = { enabled = false },
-      },
-    },
-  },
-})
-
-lsp.nvim_workspace()
-lsp.setup()
-
-require('copilot').setup()
-require("copilot_cmp").setup({})
-
-require("null-ls").setup()
-require("mason-null-ls").setup({
-  automatic_setup = true,
-})
+-- require("null-ls").setup()
+-- require("mason-null-ls").setup({
+--   automatic_setup = true,
+-- })
 
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign
@@ -149,7 +149,7 @@ require("stickybuf").setup({})
 require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
-require("sentiment").setup({})
-require("barbecue").setup({})
+-- require("sentiment").setup({})
+-- require("barbecue").setup({})
 
 -- End

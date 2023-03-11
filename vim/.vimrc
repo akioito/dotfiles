@@ -34,35 +34,35 @@ else
 endif
 
 " LSP
-if has('nvim')
-    " LSP Support
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
-    Plug 'neovim/nvim-lspconfig'
-    " Plug 'williamboman/nvim-lsp-installer'
-      " :LspInstallInfo
-      " :LspInstall
-      " :LspInstallLog
-      " :LspPrintInstalled
-
-    Plug 'jayp0521/mason-null-ls.nvim'
-    Plug 'jose-elias-alvarez/null-ls.nvim'
-
-    " Autocompletion
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-
-    "  Snippets
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'rafamadriz/friendly-snippets'
-
-    Plug 'VonHeikemen/lsp-zero.nvim'
-    Plug 'alexaandru/nvim-lspupdate'
-    Plug 'utilyre/sentiment.nvim'
-else
+" if has('nvim')
+"     " LSP Support
+"     Plug 'williamboman/mason.nvim'
+"     Plug 'williamboman/mason-lspconfig.nvim'
+"     Plug 'neovim/nvim-lspconfig'
+"     " Plug 'williamboman/nvim-lsp-installer'
+"       " :LspInstallInfo
+"       " :LspInstall
+"       " :LspInstallLog
+"       " :LspPrintInstalled
+"
+"     Plug 'jayp0521/mason-null-ls.nvim'
+"     Plug 'jose-elias-alvarez/null-ls.nvim'
+"
+"     " Autocompletion
+"     Plug 'hrsh7th/nvim-cmp'
+"     Plug 'hrsh7th/cmp-buffer'
+"     Plug 'hrsh7th/cmp-path'
+"     Plug 'saadparwaiz1/cmp_luasnip'
+"     Plug 'hrsh7th/cmp-nvim-lsp'
+"
+"     "  Snippets
+"     Plug 'L3MON4D3/LuaSnip'
+"     Plug 'rafamadriz/friendly-snippets'
+"
+"     Plug 'VonHeikemen/lsp-zero.nvim'
+"     Plug 'alexaandru/nvim-lspupdate'
+"     Plug 'utilyre/sentiment.nvim'
+" else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
@@ -82,6 +82,7 @@ else
     noremap mr   :LspReferences<cr>
     noremap md   :LspDefinition<cr>
     noremap gh   :LspHover<cr>
+    noremap gl   :LspDocumentDiagnostics<cr>
     augroup vim-lsp
       autocmd!
 
@@ -96,7 +97,7 @@ else
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
-endif
+" endif
 
 if has('nvim')
   function! UpdateRemotePlugins(...)
@@ -108,8 +109,8 @@ if has('nvim')
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'RRethy/vim-illuminate'
-  Plug 'SmiteshP/nvim-navic'
-  Plug 'utilyre/barbecue.nvim'
+  " Plug 'SmiteshP/nvim-navic'
+  " Plug 'utilyre/barbecue.nvim'
 else
   Plug 'gelguy/wilder.nvim'
 
@@ -336,7 +337,7 @@ Plug 'laher/fuzzymenu.vim'
     \'ITerm                             |:Iterm',
     \'Ls files in current dir           |:LS',
     \'#',
-    \'diagnostic.setloclist()           |gl',
+    \'LspDocumentDiagnostics            |gl',
     \'LspDefinition                     |md',
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
