@@ -906,7 +906,7 @@ set vb t_vb=
 set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
-highlight CursorWord  guibg=#ffffa2
+highlight CursorWord  guibg=#f8edeb
 highlight CursorWord2  guibg=#ffffa2
 highlight ScrollView guibg=Gray
 if has('termguicolors')
@@ -916,6 +916,7 @@ set signcolumn=number
 highlight FoldColumn guibg=White
 if has("nvim")
   set foldcolumn=1
+  highlight lspReference guibg=#ffffa2
 endif
 
 " End
