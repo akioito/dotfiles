@@ -21,12 +21,9 @@ if has("nvim")
     Plug 'simrat39/symbols-outline.nvim'
         " :SymbolsOutline
 
-    " Plug 'zbirenbaum/copilot.lua'
-    " Plug 'zbirenbaum/copilot-cmp'
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
-    " Plug 'p00f/nvim-ts-rainbow'
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
 else
@@ -78,7 +75,6 @@ if has('nvim')
 
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
-  Plug 'RRethy/vim-illuminate'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'utilyre/sentiment.nvim'
 else
@@ -87,11 +83,11 @@ else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'itchyny/vim-cursorword'
-    let g:cursorword_highlight = 1
-    let g:cursorword_delay = 300
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
 endif
+Plug 'itchyny/vim-cursorword'
+  let g:cursorword_highlight = 1
+  let g:cursorword_delay = 300
 
 Plug 'Exafunction/codeium.vim'
 
@@ -911,6 +907,7 @@ set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 highlight CursorWord  guibg=#ffffa2
+highlight CursorWord2  guibg=#ffffa2
 highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
@@ -919,9 +916,6 @@ set signcolumn=number
 highlight FoldColumn guibg=White
 if has("nvim")
   set foldcolumn=1
-  highlight def IlluminatedWordText guibg=#ffffa2
-  highlight def IlluminatedWordRead guibg=#ffffa2
-  highlight def IlluminatedWordWrite guibg=#ffffa2
 endif
 
 " End
