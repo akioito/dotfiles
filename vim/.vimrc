@@ -34,70 +34,40 @@ else
 endif
 
 " LSP
-" if has('nvim')
-"     " LSP Support
-"     Plug 'williamboman/mason.nvim'
-"     Plug 'williamboman/mason-lspconfig.nvim'
-"     Plug 'neovim/nvim-lspconfig'
-"     " Plug 'williamboman/nvim-lsp-installer'
-"       " :LspInstallInfo
-"       " :LspInstall
-"       " :LspInstallLog
-"       " :LspPrintInstalled
-"
-"     Plug 'jayp0521/mason-null-ls.nvim'
-"     Plug 'jose-elias-alvarez/null-ls.nvim'
-"
-"     " Autocompletion
-"     Plug 'hrsh7th/nvim-cmp'
-"     Plug 'hrsh7th/cmp-buffer'
-"     Plug 'hrsh7th/cmp-path'
-"     Plug 'saadparwaiz1/cmp_luasnip'
-"     Plug 'hrsh7th/cmp-nvim-lsp'
-"
-"     "  Snippets
-"     Plug 'L3MON4D3/LuaSnip'
-"     Plug 'rafamadriz/friendly-snippets'
-"
-"     Plug 'VonHeikemen/lsp-zero.nvim'
-"     Plug 'alexaandru/nvim-lspupdate'
-"     Plug 'utilyre/sentiment.nvim'
-" else
-    " vim-lsp (Hover and highlight word at cursor references)
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
-    let g:lsp_diagnostics_echo_cursor = 1
-    let g:lsp_diagnostics_float_cursor = 1
-    let g:lsp_diagnostics_highlights_enabled = 0
-    let g:lsp_diagnostics_virtual_text_enabled = 0
-    let g:lsp_settings = {
-    \   'pylsp-all': {
-    \     'workspace_config': {
-    \       'pylsp': {
-    \         'configurationSources': ['flake8']
-    \       }
-    \     }
-    \   },
-    \}
-    noremap mr   :LspReferences<cr>
-    noremap md   :LspDefinition<cr>
-    noremap gh   :LspHover<cr>
-    noremap gl   :LspDocumentDiagnostics<cr>
-    augroup vim-lsp
-      autocmd!
+" vim-lsp (Hover and highlight word at cursor references)
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_settings = {
+\   'pylsp-all': {
+\     'workspace_config': {
+\       'pylsp': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
+noremap mr   :LspReferences<cr>
+noremap md   :LspDefinition<cr>
+noremap gh   :LspHover<cr>
+noremap gl   :LspDocumentDiagnostics<cr>
+augroup vim-lsp
+  autocmd!
 
-      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-          \ 'name': 'file',
-          \ 'allowlist': ['*'],
-          \ 'priority': 10,
-          \ 'completor': function('asyncomplete#sources#file#completor')
-          \ }))
-    augroup end
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'allowlist': ['*'],
+      \ 'priority': 10,
+      \ 'completor': function('asyncomplete#sources#file#completor')
+      \ }))
+augroup end
 
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
-" endif
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
 
 if has('nvim')
   function! UpdateRemotePlugins(...)
@@ -109,8 +79,8 @@ if has('nvim')
   Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'RRethy/vim-illuminate'
-  " Plug 'SmiteshP/nvim-navic'
-  " Plug 'utilyre/barbecue.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'utilyre/sentiment.nvim'
 else
   Plug 'gelguy/wilder.nvim'
 

@@ -131,4 +131,7 @@ hi Repeat             guifg=#9f40c0 gui=italic
 hi String             guifg=#28C101 gui=italic
 hi Normal                           gui=italic
 
+hi IndentBlanklineContextChar guifg=#ffdad8 gui=nocombine
+hi IndentBlanklineChar        guifg=#f8edeb gui=nocombine
+
 " End
