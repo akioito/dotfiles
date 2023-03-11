@@ -21,8 +21,8 @@ if has("nvim")
     Plug 'simrat39/symbols-outline.nvim'
         " :SymbolsOutline
 
-    Plug 'zbirenbaum/copilot.lua'
-    Plug 'zbirenbaum/copilot-cmp'
+    " Plug 'zbirenbaum/copilot.lua'
+    " Plug 'zbirenbaum/copilot-cmp'
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
@@ -122,6 +122,8 @@ else
     let g:cursorword_delay = 300
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
 endif
+
+Plug 'Exafunction/codeium.vim'
 
 Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
 Plug 'prettier/vim-prettier', {
