@@ -200,7 +200,9 @@ Plug 'henrik/vim-reveal-in-finder'
   nnoremap <C-@>      :TagbarToggle<CR>
 "}
 
-Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
+if !has("nvim")
+  Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
+end
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim', {'autoload': {'filetypes': 'nginx'}}
