@@ -85,6 +85,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
+  Plug 'justinmk/vim-matchparenalways'
 endif
 Plug 'itchyny/vim-cursorword'
   let g:cursorword_highlight = 1
