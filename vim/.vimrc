@@ -54,7 +54,6 @@ noremap gh   :LspHover<cr>
 noremap gl   :LspDocumentDiagnostics<cr>
 augroup vim-lsp
   autocmd!
-
   au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
       \ 'name': 'file',
       \ 'allowlist': ['*'],
@@ -78,6 +77,9 @@ if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'utilyre/sentiment.nvim'
+  Plug 'itchyny/vim-cursorword'
+    let g:cursorword_highlight = 1
+    let g:cursorword_delay = 300
 else
   Plug 'gelguy/wilder.nvim'
 
@@ -87,9 +89,6 @@ else
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
   Plug 'justinmk/vim-matchparenalways'
 endif
-Plug 'itchyny/vim-cursorword'
-  let g:cursorword_highlight = 1
-  let g:cursorword_delay = 300
 
 Plug 'Exafunction/codeium.vim'
   imap <script><silent><nowait><expr> <C-g> codeium#Accept()
@@ -206,9 +205,7 @@ Plug 'henrik/vim-reveal-in-finder'
   nnoremap <C-@>      :TagbarToggle<CR>
 "}
 
-if !has("nvim")
-  Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
-end
+Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim', {'autoload': {'filetypes': 'nginx'}}
@@ -657,7 +654,7 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd!
-    autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
+    " autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
     " autocmd BufEnter * lcd %:p:h " Current Directory
     " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
 
@@ -914,17 +911,17 @@ set vb t_vb=
 set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
-highlight CursorWord  guibg=#f8edeb
-highlight CursorWord2  guibg=#ffffa2
+" highlight CursorWord2  guibg=#ffffa2
 highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
 endif
 set signcolumn=number
 highlight FoldColumn guibg=White
+highlight lspReference guibg=#ffffa2
 if has("nvim")
   set foldcolumn=1
-  highlight lspReference guibg=#ffffa2
+  highlight CursorWord  guibg=#f8edeb
 endif
 
 " End
