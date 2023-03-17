@@ -90,6 +90,11 @@ else
   Plug 'justinmk/vim-matchparenalways'
 endif
 
+Plug 'MattesGroeger/vim-bookmarks'
+  let g:bookmark_save_per_working_dir = 1
+  let g:bookmark_auto_save = 1
+  nnoremap <F2> :BookmarkToggle<cr>
+  nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'Exafunction/codeium.vim'
   imap <script><silent><nowait><expr> <C-g> codeium#Accept()
   imap <C-J>   <Cmd>call codeium#CycleCompletions(1)<CR>

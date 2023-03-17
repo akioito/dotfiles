@@ -71,4 +71,5 @@ require("sentiment").setup({})
 require("indent_blankline").setup {
     show_current_context = true,
 }
+
 -- End
