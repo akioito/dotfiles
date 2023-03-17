@@ -112,8 +112,6 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
   let g:disable_rainbow_key_mappings = 1
-" https://github.com/skanehira/gh.vim/blob/master/doc/gh.txt
-" Plug 'skanehira/gh.vim'
 
 Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
 
@@ -153,7 +151,7 @@ Plug 'rhysd/vim-gfm-syntax'
 Plug 'cespare/vim-toml', {'autoload': {'filetypes': 'toml'}}
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-surround' "{
+Plug 'tpope/vim-surround' "{
 "   " Assuming | as a cursor
 "     " fo|o - ysiw' - 'foo'
 "     " 'fo|o' - ds' - foo
@@ -241,8 +239,6 @@ end
 let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
-
-
 Plug 'rust-lang/rust.vim', {'autoload': {'filetypes': 'rust'}}
   let g:rustfmt_autosave = 1
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
@@ -301,11 +297,14 @@ Plug 'laher/fuzzymenu.vim'
 " ----------------------------------------------------------------------------
 " MyMenu
   let myMenuList = [
-    \'Buffers                  <Space>b |<Space>l',
+    \'Buffers                  <Space>b |<C-l>',
     \'#',
     \'Close or QSearchToggle            |<F4>',
     \'Commands                          |:LeaderfCommand',
     \'Delete Buffer                     |:bdelete',
+    \'#',
+    \'BookmarkToggle                    |<F2>',
+    \'BookmarkShowAll                   |<S-F2>',
     \'#',
     \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z',
@@ -357,7 +356,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'source': myMenuList,
     \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
-    \   'window': { 'width': 0.5, 'height': 0.4 }
+    \   'window': { 'width': 0.5, 'height': 0.45 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
@@ -377,20 +376,20 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
-  nnoremap <leader>f            :<C-u>Leaderfx function <cr>
-  nnoremap <C-Space>            :<C-u>Leaderfx function --no-sort<cr>
-  inoremap <C-Space>       <ESC>:<C-u>Leaderfx function --no-sort<cr>
+  nnoremap <leader>f            :<C-u>Leaderf function <cr>
+  nnoremap <C-Space>            :<C-u>Leaderf function --no-sort<cr>
+  inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort<cr>
 
-  nnoremap <silent> <leader>l   :<C-u>Leaderfx buffer   --no-sort<cr>
-  nnoremap <silent> <C-l>       :<C-u>Leaderfx buffer <cr>
-  nnoremap <silent> <leader>b   :<C-u>Leaderfx buffer   --no-sort<cr>
+  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
+  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap<cr>
+  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
 
-  nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort<cr>
-  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort <cr>
+  nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort --nameOnly --nowrap<cr>
+  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort --nameOnly --nowrap<cr>
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
-  command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
-    \  | call feedkeys("<Tab>")
+  " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
+  "   \  | call feedkeys("<Tab>")
 
   Plug 'Yggdroot/LeaderF-marks'
 "}
@@ -486,14 +485,10 @@ end
 set statusline+=%5*\ %=%{&ff}\                     " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%5*%y%*                            " file type
-" set statusline+=%{coc#status()}
 
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
-" Special map for my custom keyboard
-inoremap <C-S> '
-inoremap <C-D> "
 
 " ----------------------------------------------------------------------------
 " Maps
@@ -583,7 +578,6 @@ noremap zr zR
 
 nnoremap  b<Space> :b<Space>
 noremap! ¥ \
-" noremap! \ ¥
 
 " Buffer Navigation
 map <SwipeLeft>     <C-o>
@@ -629,14 +623,8 @@ vnoremap > >gv
 tnoremap <Esc><Esc> <C-\><C-n>
 
 " ----------------------------------------------------------------------------
-function! XGrep()
-  execute "normal! *:Bgrep\<CR>\<CR>"
-endfunction
-
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 noremap  <silent> <F3>       :Bgrep<CR><CR>
-" nnoremap <silent> <F3>       :GrepBuffer <C-R>=expand("<cword>")<CR><CR><C-w><C-k>
-" nnoremap <silent> <F3>       :call XGrep()<CR> <bar> :Quickfix<CR>
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
@@ -659,9 +647,7 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd!
-    " autocmd BufEnter *.vim-prj lcd %:p:h " Current Directory
     " autocmd BufEnter * lcd %:p:h " Current Directory
-    " autocmd BufEnter *.pyprj let g:currProject = expand('%:p') " see pyproject.vim
 
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/
@@ -683,10 +669,8 @@ augroup my_autocmd
     autocmd FileType html setlocal indentkeys-=*<Return>
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
-    " Trim Trailing Whitespace (tidy.nvim for nvim)
-    if !has("nvim")
-        autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,nu} %s/\s\+$//e
-    endif
+    " Trim Trailing Whitespace
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
@@ -697,9 +681,6 @@ augroup my_autocmd
     " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
 
     " ESC to not append 'g' when save in insert mode
-    " autocmd BufWritePost *.py  call feedkeys("\<Esc>") | WatchdogsRun
-    " autocmd BufWritePost *.css call feedkeys("\<Esc>") | WatchdogsRun
-    " autocmd BufWritePost *.js  call feedkeys("\<Esc>") | WatchdogsRun
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
