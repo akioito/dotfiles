@@ -96,9 +96,9 @@ Plug 'MattesGroeger/vim-bookmarks'
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'Exafunction/codeium.vim'
-  imap <script><silent><nowait><expr> <C-g> codeium#Accept()
-  imap <C-J>   <Cmd>call codeium#CycleCompletions(1)<CR>
-  imap <C-K>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+  imap <script><silent><nowait><expr> <C-g> codeium#Accept() "also works with <Tab>
+  imap <C-j>   <Cmd>call codeium#CycleCompletions(1)<CR>
+  imap <C-k>   <Cmd>call codeium#CycleCompletions(-1)<CR>
   imap <C-x>   <Cmd>call codeium#Clear()<CR>
 
 Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
