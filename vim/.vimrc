@@ -65,6 +65,11 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
+  Plug 'Yggdroot/indentLine'
+    let g:indentLine_color_gui = '#ffdad8'
+    let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash']
+    let g:indentLine_char = '|'
+    let g:indentLine_faster = 1
 endif
 
 Plug 'justinmk/vim-matchparenalways'
@@ -75,7 +80,7 @@ Plug 'MattesGroeger/vim-bookmarks'
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'Exafunction/codeium.vim'
-  imap <script><silent><nowait><expr> <C-g> codeium#Accept() "also works with <Tab>
+  imap <script><silent><nowait><expr> <Tab> codeium#Accept()
   imap <C-j>   <Cmd>call codeium#CycleCompletions(1)<CR>
   imap <C-k>   <Cmd>call codeium#CycleCompletions(-1)<CR>
   imap <C-x>   <Cmd>call codeium#Clear()<CR>
@@ -112,10 +117,6 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
   vnoremap <BS> d
 endif
 
-" Plug 'rhysd/conflict-marker.vim'
-" Plug 'Yggdroot/indentLine'
-"   let g:indentLine_color_gui = '#EFEFEF'
-"   let g:indentLine_fileType = ['html', 'python']
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript', {'for': ['javascript']}
 
