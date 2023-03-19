@@ -18,8 +18,6 @@ if has("nvim")
     Plug 'nathom/filetype.nvim'
     Plug 'dstein64/nvim-scrollview'
     Plug 'chr4/nginx.vim'
-    Plug 'simrat39/symbols-outline.nvim'
-        " :SymbolsOutline
 
     Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
@@ -27,8 +25,6 @@ if has("nvim")
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
     Plug 'nvim-treesitter/nvim-treesitter-context'
-else
-    " Plug 'frazrepo/vim-rainbow'
 endif
 
 " LSP
@@ -39,15 +35,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 0
-let g:lsp_settings = {
-\   'pylsp-all': {
-\     'workspace_config': {
-\       'pylsp': {
-\         'configurationSources': ['flake8']
-\       }
-\     }
-\   },
-\}
+
 noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
 noremap gh   :LspHover<cr>
