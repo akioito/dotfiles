@@ -42,10 +42,6 @@ vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
 
-require('dd').setup({
-  timeout = 1000
-})
-
 require("filetype").setup({})
 require("stickybuf").setup({})
 require("tidy").setup({

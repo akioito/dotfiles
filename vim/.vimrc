@@ -18,8 +18,6 @@ if has("nvim")
     Plug 'nathom/filetype.nvim'
     Plug 'dstein64/nvim-scrollview'
     Plug 'chr4/nginx.vim'
-
-    Plug 'https://gitlab.com/yorickpeterse/nvim-dd.git'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
