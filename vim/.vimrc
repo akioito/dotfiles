@@ -57,7 +57,6 @@ Plug 'prabirshrestha/asyncomplete-file.vim'
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'utilyre/sentiment.nvim'
   Plug 'itchyny/vim-cursorword'
     let g:cursorword_highlight = 1
     let g:cursorword_delay = 300
@@ -66,9 +65,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
-  Plug 'justinmk/vim-matchparenalways'
 endif
 
+Plug 'justinmk/vim-matchparenalways'
 Plug 'gelguy/wilder.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_save_per_working_dir = 1
