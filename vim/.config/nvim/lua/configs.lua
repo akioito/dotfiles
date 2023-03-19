@@ -28,21 +28,12 @@ if vim.g.neovide then
     ]])
 end
 
--- Treesiter
+-- Treesitter
 require("nvim-treesitter.configs").setup {
   ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
-  -- indent = { enable = true },
   highlight = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil -- Do not enable for files with more than n lines, int
-  },
-  completion = {
-    keyword_length = 2,
-    completeopt = "menu,menuone,noselect"
+    enable = false,
+    additional_vim_regex_highlighting = false,
   },
 }
 
@@ -50,7 +41,6 @@ require("nvim-treesitter.configs").setup {
 vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
-require('scrollview').setup()
 
 require('dd').setup({
   timeout = 1000
