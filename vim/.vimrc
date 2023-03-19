@@ -55,13 +55,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
 
 if has('nvim')
-  function! UpdateRemotePlugins(...)
-    " Needed to refresh runtime files
-    let &rtp=&rtp
-    UpdateRemotePlugins
-  endfunction
-
-  Plug 'gelguy/wilder.nvim', { 'do': function('UpdateRemotePlugins') }
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'utilyre/sentiment.nvim'
@@ -69,8 +62,6 @@ if has('nvim')
     let g:cursorword_highlight = 1
     let g:cursorword_delay = 300
 else
-  Plug 'gelguy/wilder.nvim'
-
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
@@ -78,6 +69,7 @@ else
   Plug 'justinmk/vim-matchparenalways'
 endif
 
+Plug 'gelguy/wilder.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_save_per_working_dir = 1
   let g:bookmark_auto_save = 1
@@ -390,12 +382,10 @@ Plug '~/.vim/mybundle/vim-command-w'
 
 call plug#end()
 
-if !has("nvim")
-  call wilder#setup({'modes': [':', '/', '?']})
-  call wilder#set_option('renderer', wilder#popupmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ }))
-endif
+call wilder#setup({'modes': [':', '/', '?']})
+call wilder#set_option('renderer', wilder#popupmenu_renderer({
+  \ 'highlighter': wilder#basic_highlighter(),
+  \ }))
 
 " Required:
 filetype plugin indent on
