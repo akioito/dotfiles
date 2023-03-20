@@ -327,7 +327,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'source': myMenuList,
     \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
-    \   'window': { 'width': 0.5, 'height': 0.45 }
+    \   'window': { 'width': 0.5, 'height': 0.5 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
@@ -410,6 +410,8 @@ inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
 
 nnoremap <C-N>          :tabnew<cr>
+" vim command line
+nnoremap cm :
 
 " For performance reason
 let html_no_rendering     = 1
