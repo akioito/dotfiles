@@ -40,19 +40,14 @@ noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
 noremap gh   :LspHover<cr>
 noremap gl   :LspDocumentDiagnostics<cr>
-augroup vim-lsp
-  autocmd!
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'allowlist': ['*'],
-      \ 'priority': 10,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
-augroup end
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
+  let g:ycm_key_list_select_completion = ['<Down>','<TAB>']
+  let g:ycm_min_num_of_chars_for_completion = 2
+  if has("nvim")
+    set completeopt-=preview
+  endif
+  let g:ycm_autoclose_preview_window_after_insertion = 1
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
@@ -80,10 +75,12 @@ Plug 'MattesGroeger/vim-bookmarks'
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'Exafunction/codeium.vim'
-  imap <script><silent><nowait><expr> <C-g> codeium#Accept()  " Allow codeium to accept the current buffer
-  imap <C-j>   <Cmd>call codeium#CycleCompletions(1)<CR>
-  imap <C-k>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-  imap <C-x>   <Cmd>call codeium#Clear()<CR>
+  let g:codeium_no_map_tab = 1
+  let g:codeium_manual = 1
+  imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+  imap <PageDown>   <Cmd>call codeium#CycleCompletions(1)<CR>
+  imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+  imap <Home>   <Cmd>call codeium#Clear()<CR>
 
 Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
 Plug 'prettier/vim-prettier', {
@@ -297,6 +294,9 @@ Plug 'laher/fuzzymenu.vim'
     \'LspDefinition                     |md',
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
+    \'#',
+    \'CodeiumAuto                       |:CodeiumAuto',
+    \'CodeiumManual                     |:CodeiumManual',
     \'#',
     \'Open Project                   op |:PyOpenProject',
     \'PlugUpdate                        |:PlugUpdate',
