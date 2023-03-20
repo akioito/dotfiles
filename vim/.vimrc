@@ -33,6 +33,8 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_text_edit_enabled = 0
+let g:lsp_insert_text_enabled = 0
 
 noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
@@ -78,7 +80,7 @@ Plug 'MattesGroeger/vim-bookmarks'
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'Exafunction/codeium.vim'
-  imap <script><silent><nowait><expr> <Tab> codeium#Accept()
+  imap <script><silent><nowait><expr> <C-g> codeium#Accept()  " Allow codeium to accept the current buffer
   imap <C-j>   <Cmd>call codeium#CycleCompletions(1)<CR>
   imap <C-k>   <Cmd>call codeium#CycleCompletions(-1)<CR>
   imap <C-x>   <Cmd>call codeium#Clear()<CR>
