@@ -305,7 +305,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Tableize - Convert from CSV       |:Tableize',
     \'TableModeToggle                   |:TableModeToggle',
     \'TodoQuickFix                      |:TodoQuickFix',
-    \'Open GitHub URL                   |:GBrowse',
+    \'GitHub URL                        |:GBrowse',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
