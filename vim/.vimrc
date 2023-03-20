@@ -275,7 +275,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z',
-    \'Fzf-quickfix                      |:Quickfix',
+    \'Fzf-quickfix                      |zquick',
     \'GhostStart                        |:GhostStart',
     \'GrepBuffer word at cursor         |<F3>',
     \'ITerm                             |:Iterm',
@@ -347,6 +347,7 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
     \ '<C-J>': ['<Down>', '<C-J>'],
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
+  nnoremap zquick               :<C-u>Quickfix<cr>
   nnoremap <leader>f            :<C-u>Leaderf function <cr>
   nnoremap <C-Space>            :<C-u>Leaderf function --no-sort<cr>
   inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort<cr>

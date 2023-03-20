@@ -15,10 +15,10 @@ brew install python
 brew install ripgrep
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
-pip3 install neovim
+pip3 install pynvim
 ```
 
-Install JetBrainsMono Nerd Font (or Ajust for your guifont)<br>
+Install Lekton Nerd Font (or Ajust guifont)<br>
 https://www.nerdfonts.com/font-downloads <br><br>
 
        
@@ -37,11 +37,13 @@ git clone https://github.com/akioito/dotfiles.git
 cd dotfiles
 ./install.sh
 
-mvim 
+MacVim / Neovide 
 :PlugInstall# wait until end plugin installation -> :quit
 
-mvim
-:CocUpdate
+LSP Python Ruff
+cd ~/.local/share/vim-lsp-settings/servers/pylsp
+source venv/bin/activate.fish
+pip install python-lsp-ruff
 ```  
 
 Enjoy!
@@ -66,33 +68,44 @@ Normal mode
 ```  
 <Space><Space> General menu command
   let myMenuList = [
-    \'Buffers                  <Space>b |<Space>l', 
+    \'Buffers                  <Space>b |<C-l>',
     \'#',
-    \'Close or QSearchToggle            |<F4>', 
-    \'Commands                          |:Commands',
-    \'Delete Buffer                     |:bdelete', 
-    \'#', 
+    \'Close or QSearchToggle            |<F4>',
+    \'Commands                          |:LeaderfCommand',
+    \'Delete Buffer                     |:bdelete',
+    \'#',
+    \'BookmarkToggle                    |<F2>',
+    \'BookmarkShowAll                   |<S-F2>',
+    \'#',
     \'Functions               <C-Space> |<Space>f',
-    \'Fuzzy Menu                        |<Space>z', 
-    \'Fzf-quickfix                      |:Quickfix',
+    \'Fuzzy Menu                        |<Space>z',
+    \'Fzf-quickfix                      |zquick',
+    \'GhostStart                        |:GhostStart',
     \'GrepBuffer word at cursor         |<F3>',
     \'ITerm                             |:Iterm',
-    \'Ls files in current dir           |:LS',  
-    \'#',     
-    \'LspDefinition                     |gd',                                      
-    \'LspHover                          |gh', 
-    \'LspReferences                     |gr', 
-    \'#',     
-    \'Open Project                   op |:PyOpenProject',  
-    \'PlugUpdate                        |:PlugUpdate', 
+    \'Ls files in current dir           |:LS',
+    \'#',
+    \'LspDocumentDiagnostics            |gl',
+    \'LspDefinition                     |md',
+    \'LspHover                          |gh',
+    \'LspReferences                     |mr',
+    \'#',
+    \'CodeiumAuto                       |:CodeiumAuto',
+    \'CodeiumManual                     |:CodeiumManual',
+    \'#',
+    \'Open Project                   op |:PyOpenProject',
+    \'PlugUpdate                        |:PlugUpdate',
     \'Projects            <C-P> or <F5> |<Space>p',
-    \'Reveal in Finder                  |:Reveal',  
+    \'Reveal in Finder                  |:Reveal',
+    \'Tableize - Convert from CSV       |:Tableize',
+    \'TableModeToggle                   |:TableModeToggle',
+    \'TodoQuickFix                      |:TodoQuickFix',
+    \'GitHub URL                        |:GBrowse',
     \'vimrc                             |:e ~/.vimrc',
-    \]     
-```  
+    \]
+```
 
 F3  for global search word (Cmd J/Cmd K for navigation) / F4 Close quick fix<br> 
-Shift Cursor Select and Enter for Align column<br>  
 Cmd-1 for Comment/Uncomment<br> 
 
 For other commands also see .vimrc
@@ -102,14 +115,4 @@ see mybundle/vim-project-files or https://github.com/akioito/vim-project-files<b
 open sample.vim-prj<br>
 :PyOpenProject (or op)
 
-
-# If you want to compile your MacVim (fish shell)
-```  
-git clone https://github.com/macvim-dev/macvim.git (first time)
-# git pull        
-# make distclean
-cd macvim
-set -x CFLAGS -O3;set -x CC gcc; ./configure  --enable-python3interp --with-features=huge --enable-multibyte --with-python3-command=python3
-make
-```  
 
