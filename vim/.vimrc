@@ -157,7 +157,6 @@ Plug 'tomtom/tcomment_vim' "{
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'   " :GV then gb to jump to GiHub commit page
 Plug 'akioito/vim-project-files'
   noremap op :PyOpenProject<CR>
 Plug 'mkitt/browser-refresh.vim'
@@ -166,13 +165,7 @@ Plug 'vim-scripts/grep.vim' "{
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
 "}
-
-" Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
-" Plug 'junegunn/vim-easy-align' "{
-"   " Shift + V, select and Enter
-"   vnoremap <Enter> :EasyAlign
-" "}
 
 " Plug 'majutsushi/tagbar' "{ Some customization
   let g:tagbar_autoclose   = 1
@@ -190,8 +183,6 @@ Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim', {'autoload': {'filetypes': 'nginx'}}
 
 Plug 'Galicarnax/vim-regex-syntax'
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1
 
@@ -389,7 +380,6 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
 call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline({
-      \       'fuzzy': 1,
       \       'set_pcre2_pattern': 1,
       \     }),
       \     wilder#python_search_pipeline({
@@ -634,19 +624,13 @@ set directory=~/tmp/
 set backupdir=~/tmp
 augroup my_autocmd
     autocmd!
-    " autocmd BufEnter * lcd %:p:h " Current Directory
-
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
-    autocmd BufEnter * :syntax sync fromstart
+    " autocmd BufEnter * :syntax sync fromstart
     autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
-    autocmd BufNewFile,BufRead *.l set filetype=picolisp
-    autocmd BufNewFile,BufRead *.arc set filetype=arc
     autocmd BufNewFile,BufRead *.conf set filetype=nginx
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-    autocmd BufNewFile,BufRead *.dyon set filetype=rust
-    autocmd BufNewFile,BufRead *.rn set filetype=rust
     autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
     autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
 
@@ -672,7 +656,7 @@ augroup my_autocmd
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
     autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
-    autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
+    " autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
     " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
