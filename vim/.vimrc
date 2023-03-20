@@ -122,7 +122,6 @@ Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
 
-Plug 'liuchengxu/vista.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/vim-gfm-syntax'
 
@@ -169,7 +168,7 @@ Plug 'vim-scripts/grep.vim' "{
   set grepprg=rg\ --vimgrep
 "}
 
-Plug 'AndrewRadev/simple_bookmarks.vim'
+" Plug 'AndrewRadev/simple_bookmarks.vim'
 Plug 'henrik/vim-reveal-in-finder'
 " Plug 'junegunn/vim-easy-align' "{
 "   " Shift + V, select and Enter
@@ -304,6 +303,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Tableize - Convert from CSV       |:Tableize',
     \'TableModeToggle                   |:TableModeToggle',
     \'TodoQuickFix                      |:TodoQuickFix',
+    \'Open GitHub URL                   |:GBrowse',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -463,15 +463,13 @@ augroup end
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c\ %p%%
-set statusline +=\ %{FugitiveStatusline()}
+set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%5*\ %f\                           " file name
 set statusline+=%3*\ %{g:currentTag}
-if !has("nvim")
-    set statusline+=%5*\ %=%{g:syntax}             " for nvim use ,,
-end
-set statusline+=%5*\ %=%{&ff}\                     " file format
+set statusline+=%5*\ %=%{g:syntax}                 " for nvim also use ,,
+set statusline+=%0*\ %{&ff}\                       " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
-set statusline+=%5*%y%*                            " file type
+set statusline+=%0*%y%*                            " file type
 
 " ----------------------------------------------------------------------------
 " Abbrevs
