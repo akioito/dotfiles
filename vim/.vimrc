@@ -48,6 +48,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
     set completeopt-=preview
   endif
   let g:ycm_autoclose_preview_window_after_insertion = 1
+  let g:ycm_clangd_binary_path='/opt/homebrew/opt/llvm/bin/clangd'
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
@@ -253,7 +254,7 @@ Plug 'junegunn/fzf.vim'
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
 
 nnoremap <silent> <leader>c :Commands<CR>
-  command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
+command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
@@ -297,6 +298,8 @@ Plug 'laher/fuzzymenu.vim'
     \'TableModeToggle                   |:TableModeToggle',
     \'TodoQuickFix                      |:TodoQuickFix',
     \'GitHub URL                        |:GBrowse',
+    \'Git difftool                      |zdiff',
+    \'GitHub Desktop                    |zdesk',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -348,6 +351,9 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
   nnoremap zquick               :<C-u>Quickfix<cr>
+  nnoremap zdiff                :<C-u>!git difftool<cr>
+  nnoremap zdesk                :<C-u>!github<cr>
+
   nnoremap <leader>f            :<C-u>Leaderf function <cr>
   nnoremap <C-Space>            :<C-u>Leaderf function --no-sort<cr>
   inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort<cr>
@@ -852,11 +858,11 @@ endif
 set lazyredraw                          " to avoid scrolling problems
 " set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
-set timeout timeoutlen=1200 ttimeoutlen=50
+set timeout timeoutlen=750 ttimeoutlen=50
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=20
-    au InsertLeave * set timeoutlen=1200
+    au InsertLeave * set timeoutlen=750
 augroup END
 set updatetime=300
 set noundofile
