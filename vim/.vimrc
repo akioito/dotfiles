@@ -23,6 +23,8 @@ if has("nvim")
     Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
     Plug 'nvim-treesitter/nvim-treesitter-context'
+ else
+    Plug 'vim-scripts/BufOnly.vim'
 endif
 
 " LSP
@@ -351,7 +353,7 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
     \ '<C-K>': ['<Up>',   '<C-K>']}
 
   nnoremap zquick               :<C-u>Quickfix<cr>
-  nnoremap zdiff                :<C-u>!git difftool<cr>
+  nnoremap zdiff                :<C-u>!git difftool<cr>  " Dialog yes/no only works for MacVim...
   nnoremap zdesk                :<C-u>!github<cr>
 
   nnoremap <leader>f            :<C-u>Leaderf function <cr>
