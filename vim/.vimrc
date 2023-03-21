@@ -31,26 +31,30 @@ endif
 " vim-lsp (Hover and highlight word at cursor references)
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 0
-let g:lsp_text_edit_enabled = 0
-let g:lsp_insert_text_enabled = 0
 
 noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
 noremap gh   :LspHover<cr>
 noremap gl   :LspDocumentDiagnostics<cr>
 
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py' }
-  let g:ycm_key_list_select_completion = ['<Down>','<TAB>']
-  let g:ycm_min_num_of_chars_for_completion = 2
-  if has("nvim")
-    set completeopt-=preview
-  endif
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_clangd_binary_path='/opt/homebrew/opt/llvm/bin/clangd'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+
+augroup vim-lsp
+  autocmd!
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'allowlist': ['*'],
+      \ 'priority': 10,
+      \ 'completor': function('asyncomplete#sources#file#completor')
+      \ }))
+augroup end
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
