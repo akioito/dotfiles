@@ -678,7 +678,6 @@ augroup my_autocmd
     " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     autocmd InsertLeave * let g:cursorword = 1
     autocmd InsertEnter * let g:cursorword = 0
-    autocmd InsertLeave * :normal! `^
 augroup end
 
 " QuickFix Close or Search
