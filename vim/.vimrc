@@ -47,6 +47,7 @@ if has('nvim')
     Plug 'hrsh7th/cmp-path'
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
     "  Snippets
     Plug 'L3MON4D3/LuaSnip'

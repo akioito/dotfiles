@@ -100,6 +100,7 @@ lsp.setup_nvim_cmp({
     {name = 'path'},
     {name = 'nvim_lsp', keyword_length = 3},
     {name = 'buffer', keyword_length = 3},
+    {name = 'nvim_lsp_signature_help'},
     {name = 'luasnip', keyword_length = 2},
   },
   mapping = cmp_default_maps
