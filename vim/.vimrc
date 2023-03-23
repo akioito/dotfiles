@@ -28,40 +28,76 @@ if has("nvim")
 endif
 
 " LSP
-" vim-lsp (Hover and highlight word at cursor references)
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+if has('nvim')
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'neovim/nvim-lspconfig'
+    " Plug 'williamboman/nvim-lsp-installer'
+      " :LspInstallInfo
+      " :LspInstall
+      " :LspInstallLog
+      " :LspPrintInstalled
 
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_diagnostics_float_cursor = 1
-let g:lsp_diagnostics_highlights_enabled = 0
-let g:lsp_diagnostics_virtual_text_enabled = 0
+    Plug 'jayp0521/mason-null-ls.nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
 
-noremap mr   :LspReferences<cr>
-noremap md   :LspDefinition<cr>
-noremap gh   :LspHover<cr>
-noremap gl   :LspDocumentDiagnostics<cr>
+    " Autocompletion
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
+    "  Snippets
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
 
-augroup vim-lsp
-  autocmd!
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'allowlist': ['*'],
-      \ 'priority': 10,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
-augroup end
+    Plug 'VonHeikemen/lsp-zero.nvim'
+    Plug 'alexaandru/nvim-lspupdate'
+
+    Plug 'zbirenbaum/copilot.lua'
+    Plug 'zbirenbaum/copilot-cmp'
+
+    augroup lsp_refs
+      autocmd!
+      autocmd CursorHold  * silent! lua vim.lsp.buf.document_highlight()
+      autocmd InsertEnter * silent! lua vim.lsp.buf.clear_references()
+      autocmd CursorMoved * silent! lua vim.lsp.buf.clear_references()
+    augroup END
+
+else
+    " vim-lsp (Hover and highlight word at cursor references)
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+
+    let g:lsp_diagnostics_echo_cursor = 1
+    let g:lsp_diagnostics_float_cursor = 1
+    let g:lsp_diagnostics_highlights_enabled = 0
+    let g:lsp_diagnostics_virtual_text_enabled = 0
+
+    noremap mr   :LspReferences<cr>
+    noremap md   :LspDefinition<cr>
+    noremap gh   :LspHover<cr>
+    noremap gl   :LspDocumentDiagnostics<cr>
+
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'prabirshrestha/asyncomplete-file.vim'
+
+    augroup vim-lsp
+      autocmd!
+      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+          \ 'name': 'file',
+          \ 'allowlist': ['*'],
+          \ 'priority': 10,
+          \ 'completor': function('asyncomplete#sources#file#completor')
+          \ }))
+    augroup end
+endif
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
-  Plug 'itchyny/vim-cursorword'
-    let g:cursorword_highlight = 1
-    let g:cursorword_delay = 300
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -895,6 +931,7 @@ highlight lspReference guibg=#ffffa2
 if has("nvim")
   set foldcolumn=1
   highlight CursorWord  guibg=#f8edeb
+  highlight LspReferenceText  guibg=#ffffa2
 endif
 
 " End
