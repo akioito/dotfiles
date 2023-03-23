@@ -55,7 +55,7 @@ lsp.set_preferences({
   set_lsp_keymaps = false
 })
 
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function(client, bufnr)
   local noremap = { buffer = bufnr, remap = false }
   -- LSP actions
   map('n', 'md', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
@@ -65,6 +65,16 @@ lsp.on_attach(function(_, bufnr)
   map('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
   map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
   map('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
+  if client.supports_method('textDocument/documentHighlight') then
+      vim.api.nvim_exec([[
+          augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd InsertEnter <buffer> lua vim.lsp.buf.clear_references()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+          augroup END
+      ]], false)
+  end
 end)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 

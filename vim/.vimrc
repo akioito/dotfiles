@@ -57,14 +57,6 @@ if has('nvim')
 
     Plug 'zbirenbaum/copilot.lua'
     Plug 'zbirenbaum/copilot-cmp'
-
-    augroup lsp_refs
-      autocmd!
-      autocmd CursorHold  * silent! lua vim.lsp.buf.document_highlight()
-      autocmd InsertEnter * silent! lua vim.lsp.buf.clear_references()
-      autocmd CursorMoved * silent! lua vim.lsp.buf.clear_references()
-    augroup END
-
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
@@ -110,6 +102,7 @@ else
     let g:indentLine_faster = 1
 endif
 
+Plug 'fisadev/vim-isort'
 Plug 'justinmk/vim-matchparenalways'
 Plug 'gelguy/wilder.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
