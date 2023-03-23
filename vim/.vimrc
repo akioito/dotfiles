@@ -85,6 +85,13 @@ else
           \ 'completor': function('asyncomplete#sources#file#completor')
           \ }))
     augroup end
+    Plug 'Exafunction/codeium.vim'
+      let g:codeium_no_map_tab = 1
+      let g:codeium_manual = 1
+      imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+      imap <PageDown>   <Cmd>call codeium#CycleCompletions(1)<CR>
+      imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+      imap <Home>   <Cmd>call codeium#Clear()<CR>
 endif
 
 if has('nvim')
@@ -110,13 +117,6 @@ Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_auto_save = 1
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
-Plug 'Exafunction/codeium.vim'
-  let g:codeium_no_map_tab = 1
-  let g:codeium_manual = 1
-  imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-  imap <PageDown>   <Cmd>call codeium#CycleCompletions(1)<CR>
-  imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-  imap <Home>   <Cmd>call codeium#Clear()<CR>
 
 Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
 Plug 'prettier/vim-prettier', {
