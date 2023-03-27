@@ -75,6 +75,9 @@ lsp.on_attach(function(client, bufnr)
           augroup END
       ]], false)
   end
+  vim.diagnostic.config {
+      update_in_insert = false,
+  }
 end)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
