@@ -291,8 +291,7 @@ Plug 'amadeus/vim-convert-color-to'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-  let g:fzf_preview_window = ''
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+  let g:fzf_layout = {'down': '50%'}
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
 
 nnoremap <silent> <leader>c :Commands<CR>
@@ -300,8 +299,7 @@ command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
-  let g:fuzzymenu_position =  'window'
-  let g:fuzzymenu_size = {'height': 0.6, 'width': 0.9}
+  let g:fuzzymenu_layout = {'down': '50%'}
   nmap <Space>z :call fuzzymenu#Run({})<cr>
 
 " ----------------------------------------------------------------------------
@@ -369,16 +367,18 @@ Plug 'laher/fuzzymenu.vim'
     \   'source': myMenuList,
     \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
-    \   'window': { 'width': 0.5, 'height': 0.5 }
+    \   'down': '50%',
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
-  let g:Lf_WindowPosition = 'popup'
   let g:Lf_MruMaxFiles = 2500 " saved at ~/.LfCache/python3/mru
-  let g:Lf_PopupShowBorder = 1
-  let g:Lf_PopupHeight = 100
-  let g:Lf_PopupShowStatusline = 0
+  " if has("gui_macvim")
+  "   let g:Lf_WindowPosition = 'popup'
+  "   let g:Lf_PopupShowBorder = 1
+  "   let g:Lf_PopupHeight = 100
+  "   let g:Lf_PopupShowStatusline = 0
+  " endif
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
