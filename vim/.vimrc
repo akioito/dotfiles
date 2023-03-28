@@ -86,13 +86,19 @@ else
           \ 'completor': function('asyncomplete#sources#file#completor')
           \ }))
     augroup end
-    Plug 'Exafunction/codeium.vim'
-      let g:codeium_no_map_tab = 1
-      let g:codeium_manual = 1
-      imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-      imap <PageDown>   <Cmd>call codeium#CycleCompletions(1)<CR>
-      imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-      imap <Home>   <Cmd>call codeium#Clear()<CR>
+    " Plug 'Exafunction/codeium.vim'
+    "   let g:codeium_no_map_tab = 1
+    "   let g:codeium_manual = 1
+    "   imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+    "   imap <PageDown>   <Cmd>call codeium#CycleCompletions(1)<CR>
+    "   imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+    "   imap <Home>   <Cmd>call codeium#Clear()<CR>
+
+    Plug 'github/copilot.vim'
+    " imap <silent><script><expr> <M-J> copilot#Accept("\<CR>")
+    " let g:copilot_no_tab_map = v:true
+    imap <silent> <M-j> <Plug>(copilot-next)
+    imap <silent> <M-k> <Plug>(copilot-previous)
 endif
 
 if has('nvim')
@@ -322,9 +328,6 @@ Plug 'laher/fuzzymenu.vim'
     \'LspDefinition                     |md',
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
-    \'#',
-    \'CodeiumAuto                       |:CodeiumAuto',
-    \'CodeiumManual                     |:CodeiumManual',
     \'#',
     \'Open Project                   op |:PyOpenProject',
     \'PlugUpdate                        |:PlugUpdate',
