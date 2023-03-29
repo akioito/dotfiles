@@ -373,12 +373,7 @@ Plug 'laher/fuzzymenu.vim'
 
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_MruMaxFiles = 2500 " saved at ~/.LfCache/python3/mru
-  " if has("gui_macvim")
-  "   let g:Lf_WindowPosition = 'popup'
-  "   let g:Lf_PopupShowBorder = 1
-  "   let g:Lf_PopupHeight = 100
-  "   let g:Lf_PopupShowStatusline = 0
-  " endif
+  let g:Lf_WindowPosition = 'bottom'
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
