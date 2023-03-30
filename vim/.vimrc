@@ -116,6 +116,7 @@ else
     let g:indentLine_faster = 1
 endif
 
+Plug 'tonchis/vim-to-github'
 Plug 'fisadev/vim-isort'
 Plug 'justinmk/vim-matchparenalways'
 Plug 'gelguy/wilder.nvim'
@@ -335,6 +336,7 @@ Plug 'laher/fuzzymenu.vim'
     \'TableModeToggle                   |:TableModeToggle',
     \'TodoQuickFix                      |:TodoQuickFix',
     \'GitHub URL                        |:GBrowse',
+    \'ToGithub                          |:ToGithub',
     \'Git difftool                      |zdiff',
     \'GitHub Desktop                    |zdesk',
     \'vimrc                             |:e ~/.vimrc',
