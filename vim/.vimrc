@@ -104,6 +104,8 @@ endif
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'nvim-neo-tree/neo-tree.nvim'
+  Plug 'MunifTanjim/nui.nvim'
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -280,7 +282,11 @@ let g:NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
+if has('nvim')
+  nnoremap <F6> :Neotree buffers<CR>
+else
   nnoremap <F6> :call MyNerdToggle()<CR>
+endif
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
