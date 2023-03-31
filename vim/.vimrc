@@ -20,12 +20,12 @@ if has("nvim")
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
 
-    Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
+    " Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
     Plug 'nvim-treesitter/nvim-treesitter-context'
- else
-    Plug 'vim-scripts/BufOnly.vim'
 endif
+
+Plug 'vim-scripts/BufOnly.vim'
 
 " LSP
 if has('nvim')
