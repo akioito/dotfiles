@@ -121,6 +121,8 @@ endif
 Plug 'tonchis/vim-to-github'
 Plug 'fisadev/vim-isort'
 Plug 'justinmk/vim-matchparenalways'
+Plug 'andymass/vim-matchup'
+  let g:loaded_matchit = 1
 Plug 'gelguy/wilder.nvim'
 Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_save_per_working_dir = 1

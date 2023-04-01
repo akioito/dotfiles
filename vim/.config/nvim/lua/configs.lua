@@ -6,11 +6,11 @@ local map = vim.keymap.set
 -- see ~/.local/share/nvim/neovide-settings.json
 --     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
 
-map('n', '<D-s>', ':w<CR>') -- Save
-map('v', '<D-c>', '"+y') -- Copy
-map('n', '<D-v>', '"+P') -- Paste normal mode
-map('v', '<D-v>', '"+P') -- Paste visual mode
-map('c', '<D-v>', '<C-R>+') -- Paste command mode
+map('n', '<D-s>', ':w<CR>')      -- Save
+map('v', '<D-c>', '"+y')         -- Copy
+map('n', '<D-v>', '"+P')         -- Paste normal mode
+map('v', '<D-v>', '"+P')         -- Paste visual mode
+map('c', '<D-v>', '<C-R>+')      -- Paste command mode
 map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 vim.api.nvim_set_option("clipboard", "unnamed")
 
@@ -66,17 +66,17 @@ lsp.on_attach(function(client, bufnr)
   map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
   map('n', 'gp', '<cmd>lua vim.diagnostic.goto_prev()<cr>', noremap)
   if client.supports_method('textDocument/documentHighlight') then
-      vim.api.nvim_exec([[
-          augroup lsp_document_highlight
-              autocmd! * <buffer>
-              autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-              autocmd InsertEnter <buffer> lua vim.lsp.buf.clear_references()
-              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-          augroup END
+    vim.api.nvim_exec([[
+      augroup lsp_document_highlight
+          autocmd! * <buffer>
+          autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd InsertEnter <buffer> lua vim.lsp.buf.clear_references()
+          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
       ]], false)
   end
   vim.diagnostic.config {
-      update_in_insert = false,
+    update_in_insert = false,
   }
 end)
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
@@ -90,25 +90,30 @@ cmp_default_maps['<Tab>'] = cmp_map.select_next_item(cmp_option)
 cmp_default_maps['<Up>'] = cmp_map.select_prev_item(cmp_option)
 cmp_default_maps['<S-Tab>'] = cmp_map.select_prev_item(cmp_option)
 cmp_default_maps['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
-    })
+  behavior = cmp.ConfirmBehavior.Replace,
+  select = false,
+})
 
 lsp.setup_nvim_cmp({
   sources = {
     -- This one provides the data from copilot.
-    {name = 'copilot'},
+    { name = 'copilot' },
 
     --- These are the default sources for lsp-zero
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 3},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'nvim_lsp_signature_help'},
-    {name = 'luasnip', keyword_length = 2},
+    { name = 'path' },
+    { name = 'nvim_lsp',               keyword_length = 3 },
+    { name = 'buffer',                 keyword_length = 3 },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'luasnip',                keyword_length = 2 },
   },
   mapping = cmp_default_maps
 })
-
+lsp.format_on_save({
+  servers = {
+    ['lua_ls'] = { 'lua' },
+    -- ['rust_analyzer'] = {'rust'},
+  }
+})
 lsp.nvim_workspace()
 lsp.setup()
 
