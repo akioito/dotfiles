@@ -134,4 +134,6 @@ hi Normal                           gui=italic
 hi IndentBlanklineContextChar guifg=#ffdad8 gui=nocombine
 hi IndentBlanklineChar        guifg=#f8edeb gui=nocombine
 
+hi MatchWord                  guifg=#c10b23 gui=nocombine
+
 " End
