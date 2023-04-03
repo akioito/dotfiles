@@ -296,7 +296,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
 
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'amadeus/vim-convert-color-to'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -549,6 +548,7 @@ endif
 " Ctrl o / Ctrl i Jump previously visited location
 " Ctrl v -> Shift cursor movements / 'c' / Select vertically
 " Shift v -> Select line
+" Shift j -> Join Lines
 " Back to tag equ CTR-T
 " Cursor movements / scroll relative
 "  H - top         / zh or zt
