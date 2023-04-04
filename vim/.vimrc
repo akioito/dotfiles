@@ -318,6 +318,7 @@ Plug 'laher/fuzzymenu.vim'
   let myMenuList = [
     \'Buffers                  <Space>b |<C-l>',
     \'Neotree buffers                   |:Neotree buffers',
+    \'Neotree buffers tclose             |:Neotree buffers close',
     \'#',
     \'Close or QSearchToggle            |<F4>',
     \'Commands                          |:LeaderfCommand',
