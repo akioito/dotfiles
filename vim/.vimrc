@@ -106,7 +106,6 @@ if has('nvim')
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'brentyi/isort.vim'
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -117,11 +116,12 @@ else
     let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash']
     let g:indentLine_char = '|'
     let g:indentLine_faster = 1
-  Plug 'fisadev/vim-isort'
 endif
 
 Plug 'tonchis/vim-to-github'
-Plug 'python/black'
+Plug 'sbdchd/neoformat'
+  let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
+  let g:neoformat_run_all_formatters = 1
 Plug 'andymass/vim-matchup'
   let g:loaded_matchit = 1
   let g:matchup_matchparen_deferred = 1
