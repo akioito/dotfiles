@@ -307,6 +307,7 @@ Plug 'junegunn/fzf.vim'
 
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
+command! XMRU call fzf#run('MRU vim-prj')
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
@@ -385,8 +386,13 @@ Plug 'laher/fuzzymenu.vim'
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
+Plug 'yegappan/mru' " usage as :MRU vim-prj
+  let MRU_Max_Entries = 2500 " saved at ~/.vim_mru_files
+  let MRU_Window_Height = 40
+  let MRU_Max_Menu_Entries = 50
+
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
-  let g:Lf_MruMaxFiles = 5000 " saved at ~/.LfCache/python3/mru
+  let g:Lf_MruMaxFiles = 0 " not save, ~/.LfCache/python3/mru
   let g:Lf_WindowPosition = 'bottom'
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
@@ -410,8 +416,10 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap<cr>
   nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
 
-  nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
-  nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
+  " nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
+  " nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
+  nnoremap <space>p  :<C-u>MRU vim-prj<cr>
+  nnoremap <F5>      :<C-u>MRU vim-prj<cr>
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
   " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
@@ -497,15 +505,16 @@ augroup my_autocmd_misc
   autocmd!
   autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   autocmd CursorHold * let g:syntax = SyntaxItem()
-  if has("gui_macvim")
-    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " MacVim twice C-O
-  endif
+
+  " Go to last file if invoked without arguments.
+  autocmd VimEnter * nested if
+    \ argc() == 0 &&
+    \ bufname("%") == "" &&
+    \ bufname("2" + 0) != "" |
+    \   exe "normal! `0" |
+    \ endif
   autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
-  " Return to last edit position when opening files (You want this!)
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
+
   autocmd FocusGained * checktime
   autocmd FileType qf call feedkeys("\<C-w>k")
 augroup end
