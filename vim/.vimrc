@@ -118,11 +118,16 @@ else
     let g:indentLine_faster = 1
 endif
 
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
   let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
   let g:neoformat_run_all_formatters = 1
-Plug 'andymass/vim-matchup'
+Plug 'andymass/vim-matchup', Cond(!exists('g:vscode'))
   let g:loaded_matchit = 1
   let g:matchup_matchparen_deferred = 1
   let g:matchup_matchparen_hi_surround_always = 1
