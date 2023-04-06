@@ -312,6 +312,7 @@ Plug 'junegunn/fzf.vim'
 
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
+command! VSCODE call system('vscode.py')
 command! XMRU call fzf#run('MRU vim-prj')
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
@@ -357,6 +358,7 @@ Plug 'laher/fuzzymenu.vim'
     \'ToGithub                          |:ToGithub',
     \'Git difftool                      |zdiff',
     \'GitHub Desktop                    |zdesk',
+    \'VSCode                            |:VSCODE',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
