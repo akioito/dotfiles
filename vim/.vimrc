@@ -349,7 +349,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'Open Project                   op |:PyOpenProject',
     \'PlugUpdate                        |:PlugUpdate',
-    \'Projects            <C-P> or <F5> |:XMRU',
+    \'Projects            <C-P> or <F5> |<F5>',
     \'Reveal in Finder                  |:Reveal',
     \'Tableize - Convert from CSV       |:Tableize',
     \'TableModeToggle                   |:TableModeToggle',
