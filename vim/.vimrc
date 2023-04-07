@@ -313,7 +313,7 @@ Plug 'junegunn/fzf.vim'
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
-command! XMRU call fzf#run('MRU vim-prj')
+
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
@@ -325,7 +325,7 @@ Plug 'laher/fuzzymenu.vim'
   let myMenuList = [
     \'Buffers                  <Space>b |<C-l>',
     \'Neotree buffers                   |:Neotree buffers',
-    \'Neotree buffers tclose             |:Neotree buffers close',
+    \'Neotree buffers tclose            |:Neotree buffers close',
     \'#',
     \'Close or QSearchToggle            |<F4>',
     \'Commands                          |:LeaderfCommand',
@@ -349,7 +349,8 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'Open Project                   op |:PyOpenProject',
     \'PlugUpdate                        |:PlugUpdate',
-    \'Projects            <C-P> or <F5> |<Space>p',
+    \'Projects            <C-P> or <F5> |<F5>',
+    \'xProjects                         |:XMRU',
     \'Reveal in Finder                  |:Reveal',
     \'Tableize - Convert from CSV       |:Tableize',
     \'TableModeToggle                   |:TableModeToggle',
@@ -423,10 +424,9 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap<cr>
   nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
 
-  " nnoremap <silent> <leader>p   :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
-  " nnoremap <silent> <F5>        :<C-u>Leaderf mru --input "vim-prj " --no-sort --nowrap<cr>
   nnoremap <space>p  :<C-u>MRU vim-prj<cr>
-  nnoremap <F5>      :<C-u>MRU vim-prj<cr>
+  nnoremap <F5>      :<C-u>XMRU<cr>
+  command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|rg vim-prj'}))
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
   " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
@@ -707,6 +707,7 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
     autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
+    autocmd BufRead *.vim-prj call feedkeys("op")
 
     " Problem with Japanese IME / 例: 中 (tyuu)
     autocmd VimEnter * set imdisable
