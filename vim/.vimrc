@@ -388,7 +388,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'source': myMenuList,
     \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
-    \   'window': { 'width': 0.5, 'height': 0.5 }
+    \   'window': { 'width': 0.5, 'height': 0.55 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
