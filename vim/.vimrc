@@ -314,7 +314,6 @@ nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
 
-
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
   let g:fuzzymenu_layout = {'down': '50%'}
@@ -389,7 +388,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'source': myMenuList,
     \   'sink*': function('DelayedMyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
-    \   'down': '50%',
+    \   'window': { 'width': 0.5, 'height': 0.5 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
 
@@ -400,7 +399,9 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
 
 Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.com/Yggdroot/LeaderF
   let g:Lf_MruMaxFiles = 0 " not save, ~/.LfCache/python3/mru
-  let g:Lf_WindowPosition = 'bottom'
+  let g:Lf_WindowPosition = 'popup'
+  let g:Lf_PopupShowBorder = 1
+  let g:Lf_PopupShowStatusline = 0
   let g:Lf_ShowRelativePath = 0
   let g:Lf_CtagsFuncOpts = {
     \ 'c': '--c-kinds=fp',
