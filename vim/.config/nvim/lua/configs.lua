@@ -151,7 +151,7 @@ require("neo-tree").setup {
     show_unloaded = true,
   },
 }
-require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-map('n', 'f', ': HopWord<cr>')
+require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+map('n', 'f', '<cmd>HopWord<cr>')
 
 -- End
