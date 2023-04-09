@@ -106,6 +106,7 @@ if has('nvim')
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'phaazon/hop.nvim'
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -116,6 +117,9 @@ else
     let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash']
     let g:indentLine_char = '|'
     let g:indentLine_faster = 1
+  Plug 'easymotion/vim-easymotion'
+    nmap f <Plug>(easymotion-overwin-f2)
+    let g:EasyMotion_smartcase = 1
 endif
 
 function! Cond(cond, ...)
@@ -143,9 +147,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
 Plug 'alvan/vim-closetag'
-Plug 'easymotion/vim-easymotion'
-  nmap f <Plug>(easymotion-overwin-f2)
-  let g:EasyMotion_smartcase = 1
+
 
 Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
   let g:disable_rainbow_key_mappings = 1
