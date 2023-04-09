@@ -676,8 +676,10 @@ tnoremap <Esc><Esc> <C-\><C-n>
 
 " ----------------------------------------------------------------------------
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
-noremap  <silent> <F3>       :Bgrep<CR><CR>
-
+" noremap  <silent> <F3>       :Bgrep<CR><CR>
+noremap <F3> :<C-U><C-R>=printf("Leaderf rg -F --all-buffers -e %s ", expand("<cword>"))<CR><CR>
+  let g:Lf_PreviewResult = {'Rg': 1 }
+ 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 
