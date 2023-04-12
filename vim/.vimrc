@@ -153,17 +153,24 @@ Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
 
 Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
 
+if exists('g:goneovim')
+    let g:python3_host_prog = "/opt/homebrew/bin/python3"
+    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
+endif
+
 if system('arch') == "arm64"
     if has("nvim")
       let g:python3_host_prog = "/opt/homebrew/bin/python3"
     endif
     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
 else
-    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-    let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
+    if !exists('g:goneovim')
+        let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
+        let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
+    endif
 endif
 
-if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
+if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
@@ -243,7 +250,7 @@ Plug 'Galicarnax/vim-regex-syntax'
 Plug 'el-iot/buffer-tree'
   let g:buffertree_compress = 1
 
-if has("gui_vimr") || exists('g:neovide')
+if has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
     " :GhostStart
@@ -359,6 +366,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Git difftool                      |zdiff',
     \'GitHub Desktop                    |zdesk',
     \'VSCode                            |:VSCODE',
+    \'QuitGoneovim                      |:qall',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -552,7 +560,7 @@ nnoremap <C-[>     <C-t>
 nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 inoremap <D-s>  <ESC>:w<CR>
 
-if exists('g:neovide')
+if exists('g:neovide') || exists('g:goneovim')
   nnoremap <D-z> u
   inoremap <D-z> <ESC>u
   nnoremap <D-a> ggVG
@@ -640,7 +648,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || has("gui_vimr") || exists('g:neovide')
+if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
   if has("gui_mac")
@@ -679,7 +687,7 @@ inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 " noremap  <silent> <F3>       :Bgrep<CR><CR>
 noremap <F3> :<C-U><C-R>=printf("Leaderf rg -F --all-buffers -e %s ", expand("<cword>"))<CR><CR>
   let g:Lf_PreviewResult = {'Rg': 1 }
- 
+
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
 nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 
