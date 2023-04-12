@@ -24,7 +24,7 @@ if vim.g.neovide then
 
   vim.api.nvim_command([[
     augroup Neovide
-      autocmd BufWritePost * :wshada
+      autocmd VimLeavePre  :wshada
     augroup END
     ]])
 end
