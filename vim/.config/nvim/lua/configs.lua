@@ -135,7 +135,7 @@ vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
 
-require("filetype").setup({})
+-- require("filetype").setup({})
 require("stickybuf").setup({})
 require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },

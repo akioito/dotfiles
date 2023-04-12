@@ -14,7 +14,7 @@ if has("nvim")
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-    Plug 'nathom/filetype.nvim'
+    " Plug 'nathom/filetype.nvim'
     Plug 'dstein64/nvim-scrollview'
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
