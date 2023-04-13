@@ -14,12 +14,9 @@ if has("nvim")
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-    " Plug 'nathom/filetype.nvim'
     Plug 'dstein64/nvim-scrollview'
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
-
-    " Plug 'numtostr/BufOnly.nvim'  " Don't crash VimR when drag and drop vim-prj file and :PyOpenProject
     Plug 'stevearc/stickybuf.nvim'
     Plug 'nvim-treesitter/nvim-treesitter-context'
 endif
@@ -459,10 +456,13 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer({
 call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline({
-      \       'set_pcre2_pattern': 1,
+      \       'language': 'python',
+      \       'fuzzy': 1,
       \     }),
       \     wilder#python_search_pipeline({
-      \       'pattern': 'fuzzy',
+      \       'pattern': wilder#python_fuzzy_pattern(),
+      \       'sorter': wilder#python_difflib_sorter(),
+      \       'engine': 're',
       \     }),
       \   ),
       \ ])
