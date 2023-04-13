@@ -25,7 +25,7 @@ hl('@punctuation.special', {link = 'Delimiter'})
 
 -- Literals {{{
 hl('@string', {link = 'String'})
-hl('@string.regex', {link = 'String'})
+hl('@string.regex', {link = 'StringRegex'})
 hl('@string.escape', {link = 'SpecialChar'})
 hl('@string.special', {link = 'SpecialChar'})
 
@@ -39,14 +39,14 @@ hl('@float', {link = 'Float'})
 
 -- Functions {{{
 hl('@function', {link = 'Function'})
-hl('@function.call', {link = 'Function'})
-hl('@function.builtin', {link = 'Special'})
-hl('@function.macro', {link = 'Macro'})
+hl('@function.call', {link = 'FunctionCall'})
+hl('@function.builtin', {link = 'FunctionBuiltin'})
+hl('@function.macro', {link = 'FunctionMacro'})
 
-hl('@method', {link = 'Function'})
-hl('@method.call', {link = 'Function'})
+hl('@method', {link = 'Method'})
+hl('@method.call', {link = 'MethodCall'})
 
-hl('@constructor', {link = 'Special'})
+hl('@constructor', {link = 'Constructor'})
 hl('@parameter', {link = 'Identifier'})
 -- }}}
 
@@ -66,9 +66,9 @@ hl('@exception', {link = 'Exception'})
 
 -- Types {{{
 hl('@type', {link = 'Type'})
-hl('@type.builtin', {link = 'Type'})
-hl('@type.qualifier', {link = 'Type'})
-hl('@type.definition', {link = 'Typedef'})
+hl('@type.builtin', {link = 'TypeBuiltin'})
+hl('@type.qualifier', {link = 'TypeQualifier'})
+hl('@type.definition', {link = 'TypedefDefinition'})
 
 hl('@storageclass', {link = 'StorageClass'})
 hl('@attribute', {link = 'PreProc'})
@@ -78,10 +78,10 @@ hl('@property', {link = 'Identifier'})
 
 -- Identifiers {{{
 hl('@variable', {link = 'Normal'})
-hl('@variable.builtin', {link = 'Special'})
+hl('@variable.builtin', {link = 'VariableBuiltin'})
 
 hl('@constant', {link = 'Constant'})
-hl('@constant.builtin', {link = 'Special'})
+hl('@constant.builtin', {link = 'ConstantBuiltin'})
 hl('@constant.macro', {link = 'Define'})
 
 hl('@namespace', {link = 'Include'})
@@ -95,9 +95,9 @@ hl('@text.emphasis', {italic = true})
 hl('@text.underline', {underline = true})
 hl('@text.strike', {strikethrough = true})
 hl('@text.title', {link = 'Title'})
-hl('@text.literal', {link = 'String'})
+hl('@text.literal', {link = 'StringLiteral'})
 hl('@text.uri', {link = 'Underlined'})
-hl('@text.math', {link = 'Special'})
+hl('@text.math', {link = 'TexMath'})
 hl('@text.environment', {link = 'Macro'})
 hl('@text.environment.name', {link = 'Type'})
 hl('@text.reference', {link = 'Constant'})

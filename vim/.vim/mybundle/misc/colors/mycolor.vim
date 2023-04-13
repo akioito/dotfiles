@@ -118,18 +118,19 @@ highlight VemTablineNumberShown      term=reverse cterm=none ctermfg=0   ctermbg
 hi jsLineComment guifg=#F09868 gui=italic
 hi jsCommonJS    guifg=#ff00ff gui=italic
 
-hi @comment           guifg=#747d8f gui=italic
-hi @conditional       guifg=#9f40c0 gui=italic
-hi Special            guifg=#2f7a71 gui=italic
-hi @constant          guifg=#c34146 gui=italic
-hi @keyword           guifg=#2f7a71 gui=bold
-hi @keyword.function  guifg=#28C101 gui=italic
-hi @keyword.operator  guifg=#fd8900 gui=italic
-hi @keyword.return    guifg=#9f40c0 gui=italic
-hi @function          guifg=#3f63b0 gui=italic
-hi @repeat            guifg=#9f40c0 gui=italic
-hi @string            guifg=#28C101 gui=italic
-hi @variable                        gui=italic
+hi Comment            guifg=#747d8f gui=italic
+hi Conditional        guifg=#9f40c0 gui=italic
+hi Constant           guifg=#c34146 gui=italic
+hi ConstantBuiltin    guifg=#c34146 gui=italic
+hi Function           guifg=#9f40c0 gui=bold
+hi Keyword            guifg=#2f7a71 gui=bold
+hi KeywordFunction    guifg=#28C101 gui=bold
+hi KeywordOperator    guifg=#fd8900 gui=italic
+hi KeywordReturn      guifg=#9f40c0 gui=italic
+hi Normal                           gui=italic
+hi Repeat             guifg=#9f40c0 gui=italic
+hi Special            guifg=#9f40c0 gui=italic
+hi String             guifg=#28C101 gui=italic
 
 hi IndentBlanklineContextChar guifg=#ffdad8 gui=nocombine
 hi IndentBlanklineChar        guifg=#f8edeb gui=nocombine
