@@ -152,5 +152,6 @@ require("scrollbar").setup({
     color = '#7c7c7c',
   },
 })
+require('toggle_lsp_diagnostics').init()
 
 -- End

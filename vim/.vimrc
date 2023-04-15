@@ -55,6 +55,7 @@ if has('nvim')
     " Plug 'zbirenbaum/copilot.lua'
     " Plug 'zbirenbaum/copilot-cmp'
     Plug 'jcdickinson/codeium.nvim'
+    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
@@ -750,6 +751,10 @@ augroup my_autocmd
     " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     autocmd InsertLeave * let g:cursorword = 1
     autocmd InsertEnter * let g:cursorword = 0
+    if has('nvim')
+        autocmd InsertLeave * :ToggleDiagOn
+        autocmd InsertEnter * :ToggleDiagOff
+    endif
 augroup end
 
 " QuickFix Close or Search
