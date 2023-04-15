@@ -21,12 +21,6 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_position = true
   vim.g.neovide_input_use_logo = 1
   vim.g.neovide_input_macos_alt_is_meta = true
-
-  vim.api.nvim_command([[
-    augroup Neovide
-      autocmd VimLeavePre  :wshada
-    augroup END
-    ]])
 end
 
 -- Treesitter
@@ -154,10 +148,10 @@ require("neo-tree").setup {
 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 map('n', 'f', '<cmd>HopWord<cr>')
 require("scrollbar").setup({
-    handle = {
-        blend = 0,
-        color = '#7c7c7c',
-    },
+  handle = {
+    blend = 0,
+    color = '#7c7c7c',
+  },
 })
 
 -- End
