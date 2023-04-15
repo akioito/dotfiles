@@ -52,8 +52,9 @@ if has('nvim')
     Plug 'VonHeikemen/lsp-zero.nvim'
     Plug 'alexaandru/nvim-lspupdate'
 
-    Plug 'zbirenbaum/copilot.lua'
-    Plug 'zbirenbaum/copilot-cmp'
+    " Plug 'zbirenbaum/copilot.lua'
+    " Plug 'zbirenbaum/copilot-cmp'
+    Plug 'jcdickinson/codeium.nvim'
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'

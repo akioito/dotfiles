@@ -102,10 +102,9 @@ cmp_default_maps['<CR>'] = cmp.mapping.confirm({
 
 lsp.setup_nvim_cmp({
   sources = {
-    -- This one provides the data from copilot.
-    { name = 'copilot' },
+    -- { name = 'copilot' },
+    { name = 'codeium' },
 
-    --- These are the default sources for lsp-zero
     { name = 'path' },
     { name = 'nvim_lsp',               keyword_length = 3 },
     { name = 'buffer',                 keyword_length = 3 },
@@ -123,8 +122,9 @@ lsp.format_on_save({
 lsp.nvim_workspace()
 lsp.setup()
 
-require('copilot').setup()
-require("copilot_cmp").setup({})
+-- require('copilot').setup()
+-- require("copilot_cmp").setup({})
+require("codeium").setup({})
 
 require("null-ls").setup()
 require("mason-null-ls").setup({
