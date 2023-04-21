@@ -368,6 +368,7 @@ Plug 'laher/fuzzymenu.vim'
     \'VSCode                            |:VSCODE',
     \'QuitGoneovim                      |:qall',
     \'vimrc                             |:e ~/.vimrc',
+    \'CommandHistory                    |:Leaderf cmdHistory',
     \]
 
   function! MyMenu_sink(lines, timer)
