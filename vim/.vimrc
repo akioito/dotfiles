@@ -49,7 +49,7 @@ if has('nvim')
     " Plug 'L3MON4D3/LuaSnip'
     " Plug 'rafamadriz/friendly-snippets'
 
-    Plug 'VonHeikemen/lsp-zero.nvim'
+    Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
     Plug 'alexaandru/nvim-lspupdate'
 
     " Plug 'zbirenbaum/copilot.lua'
