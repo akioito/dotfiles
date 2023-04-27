@@ -125,6 +125,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'madox2/vim-ai'
 " custom command suggesting git commit message, takes no arguments
 function! GitCommitMessageFn()
