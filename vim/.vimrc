@@ -126,6 +126,23 @@ function! Cond(cond, ...)
 endfunction
 
 Plug 'madox2/vim-ai'
+" custom command suggesting git commit message, takes no arguments
+function! GitCommitMessageFn()
+  let l:diff = system('git --no-pager diff')
+  let l:prompt = "generate a short commit message from the diff below:\n" . l:diff
+  let l:range = 0
+  let l:config = {
+  \  "engine": "chat",
+  \  "options": {
+  \    "model": "gpt-3.5-turbo",
+  \    "initial_prompt": ">>> system\nyou are a code assistant",
+  \    "temperature": 1,
+  \  },
+  \}
+  call vim_ai#AIChatRun(l:range, l:config, l:prompt)
+endfunction
+command! GitCommitMessage call GitCommitMessageFn()
+
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
   let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
