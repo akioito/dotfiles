@@ -125,6 +125,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'madox2/vim-ai'
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
   let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
