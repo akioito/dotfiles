@@ -126,6 +126,7 @@ function! Cond(cond, ...)
 endfunction
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 Plug 'madox2/vim-ai'
 " custom command suggesting git commit message, takes no arguments
 function! GitCommitMessageFn()
@@ -143,6 +144,18 @@ function! GitCommitMessageFn()
   call vim_ai#AIChatRun(l:range, l:config, l:prompt)
 endfunction
 command! GitCommitMessage call GitCommitMessageFn()
+
+" custom command that provides a code review for selected code block
+function! CodeReviewFn(range) range
+  let l:prompt = "programming syntax is " . &filetype . ", review the code below"
+  let l:config = {
+  \  "options": {
+  \    "initial_prompt": ">>> system\nyou are a clean code expert",
+  \  },
+  \}
+  '<,'>call vim_ai#AIChatRun(a:range, l:config, l:prompt)
+endfunction
+command! -range CodeReview <line1>,<line2>call CodeReviewFn(<range>)
 
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
