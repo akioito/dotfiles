@@ -365,6 +365,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Projects            <C-P> or <F5> |<F5>',
     \'Open Project                   op |:PyOpenProject',
     \'Delete Buffer                     |:bdelete',
+    \'Select Code Block                 |<S-v>}',
     \'#',
     \'Commands                          |:LeaderfCommand',
     \'PlugUpdate                        |:PlugUpdate',
