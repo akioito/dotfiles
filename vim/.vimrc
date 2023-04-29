@@ -129,9 +129,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'madox2/vim-ai'
 " custom command suggesting git commit message, takes no arguments
-function! GitCommitMessageFn()
+function! GitCommitMessageFn(message)
   let l:diff = system('git --no-pager diff')
-  let l:prompt = "generate a short commit message from the diff below:\n" . l:diff
+  let l:prompt = a:message . l:diff
   let l:range = 0
   let l:config = {
   \  "engine": "chat",
@@ -143,7 +143,8 @@ function! GitCommitMessageFn()
   \}
   call vim_ai#AIChatRun(l:range, l:config, l:prompt)
 endfunction
-command! GitCommitMessage call GitCommitMessageFn()
+command! GitCommitMessage    call GitCommitMessageFn( "generate a short commit message from the diff below:\n")
+command! JapGitCommitMessage call GitCommitMessageFn( "generate a short commit message from the diff below, 日本語でお願いします:\n")
 
 " custom command that provides a code review for selected code block
 function! CodeReviewFn(range) range
