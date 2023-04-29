@@ -143,12 +143,14 @@ require("neo-tree").setup {
 }
 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 map('n', 'f', '<cmd>HopWord<cr>')
-require("scrollbar").setup({
-  handle = {
-    blend = 0,
-    color = '#7c7c7c',
-  },
-})
+if not vim.g.vscode then
+  require("scrollbar").setup({
+    handle = {
+      blend = 0,
+      color = '#7c7c7c',
+    },
+  })
+end
 require('toggle_lsp_diagnostics').init()
 
 -- End

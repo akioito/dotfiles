@@ -14,11 +14,13 @@ if has("nvim")
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-    Plug 'petertriho/nvim-scrollbar'
+    if !exists('g:vscode')
+      Plug 'petertriho/nvim-scrollbar'
+    end
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'stevearc/stickybuf.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter-context'
+    " Plug 'nvim-treesitter/nvim-treesitter-context'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
