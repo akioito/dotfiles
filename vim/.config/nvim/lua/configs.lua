@@ -132,6 +132,7 @@ require("tidy").setup({
 require("indent_blankline").setup {
   show_current_context = true,
 }
+require("treesitter-context").setup({})
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("neo-tree").setup {
   buffers = {
