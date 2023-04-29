@@ -96,7 +96,6 @@ cmp_default_maps['<CR>'] = cmp.mapping.confirm({
 
 lsp.setup_nvim_cmp({
   sources = {
-    -- { name = 'copilot' },
     { name = 'codeium' },
 
     { name = 'nvim_lsp' },
@@ -115,8 +114,6 @@ lsp.format_on_save({
 lsp.nvim_workspace()
 lsp.setup()
 
--- require('copilot').setup()
--- require("copilot_cmp").setup({})
 require("codeium").setup({})
 
 require("null-ls").setup()
