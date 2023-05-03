@@ -99,6 +99,10 @@ if has('nvim')
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'phaazon/hop.nvim'
+  Plug 'f-person/git-blame.nvim'
+    let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
+    let g:gitblame_message_template = ' <date> • <author> • <summary>'
+    let g:gitblame_enabled = 0
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
