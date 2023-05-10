@@ -765,6 +765,7 @@ augroup my_autocmd
 
     autocmd FileType html setlocal indentkeys-=*<Return>
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
+    autocmd FileType csv    silent! call tablemode#Enable()
 
     " Trim Trailing Whitespace
     autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua} %s/\s\+$//e
