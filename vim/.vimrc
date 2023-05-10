@@ -178,8 +178,8 @@ Plug 'prettier/vim-prettier', {
 Plug 'alvan/vim-closetag'
 
 
-Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
-  let g:disable_rainbow_key_mappings = 1
+" Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
+"   let g:disable_rainbow_key_mappings = 1
 
 Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
 
