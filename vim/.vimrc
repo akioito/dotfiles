@@ -136,7 +136,7 @@ function! GitCommitMessageFn(message)
   \  "options": {
   \    "model": "gpt-3.5-turbo",
   \    "initial_prompt": ">>> system\nyou are a code assistant",
-  \    "temperature": 1,
+  \    "temperature": 0.2,
   \  },
   \}
   call vim_ai#AIChatRun(l:range, l:config, l:prompt)
