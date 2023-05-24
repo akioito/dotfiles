@@ -126,6 +126,20 @@ endfunction
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 Plug 'madox2/vim-ai'
+let g:vim_ai_chat = {
+\  "options": {
+\    "model": "gpt-3.5-turbo",
+\    "temperature": 0.2,
+\  },
+\}
+let g:vim_ai_edit = {
+\  "engine": "complete",
+\  "options": {
+\    "model": "text-davinci-003",
+\    "temperature": 0.2,
+\  },
+\}
+
 " custom command suggesting git commit message, takes no arguments
 function! GitCommitMessageFn(message)
   let l:diff = system('git --no-pager diff')
@@ -1013,5 +1027,6 @@ if has("nvim")
   highlight CursorWord  guibg=#f8edeb
   highlight LspReferenceText  guibg=#ffffa2
 endif
+set virtualedit=onemore               " Allow cursor to go to end of line - need for vim-ai AIEdit
 
 " End
