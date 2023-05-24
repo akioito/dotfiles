@@ -131,14 +131,17 @@ let g:vim_ai_chat = {
 \    "model": "gpt-3.5-turbo",
 \    "temperature": 0.2,
 \  },
-\}
-let g:vim_ai_edit = {
-\  "engine": "complete",
-\  "options": {
-\    "model": "text-davinci-003",
-\    "temperature": 0.2,
+\  "ui": {
+\    "open_chat_command": "tabnew | call vim_ai#MakeScratchWindow()",
 \  },
 \}
+" let g:vim_ai_edit = {
+" \  "engine": "complete",
+" \  "options": {
+" \    "model": "text-davinci-003",
+" \    "temperature": 0.2,
+" \  },
+" \}
 
 " custom command suggesting git commit message, takes no arguments
 function! GitCommitMessageFn(message)
