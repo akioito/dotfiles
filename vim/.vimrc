@@ -605,6 +605,9 @@ set statusline+=%0*%y%*                            " file type
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
+" AIChat abbrevs
+cabbrev xopt optimize this code
+cabbrev xsql format this sql
 
 " ----------------------------------------------------------------------------
 " Maps
