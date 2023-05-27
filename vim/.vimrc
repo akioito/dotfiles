@@ -20,7 +20,6 @@ if has("nvim")
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
     Plug 'stevearc/stickybuf.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter-context'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
