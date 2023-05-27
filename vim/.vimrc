@@ -508,7 +508,8 @@ call plug#end()
 
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
-  \ 'highlighter': wilder#basic_highlighter(),
+      \ 'highlighter': wilder#basic_highlighter(),
+      \ 'min_width':  '50%',
   \ }))
 call wilder#set_option('pipeline', [
       \   wilder#branch(
