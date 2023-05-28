@@ -98,6 +98,7 @@ cmp_default_maps['<CR>'] = cmp.mapping.confirm({
 lsp.setup_nvim_cmp({
   sources = {
     { name = 'codeium' },
+    { name = 'vsnip' },
 
     { name = 'nvim_lsp' },
     { name = 'buffer' },
