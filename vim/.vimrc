@@ -80,7 +80,7 @@ else
     augroup end
     Plug 'Exafunction/codeium.vim'
       let g:codeium_no_map_tab = 1
-      let g:codeium_manual = 1
+      " let g:codeium_manual = 1
       imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
       imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
       imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
