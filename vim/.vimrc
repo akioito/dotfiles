@@ -45,12 +45,6 @@ if has('nvim')
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
-    " For vsnip users.
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'rafamadriz/friendly-snippets'
-    Plug 'hrsh7th/vim-vsnip-integ'
-
     Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
     Plug 'alexaandru/nvim-lspupdate'
 
