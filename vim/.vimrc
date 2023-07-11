@@ -122,7 +122,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'madox2/vim-ai'
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-3.5-turbo",
+\    "model": "gpt-3.5-turbo-16k",
 \    "temperature": 0.2,
 \  },
 \  "ui": {
