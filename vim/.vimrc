@@ -477,9 +477,9 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap <C-Space>            :<C-u>Leaderf function --no-sort<cr>
   inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort<cr>
 
-  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
-  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap<cr>
-  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap<cr>
+  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview<cr>
+  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap --no-auto-preview<cr>
+  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview<cr>
 
   nnoremap <space>p  :<C-u>MRU vim-prj<cr>
   nnoremap <F5>      :<C-u>XMRU<cr>
