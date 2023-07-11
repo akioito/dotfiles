@@ -473,9 +473,9 @@ Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension' } "{ https://github.
   nnoremap zdiff                :<C-u>!git difftool<cr>  " Dialog yes/no only works for MacVim...
   nnoremap zdesk                :<C-u>!github<cr>
 
-  nnoremap <leader>f            :<C-u>Leaderf function <cr>
-  nnoremap <C-Space>            :<C-u>Leaderf function --no-sort<cr>
-  inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort<cr>
+  nnoremap <leader>f            :<C-u>Leaderf function --no-auto-preview<cr>
+  nnoremap <C-Space>            :<C-u>Leaderf function --no-sort --no-auto-preview<cr>
+  inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort --no-auto-preview<cr>
 
   nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview<cr>
   nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap --no-auto-preview<cr>
