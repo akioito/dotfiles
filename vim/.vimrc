@@ -109,6 +109,7 @@ function! Cond(cond, ...)
 endfunction
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'jkramer/vim-checkbox'
 
 Plug 'madox2/vim-ai'
 let g:vim_ai_chat = {
@@ -654,6 +655,7 @@ endif
 " :Tableize   convert from CSV
 "
 " :BufferTree
+" :ToggleCB  Toggle checkbox
 " neovim
 "  - vey yank word (start)
 "  - viwy yank work
