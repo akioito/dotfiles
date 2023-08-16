@@ -33,7 +33,7 @@ if not vim.g.vscode then
       additional_vim_regex_highlighting = false,
     },
     matchup = {
-      enable = true,
+      enable = false,
     },
   }
 end
