@@ -117,16 +117,11 @@ lsp.setup()
 
 require("codeium").setup({})
 
-require("null-ls").setup()
-require("mason-null-ls").setup({
-  automatic_setup = true,
-})
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
 
-require("stickybuf").setup({})
 require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })

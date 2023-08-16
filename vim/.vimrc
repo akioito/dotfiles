@@ -19,7 +19,6 @@ if has("nvim")
     end
     Plug 'chr4/nginx.vim'
     Plug 'antoinemadec/FixCursorHold.nvim'
-    Plug 'stevearc/stickybuf.nvim'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
@@ -29,14 +28,6 @@ if has('nvim')
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
-    " Plug 'williamboman/nvim-lsp-installer'
-      " :LspInstallInfo
-      " :LspInstall
-      " :LspInstallLog
-      " :LspPrintInstalled
-
-    Plug 'jayp0521/mason-null-ls.nvim'
-    Plug 'jose-elias-alvarez/null-ls.nvim'
 
     " Autocompletion
     Plug 'hrsh7th/cmp-nvim-lsp'
