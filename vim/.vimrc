@@ -387,6 +387,7 @@ Plug 'laher/fuzzymenu.vim'
     \'TodoQuickFix                      |:TodoQuickFix',
     \'GhostStart                        |:GhostStart',
     \'ITerm                             |:Iterm',
+    \'ItermMacScripts                   |:ItermMacScripts',
     \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',
@@ -861,14 +862,15 @@ com! -nargs=+ -bang QFGrep  call s:Qf_grep(<q-args>, <q-bang>)
 
 " ----------------------------------------------------------------------------
 function! Iterm()
-  silent exec "!open -a iTerm '".getcwd()."'" | redraw!
-  echo "open -a iTerm ".getcwd()
-  " silent exec "!open -n -a  Alacritty --args --working-directory '".getcwd()."'" | redraw!
-  " echo "open -n -a Alacritty --args --working-directory ".getcwd()
-  " silent exec "!open -n -a  /usr/local/bin/kitty --args  -d ".getcwd() | redraw!
-  " echo "open -n -a  /usr/local/bin/kitty --args  -d ".getcwd()
+  silent exec "!open -n -a iTerm '".getcwd()."'" | redraw!
 endfunction
 command! -nargs=* Iterm call Iterm()
+
+" ----------------------------------------------------------------------------
+function! ItermMacScripts()
+  silent exec "!open -n -a iTerm '".$HOME."/mac_scripts'"
+endfunction
+command! -nargs=* ItermMacScripts call ItermMacScripts()
 
 " ----------------------------------------------------------------------------
 function! Gitup()
