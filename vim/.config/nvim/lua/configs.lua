@@ -37,7 +37,7 @@ if not vim.g.vscode then
   require("nvim-treesitter.configs").setup {
     ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
     highlight = {
-      enable = false,
+      enable = true,
       additional_vim_regex_highlighting = false,
     },
     matchup = {
