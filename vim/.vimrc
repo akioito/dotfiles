@@ -80,7 +80,6 @@ endif
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'phaazon/hop.nvim'
@@ -92,16 +91,17 @@ else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
-  Plug 'Yggdroot/indentLine'
-    let g:indentLine_color_gui = '#ffdad8'
-    let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash']
-    let g:indentLine_char = '|'
-    let g:indentLine_faster = 1
   Plug 'easymotion/vim-easymotion'
     nmap f <Plug>(easymotion-overwin-f2)
     let g:EasyMotion_smartcase = 1
 endif
+
+Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
+Plug 'Yggdroot/indentLine'
+  let g:indentLine_color_gui = '#ffdad8'
+  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
+  let g:indentLine_char = '|'
+  let g:indentLine_faster = 1
 
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
