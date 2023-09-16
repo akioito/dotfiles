@@ -83,6 +83,7 @@ if has('nvim')
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'phaazon/hop.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'f-person/git-blame.nvim'
     let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
     let g:gitblame_message_template = ' <date> • <author> • <summary>'
@@ -94,14 +95,13 @@ else
   Plug 'easymotion/vim-easymotion'
     nmap f <Plug>(easymotion-overwin-f2)
     let g:EasyMotion_smartcase = 1
+  Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
+  Plug 'Yggdroot/indentLine'
+    let g:indentLine_color_gui = '#ffdad8'
+    let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
+    let g:indentLine_char = '|'
+    let g:indentLine_faster = 1
 endif
-
-Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
-Plug 'Yggdroot/indentLine'
-  let g:indentLine_color_gui = '#ffdad8'
-  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
-  let g:indentLine_char = '|'
-  let g:indentLine_faster = 1
 
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
