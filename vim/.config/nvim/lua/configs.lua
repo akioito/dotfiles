@@ -23,13 +23,13 @@ if vim.g.neovide then
   vim.g.neovide_input_macos_alt_is_meta = true
   vim.g.neovide_cursor_animation_length = 0
   -- Helper function for transparency formatting
-  local alpha = function()
-    return string.format("%x", math.floor(255 * 0.7))
-  end
+  -- local alpha = function()
+  --   return string.format("%x", math.floor(255 * 0.7))
+  -- end
   -- g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
-  vim.g.neovide_transparency = 0.98
-  vim.g.transparency = 1.0
-  vim.g.neovide_background_color = "#ffffff" .. alpha()
+  -- vim.g.neovide_transparency = 0.98
+  -- vim.g.transparency = 1.0
+  -- vim.g.neovide_background_color = "#ffffff" .. alpha()
 end
 
 -- Treesitter
