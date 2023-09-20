@@ -69,13 +69,12 @@ else
           \ 'completor': function('asyncomplete#sources#file#completor')
           \ }))
     augroup end
-    " Plug 'Exafunction/codeium.vim'
-    "   let g:codeium_no_map_tab = 1
-    "   " let g:codeium_manual = 1
-    "   imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-    "   imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
-    "   imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-    "   imap <Home>     <Cmd>call codeium#Clear()<CR>
+    Plug 'Exafunction/codeium.vim'
+      let g:codeium_no_map_tab = 1
+      imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+      imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
+      imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+      imap <Home>     <Cmd>call codeium#Clear()<CR>
 endif
 
 if has('nvim')
@@ -186,22 +185,22 @@ Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
 
 Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
 
-if exists('g:goneovim')
-    let g:python3_host_prog = "/opt/homebrew/bin/python3"
-    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-endif
-
-if system('arch') == "arm64"
-    if has("nvim")
-      let g:python3_host_prog = "/opt/homebrew/bin/python3"
-    endif
-    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-else
-    if !exists('g:goneovim')
-        let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-        let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
-    endif
-endif
+" if exists('g:goneovim')
+"     let g:python3_host_prog = "/opt/homebrew/bin/python3"
+"     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
+" endif
+"
+" if system('arch') == "arm64"
+"     if has("nvim")
+"       let g:python3_host_prog = "/opt/homebrew/bin/python3"
+"     endif
+"     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
+" else
+"     if !exists('g:goneovim')
+"         let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
+"         let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
+"     endif
+" endif
 
 if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   let macvim_hig_shift_movement = 1
