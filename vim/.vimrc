@@ -988,11 +988,11 @@ endif
 set lazyredraw                          " to avoid scrolling problems
 " set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
-set timeout timeoutlen=750 ttimeoutlen=50
+set timeout timeoutlen=300 ttimeoutlen=50
 augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=20
-    au InsertLeave * set timeoutlen=750
+    au InsertLeave * set timeoutlen=300
 augroup END
 set updatetime=300
 set noundofile
