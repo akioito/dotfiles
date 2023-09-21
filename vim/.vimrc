@@ -70,12 +70,12 @@ else
           \ 'completor': function('asyncomplete#sources#file#completor')
           \ }))
     augroup end
-    Plug 'Exafunction/codeium.vim'
-      let g:codeium_no_map_tab = 1
-      imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-      imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
-      imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-      imap <Home>     <Cmd>call codeium#Clear()<CR>
+    " Plug 'Exafunction/codeium.vim'
+    "   let g:codeium_no_map_tab = 1
+    "   imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+    "   imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
+    "   imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+    "   imap <Home>     <Cmd>call codeium#Clear()<CR>
 endif
 
 if has('nvim')
