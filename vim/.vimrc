@@ -39,7 +39,7 @@ if has('nvim')
     Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
     Plug 'alexaandru/nvim-lspupdate'
 
-    Plug 'jcdickinson/codeium.nvim'
+    Plug 'Exafunction/codeium.nvim'
     Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 else
     " vim-lsp (Hover and highlight word at cursor references)
