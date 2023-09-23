@@ -12,6 +12,7 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Treesitter
 if has("nvim")
+    Plug 'nathom/filetype.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
         nmap ,, :TSHighlightCapturesUnderCursor<cr>
@@ -100,7 +101,7 @@ else
   Plug 'easymotion/vim-easymotion'
     nmap f <Plug>(easymotion-overwin-f2)
     let g:EasyMotion_smartcase = 1
-  Plug 'Vimjas/vim-python-pep8-indent', {'for': ['python']}
+  Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'Yggdroot/indentLine'
     let g:indentLine_color_gui = '#ffdad8'
     let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
@@ -179,17 +180,17 @@ Plug 'MattesGroeger/vim-bookmarks'
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
 
-Plug 'mustache/vim-mustache-handlebars', {'autoload': {'filetypes': 'html'}}
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
 Plug 'alvan/vim-closetag'
 
 
-Plug 'mechatroner/rainbow_csv', {'autoload': {'filetypes': 'csv'}}
+Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
   let g:disable_rainbow_key_mappings = 1
 
-Plug 'gisphm/vim-gitignore', {'autoload': {'filetypes': 'gitignore'}}
+Plug 'gisphm/vim-gitignore'
 
 " if exists('g:goneovim')
 "     let g:python3_host_prog = "/opt/homebrew/bin/python3"
@@ -217,7 +218,7 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:gone
 endif
 
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'pangloss/vim-javascript', {'for': ['javascript']}
+Plug 'pangloss/vim-javascript'
 
 Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
@@ -226,7 +227,7 @@ Plug 'elzr/vim-json'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/vim-gfm-syntax'
 
-Plug 'cespare/vim-toml', {'autoload': {'filetypes': 'toml'}}
+Plug 'cespare/vim-toml'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround' "{
@@ -267,7 +268,7 @@ Plug 'vim-scripts/grep.vim' "{
   " see https://github.com/BurntSushi/ripgrep
   set grepprg=rg\ --vimgrep
 "}
-Plug 'henrik/vim-reveal-in-finder'
+Plug 'henrik/vim-reveal-in-finder', { 'on': 'Reveal' }
 
 " Plug 'majutsushi/tagbar' "{ Some customization
   let g:tagbar_autoclose   = 1
@@ -279,10 +280,10 @@ Plug 'henrik/vim-reveal-in-finder'
   nnoremap <C-@>      :TagbarToggle<CR>
 "}
 
-Plug 'ap/vim-css-color', {'for': ['css','scss','sass','less','styl']}
+Plug 'ap/vim-css-color'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
-Plug 'chr4/nginx.vim', {'autoload': {'filetypes': 'nginx'}}
+Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 Plug 'el-iot/buffer-tree'
@@ -308,11 +309,11 @@ end
 let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
-Plug 'rust-lang/rust.vim', {'autoload': {'filetypes': 'rust'}}
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   let g:rustfmt_autosave = 1
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
-Plug 'vmchale/just-vim', {'autoload': {'filetypes': 'justfile'}}
+Plug 'vmchale/just-vim'
 Plug 'airblade/vim-rooter'
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -332,7 +333,7 @@ function! MyNerdToggle()
 endfunction
 
 Plug 'leafgarland/typescript-vim'
-Plug 'preservim/nerdtree', { 'autoload': {'commands': 'NERDTreeToggle'}}
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 let g:NERDTreeMouseMode=3
 let g:NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=1
