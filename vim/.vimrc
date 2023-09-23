@@ -12,7 +12,6 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Treesitter
 if has("nvim")
-    Plug 'nathom/filetype.nvim'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/playground'
         nmap ,, :TSHighlightCapturesUnderCursor<cr>
