@@ -447,7 +447,7 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
   let MRU_Window_Height = 40
   let MRU_Max_Menu_Entries = 50
 
-Plug 'Yggdroot/LeaderF', {'do': ':LeaderfInstallCExtension', 'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45' } "{ https://github.com/Yggdroot/LeaderF Sep 8, 2023
+Plug 'Yggdroot/LeaderF', {'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45', 'do': ':LeaderfInstallCExtension', 'frozen': 1} "{ https://github.com/Yggdroot/LeaderF Sep 8, 2023
   let g:Lf_MruMaxFiles = 0 " not save, ~/.LfCache/python3/mru
   let g:Lf_WindowPosition = 'popup'
   let g:Lf_PopupShowBorder = 1
