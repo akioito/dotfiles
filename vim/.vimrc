@@ -584,7 +584,6 @@ augroup my_autocmd_misc
         \ endif
   endif
 
-  autocmd FocusGained * checktime
   autocmd FileType qf call feedkeys("\<C-w>k")
 augroup end
 
@@ -785,6 +784,7 @@ augroup my_autocmd
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
     autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
+    autocmd FocusGained * checktime
 
     " Fast Cursor / nocursorline in Insert Mode
     " autocmd CursorHold * setlocal cursorline
