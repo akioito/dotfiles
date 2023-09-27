@@ -140,5 +140,6 @@ require("neo-tree").setup {
 }
 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 map('n', 'f', '<cmd>HopWord<cr>')
+require('toggle_lsp_diagnostics').init()
 
 -- End
