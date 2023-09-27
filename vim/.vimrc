@@ -572,13 +572,16 @@ augroup my_autocmd_misc
   autocmd CursorHold * let g:syntax = SyntaxItem()
 
   " Go to last file if invoked without arguments.
-  autocmd VimEnter * nested if
-    \ argc() == 0 &&
-    \ bufname("%") == "" &&
-    \ bufname("2" + 0) != "" |
-    \   exe "normal! `0" |
-    \ endif
-  autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
+  if has("nvim")
+    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
+  else
+      autocmd VimEnter * nested if
+        \ argc() == 0 &&
+        \ bufname("%") == "" &&
+        \ bufname("2" + 0) != "" |
+        \   exe "normal! `0" |
+        \ endif
+  endif
 
   autocmd FocusGained * checktime
   autocmd FileType qf call feedkeys("\<C-w>k")
