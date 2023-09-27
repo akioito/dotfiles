@@ -19,11 +19,7 @@ if has("nvim")
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-    " if !exists('g:vscode')
-    "   Plug 'petertriho/nvim-scrollbar'
-    " end
     Plug 'chr4/nginx.vim'
-    " Plug 'antoinemadec/FixCursorHold.nvim'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
@@ -45,7 +41,6 @@ if has('nvim')
     Plug 'alexaandru/nvim-lspupdate'
 
     Plug 'Exafunction/codeium.nvim'
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
 else
     " vim-lsp (Hover and highlight word at cursor references)
     Plug 'prabirshrestha/vim-lsp'
@@ -192,22 +187,22 @@ Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 
 Plug 'gisphm/vim-gitignore'
 
-" if exists('g:goneovim')
-"     let g:python3_host_prog = "/opt/homebrew/bin/python3"
-"     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-" endif
-"
-" if system('arch') == "arm64"
-"     if has("nvim")
-"       let g:python3_host_prog = "/opt/homebrew/bin/python3"
-"     endif
-"     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-" else
-"     if !exists('g:goneovim')
-"         let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-"         let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
-"     endif
-" endif
+if exists('g:goneovim')
+    let g:python3_host_prog = "/opt/homebrew/bin/python3"
+    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
+endif
+
+if system('arch') == "arm64"
+    if has("nvim")
+      let g:python3_host_prog = "/opt/homebrew/bin/python3"
+    endif
+    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
+else
+    if !exists('g:goneovim')
+        let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
+        let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
+    endif
+endif
 
 if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   let macvim_hig_shift_movement = 1
@@ -733,10 +728,6 @@ nnoremap rr :call RefreshRunningBrowser()<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Function Key
-" nnoremap <F1> <ESC>
-" imap     <F1> <ESC>l
-
 " Scroll for terminal
 tnoremap <Esc><Esc> <C-\><C-n>
 
@@ -996,7 +987,6 @@ else
   set selection=exclusive
 endif
 set lazyredraw                          " to avoid scrolling problems
-" set regexpengine=0                      " to avoid nvim excessive redrawing
 set ttyfast
 set timeout timeoutlen=300 ttimeoutlen=50
 augroup FastEscape
