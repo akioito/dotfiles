@@ -85,7 +85,7 @@ if has('nvim')
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'phaazon/hop.nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   Plug 'f-person/git-blame.nvim'
     let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
     let g:gitblame_message_template = ' <date> • <author> • <summary>'
