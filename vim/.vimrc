@@ -61,6 +61,8 @@ else
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
     Plug 'prabirshrestha/asyncomplete-file.vim'
+    Plug 'thomasfaingnaert/vim-lsp-snippets'
+    Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
     augroup vim-lsp
       autocmd!
@@ -90,6 +92,7 @@ if has('nvim')
     let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
     let g:gitblame_message_template = ' <date> • <author> • <summary>'
     let g:gitblame_enabled = 0
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
@@ -110,6 +113,8 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'SirVer/ultisnips'
+  let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
 

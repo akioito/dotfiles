@@ -98,12 +98,13 @@ cmp_default_maps['<CR>'] = cmp.mapping.confirm({
 
 lsp.setup_nvim_cmp({
   sources = {
-    { name = 'codeium' },
+    { name = "ultisnips" },
 
     { name = 'nvim_lsp' },
     { name = 'buffer' },
     { name = 'path' },
     { name = 'nvim_lsp_signature_help' },
+    { name = 'codeium' },
   },
   mapping = cmp_default_maps
 })
@@ -141,5 +142,6 @@ require("neo-tree").setup {
 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 map('n', 'f', '<cmd>HopWord<cr>')
 require('toggle_lsp_diagnostics').init()
+require("cmp_nvim_ultisnips").setup{}
 
 -- End
