@@ -86,7 +86,6 @@ if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'phaazon/hop.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   Plug 'f-person/git-blame.nvim'
     let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
@@ -97,9 +96,6 @@ else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'easymotion/vim-easymotion'
-    nmap f <Plug>(easymotion-overwin-f2)
-    let g:EasyMotion_smartcase = 1
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'Yggdroot/indentLine'
     let g:indentLine_color_gui = '#ffdad8'
@@ -113,6 +109,10 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'easymotion/vim-easymotion'
+  nmap f <Plug>(easymotion-overwin-f2)
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_verbose = 0
 Plug 'SirVer/ultisnips'
   let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }

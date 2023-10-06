@@ -139,8 +139,6 @@ require("neo-tree").setup {
     show_unloaded = true,
   },
 }
-require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-map('n', 'f', '<cmd>HopWord<cr>')
 require('toggle_lsp_diagnostics').init()
 require("cmp_nvim_ultisnips").setup{}
 
