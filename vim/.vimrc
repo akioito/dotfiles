@@ -76,6 +76,7 @@ else
     Plug 'Exafunction/codeium.vim'
       let g:codeium_no_map_tab = 1
       let g:codeium_idle_delay = 500
+      let g:codeium_manual = 1
       imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
       imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
       imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
@@ -87,10 +88,10 @@ if has('nvim')
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
-  Plug 'f-person/git-blame.nvim'
-    let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
-    let g:gitblame_message_template = ' <date> • <author> • <summary>'
-    let g:gitblame_enabled = 0
+  " Plug 'f-person/git-blame.nvim'
+  "   let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
+  "   let g:gitblame_message_template = ' <date> • <author> • <summary>'
+  "   let g:gitblame_enabled = 0
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 else
   " To use Python remote plugin features in Vim, can be skipped
