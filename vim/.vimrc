@@ -678,10 +678,6 @@ endif
 "  - ctr+r* paste to command line or in insert mode
 "  :TodoQuickFix
 
-" nvim-qt dead key
-imap <C-'> "
-imap <D-'> '
-
 " Save read-only file :w!!<enter>
 cmap w!! w !sudo tee % >/dev/null
 
