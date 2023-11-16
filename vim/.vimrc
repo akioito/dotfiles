@@ -171,6 +171,13 @@ Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
   let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
   let g:neoformat_run_all_formatters = 1
+  " https://github.com/nrempel/sleek / cargo install sleek
+  let g:neoformat_sql_sleek = {
+              \ 'exe': 'sleek',
+              \ 'args': ['--indent-spaces=2'],
+              \ 'stdin': 1,
+              \ }
+  let g:neoformat_enabled_sql = ['sleek']
 Plug 'andymass/vim-matchup', Cond(!exists('g:vscode'))
   let g:loaded_matchit = 1
   let g:matchup_matchparen_deferred = 1
