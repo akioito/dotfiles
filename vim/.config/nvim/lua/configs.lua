@@ -29,7 +29,7 @@ if not vim.g.vscode then
   require("nvim-treesitter.configs").setup {
     ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
     highlight = {
-      enable = true,
+      enable = false,
       additional_vim_regex_highlighting = false,
     },
     matchup = {
@@ -140,6 +140,6 @@ require("neo-tree").setup {
   },
 }
 require('toggle_lsp_diagnostics').init()
-require("cmp_nvim_ultisnips").setup{}
+require("cmp_nvim_ultisnips").setup {}
 
 -- End
