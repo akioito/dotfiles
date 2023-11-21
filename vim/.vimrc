@@ -95,7 +95,7 @@ if has('nvim')
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 else
   " To use Python remote plugin features in Vim, can be skipped
-  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Vimjas/vim-python-pep8-indent'
   Plug 'Yggdroot/indentLine'
