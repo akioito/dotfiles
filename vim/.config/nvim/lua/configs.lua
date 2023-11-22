@@ -15,6 +15,7 @@ map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.title = true
+vim.opt.termguicolors = true
 
 if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
