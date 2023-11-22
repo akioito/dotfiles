@@ -57,6 +57,7 @@ else
     noremap md   :LspDefinition<cr>
     noremap gh   :LspHover<cr>
     noremap gl   :LspDocumentDiagnostics<cr>
+    noremap cx   :LspCodeAction<cr>
 
     Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -406,6 +407,7 @@ Plug 'laher/fuzzymenu.vim'
     \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',
+    \'LspCodeAction                     |cx',
     \'LspDefinition                     |md',
     \'LspDocumentDiagnostics            |gl',
     \'LspHover                          |gh',

@@ -64,6 +64,7 @@ lsp.on_attach(function(client, bufnr)
   map('n', 'md', '<cmd>lua vim.lsp.buf.definition()<cr>', noremap)
   map('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', noremap)
   map('n', 'mr', '<cmd>lua vim.lsp.buf.references()<cr>', noremap)
+  map('n', 'cx', '<cmd>lua vim.lsp.buf.code_action()<cr>', noremap)
   -- Diagnostics
   map('n', 'gl', '<cmd>lua vim.diagnostic.setloclist()<cr>', noremap)
   map('n', 'gn', '<cmd>lua vim.diagnostic.goto_next()<cr>', noremap)
