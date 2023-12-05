@@ -26,19 +26,19 @@ if vim.g.neovide then
 end
 
 -- Treesitter
-if not vim.g.vscode then
-  require("nvim-treesitter.configs").setup {
-    ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
-    highlight = {
-      enable = false,
-      additional_vim_regex_highlighting = false,
-    },
-    matchup = {
-      enable = true,
-      disable_virtual_text = true,
-    },
-  }
-end
+-- if not vim.g.vscode then
+  -- require("nvim-treesitter.configs").setup {
+  --   ensure_installed = { "python", "rust", "vim", "json", "svelte", "lua", "markdown", "typescript", "vue", "html" },
+  --   highlight = {
+  --     enable = false,
+  --     additional_vim_regex_highlighting = false,
+  --   },
+  --   matchup = {
+  --     enable = true,
+  --     disable_virtual_text = true,
+  --   },
+  -- }
+-- end
 
 -- LSP
 require("mason").setup({

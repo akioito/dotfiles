@@ -122,15 +122,17 @@ hi Comment            guifg=#747d8f gui=italic
 hi Conditional        guifg=#9f40c0 gui=italic
 hi Constant           guifg=#c34146 gui=italic
 hi ConstantBuiltin    guifg=#c34146 gui=italic
-hi Function           guifg=#9f40c0 gui=bold
-hi Keyword            guifg=#2f7a71 gui=bold
-hi KeywordFunction    guifg=#28C101 gui=bold
+hi Function           guifg=#9f40c0 gui=italic
+hi Keyword            guifg=#2f7a71 gui=italic
+hi KeywordFunction    guifg=#28C101 gui=italic
 hi KeywordOperator    guifg=#fd8900 gui=italic
 hi KeywordReturn      guifg=#9f40c0 gui=italic
 hi Normal                           gui=italic
 hi Repeat             guifg=#9f40c0 gui=italic
 hi Special            guifg=#9f40c0 gui=italic
 hi String             guifg=#28C101 gui=italic
+hi PreProc            guifg=#9f40c0 gui=italic
+hi rustModPath        guifg=#9f40c0 gui=italic
 
 hi IndentBlanklineContextChar guifg=#ffdad8 gui=nocombine
 hi IndentBlanklineChar        guifg=#f8edeb gui=nocombine
