@@ -130,7 +130,7 @@ require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
 require("indent_blankline").setup {
-  show_current_context = true,
+  show_current_context = false,
 }
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("neo-tree").setup {
