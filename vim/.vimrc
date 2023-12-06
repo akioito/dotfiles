@@ -25,64 +25,45 @@ endif
 Plug 'vim-scripts/BufOnly.vim'
 
 " LSP
-if has('nvim')
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
-    Plug 'neovim/nvim-lspconfig'
+" vim-lsp (Hover and highlight word at cursor references)
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 
-    " Autocompletion
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
 
-    Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
-    Plug 'alexaandru/nvim-lspupdate'
+noremap mr   :LspReferences<cr>
+noremap md   :LspDefinition<cr>
+noremap gh   :LspHover<cr>
+noremap gl   :LspDocumentDiagnostics<cr>
+noremap cx   :LspCodeAction<cr>
 
-    Plug 'Exafunction/codeium.nvim'
-    Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
-else
-    " vim-lsp (Hover and highlight word at cursor references)
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
 
-    let g:lsp_diagnostics_echo_cursor = 1
-    let g:lsp_diagnostics_float_cursor = 1
-    let g:lsp_diagnostics_highlights_enabled = 0
-    let g:lsp_diagnostics_virtual_text_enabled = 0
-    let g:lsp_document_code_action_signs_enabled = 0
-
-    noremap mr   :LspReferences<cr>
-    noremap md   :LspDefinition<cr>
-    noremap gh   :LspHover<cr>
-    noremap gl   :LspDocumentDiagnostics<cr>
-    noremap cx   :LspCodeAction<cr>
-
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'prabirshrestha/asyncomplete-file.vim'
-    Plug 'thomasfaingnaert/vim-lsp-snippets'
-    Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-
-    augroup vim-lsp
-      autocmd!
-      au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-          \ 'name': 'file',
-          \ 'allowlist': ['*'],
-          \ 'priority': 10,
-          \ 'completor': function('asyncomplete#sources#file#completor')
-          \ }))
-    augroup end
-    Plug 'Exafunction/codeium.vim'
-      let g:codeium_no_map_tab = 1
-      let g:codeium_idle_delay = 500
-      let g:codeium_manual = 1
-      imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-      imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
-      imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-      imap <Home>     <Cmd>call codeium#Clear()<CR>
-endif
+augroup vim-lsp
+  autocmd!
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'allowlist': ['*'],
+      \ 'priority': 10,
+      \ 'completor': function('asyncomplete#sources#file#completor')
+      \ }))
+augroup end
+Plug 'Exafunction/codeium.vim'
+  let g:codeium_no_map_tab = 1
+  let g:codeium_idle_delay = 500
+  let g:codeium_manual = 1
+  imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+  imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
+  imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+  imap <Home>     <Cmd>call codeium#Clear()<CR>
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
@@ -817,10 +798,6 @@ augroup my_autocmd
     " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     autocmd InsertLeave * let g:cursorword = 1
     autocmd InsertEnter * let g:cursorword = 0
-    if has('nvim')
-        autocmd InsertLeave * :ToggleDiagOn
-        autocmd InsertEnter * :ToggleDiagOff
-    endif
 augroup end
 
 " QuickFix Close or Search
