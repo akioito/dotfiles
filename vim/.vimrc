@@ -69,7 +69,6 @@ if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'lukas-reineke/indent-blankline.nvim', { 'tag': 'v2.20.8' }
   " Plug 'f-person/git-blame.nvim'
   "   let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
   "   let g:gitblame_message_template = ' <date> • <author> • <summary>'
@@ -79,13 +78,14 @@ else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
   Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'Vimjas/vim-python-pep8-indent'
-  Plug 'Yggdroot/indentLine'
-    let g:indentLine_color_gui = '#ffdad8'
-    let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
-    let g:indentLine_char = '|'
-    let g:indentLine_faster = 1
 endif
+
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Yggdroot/indentLine'
+  let g:indentLine_color_gui = '#ffdad8'
+  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
+  let g:indentLine_char = '|'
+  let g:indentLine_faster = 1
 
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
