@@ -69,6 +69,9 @@ if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'mhinz/vim-crates'
+    autocmd BufRead Cargo.toml call crates#toggle()
+
   " Plug 'f-person/git-blame.nvim'
   "   let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
   "   let g:gitblame_message_template = ' <date> • <author> • <summary>'
