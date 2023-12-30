@@ -42,6 +42,7 @@ Plug 'dominikduda/vim_current_word'
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 1
 
+Plug 'djoshea/vim-autoread'
 Plug 'Exafunction/codeium.vim'
   let g:codeium_no_map_tab = 1
   let g:codeium_idle_delay = 500
