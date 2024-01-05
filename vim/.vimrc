@@ -316,7 +316,7 @@ endfunction
 Plug 'leafgarland/typescript-vim'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 let g:NERDTreeMouseMode=3
-let g:NERDTreeQuitOnOpen=1
+" let g:NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
