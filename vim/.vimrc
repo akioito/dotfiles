@@ -267,8 +267,6 @@ Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
-Plug 'el-iot/buffer-tree'
-  let g:buffertree_compress = 1
 
 if has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
