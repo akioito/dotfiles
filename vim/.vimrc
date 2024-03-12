@@ -86,15 +86,15 @@ Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1
   let g:EasyMotion_verbose = 0
-" Plug 'SirVer/ultisnips'
-"   let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
+Plug 'SirVer/ultisnips'
+  let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
 
 Plug 'madox2/vim-ai'
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-4-turbo-preview",
+\    "model": "gpt-3.5-turbo-16k",
 \    "temperature": 0.2,
 \  },
 \  "ui": {
