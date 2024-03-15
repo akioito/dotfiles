@@ -94,7 +94,7 @@ Plug 'jkramer/vim-checkbox'
 Plug 'madox2/vim-ai'
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-3.5-turbo-16k",
+\    "model": "gpt-4-turbo-preview",
 \    "temperature": 0.2,
 \  },
 \  "ui": {
