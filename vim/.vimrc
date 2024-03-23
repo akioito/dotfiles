@@ -91,10 +91,11 @@ Plug 'SirVer/ultisnips'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
 
-Plug 'madox2/vim-ai'
+Plug 'akio-ito/vim-ai'
 let g:vim_ai_chat = {
 \  "options": {
-\    "model": "gpt-4-turbo-preview",
+\    "endpoint_url": "https://api.groq.com/openai/v1/chat/completions",
+\    "model": "mixtral-8x7b-32768",
 \    "temperature": 0.2,
 \  },
 \  "ui": {
