@@ -91,7 +91,7 @@ Plug 'SirVer/ultisnips'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
 
-Plug 'akio-ito/vim-ai'
+Plug 'akio-ito/vim-ai', { 'do': './install.sh' }
 let g:vim_ai_chat = {
 \  "options": {
 \    "endpoint_url": "https://api.groq.com/openai/v1/chat/completions",
