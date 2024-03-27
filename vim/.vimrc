@@ -86,8 +86,8 @@ Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1
   let g:EasyMotion_verbose = 0
-Plug 'SirVer/ultisnips'
-  let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
+" Plug 'SirVer/ultisnips'
+"   let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
 
