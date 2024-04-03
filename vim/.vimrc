@@ -175,7 +175,7 @@ Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 Plug 'gisphm/vim-gitignore'
 
 if exists('g:goneovim')
-    let g:python3_host_prog = "/opt/homebrew/bin/python3"
+    let g:python3_host_prog =  $HOME . "/.pyenv/shims/python"
     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
 endif
 
