@@ -127,7 +127,8 @@ hi Keyword            guifg=#2f7a71 gui=italic
 hi KeywordFunction    guifg=#28C101 gui=italic
 hi KeywordOperator    guifg=#fd8900 gui=italic
 hi KeywordReturn      guifg=#9f40c0 gui=italic
-hi Normal                           gui=italic
+" hi Normal                           gui=italic
+hi Normal             guibg=White
 hi Repeat             guifg=#9f40c0 gui=italic
 hi Special            guifg=#9f40c0 gui=italic
 hi String             guifg=#28C101 gui=italic
