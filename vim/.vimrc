@@ -26,17 +26,38 @@ Plug 'vim-scripts/BufOnly.vim'
 
 " LSP
 Plug 'dense-analysis/ale'
-let g:ale_completion_enabled = 1
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 let g:ale_virtualtext_cursor = 'current'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['ruff'],
 \}
-noremap mr   :ALEFindReferences -quickfix<cr>
-noremap md   :ALEGoToDefinition<cr>
-noremap gh   :ALEHover<cr>
-noremap gl   :ALEPopulateQuickfix<cr>
-noremap cx   :ALECodeAction<cr>
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+
+augroup vim-lsp
+  autocmd!
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'allowlist': ['*'],
+      \ 'priority': 10,
+      \ 'completor': function('asyncomplete#sources#file#completor')
+      \ }))
+augroup end
+
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_highlights_enabled = 0
+let g:lsp_diagnostics_virtual_text_enabled = 0
+let g:lsp_document_code_action_signs_enabled = 0
+
+noremap mr   :LspReferences<cr>
+noremap md   :LspDefinition<cr>
+noremap gh   :LspHover<cr>
+noremap gl   :LspDocumentDiagnostics<cr>
+noremap cx   :LspCodeAction<cr>
 
 Plug 'dominikduda/vim_current_word'
 let g:vim_current_word#highlight_twins = 1
