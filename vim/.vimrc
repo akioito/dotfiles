@@ -116,7 +116,7 @@ Plug 'akio-ito/vim-ai', { 'do': './install.sh' }
 let g:vim_ai_chat = {
 \  "options": {
 \    "endpoint_url": "https://api.groq.com/openai/v1/chat/completions",
-\    "model": "mixtral-8x7b-32768",
+\    "model": "llama3-70b-8192",
 \    "temperature": 0.2,
 \  },
 \  "ui": {
