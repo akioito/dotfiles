@@ -32,6 +32,7 @@ let g:ale_virtualtext_cursor = 'current'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['ruff'],
+\   'rust': ['analyzer']
 \}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
