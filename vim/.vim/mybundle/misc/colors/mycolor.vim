@@ -95,6 +95,7 @@ hi rustCommentLineDoc       guifg=darkgreen gui=italic
 hi rustSelf                 guifg=#0100C8 gui=italic
 hi rustString               guifg=#28C101 gui=italic
 hi rustCommentLine          guifg=#F09868 gui=italic
+hi rustTrait                guifg=#277b45 gui=bold
 
 " Go
 hi goString                 guifg=#28C101
