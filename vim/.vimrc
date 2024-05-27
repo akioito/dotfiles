@@ -489,7 +489,7 @@ Plug 'Yggdroot/LeaderF', {'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45', 
 
   nnoremap <space>p  :<C-u>MRU vim-prj<cr>
   nnoremap <F5>      :<C-u>XMRU<cr>
-  command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|grep vim-prj'}))
+  command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|rg -a vim-prj'}))
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
   " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
