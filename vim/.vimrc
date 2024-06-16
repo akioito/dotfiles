@@ -213,7 +213,7 @@ else
     endif
 endif
 
-if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
@@ -291,7 +291,7 @@ Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 
-if has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
     " :GhostStart
@@ -712,7 +712,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
   if has("gui_mac")
@@ -723,8 +723,8 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:gone
     nnoremap <C-k>           :lprev<cr>
   endif
 else
-  nnoremap <D-j>           :cn<cr>kj
-  nnoremap <D-k>           :cp<cr>kj
+  nnoremap <C-j>           :cn<cr>kj
+  nnoremap <C-k>           :cp<cr>kj
 endif
 
 nnoremap <leader>v       0<C-v>$
