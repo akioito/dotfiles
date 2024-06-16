@@ -723,8 +723,8 @@ if has("gui_macvim") || has("gui_vimr") || exists('g:neovide') || exists('g:gone
     nnoremap <C-k>           :lprev<cr>
   endif
 else
-  nnoremap <C-j>           :cn<cr>kj
-  nnoremap <C-k>           :cp<cr>kj
+  nnoremap <D-j>           :cn<cr>kj
+  nnoremap <D-k>           :cp<cr>kj
 endif
 
 nnoremap <leader>v       0<C-v>$
