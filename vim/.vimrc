@@ -57,7 +57,7 @@ let g:lsp_document_code_action_signs_enabled = 0
 noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
 noremap gh   :LspHover<cr>
-noremap gl   :ALEPopulateLocList<cr>
+noremap gl   :LspDocumentDiagnostics<cr>
 noremap cx   :LspCodeAction<cr>
 
 Plug 'dominikduda/vim_current_word'
