@@ -1028,3 +1028,4 @@ endif
 set virtualedit=onemore               " Allow cursor to go to end of line - need for vim-ai AIEdit
 
 " End
+
