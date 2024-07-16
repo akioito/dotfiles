@@ -312,7 +312,7 @@ let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-  let g:rustfmt_autosave = 1
+  let g:rustfmt_autosave = 0
 Plug 'mhinz/vim-crates'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
