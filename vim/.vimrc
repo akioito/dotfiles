@@ -312,7 +312,7 @@ let $BAT_THEME = 'GitHub'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-  let g:rustfmt_autosave = 0
+  let g:rustfmt_autosave = 1
 Plug 'mhinz/vim-crates'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
@@ -796,7 +796,6 @@ augroup my_autocmd
     " ESC to not append 'g' when save in insert mode
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
     autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
-    autocmd BufWritePost *.rs  silent execute '!cargo +nightly fmt'| call feedkeys("\<Esc>")
     autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
     " autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
     " Don't wrap in quickfix, and don't show in buffer list
@@ -1028,4 +1027,3 @@ endif
 set virtualedit=onemore               " Allow cursor to go to end of line - need for vim-ai AIEdit
 
 " End
-
