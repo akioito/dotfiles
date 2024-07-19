@@ -12,6 +12,8 @@ map('n', '<D-v>', '"+P')         -- Paste normal mode
 map('v', '<D-v>', '"+P')         -- Paste visual mode
 map('c', '<D-v>', '<C-R>+')      -- Paste command mode
 map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+map("n", "U", "<C-R>", { desc = "Redo last change" })
+
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.title = true
