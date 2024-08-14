@@ -65,14 +65,14 @@ let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 1
 
 Plug 'djoshea/vim-autoread'
-Plug 'Exafunction/codeium.vim'
-  let g:codeium_no_map_tab = 1
-  let g:codeium_idle_delay = 500
-  let g:codeium_manual = 1
-  imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-  imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
-  imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-  imap <Home>     <Cmd>call codeium#Clear()<CR>
+" Plug 'Exafunction/codeium.vim'
+"   let g:codeium_no_map_tab = 1
+"   let g:codeium_idle_delay = 500
+"   let g:codeium_manual = 1
+"   imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
+"   imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
+"   imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+"   imap <Home>     <Cmd>call codeium#Clear()<CR>
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
