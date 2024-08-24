@@ -940,7 +940,7 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Lekton\ Nerd\ Font:h20
+set guifont=Lekton\ Nerd\ Font:h18
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
@@ -953,11 +953,7 @@ colorscheme mycolor
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
 set smartcase
-if has("nvim")
-  set cmdheight=1
-else
-  set cmdheight=2                        " To minibufexpl Not display Hit Enter => resized to 1 inside minibufexpl
-endif
+" set cmdheight=1
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
