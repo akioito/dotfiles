@@ -483,9 +483,9 @@ Plug 'Yggdroot/LeaderF', {'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45', 
   nnoremap <C-Space>            :<C-u>Leaderf function --no-sort --no-auto-preview<cr>
   inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort --no-auto-preview<cr>
 
-  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview<cr>
-  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap --no-auto-preview<cr>
-  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview<cr>
+  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview --popup-width 160<cr>
+  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap --no-auto-preview --popup-width 160<cr>
+  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview --popup-width 160<cr>
 
   nnoremap <space>p  :<C-u>MRU vim-prj<cr>
   nnoremap <F5>      :<C-u>XMRU<cr>
@@ -940,7 +940,7 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Lekton\ Nerd\ Font:h18
+set guifont=Lekton\ Nerd\ Font:h20
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
