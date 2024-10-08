@@ -262,6 +262,13 @@ Plug 'tomtom/tcomment_vim' "{
  let g:tcomment#filetype#guess_svelte = 1
 "}
 
+Plug 'rhysd/conflict-marker.vim'
+" co - our   - ConflictMarkerOurselves  - HEAD
+" ct - their - ConflictMarkerThemselves - feature/branch
+" cb - both  - ConflictMarkerBoth
+" cn - none  - ConflictMarkerNone
+" :ConflictMarkerNextHunk
+" :ConflictMarkerPrevHunk
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'akioito/vim-project-files'
