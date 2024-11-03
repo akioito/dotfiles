@@ -947,7 +947,12 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Lekton\ Nerd\ Font:h20
+if hostname() == "Mac-mini.local"
+    set guifont=Lekton\ Nerd\ Font:h18
+else
+    set guifont=Lekton\ Nerd\ Font:h20
+endif
+set guifont=Lekton\ Nerd\ Font:h18
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17
 " set guifont=IBM\ Plex\ Mono:h17
