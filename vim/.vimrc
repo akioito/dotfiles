@@ -34,6 +34,7 @@ let g:ale_linters = {
 \   'python': ['ruff'],
 \   'rust': ['analyzer']
 \}
+let g:ale_completion_enabled = 1
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
