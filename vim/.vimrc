@@ -296,6 +296,7 @@ Plug 'ap/vim-css-color'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
+Plug 'wellle/context.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 
