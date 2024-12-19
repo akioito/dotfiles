@@ -369,6 +369,7 @@ Plug 'junegunn/fzf.vim'
   let g:fzf_layout = {'down': '50%'}
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
   let g:fzf_preview_window = []
+Plug 'tracyone/fzf-funky',{'on': 'FzfFunky'}
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
@@ -399,6 +400,8 @@ Plug 'laher/fuzzymenu.vim'
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
+    \'Functions - ff                    |:FzfFunky<Cr>',
+    \'Functions - Tagbar                |:Tagbar',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
     \'TodoQuickFix                      |:TodoQuickFix',
