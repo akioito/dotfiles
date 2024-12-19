@@ -368,7 +368,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
   let g:fzf_layout = {'down': '50%'}
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
-
+  let g:fzf_preview_window = []
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
@@ -381,7 +381,7 @@ Plug 'laher/fuzzymenu.vim'
 " ----------------------------------------------------------------------------
 " MyMenu
   let myMenuList = [
-    \'Buffers                  <Space>b |<C-l>',
+    \'Buffers                           |:Buffers',
     \'Neoformat                         |:Neoformat',
     \'Neotree buffers                   |:Neotree buffers',
     \'Neotree buffers tclose            |:Neotree buffers close',
@@ -392,14 +392,13 @@ Plug 'laher/fuzzymenu.vim'
     \'Delete Buffer                     |:bdelete',
     \'Select Code Block                 |<S-v>}',
     \'#',
-    \'Commands                          |:LeaderfCommand',
+    \'Commands                          |:Commands',
     \'PlugUpdate                        |:PlugUpdate',
-    \'CommandHistory                    |:Leaderf cmdHistory',
+    \'CommandHistory                    |:History',
     \'#',
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
-    \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
     \'TodoQuickFix                      |:TodoQuickFix',
@@ -469,33 +468,11 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
   let MRU_Window_Height = 40
   let MRU_Max_Menu_Entries = 50
 
-Plug 'Yggdroot/LeaderF', {'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45', 'do': ':LeaderfInstallCExtension', 'frozen': 1} "{ https://github.com/Yggdroot/LeaderF Sep 8, 2023
-  let g:Lf_MruMaxFiles = 0 " not save, ~/.LfCache/python3/mru
-  let g:Lf_WindowPosition = 'popup'
-  let g:Lf_PopupShowBorder = 1
-  let g:Lf_PopupShowStatusline = 0
-  let g:Lf_ShowRelativePath = 0
-  let g:Lf_CtagsFuncOpts = {
-    \ 'c': '--c-kinds=fp',
-    \ 'rust': '',
-    \ 'zig': '--options=$HOME/.ctags-d/zig.ctags',
-    \ }
-  let g:Lf_CommandMap = {
-    \ '<C-J>': ['<Down>', '<C-J>'],
-    \ '<C-K>': ['<Up>',   '<C-K>']}
-
   nnoremap zquick               :<C-u>Quickfix<cr>
   nnoremap zdiff                :<C-u>!git difftool<cr>  " Dialog yes/no only works for MacVim...
   nnoremap zdesk                :<C-u>!github<cr>
 
-  nnoremap <leader>f            :<C-u>Leaderf function --no-auto-preview<cr>
-  nnoremap <C-Space>            :<C-u>Leaderf function --no-sort --no-auto-preview<cr>
-  inoremap <C-Space>       <ESC>:<C-u>Leaderf function --no-sort --no-auto-preview<cr>
-
-  nnoremap <silent> <leader>l   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview --popup-width 160<cr>
-  nnoremap <silent> <C-l>       :<C-u>Leaderf buffer             --nowrap --no-auto-preview --popup-width 160<cr>
-  nnoremap <silent> <leader>b   :<C-u>Leaderf buffer   --no-sort --nowrap --no-auto-preview --popup-width 160<cr>
-
+  nnoremap <silent> <C-l>       :<C-u>Buffers<cr>
   nnoremap <space>p  :<C-u>MRU vim-prj<cr>
   nnoremap <F5>      :<C-u>XMRU<cr>
   command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|rg -a vim-prj'}))
@@ -503,8 +480,6 @@ Plug 'Yggdroot/LeaderF', {'commit': 'fb467cf489250f3d5efdba7205bfafc5f9ce8d45', 
 
   " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
   "   \  | call feedkeys("<Tab>")
-
-  Plug 'Yggdroot/LeaderF-marks'
 "}
 " Plug 'tpope/vim-sensible'
 Plug 'godlygeek/csapprox'

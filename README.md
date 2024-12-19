@@ -56,51 +56,60 @@ stow -D vim
 (Eventually you need to remove ~/.config/nvim/autoload/plug.vim)
 
 ```  
---------------------------------------------------  
-Speed-up LeaderF
-```  
-cd ~/.vim/plugged/LeaderF
-./install.sh
-```  
 
 # Usual commands:
 Normal mode     
 ```  
 <Space><Space> General menu command
   let myMenuList = [
-    \'Buffers                  <Space>b |<C-l>',
-    \'#',
+    \'Buffers                           |:Buffers',
+    \'Neoformat                         |:Neoformat',
+    \'Neotree buffers                   |:Neotree buffers',
+    \'Neotree buffers tclose            |:Neotree buffers close',
+    \'GrepBuffer word at cursor         |<F3>',
     \'Close or QSearchToggle            |<F4>',
-    \'Commands                          |:LeaderfCommand',
+    \'Projects            <C-P> or <F5> |<F5>',
+    \'Open Project                   op |:PyOpenProject',
     \'Delete Buffer                     |:bdelete',
+    \'Select Code Block                 |<S-v>}',
+    \'#',
+    \'Commands                          |:Commands',
+    \'PlugUpdate                        |:PlugUpdate',
+    \'CommandHistory                    |:History',
     \'#',
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
-    \'Functions               <C-Space> |<Space>f',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
+    \'TodoQuickFix                      |:TodoQuickFix',
     \'GhostStart                        |:GhostStart',
-    \'GrepBuffer word at cursor         |<F3>',
     \'ITerm                             |:Iterm',
+    \'ItermMacScripts                   |:ItermMacScripts',
+    \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',
-    \'LspDocumentDiagnostics            |gl',
+    \'LspCodeAction                     |cx',
     \'LspDefinition                     |md',
+    \'LspDocumentDiagnostics            |gl',
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
     \'#',
     \'CodeiumAuto                       |:CodeiumAuto',
     \'CodeiumManual                     |:CodeiumManual',
     \'#',
-    \'Open Project                   op |:PyOpenProject',
-    \'PlugUpdate                        |:PlugUpdate',
-    \'Projects            <C-P> or <F5> |<Space>p',
-    \'Reveal in Finder                  |:Reveal',
-    \'Tableize - Convert from CSV       |:Tableize',
     \'TableModeToggle                   |:TableModeToggle',
-    \'TodoQuickFix                      |:TodoQuickFix',
+    \'Tableize - Convert from CSV       |:Tableize',
+    \'#',
+    \'Git difftool                      |zdiff',
+    \'GitCommitMessage                  |:GitCommitMessage',
+    \'GitHub Desktop                    |zdesk',
     \'GitHub URL                        |:GBrowse',
+    \'JapGitCommitMessage               |:JapGitCommitMessage',
+    \'ToGithub                          |:ToGithub',
+    \'#',
+    \'QuitGoneovim                      |:qall',
+    \'VSCode                            |:VSCODE',
     \'vimrc                             |:e ~/.vimrc',
     \]
 ```
