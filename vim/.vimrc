@@ -382,7 +382,7 @@ Plug 'laher/fuzzymenu.vim'
 " ----------------------------------------------------------------------------
 " MyMenu
   let myMenuList = [
-    \'Buffers                           |:Buffers',
+    \'Buffers                           |<C-l>',
     \'Neoformat                         |:Neoformat',
     \'Neotree buffers                   |:Neotree buffers',
     \'Neotree buffers tclose            |:Neotree buffers close',
