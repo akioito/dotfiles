@@ -366,10 +366,10 @@ Plug 'amadeus/vim-convert-color-to'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-  let g:fzf_layout = {'down': '50%'}
+  let g:fzf_layout = {'down': '77%'}
   let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
-  let g:fzf_preview_window = []
-Plug 'tracyone/fzf-funky',{'on': 'FzfFunky'}
+  let g:fzf_preview_window = ['right,70%', 'ctrl-/']
+  let g:fzf_tags_command = 'ctags -R'
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
@@ -382,7 +382,7 @@ Plug 'laher/fuzzymenu.vim'
 " ----------------------------------------------------------------------------
 " MyMenu
   let myMenuList = [
-    \'Buffers                           |<C-l>',
+    \'Buffers                           |:Buffers',
     \'Neoformat                         |:Neoformat',
     \'Neotree buffers                   |:Neotree buffers',
     \'Neotree buffers tclose            |:Neotree buffers close',
@@ -400,7 +400,7 @@ Plug 'laher/fuzzymenu.vim'
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
-    \'Functions - ff                    |:FzfFunky<Cr>',
+    \'Functions - ff                    |:BTags',
     \'Functions - Tagbar                |:Tagbar',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
@@ -445,7 +445,7 @@ Plug 'laher/fuzzymenu.vim'
     let cmd = split(a:lines[0], '|')[1]
     let prefix = cmd[0]
     if prefix == ':'
-        execute 'silent' cmd
+        execute 'silent call feedkeys("'.cmd.'\<CR>")'
     else
         let escaped_cmd = substitute(cmd, '<', '\\<', "g")
         execute 'silent call feedkeys("'.escaped_cmd.'")'
