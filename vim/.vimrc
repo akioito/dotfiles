@@ -28,13 +28,13 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'dense-analysis/ale'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+let g:lsp_work_done_progress_enabled = 1
 let g:ale_virtualtext_cursor = 'current'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['ruff'],
 \   'rust': ['analyzer']
 \}
-let g:ale_completion_enabled = 1
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
@@ -282,13 +282,16 @@ Plug 'vim-scripts/grep.vim' "{
 "}
 Plug 'henrik/vim-reveal-in-finder', { 'on': 'Reveal' }
 
-" Plug 'majutsushi/tagbar' "{ Some customization
+Plug 'preservim/tagbar' "{ Some customization
   let g:tagbar_autoclose   = 1
+  let g:tagbar_autopreview = 1
   let g:tagbar_sort        = 0
   let g:tagbar_compact     = 1
   let g:tagbar_indent      = 1
   let g:tagbar_singleclick = 1
-  let g:tagbar_width       = 25
+  let g:tagbar_width       = 50
+  let g:tagbar_vertical    = 100
+  let g:tagbar_previewwin_pos = "rightbelow vertical"
   nnoremap <C-@>      :TagbarToggle<CR>
 "}
 
@@ -487,7 +490,6 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
 " Plug 'tpope/vim-sensible'
 Plug 'godlygeek/csapprox'
 Plug '~/.vim/mybundle/misc'
-Plug '~/.vim/mybundle/tagbar'
 Plug '~/.vim/mybundle/sbd.vim'
 Plug '~/.vim/mybundle/vim-command-w'
 
@@ -559,13 +561,22 @@ function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
+function! MyLspProgress() abort
+  let l:progress = lsp#get_progress()
+  if empty(l:progress) | return '' | endif
+  let l:progress = l:progress[len(l:progress) - 1]
+  return l:progress['server'] . ': ' . l:progress['message']
+endfunction
+
 let g:syntax = '???'
 let g:currentTag = '???'
+let g:progress = '???'
 
 augroup my_autocmd_misc
   autocmd!
   autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   autocmd CursorHold * let g:syntax = SyntaxItem()
+  autocmd CursorHold * let g:progress = MyLspProgress()
 
   " Go to last file if invoked without arguments.
   if has("nvim")
@@ -590,6 +601,7 @@ set statusline+=%3*\ %{g:currentTag}
 set statusline+=%5*\ %=%{g:syntax}                 " for nvim also use ,,
 set statusline+=%0*\ %{&ff}\                       " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
+set statusline+=%4*\ %{g:progress}
 set statusline+=%0*%y%*                            " file type
 
 " ----------------------------------------------------------------------------
@@ -759,7 +771,6 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead *.conf set filetype=nginx
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
     autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
-    autocmd BufRead * let g:currentTag = tagbar#currenttag('%s','','s')
     autocmd BufRead *.vim-prj call feedkeys("op")
 
     " Problem with Japanese IME / 例: 中 (tyuu)
