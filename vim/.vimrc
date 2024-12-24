@@ -25,16 +25,9 @@ endif
 Plug 'vim-scripts/BufOnly.vim'
 
 " LSP
-Plug 'dense-analysis/ale'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 let g:lsp_work_done_progress_enabled = 1
-let g:ale_virtualtext_cursor = 'current'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'python': ['ruff'],
-\   'rust': ['analyzer']
-\}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
