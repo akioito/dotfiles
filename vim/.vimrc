@@ -292,7 +292,7 @@ Plug 'ap/vim-css-color'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
-Plug 'wellle/context.vim'
+" Plug 'wellle/context.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 
@@ -431,7 +431,7 @@ Plug 'laher/fuzzymenu.vim'
     \'vimrc                             |:e ~/.vimrc',
     \]
 
-  function! MyMenu_sink(lines, timer)
+  function! MyMenu_sink(lines)
     if len(a:lines) < 1
       return
     endif
@@ -448,15 +448,9 @@ Plug 'laher/fuzzymenu.vim'
     endif
   endfunction
 
-  function! DelayedMyMenu_sink(lines)
-    " Resolve problem with neovim/VimR when call fzf commands...
-    " https://github.com/junegunn/fzf.vim/issues/872
-    call timer_start(1, function('MyMenu_sink', [a:lines]))
-  endfunction
-
   command! MyMenu call fzf#run({
     \   'source': myMenuList,
-    \   'sink*': function('DelayedMyMenu_sink'),
+    \   'sink*': function('MyMenu_sink'),
     \   'options': ['--exact', '--prompt', 'Select cmd>'],
     \   'window': { 'width': 0.5, 'height': 0.55 }
     \ })

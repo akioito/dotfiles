@@ -13,7 +13,7 @@ brew install neovim
 brew install cmake
 brew install python
 brew install ripgrep
-brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+brew install universal-ctags
 
 pip3 install pynvim
 ```
@@ -21,11 +21,11 @@ pip3 install pynvim
 Install Lekton Nerd Font (or Ajust guifont)<br>
 https://www.nerdfonts.com/font-downloads <br><br>
 
-       
+
 Install MacVim: (or Vimr, Neovide...)
-```  
+```
 https://github.com/macvim-dev/macvim/releases (MacVim.dmg)
-```  
+```
 
 Clone this repository to  home directory:
 
@@ -80,6 +80,8 @@ Normal mode
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
+    \'Functions - ff                    |:BTags',
+    \'Functions - Tagbar                |:Tagbar',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
     \'TodoQuickFix                      |:TodoQuickFix',
