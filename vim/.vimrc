@@ -31,6 +31,7 @@ let g:lsp_work_done_progress_enabled = 1
 let g:lsp_use_native_client = 1
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
 
 augroup vim-lsp
@@ -158,7 +159,7 @@ command! -range CodeReview <line1>,<line2>call CodeReviewFn(<range>)
 
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
-  let g:neoformat_enabled_python = ['black', 'isort', 'docformatter']
+  let g:neoformat_enabled_python = ['ruff', 'isort', 'docformatter']
   let g:neoformat_run_all_formatters = 1
   " https://github.com/nrempel/sleek / cargo install sleek
   let g:neoformat_sql_sleek = {
