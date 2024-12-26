@@ -71,7 +71,6 @@ Plug 'djoshea/vim-autoread'
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
-  Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'mhinz/vim-crates'
     autocmd BufRead Cargo.toml call crates#toggle()
