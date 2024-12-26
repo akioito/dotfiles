@@ -141,4 +141,9 @@ hi MatchWord                  guifg=#c10b23 gui=nocombine
 hi CurrentWord                guibg=floralwhite
 hi CurrentWordTwins           guibg=floralwhite
 
+hi vimGroup           guifg=#277a46 gui=bold
+hi VimHighlight       guifg=#972226 gui=bold
+hi VimMap             guifg=#972226 gui=bold
+hi VimCommand         guifg=#972226 gui=bold
+
 " End

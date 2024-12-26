@@ -746,7 +746,7 @@ augroup my_autocmd
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
     " autocmd BufEnter *.js  :match defLine /.*function.*$/
     autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
-    " autocmd BufEnter * :syntax sync fromstart
+    autocmd BufEnter * :syntax sync fromstart
     autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
     autocmd BufNewFile,BufRead *.conf set filetype=nginx
     autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
