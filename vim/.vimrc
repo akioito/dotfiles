@@ -190,24 +190,17 @@ Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 
 Plug 'gisphm/vim-gitignore'
 
-if exists('g:goneovim')
-    let g:python3_host_prog =  $HOME . "/.pyenv/shims/python"
-    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-endif
-
 if system('arch') == "arm64"
     if has("nvim")
       let g:python3_host_prog =  $HOME . "/.pyenv/shims/python3"
     endif
     let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
 else
-    if !exists('g:goneovim')
-        let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-        let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
-    endif
+    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
+    let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
 endif
 
-if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
@@ -296,7 +289,7 @@ Plug 'chr4/nginx.vim'
 
 Plug 'Galicarnax/vim-regex-syntax'
 
-if exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if exists("g:gui_vimr") || exists('g:neovide')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
     " let g:ghost_autostart = 1
     " :GhostStart
@@ -609,7 +602,7 @@ nnoremap <C-[>     <C-t>
 nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
 inoremap <D-s>  <ESC>:w<CR>
 
-if exists('g:neovide') || exists('g:goneovim')
+if exists('g:neovide')
   nnoremap <D-z> u
   inoremap <D-z> <ESC>u
   nnoremap <D-a> ggVG
@@ -698,7 +691,7 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide') || exists('g:goneovim')
+if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
   nnoremap <D-j>           :cn<cr>kj
   nnoremap <D-k>           :cp<cr>kj
   nnoremap <C-j>           :LspNextDiagnostic<cr>
