@@ -50,10 +50,17 @@ let g:lsp_diagnostics_highlights_enabled = 0
 let g:lsp_diagnostics_virtual_text_enabled = 0
 let g:lsp_document_code_action_signs_enabled = 0
 
+function! MyDiagnostics()
+    execute "normal! :LspDocumentDiagnostics\<CR>"
+    call setqflist(getloclist(0))
+    copen
+    call timer_start(200, {-> execute('lclose')})
+endfunction
+
 noremap mr   :LspReferences<cr>
 noremap md   :LspDefinition<cr>
 noremap gh   :LspHover<cr>
-noremap gl   :LspDocumentDiagnostics<cr>
+noremap gl   :call MyDiagnostics()<cr>
 noremap cx   :LspCodeAction<cr>
 
 Plug 'dominikduda/vim_current_word'
@@ -693,13 +700,11 @@ map <SwipeDown>    <C-b>
 nnoremap bd :bdelete
 
 if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
-  nnoremap <D-j>           :cn<cr>kj
-  nnoremap <D-k>           :cp<cr>kj
-  nnoremap <C-j>           :LspNextDiagnostic<cr>
-  nnoremap <C-k>           :LspPreviousDiagnostic<cr>
+  nnoremap <D-j>           :cnext<cr>kj
+  nnoremap <D-k>           :cprevious<cr>kj
 else
-  nnoremap <C-j>           :cn<cr>kj
-  nnoremap <C-k>           :cp<cr>kj
+  nnoremap <C-j>           :cnext<cr>kj
+  nnoremap <C-k>           :cprevious<cr>kj
 endif
 
 nnoremap <leader>v       0<C-v>$
@@ -720,7 +725,6 @@ tnoremap <Esc><Esc> <C-\><C-n>
 " ----------------------------------------------------------------------------
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 noremap  <silent> <F3>       :Bgrep<CR><CR>
-" noremap <F3> :<C-U><C-R>=printf("Leaderf rg -F --all-buffers -e %s ", expand("<cword>"))<CR><CR>
   let g:Lf_PreviewResult = {'Rg': 1 }
 
 inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
