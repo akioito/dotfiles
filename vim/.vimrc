@@ -699,13 +699,8 @@ map <SwipeDown>    <C-b>
 
 nnoremap bd :bdelete
 
-if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
-  nnoremap <D-j>           :cnext<cr>kj
-  nnoremap <D-k>           :cprevious<cr>kj
-else
-  nnoremap <C-j>           :cnext<cr>kj
-  nnoremap <C-k>           :cprevious<cr>kj
-endif
+nnoremap <C-j> :cnext<cr>kj
+nnoremap <C-k> :cprevious<cr>kj
 
 nnoremap <leader>v       0<C-v>$
 " nnoremap <leader>w       <C-w>v<C-w>l
