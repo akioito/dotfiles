@@ -456,6 +456,8 @@ Plug 'laher/fuzzymenu.vim'
     \   'window': { 'width': 0.5, 'height': 0.55 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
+  nnoremap <silent> m :MyMenu<CR>
+
 
 Plug 'yegappan/mru' " usage as :MRU vim-prj
   let MRU_Max_Entries = 2500 " saved at ~/.vim_mru_files
