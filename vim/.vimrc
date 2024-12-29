@@ -633,7 +633,7 @@ endif
 " Back to tag equ CTR-T
 " Cursor movements / scroll relative
 "  H - top         / zh or zt
-"  M - middle      / zz
+"  M - middle      / zz or zm
 "  L - Bottom      / zl or zb
 "nnoremap <C-[>     <C-t>
 "q: " Open cmd line history
@@ -685,8 +685,8 @@ inoremap <Space>w <Esc>:<C-u>w<cr>l
 
 noremap zh zt
 noremap zl zb
+noremap zm zz
 
-noremap zm zM m
 noremap zr zR
 
 nnoremap  b<Space> :b<Space>
