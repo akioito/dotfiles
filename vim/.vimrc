@@ -980,7 +980,7 @@ augroup END
 set updatetime=300
 set noundofile
 
-set completeopt=longest,noselect,preview,popup,fuzzy
+set completeopt=longest,noselect,preview,popup
 set breakindent
 set breakindentopt=shift:2
 set iskeyword+=-                        " treat dashes as part of word
