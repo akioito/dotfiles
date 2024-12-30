@@ -88,6 +88,7 @@ Normal mode
     \'GhostStart                        |:GhostStart',
     \'ITerm                             |:Iterm',
     \'ItermMacScripts                   |:ItermMacScripts',
+    \'WezTerm                           |:WezTerm',
     \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',

@@ -405,6 +405,7 @@ Plug 'laher/fuzzymenu.vim'
     \'GhostStart                        |:GhostStart',
     \'ITerm                             |:Iterm',
     \'ItermMacScripts                   |:ItermMacScripts',
+    \'WezTerm                           |:WezTerm',
     \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',
@@ -848,6 +849,12 @@ function! Iterm()
   silent exec "!open -n -a iTerm '".getcwd()."'" | redraw!
 endfunction
 command! -nargs=* Iterm call Iterm()
+
+" ----------------------------------------------------------------------------
+function! WezTerm()
+  silent exec "!open -n -a WezTerm '".getcwd()."'" | redraw!
+endfunction
+command! -nargs=* WezTerm call WezTerm()
 
 " ----------------------------------------------------------------------------
 function! ItermMacScripts()
