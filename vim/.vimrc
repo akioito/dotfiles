@@ -852,7 +852,7 @@ command! -nargs=* Iterm call Iterm()
 
 " ----------------------------------------------------------------------------
 function! WezTerm()
-  silent exec "!open -n -a WezTerm '".getcwd()."'" | redraw!
+  silent exec "!wezterm cli spawn --new-window --cwd '".getcwd()."'" | redraw!
 endfunction
 command! -nargs=* WezTerm call WezTerm()
 
