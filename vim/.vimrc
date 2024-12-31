@@ -929,9 +929,9 @@ if has("gui_macvim")
 endif
 
 if hostname() =~# "^Mac-mini"
-    set guifont=Lekton\ Nerd\ Font:h18
+    set guifont=D2CodingLigature\ Nerd\ Font:h18
 else
-    set guifont=Lekton\ Nerd\ Font:h20
+    set guifont=D2CodingLigature\ Nerd\ Font:h20
 endif
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17<F5>
@@ -975,6 +975,7 @@ if has("nvim")
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
+  set linespace=-3
 endif
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
