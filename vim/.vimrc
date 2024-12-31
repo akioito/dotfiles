@@ -929,9 +929,9 @@ if has("gui_macvim")
 endif
 
 if hostname() =~# "^Mac-mini"
-    set guifont=D2CodingLigature\ Nerd\ Font:h18
+    set guifont=Consolas\ ligaturized\ v3:h18
 else
-    set guifont=D2CodingLigature\ Nerd\ Font:h20
+    set guifont=Consolas\ ligaturized\ v3:h20
 endif
 " set guifont=Ubuntu\ Mono:h18
 " set guifont=SF\ Mono:h17<F5>
