@@ -12,9 +12,6 @@ call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Treesitter
 if has("nvim")
-    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Plug 'nvim-treesitter/playground'
-    "     nmap ,, :TSHighlightCapturesUnderCursor<cr>
     Plug 'nvim-lua/plenary.nvim'
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
@@ -68,14 +65,6 @@ let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 1
 
 Plug 'djoshea/vim-autoread'
-" Plug 'Exafunction/codeium.vim'
-"   let g:codeium_no_map_tab = 1
-"   let g:codeium_idle_delay = 500
-"   let g:codeium_manual = 1
-"   imap <script><silent><nowait><expr> <End> codeium#Accept()  " Allow codeium to accept the current buffer
-"   imap <PageDown> <Cmd>call codeium#CycleCompletions(1)<CR>
-"   imap <PageUp>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-"   imap <Home>     <Cmd>call codeium#Clear()<CR>
 
 if has('nvim')
   Plug 'mcauley-penney/tidy.nvim'
@@ -87,7 +76,6 @@ if has('nvim')
   "   let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
   "   let g:gitblame_message_template = ' <date> • <author> • <summary>'
   "   let g:gitblame_enabled = 0
-  " Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
@@ -110,59 +98,8 @@ Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1
   let g:EasyMotion_verbose = 0
-" Plug 'SirVer/ultisnips'
-"   let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/.vim/UltiSnips']
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jkramer/vim-checkbox'
-
-Plug 'akio-ito/vim-ai', { 'do': './install.sh' }
-let g:vim_ai_chat = {
-\  "options": {
-\    "endpoint_url": "https://api.groq.com/openai/v1/chat/completions",
-\    "model": "llama3-70b-8192",
-\    "temperature": 0.2,
-\  },
-\  "ui": {
-\    "open_chat_command": "tabnew | call vim_ai#MakeScratchWindow()",
-\  },
-\}
-" let g:vim_ai_edit = {
-" \  "engine": "complete",
-" \  "options": {
-" \    "model": "text-davinci-003",
-" \    "temperature": 0.2,
-" \  },
-" \}
-
-" custom command suggesting git commit message, takes no arguments
-function! GitCommitMessageFn(message)
-  let l:diff = system('git --no-pager diff')
-  let l:prompt = a:message . l:diff
-  let l:range = 0
-  let l:config = {
-  \  "engine": "chat",
-  \  "options": {
-  \    "model": "gpt-3.5-turbo",
-  \    "initial_prompt": ">>> system\nyou are a code assistant",
-  \    "temperature": 0.2,
-  \  },
-  \}
-  call vim_ai#AIChatRun(l:range, l:config, l:prompt)
-endfunction
-command! GitCommitMessage    call GitCommitMessageFn( "generate a short commit message from the diff below:\n")
-command! JapGitCommitMessage call GitCommitMessageFn( "generate a short commit message from the diff below, 日本語でお願いします:\n")
-
-" custom command that provides a code review for selected code block
-function! CodeReviewFn(range) range
-  let l:prompt = "programming syntax is " . &filetype . ", review the code below"
-  let l:config = {
-  \  "options": {
-  \    "initial_prompt": ">>> system\nyou are a clean code expert",
-  \  },
-  \}
-  '<,'>call vim_ai#AIChatRun(a:range, l:config, l:prompt)
-endfunction
-command! -range CodeReview <line1>,<line2>call CodeReviewFn(<range>)
 
 Plug 'tonchis/vim-to-github'
 Plug 'sbdchd/neoformat'
@@ -293,8 +230,6 @@ Plug 'ap/vim-css-color'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'chr4/nginx.vim'
-" Plug 'wellle/context.vim'
-
 Plug 'Galicarnax/vim-regex-syntax'
 
 if exists("g:gui_vimr") || exists('g:neovide')
@@ -415,17 +350,12 @@ Plug 'laher/fuzzymenu.vim'
     \'LspHover                          |gh',
     \'LspReferences                     |mr',
     \'#',
-    \'CodeiumAuto                       |:CodeiumAuto',
-    \'CodeiumManual                     |:CodeiumManual',
-    \'#',
     \'TableModeToggle                   |:TableModeToggle',
     \'Tableize - Convert from CSV       |:Tableize',
     \'#',
     \'Git difftool                      |zdiff',
-    \'GitCommitMessage                  |:GitCommitMessage',
     \'GitHub Desktop                    |zdesk',
     \'GitHub URL                        |:GBrowse',
-    \'JapGitCommitMessage               |:JapGitCommitMessage',
     \'ToGithub                          |:ToGithub',
     \'#',
     \'QuitGoneovim                      |:qall',
@@ -475,9 +405,6 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
   command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|rg -a vim-prj'}))
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
-  " command! -nargs=* -bang -complete=customlist,leaderf#Any#parseArguments Leaderfx call leaderf#Any#start(<bang>0, <q-args>)
-  "   \  | call feedkeys("<Tab>")
-"}
 " Plug 'tpope/vim-sensible'
 Plug 'godlygeek/csapprox'
 Plug '~/.vim/mybundle/misc'
@@ -599,9 +526,6 @@ set statusline+=%0*%y%*                            " file type
 " ----------------------------------------------------------------------------
 " Abbrevs
 iabbrev xrm # testIto remove after test...
-" AIChat abbrevs
-cabbrev xopt optimize this code
-cabbrev xsql format this sql
 
 " ----------------------------------------------------------------------------
 " Maps
@@ -772,8 +696,8 @@ augroup my_autocmd
     autocmd FocusGained * checktime
 
     " Fast Cursor / nocursorline in Insert Mode
-    " autocmd CursorHold * setlocal cursorline
-    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
+    autocmd CursorHold * setlocal cursorline
+    autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
 
     " ESC to not append 'g' when save in insert mode
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
@@ -933,12 +857,6 @@ if hostname() =~# "^Mac-mini"
 else
     set guifont=Consolas\ ligaturized\ v3:h20
 endif
-" set guifont=Ubuntu\ Mono:h18
-" set guifont=SF\ Mono:h17<F5>
-" set guifont=IBM\ Plex\ Mono:h17
-" set guifont=Fira\ Code\ Retina:h14
-" set guifont=Courier:h18
-" set guifont=JetBrainsMono\ Nerd\ Font:h17
 
 colorscheme mycolor
 
@@ -1013,6 +931,5 @@ if has("nvim")
   highlight CursorWord  guibg=#f8edeb
   highlight LspReferenceText  guibg=#ffffa2
 endif
-set virtualedit=onemore               " Allow cursor to go to end of line - need for vim-ai AIEdit
 
 " End
