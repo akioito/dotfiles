@@ -852,11 +852,7 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-if hostname() =~# "^Mac-mini"
-    set guifont=Consolas\ ligaturized\ v3:h18
-else
-    set guifont=Consolas\ ligaturized\ v3:h20
-endif
+set guifont=Consolas\ ligaturized\ v3:h18
 
 colorscheme mycolor
 
