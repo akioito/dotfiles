@@ -283,11 +283,7 @@ let g:NERDTreeMouseMode=3
 let NERDTreeShowLineNumbers=1
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
-if has('nvim')
-  nnoremap <F6> :Neotree buffers<CR>
-else
-  nnoremap <F6> :call MyNerdToggle()<CR>
-endif
+nnoremap <F6> :call MyNerdToggle()<CR>
 autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
@@ -316,14 +312,15 @@ Plug 'laher/fuzzymenu.vim'
   let myMenuList = [
     \'Buffers                           |:Buffers',
     \'Neoformat                         |:Neoformat',
-    \'Neotree buffers                   |:Neotree buffers',
-    \'Neotree buffers tclose            |:Neotree buffers close',
     \'GrepBuffer word at cursor         |<F3>',
     \'Close or QSearchToggle            |<F4>',
     \'Projects            <C-P> or <F5> |<F5>',
     \'Open Project                   op |:PyOpenProject',
     \'Delete Buffer                     |:bdelete',
     \'Select Code Block                 |<S-v>}',
+    \'#',
+    \'next                              |:tabnext',
+    \'previous                          |:tabprevious',
     \'#',
     \'Commands                          |:Commands',
     \'PlugUpdate                        |:PlugUpdate',
