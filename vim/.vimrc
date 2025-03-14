@@ -849,7 +849,7 @@ if has("gui_macvim")
   imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Consolas\ ligaturized\ v3:h17
+set guifont=Lekton\ Nerd\ Font\ Mono:h19
 
 colorscheme mycolor
 
