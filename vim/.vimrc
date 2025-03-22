@@ -420,7 +420,6 @@ call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline({
       \       'language': 'python',
-      \       'fuzzy': 1,
       \     }),
       \     wilder#python_search_pipeline({
       \       'pattern': wilder#python_fuzzy_pattern(),
