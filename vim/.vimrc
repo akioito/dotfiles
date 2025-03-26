@@ -678,7 +678,7 @@ augroup my_autocmd
     autocmd BufRead *.vim-prj call feedkeys("op")
 
     " Problem with Japanese IME / 例: 中 (tyuu)
-    autocmd VimEnter * set imdisable
+    " autocmd VimEnter * set imdisable
 
     autocmd FileType html setlocal indentkeys-=*<Return>
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
