@@ -257,7 +257,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'mhinz/vim-crates'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
-Plug 'vmchale/just-vim'
+Plug 'NoahTheDuke/vim-just'
 Plug 'airblade/vim-rooter'
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
