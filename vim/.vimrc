@@ -406,7 +406,7 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
 Plug 'godlygeek/csapprox'
 Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/sbd.vim'
-Plug '~/.vim/mybundle/vim-command-w'
+" Plug '~/.vim/mybundle/vim-command-w'
 
 call plug#end()
 
@@ -842,10 +842,10 @@ if has("gui_macvim")
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
   " For Command T/W
-  macmenu &File.New\ Tab key=<nop>
-  macmenu &File.Close key=<nop>
-  nmap <D-w> :CommandW<CR>
-  imap <D-w> <Esc>:CommandW<CR>
+  " macmenu &File.New\ Tab key=<nop>
+  " macmenu &File.Close key=<nop>
+  " nmap <D-w> :CommandW<CR>
+  " imap <D-w> <Esc>:CommandW<CR>
 endif
 
 set guifont=Lekton\ Nerd\ Font:h19
