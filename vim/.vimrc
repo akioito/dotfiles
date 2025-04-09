@@ -438,7 +438,7 @@ filetype on
 filetype plugin on
 
 " ----------------------------------------------------------------------------
-set termencoding=utf-8
+" set termencoding=utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932
@@ -875,7 +875,7 @@ set autowrite
 set nobackup
 set noswapfile
 set nowritebackup
-set imdisable
+" set imdisable
 set virtualedit=all
 set shortmess=oO
 set number
