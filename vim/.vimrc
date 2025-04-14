@@ -301,6 +301,7 @@ Plug 'junegunn/fzf.vim'
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
+Plug 'tracyone/fzf-funky',{'on': 'FzfFunky'}
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
@@ -329,7 +330,7 @@ Plug 'laher/fuzzymenu.vim'
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
-    \'Functions - ff                    |:BTags',
+    \'Functions - ff                    |:FzfFunky',
     \'Functions - Tagbar                |:Tagbar',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
