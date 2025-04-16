@@ -179,6 +179,7 @@ Plug 'tpope/vim-surround' "{
 "   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
 "   " gvS' ･･･ visual surroud with char
 " "}
+Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
