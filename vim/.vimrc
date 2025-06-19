@@ -360,10 +360,11 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
+    \'xcp - copy file ref to Claude Code|xcp',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
-  function! MyMenu_sink(lines)
+ function! MyMenu_sink(lines)
     if len(a:lines) < 1
       return
     endif
@@ -687,7 +688,7 @@ augroup my_autocmd
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
@@ -738,6 +739,36 @@ function! s:ToggleNumberMode()
   endif
 endfunc
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
+
+" ----------------------------------------------------------------------------
+" Copy file ref to Claude Code
+nnoremap xcp <ESC>gv:XCP<cr>
+command! -range XCP call CopySelectionReferenceCmd(<line1>, <line2>)
+
+function! CopySelectionReferenceCmd(start_line, end_line)
+    let filename = expand('%')
+    if filename == ''
+        let filename = '[No Name]'
+    endif
+
+    if a:start_line == a:end_line
+        let reference = '@' . filename . '#L' . a:start_line
+    else
+        let reference = '@' . filename . '#L' . a:start_line . '-L' . a:end_line
+    endif
+
+   if has('clipboard')
+        if has('unnamedplus')
+            let @+ = reference
+        else
+            let @* = reference
+        endif
+    endif
+    let @" = reference
+    echo "Copied: " . reference
+    redraw
+endfunction
+
 
 " ----------------------------------------------------------------------------
 " cfilter.vim: Plugin to filter entries from a quickfix/location list
@@ -859,7 +890,7 @@ colorscheme mycolor
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
 set smartcase
-" set cmdheight=1
+set cmdheight=2
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
