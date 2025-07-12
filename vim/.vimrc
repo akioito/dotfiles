@@ -756,8 +756,8 @@ function! CopySelectionReferenceCmd(start_line, end_line)
     else
         let reference = '@' . filename . '#L' . a:start_line . '-L' . a:end_line
     endif
-
-   if has('clipboard')
+    let reference = reference . ' pytest add test code'
+    if has('clipboard')
         if has('unnamedplus')
             let @+ = reference
         else
