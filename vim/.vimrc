@@ -764,11 +764,28 @@ function! CopySelectionReferenceCmd(start_line, end_line)
             let @* = reference
         endif
     endif
-    let @" = reference
     echo "Copied: " . reference
     redraw
 endfunction
 
+" ----------------------------------------------------------------------------
+function! GenPyTest(...)
+    let filename = expand('%')
+    let line_content = getline('.')
+    let line_content = trim(line_content)
+
+    let pytest_cmd = 'pytest, add test code for @' . filename . ', ' . line_content
+    if has('clipboard')
+        if has('unnamedplus')
+            let @+ = pytest_cmd
+        else
+            let @* = pytest_cmd
+        endif
+    endif
+    echo "Copied: " . pytest_cmd
+endfunction
+
+command! GenPyTest call GenPyTest()
 
 " ----------------------------------------------------------------------------
 " cfilter.vim: Plugin to filter entries from a quickfix/location list
