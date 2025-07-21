@@ -935,6 +935,8 @@ let fillchars='eob: '
 if has("nvim")
   highlight FoldColumn guibg=white guifg=blue
   set linespace=-6
+if exists('g:neovide')
+   set linespace=-1
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
