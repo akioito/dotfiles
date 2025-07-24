@@ -938,7 +938,7 @@ if has("nvim")
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
-  set linespace=-3
+  set linespace=-1
 endif
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
