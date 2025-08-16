@@ -181,7 +181,7 @@ Plug 'tpope/vim-surround' "{
 "   " gvS' ･･･ visual surroud with char
 " "}
 Plug 'machakann/vim-sandwich'
-Plug 'jiangmiao/auto-pairs' "{
+Plug 'akio-ito/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
 "}
