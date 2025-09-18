@@ -61,6 +61,10 @@ noremap gh   :LspHover<cr>
 noremap gl   :call MyDiagnostics()<cr>
 noremap cx   :LspCodeAction<cr>
 
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
+
 Plug 'dominikduda/vim_current_word'
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 1
