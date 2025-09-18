@@ -63,7 +63,7 @@ noremap cx   :LspCodeAction<cr>
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-
+let g:vsnip_snippet_dir =  $HOME . '/dotfiles/.vsnip'
 
 Plug 'dominikduda/vim_current_word'
 let g:vim_current_word#highlight_twins = 1

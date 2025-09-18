@@ -1,0 +1,10 @@
+{
+  "xlog": {
+    "prefix": ["xlog"],
+    "body": "self.SaveLog(${1:$TM_SELECTED_TEXT});"
+  },
+  "xprint": {
+    "prefix": ["xprint"],
+    "body": "print(f'$1');"
+  }
+}
