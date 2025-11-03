@@ -364,7 +364,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'xcp - copy file ref to Claude Code|xcp',
+    \'xcp - copy file ref to aider      |xcp',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -756,9 +756,9 @@ function! CopySelectionReferenceCmd(start_line, end_line)
     endif
 
     if a:start_line == a:end_line
-        let reference = '@' . filename . ':' . a:start_line
+        let reference = '@file ' . filename . ':' . a:start_line
     else
-        let reference = '@' . filename . ':' . a:start_line . '-' . a:end_line
+        let reference = '@file ' . filename . ':' . a:start_line . '-' . a:end_line
     endif
     let reference = reference . ' '
     if has('clipboard')
