@@ -87,6 +87,9 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+Plug 'michaeljsmith/vim-indent-object'
+" <count>ai An Indentation level and line above.
+
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Yggdroot/indentLine'
   let g:indentLine_color_gui = '#ffdad8'
