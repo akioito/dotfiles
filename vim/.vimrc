@@ -367,7 +367,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'xcp - copy file ref to WezTerm     |xcp',
+    \'xcp - copy file ref to WezTerm    |xcp',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -748,8 +748,8 @@ endfunc
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
-" Copy file ref to WezTem
-nnoremap xcp <ESC>gv:XCP<cr><ESC>:PasteToWezTerm<cr>
+" Send Selected line reference to WezTem
+nnoremap <silent>  xcp <ESC>gv:XCP<cr><ESC>:PasteToWezTerm<cr>
 command! -range XCP call CopySelectionReferenceCmd(<line1>, <line2>)
 command! PasteToWezTerm :silent !osascript -e 'tell app "WezTerm" to activate' -e 'delay 0.5' -e 'tell app "System Events" to keystroke "v" using command down'
 
@@ -772,7 +772,7 @@ function! CopySelectionReferenceCmd(start_line, end_line)
             let @* = reference
         endif
     endif
-    echo "Copied: " . reference
+    echo "Sent to WezTerm: " . reference
     redraw
 endfunction
 
