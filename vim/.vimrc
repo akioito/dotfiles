@@ -754,7 +754,8 @@ command! -range XCP call CopySelectionReferenceCmd(<line1>, <line2>)
 
 function! PasteToWezTerm()
     call system('osascript -e "tell app \"WezTerm\" to activate"')
-    call system('osascript -e "tell app \"System Events\" to keystroke \"v\" using command down"')
+    let content = system('pbpaste')
+    call system('wezterm cli send-text ' . shellescape(content))
 endfunction
 
 function! CopySelectionReferenceCmd(start_line, end_line)
