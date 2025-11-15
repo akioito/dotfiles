@@ -748,10 +748,14 @@ endfunc
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
-" Send Selected line reference to WezTem
-nnoremap <silent>  xcp <ESC>gv:XCP<cr><ESC>:PasteToWezTerm<cr>
+" Send Selected line reference to WezTerm
+nnoremap <silent>  xcp <ESC>gv:XCP<cr>
 command! -range XCP call CopySelectionReferenceCmd(<line1>, <line2>)
-command! PasteToWezTerm :silent !osascript -e 'tell app "WezTerm" to activate' -e 'delay 0.5' -e 'tell app "System Events" to keystroke "v" using command down'
+
+function! PasteToWezTerm()
+    call system('osascript -e "tell app \"WezTerm\" to activate"')
+    call system('osascript -e "tell app \"System Events\" to keystroke \"v\" using command down"')
+endfunction
 
 function! CopySelectionReferenceCmd(start_line, end_line)
     let filename = expand('%')
@@ -772,6 +776,7 @@ function! CopySelectionReferenceCmd(start_line, end_line)
             let @* = reference
         endif
     endif
+    call PasteToWezTerm()
     echo "Sent to WezTerm: " . reference
     redraw
 endfunction
