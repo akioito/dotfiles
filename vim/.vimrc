@@ -367,7 +367,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'xcp - copy file ref to WezTerm    |xcp',
+    \'sfref - send file ref to WezTerm  |sfref',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -749,37 +749,21 @@ nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
 " Send Selected line reference to WezTerm
-nnoremap <silent>  xcp <ESC>gv:XCP<cr>
-command! -range XCP call CopySelectionReferenceCmd(<line1>, <line2>)
+map <silent> sfref :<C-u>SFRef<CR>
+command! -range SFRef call SendLineRefToWezTerm(<line1>, <line2>)
 
-function! PasteToWezTerm()
-    call system('osascript -e "tell app \"WezTerm\" to activate"')
-    let content = system('pbpaste')
-    call system('wezterm cli send-text ' . shellescape(content))
-endfunction
+function! SendLineRefToWezTerm(start_line, end_line) abort
+    let filename = empty(expand('%')) ? '[No Name]' : expand('%')
+    let reference = '@' . filename . ':' . a:start_line
+    if a:start_line != a:end_line
+        let reference .= '-' . a:end_line
+    endif
+    let reference .= ' '
 
-function! CopySelectionReferenceCmd(start_line, end_line)
-    let filename = expand('%')
-    if filename == ''
-        let filename = '[No Name]'
-    endif
+    call system('wezterm cli send-text ' . shellescape(reference) .
+        \ ' && osascript -e "tell app \"WezTerm\" to activate"')
 
-    if a:start_line == a:end_line
-        let reference = '@' . filename . ':' . a:start_line
-    else
-        let reference = '@' . filename . ':' . a:start_line . '-' . a:end_line
-    endif
-    let reference = reference . ' '
-    if has('clipboard')
-        if has('unnamedplus')
-            let @+ = reference
-        else
-            let @* = reference
-        endif
-    endif
-    call PasteToWezTerm()
-    echo "Sent to WezTerm: " . reference
-    redraw
+    echo 'Sent to WezTerm: ' . reference
 endfunction
 
 " ----------------------------------------------------------------------------
