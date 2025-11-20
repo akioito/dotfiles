@@ -367,7 +367,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'sfref - send file ref to WezTerm  |sfref',
+    \'sfref - send file ref to iTerm    |sfref',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -748,23 +748,30 @@ endfunc
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
-" Send Selected line reference to WezTerm
+" Send Selected line reference to iTerm
 map <silent> sfref :<C-u>SFRef<CR>
-command! -range SFRef call SendLineRefToWezTerm(<line1>, <line2>)
+command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
 
-function! SendLineRefToWezTerm(start_line, end_line) abort
+function! SendLineRefToiTerm(start_line, end_line) abort
     let filename = empty(expand('%')) ? '[No Name]' : expand('%')
     let reference = '@' . filename . ':' . a:start_line
     if a:start_line != a:end_line
         let reference .= '-' . a:end_line
     endif
     let reference .= ' '
+    if has('clipboard')
+        if has('unnamedplus')
+            let @+ = reference
+        else
+            let @* = reference
+        endif
+    endif
+    call system('osascript -e "tell app \"iTerm\" to activate"')
+    call system('osascript -e "tell app \"System Events\" to keystroke \"v\" using command down"')
 
-    call system('wezterm cli send-text ' . shellescape(reference) .
-        \ ' && osascript -e "tell app \"WezTerm\" to activate"')
-
-    echo 'Sent to WezTerm: ' . reference
+    echo 'Sent to iTerm: ' . reference
 endfunction
+
 
 " ----------------------------------------------------------------------------
 function! GenPyTest(...)
