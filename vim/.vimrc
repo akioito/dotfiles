@@ -904,8 +904,11 @@ if has("gui_macvim")
   " imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Lekton\ Nerd\ Font:h19
-" set guifont=Maple\ Mono\ ExtraLight:h16
+if exists('g:neovide')
+  set guifont=Lekton\ Nerd\ Font:h19
+else
+  set guifont=MapleMono-Regular_Thin:h16
+endif
 
 colorscheme mycolor
 
@@ -943,7 +946,7 @@ if has("nvim")
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
   set selection=exclusive
-  set linespace=-1
+  set linespace=-3
 endif
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
