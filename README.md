@@ -40,11 +40,6 @@ cd dotfiles
 MacVim / Neovide 
 :PlugInstall# wait until end plugin installation -> :quit
 
-LSP Python Ruff
-cd ~/.local/share/vim-lsp-settings/servers/pylsp
-source venv/bin/activate.fish
-pip install python-lsp-ruff
-```  
 
 Enjoy!
 
@@ -81,7 +76,7 @@ Normal mode
     \'BookmarkToggle                    |<F2>',
     \'BookmarkShowAll                   |<S-F2>',
     \'#',
-    \'Functions - ff                    |:BTags',
+    \'Functions - ff                    |:FzfFunky',
     \'Functions - Tagbar                |:Tagbar',
     \'Fuzzy Menu                        |<Space>z',
     \'Fzf-quickfix                      |zquick',
@@ -109,6 +104,7 @@ Normal mode
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
+    \'sfref - send file ref to iTerm    |sfref',
     \'vimrc                             |:e ~/.vimrc',
     \]
 ```
