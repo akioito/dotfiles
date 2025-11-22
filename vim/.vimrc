@@ -152,16 +152,6 @@ Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 
 Plug 'gisphm/vim-gitignore'
 
-if system('arch') == "arm64"
-    if has("nvim")
-      let g:python3_host_prog =  $HOME . "/.pyenv/shims/python3"
-    endif
-    let g:tagbar_ctags_bin  = '/opt/homebrew/bin/ctags'
-else
-    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-    let g:tagbar_ctags_bin  = '/usr/local/bin/ctags'
-endif
-
 if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
