@@ -505,14 +505,12 @@ augroup my_autocmd_misc
 
   " Go to last file if invoked without arguments.
   if has("nvim")
-    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif " nvim
+    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif
   else
-      autocmd VimEnter * nested if
-        \ argc() == 0 &&
-        \ bufname("%") == "" &&
-        \ bufname("2" + 0) != "" |
-        \   exe "normal! `0" |
-        \ endif
+    autocmd VimEnter * nested
+      \ if argc() == 0 && bufname("%") == "" && bufname("2" + 0) != ""
+      \ | call feedkeys("\<C-O>\<C-O>")
+      \ | endif
   endif
 
   autocmd FileType qf call feedkeys("\<C-w>k")
