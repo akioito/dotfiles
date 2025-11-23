@@ -542,6 +542,7 @@ iabbrev xrm # testIto remove after test...
 " ============================================================================
 " Mappings
 " ============================================================================
+nnoremap ; :
 map <Space> <Leader>
 
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
