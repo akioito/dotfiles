@@ -8,6 +8,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall
 endif
 
+" ============================================================================
+" Plugin Declarations
+" ============================================================================
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Treesitter
@@ -439,6 +442,10 @@ call wilder#set_option('pipeline', [
       \   ),
       \ ])
 
+" ============================================================================
+" General Settings
+" ============================================================================
+
 " Required:
 filetype plugin indent on
 
@@ -527,12 +534,14 @@ set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 set statusline+=%4*\ %{g:progress}
 set statusline+=%0*%y%*                            " file type
 
-" ----------------------------------------------------------------------------
-" Abbrevs
+" ============================================================================
+" Abbreviations
+" ============================================================================
 iabbrev xrm # testIto remove after test...
 
-" ----------------------------------------------------------------------------
-" Maps
+" ============================================================================
+" Mappings
+" ============================================================================
 map <Space> <Leader>
 
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
@@ -673,6 +682,10 @@ map <S-w> <M-Left>
 " Directory & autocmd
 set directory=~/tmp/
 set backupdir=~/tmp
+" ============================================================================
+" Autocommands
+" ============================================================================
+
 augroup my_autocmd
     autocmd!
     " autocmd BufEnter *.py  :match defLine /def\ .*$/
@@ -732,7 +745,10 @@ augroup QSearchToggle
     autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
 augroup end
 
-" ----------------------------------------------------------------------------
+" ============================================================================
+" UI and Final Settings
+" ============================================================================
+
 set nu
 function! s:ToggleNumberMode()
   if &rnu == 0
