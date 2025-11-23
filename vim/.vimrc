@@ -468,11 +468,16 @@ inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
 
+" smooth scroll
 nnoremap  <C-M> <cmd>call smoothie#do("\<C-D>")<CR>
 nnoremap  <C-,> <cmd>call smoothie#do("\<C-U>")<CR>
 
+" visual select
 nnoremap v V
 nnoremap V v
+
+" python debug variable
+nnoremap <leader>db yiw o<C-R>=printf("print(f\"{%s = }\")  # testIto remove after test", @")<CR><Esc>
 
 nnoremap <C-N>          :tabnew<cr>
 " vim command line
