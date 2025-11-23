@@ -23,6 +23,7 @@ if has("nvim")
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'psliwka/vim-smoothie'
 
 " LSP
 Plug 'prabirshrestha/vim-lsp'
@@ -466,6 +467,12 @@ inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
+
+nnoremap  <C-M> <cmd>call smoothie#do("\<C-D>")<CR>
+nnoremap  <C-,> <cmd>call smoothie#do("\<C-U>")<CR>
+
+nnoremap v V
+nnoremap V v
 
 nnoremap <C-N>          :tabnew<cr>
 " vim command line
