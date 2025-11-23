@@ -137,11 +137,11 @@ Plug 'andymass/vim-matchup', Cond(!exists('g:vscode'))
   let g:matchup_matchparen_deferred = 1
   let g:matchup_matchparen_hi_surround_always = 1
 Plug 'gelguy/wilder.nvim'
-" Plug 'MattesGroeger/vim-bookmarks'
-"   let g:bookmark_save_per_working_dir = 1
-"   let g:bookmark_auto_save = 1
-"   nnoremap <F2> :BookmarkToggle<cr>
-"   nnoremap <S-F2> :BookmarkShowAll<cr>
+Plug 'MattesGroeger/vim-bookmarks'
+  let g:bookmark_save_per_working_dir = 1
+  let g:bookmark_auto_save = 1
+  nnoremap <F2> :BookmarkToggle<cr>
+  nnoremap <S-F2> :BookmarkShowAll<cr>
 
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'prettier/vim-prettier', {
