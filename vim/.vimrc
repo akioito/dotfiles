@@ -993,7 +993,7 @@ set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 " highlight CursorWord2  guibg=#ffffa2
-set cursorline cursorlineopt=number
+" set cursorline cursorlineopt=number
 highlight ScrollView guibg=Gray
 if has('termguicolors')
     set termguicolors
