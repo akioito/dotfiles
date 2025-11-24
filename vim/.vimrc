@@ -559,7 +559,7 @@ nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp
 " nnoremap <ESC>  <ESC>
-nnoremap <D-f>  <ESC>:call feedkeys('/')<CR>
+nnoremap <D-f> /
 inoremap <D-s>  <ESC>:w<CR>
 
 if exists('g:neovide')
