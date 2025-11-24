@@ -23,7 +23,6 @@ if has("nvim")
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'psliwka/vim-smoothie'
 
 " LSP
 Plug 'prabirshrestha/vim-lsp'
@@ -467,10 +466,6 @@ inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
 inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
-
-" smooth scroll
-nnoremap  <C-M> <cmd>call smoothie#do("\<C-D>")<CR>
-nnoremap  <C-,> <cmd>call smoothie#do("\<C-U>")<CR>
 
 " visual select
 nnoremap v V
