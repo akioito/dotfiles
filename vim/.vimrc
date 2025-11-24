@@ -552,6 +552,9 @@ iabbrev xrm # testIto remove after test...
 nnoremap ; :
 map <Space> <Leader>
 
+nnoremap <C-M>  <C-D>
+nnoremap <C-,>  <C-u>
+
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp
