@@ -791,9 +791,8 @@ function! SendLineRefToiTerm(start_line, end_line) abort
         endif
     endif
     call system('osascript -e "tell app \"iTerm\" to activate"')
-    call system('osascript -e "tell app \"System Events\" to keystroke \"v\" using command down"')
 
-    echo 'Sent to iTerm: ' . reference
+    echo 'Copied to clipboard: ' . reference . ' (Press Cmd+V in iTerm)'
 endfunction
 
 
