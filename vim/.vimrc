@@ -500,12 +500,12 @@ function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
 
-function! MyLspProgress() abort
-  let l:progress = lsp#get_progress()
-  if empty(l:progress) | return '' | endif
-  let l:progress = l:progress[len(l:progress) - 1]
-  return l:progress['server'] . ': ' . l:progress['message']
-endfunction
+" function! MyLspProgress() abort
+"   let l:progress = lsp#get_progress()
+"   if empty(l:progress) | return '' | endif
+"   let l:progress = l:progress[len(l:progress) - 1]
+"   return l:progress['server'] . ': ' . l:progress['message']
+" endfunction
 
 let g:syntax = '???'
 let g:currentTag = '???'
@@ -515,7 +515,7 @@ augroup my_autocmd_misc
   autocmd!
   autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
   autocmd CursorHold * let g:syntax = SyntaxItem()
-  autocmd CursorHold * let g:progress = MyLspProgress()
+  " autocmd CursorHold * let g:progress = MyLspProgress()
 
   " Go to last file if invoked without arguments.
   if has("nvim")
@@ -716,7 +716,7 @@ augroup my_autocmd
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
@@ -724,8 +724,8 @@ augroup my_autocmd
     autocmd FocusGained * checktime
 
     " Fast Cursor / nocursorline in Insert Mode
-    autocmd CursorHold * setlocal cursorline
-    autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
+    " autocmd CursorHold * setlocal cursorline
+    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
 
     " ESC to not append 'g' when save in insert mode
     " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
