@@ -104,7 +104,7 @@ Normal mode
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'sfref - send file ref to iTerm    |sfref',
+    \'sfref - copy file ref to Clipboard|sfref',
     \'vimrc                             |:e ~/.vimrc',
     \]
 ```

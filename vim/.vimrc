@@ -369,7 +369,7 @@ Plug 'laher/fuzzymenu.vim'
     \'#',
     \'QuitGoneovim                      |:qall',
     \'VSCode                            |:VSCODE',
-    \'sfref - send file ref to iTerm    |sfref',
+    \'sfref - copy file ref to Clipboard|sfref',
     \'vimrc                             |:e ~/.vimrc',
     \]
 
@@ -772,11 +772,11 @@ endfunc
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
-" Send Selected line reference to iTerm
+" Copy Selected line reference to Clipboard
 map <silent> sfref :<C-u>SFRef<CR>
-command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
+command! -range SFRef call CopyLineRefToClipboard(<line1>, <line2>)
 
-function! SendLineRefToiTerm(start_line, end_line) abort
+function! CopyLineRefToClipboard(start_line, end_line) abort
     let filename = empty(expand('%')) ? '[No Name]' : expand('%')
     let reference = '@' . filename . ':' . a:start_line
     if a:start_line != a:end_line
@@ -790,9 +790,8 @@ function! SendLineRefToiTerm(start_line, end_line) abort
             let @* = reference
         endif
     endif
-    call system('osascript -e "tell app \"iTerm\" to activate"')
 
-    echo 'Copied to clipboard: ' . reference . ' (Press Cmd+V in iTerm)'
+    echo 'Copied to clipboard: ' . reference
 endfunction
 
 
