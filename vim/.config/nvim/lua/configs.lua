@@ -39,6 +39,16 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.00
 end
 
+-- Cursor blink (blinkwait-blinkon-blinkoff in milliseconds)
+vim.opt.guicursor = table.concat({
+  "n-v-c:block-Cursor/lCursor",
+  "i-ci-ve:ver35-Cursor/lCursor",
+  "r-cr:hor20-Cursor/lCursor",
+  "o:hor50-Cursor/lCursor",
+  "a:blinkwait700-blinkon400-blinkoff250-Cursor/lCursor",
+  "sm:block-blinkwait175-blinkon150-blinkoff150-Cursor/lCursor",
+}, ",")
+
 -- Others
 vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})

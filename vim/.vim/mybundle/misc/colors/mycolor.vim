@@ -146,6 +146,6 @@ hi VimHighlight       guifg=#972226 gui=bold
 hi VimMap             guifg=#972226 gui=bold
 hi VimCommand         guifg=#972226 gui=bold
 
-highlight lspReference guifg=#ff00ff
+highlight lspReference      guifg=#000000 guibg=#ffffa2
 
 " End

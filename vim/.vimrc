@@ -27,7 +27,7 @@ Plug 'vim-scripts/BufOnly.vim'
 " LSP
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-let g:lsp_work_done_progress_enabled = 1
+" let g:lsp_work_done_progress_enabled = 1
 let g:lsp_use_native_client = 1
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -76,10 +76,6 @@ noremap cx   :LspCodeAction<cr>
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 let g:vsnip_snippet_dir =  $HOME . '/dotfiles/.vsnip'
-
-Plug 'dominikduda/vim_current_word'
-let g:vim_current_word#highlight_twins = 1
-let g:vim_current_word#highlight_current_word = 1
 
 Plug 'djoshea/vim-autoread'
 
@@ -509,7 +505,7 @@ endfunction
 
 let g:syntax = '???'
 let g:currentTag = '???'
-let g:progress = '???'
+" let g:progress = '???'
 
 augroup my_autocmd_misc
   autocmd!
@@ -538,7 +534,7 @@ set statusline+=%3*\ %{g:currentTag}
 set statusline+=%5*\ %=%{g:syntax}                 " for nvim also use ,,
 set statusline+=%0*\ %{&ff}\                       " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
-set statusline+=%4*\ %{g:progress}
+" set statusline+=%4*\ %{g:progress}
 set statusline+=%0*%y%*                            " file type
 
 " ============================================================================
@@ -736,8 +732,6 @@ augroup my_autocmd
     autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
     " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    autocmd InsertLeave * let g:cursorword = 1
-    autocmd InsertEnter * let g:cursorword = 0
 augroup end
 
 " QuickFix Close or Search
@@ -996,11 +990,8 @@ if has('termguicolors')
 endif
 set signcolumn=number
 highlight FoldColumn guibg=White
-highlight lspReference guibg=#ffffa2
 if has("nvim")
   set foldcolumn=1
-  highlight CursorWord  guibg=#f8edeb
-  highlight LspReferenceText  guibg=#ffffa2
 endif
 
 " End
