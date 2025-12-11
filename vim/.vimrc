@@ -1,7 +1,3 @@
-if !&compatible
-  set nocompatible
-endif
-
 "auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -236,7 +232,6 @@ Plug 'preservim/tagbar' "{ Some customization
 Plug 'ap/vim-css-color'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
-Plug 'chr4/nginx.vim'
 Plug 'Galicarnax/vim-regex-syntax'
 
 if exists("g:gui_vimr") || exists('g:neovide')
@@ -261,7 +256,6 @@ let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   let g:rustfmt_autosave = 1
-Plug 'mhinz/vim-crates'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'chiedo/vim-case-convert'
 Plug 'NoahTheDuke/vim-just'
@@ -442,13 +436,8 @@ call wilder#set_option('pipeline', [
 " General Settings
 " ============================================================================
 
-" Required:
+" Required: enables filetype detection, plugins, and indent
 filetype plugin indent on
-
-" ----------------------------------------------------------------------------
-" Turn on filetype detection
-filetype on
-filetype plugin on
 
 " ----------------------------------------------------------------------------
 " set termencoding=utf-8
@@ -507,24 +496,7 @@ let g:syntax = '???'
 let g:currentTag = '???'
 " let g:progress = '???'
 
-augroup my_autocmd_misc
-  autocmd!
-  autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
-  autocmd CursorHold * let g:syntax = SyntaxItem()
-  " autocmd CursorHold * let g:progress = MyLspProgress()
-
-  " Go to last file if invoked without arguments.
-  if has("nvim")
-    autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif
-  else
-    autocmd VimEnter * nested
-      \ if argc() == 0 && bufname("%") == "" && bufname("2" + 0) != ""
-      \ | call feedkeys("\<C-O>\<C-O>")
-      \ | endif
-  endif
-
-  autocmd FileType qf call feedkeys("\<C-w>k")
-augroup end
+" Note: Main autocommands consolidated in augroup my_autocmd below
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c\ %p%%
@@ -693,47 +665,6 @@ set backupdir=~/tmp
 " Autocommands
 " ============================================================================
 
-augroup my_autocmd
-    autocmd!
-    " autocmd BufEnter *.py  :match defLine /def\ .*$/
-    " autocmd BufEnter *.js  :match defLine /.*function.*$/
-    autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
-    autocmd BufEnter * :syntax sync fromstart
-    autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
-    autocmd BufNewFile,BufRead *.conf set filetype=nginx
-    autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-    autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
-    autocmd BufRead *.vim-prj call feedkeys("op")
-
-    " Problem with Japanese IME / 例: 中 (tyuu)
-    " autocmd VimEnter * set imdisable
-
-    autocmd FileType html setlocal indentkeys-=*<Return>
-    autocmd FileType svelte runtime ftplugin/html/sparkup.vim
-
-    " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml} %s/\s\+$//e
-
-    " FocusLost save and Normal Mode
-    autocmd FocusLost * silent! wa
-    autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
-    autocmd FocusGained * checktime
-
-    " Fast Cursor / nocursorline in Insert Mode
-    " autocmd CursorHold * setlocal cursorline
-    " autocmd CursorMoved,InsertEnter * if &l:cursorline | setlocal nocursorline | endif
-
-    " ESC to not append 'g' when save in insert mode
-    " autocmd BufWritePost *.svelte call feedkeys("\<Esc>") | :LspDocumentFormat
-    autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
-    autocmd BufWritePost .vimrc,vimrc so $MYVIMRC " No more restart MacVim after editing vimrc
-    " autocmd ColorScheme * hi LineNr ctermbg=NONE guibg=NONE
-    " Don't wrap in quickfix, and don't show in buffer list
-    autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
-    " autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    " autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup end
-
 " QuickFix Close or Search
 function! QSearchToggle(forced)
     if exists("g:qfix_win") && a:forced == 0
@@ -743,18 +674,62 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
-" Used to track the quickfix window.
-augroup QSearchToggle
+" Consolidated autocommands (merged my_autocmd, my_autocmd_misc, QSearchToggle, FastEscape)
+augroup my_autocmd
     autocmd!
+
+    " Status line updates
+    autocmd CursorHold * let g:currentTag = tagbar#currenttag('%s','','s')
+    autocmd CursorHold * let g:syntax = SyntaxItem()
+
+    " Go to last file if invoked without arguments
+    if has("nvim")
+        autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif
+    else
+        autocmd VimEnter * nested
+            \ if argc() == 0 && bufname("%") == "" && bufname("2" + 0) != ""
+            \ | call feedkeys("\<C-O>\<C-O>")
+            \ | endif
+    endif
+
+    " Filetype settings
+    autocmd BufEnter *.js nnoremap <leader>f  :<C-u>Lines function<cr>
+    autocmd BufEnter * :syntax sync fromstart
+    autocmd BufEnter,BufFilePost * let &titlestring = expand('%:t') . ' - ' . expand('%:p:h')
+    autocmd BufNewFile,BufRead *.conf set filetype=nginx
+    autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+    autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
+    autocmd BufRead *.vim-prj call feedkeys("op")
+    autocmd FileType html setlocal indentkeys-=*<Return>
+    autocmd FileType svelte runtime ftplugin/html/sparkup.vim
+
+    " Quickfix settings
+    autocmd FileType qf call feedkeys("\<C-w>k")
+    autocmd FileType qf setlocal nowrap textwidth=0 nobuflisted
     autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
     autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
+
+    " Trim Trailing Whitespace
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml} %s/\s\+$//e
+
+    " FocusLost save and Normal Mode
+    autocmd FocusLost * silent! wa
+    autocmd FocusLost * if mode()[0] =~ 'i\|R' | call feedkeys("\<Esc>") | endif
+    autocmd FocusGained * checktime
+
+    " Post-write actions
+    autocmd BufWritePost *.svelte silent execute '!npm run vim_fmt %:p'| call feedkeys("\<Esc>")
+    autocmd BufWritePost .vimrc,vimrc so $MYVIMRC
+
+    " Fast escape timing
+    autocmd InsertEnter * set timeoutlen=20
+    autocmd InsertLeave * set timeoutlen=300
 augroup end
 
 " ============================================================================
 " UI and Final Settings
 " ============================================================================
 
-set nu
 function! s:ToggleNumberMode()
   if &rnu == 0
     set rnu
@@ -963,11 +938,6 @@ set linespace=-1
 set lazyredraw                          " to avoid scrolling problems
 set ttyfast
 set timeout timeoutlen=300 ttimeoutlen=50
-augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=20
-    au InsertLeave * set timeoutlen=300
-augroup END
 set updatetime=300
 set noundofile
 
@@ -979,7 +949,6 @@ set wildmenu
 set laststatus=2
 set t_Co=256
 set vb t_vb=
-set signcolumn=yes
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
 " highlight CursorWord2  guibg=#ffffa2
