@@ -18,7 +18,8 @@ hi Folded       guifg=#808080 guibg=white
 hi LineNr       guifg=#c10b23 guibg=#ffffff
 hi MatchParen   guibg=#cddae5
 hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
-hi SignColumn   guibg=white
+hi SignColumn   guibg=#ffffa2
+hi CursorLineNr guifg=#000000 guibg=#ffffa2
 hi StatusLine   guifg=#ffffff   guibg=#43c464   gui=bold
 hi StatusLineNC guifg=#9bd4a9   guibg=#51b069
 hi VertSplit    guifg=#fafafa   guibg=#fafafa
