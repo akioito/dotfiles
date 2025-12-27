@@ -15,7 +15,7 @@ hi CursorLine   guibg=#ffffa2
 hi Cursor       guifg=#ffffff guibg=#f26c17
 hi endofbuffer  guibg=white
 hi Folded       guifg=#808080 guibg=white
-hi LineNr       guifg=#c10b23 guibg=#ffffff
+hi LineNr       guifg=#0BB634 guibg=#fbfbfb
 hi MatchParen   guibg=#cddae5
 hi NonText      guifg=#f2f2f2 guibg=#f2f2f2 gui=NONE
 hi SignColumn   guibg=#ffffa2
@@ -127,7 +127,7 @@ hi KeywordFunction    guifg=#28C101 gui=italic
 hi KeywordOperator    guifg=#fd8900 gui=italic
 hi KeywordReturn      guifg=#9f40c0 gui=italic
 
-hi Normal             guibg=#fbfbfb ctermbg=255
+hi Normal             guibg=#ffffff ctermbg=255
 hi Repeat             guifg=#9f40c0 gui=italic
 hi Special            guifg=#9f40c0 gui=italic
 hi String             guifg=#28C101 gui=italic
