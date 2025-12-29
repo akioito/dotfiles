@@ -36,6 +36,7 @@ cd ~
 git clone https://github.com/akioito/dotfiles.git
 cd dotfiles
 ./install.sh
+```
 
 MacVim / Neovide 
 :PlugInstall# wait until end plugin installation -> :quit
@@ -44,17 +45,18 @@ MacVim / Neovide
 Enjoy!
 
 If you want o uninstall:
-```  
+```
 cd ~/dotfiles
 stow -D vim
 (Restore you Backup - ~/.vim and ~/.vimrc)
 (Eventually you need to remove ~/.config/nvim/autoload/plug.vim)
 
-```  
+```
 
 # Usual commands:
-Normal mode     
-```  
+
+Normal mode
+```
 <Space><Space> General menu command
   let myMenuList = [
     \'Buffers                           |:Buffers',
