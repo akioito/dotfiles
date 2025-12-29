@@ -266,27 +266,27 @@ Plug 'tyru/open-browser.vim'
   vmap gb <Plug>(openbrowser-open)
 
 " NERDTree
-let g:mynerdtree = 0
-function! MyNerdToggle()
-    if g:mynerdtree == 0
-        execute "normal! :NERDTree\<CR>:normal P\<CR>:normal O\<CR>"
-         let g:mynerdtree = 1
-    else
-        execute "normal! *:NERDTreeClose\<CR>"
-        let g:mynerdtree = 0
-    endif
-endfunction
+" let g:mynerdtree = 0
+" function! MyNerdToggle()
+"     if g:mynerdtree == 0
+"         execute "normal! :NERDTree\<CR>:normal P\<CR>:normal O\<CR>"
+"          let g:mynerdtree = 1
+"     else
+"         execute "normal! *:NERDTreeClose\<CR>"
+"         let g:mynerdtree = 0
+"     endif
+" endfunction
 
 Plug 'leafgarland/typescript-vim'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-let g:NERDTreeMouseMode=3
-" let g:NERDTreeQuitOnOpen=1
-let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI=1
-let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
-nnoremap <F6> :call MyNerdToggle()<CR>
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+" let g:NERDTreeMouseMode=3
+" " let g:NERDTreeQuitOnOpen=1
+" let NERDTreeShowLineNumbers=1
+" let NERDTreeMinimalUI=1
+" let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
+" nnoremap <F6> :call MyNerdToggle()<CR>
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 Plug 'romainl/vim-cool'
   let g:CoolTotalMatches = 1
