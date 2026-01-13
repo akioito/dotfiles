@@ -94,10 +94,12 @@ endif
 Plug 'michaeljsmith/vim-indent-object'
 " <count>ai An Indentation level and line above.
 
+Plug 'preservim/vim-markdown'
+  let g:vim_markdown_folding_disabled = 1
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Yggdroot/indentLine'
   let g:indentLine_color_gui = '#ffdad8'
-  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'markdown', 'bash', 'lua']
+  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'bash', 'lua']
   let g:indentLine_char = '|'
   let g:indentLine_faster = 1
 
