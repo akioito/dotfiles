@@ -305,6 +305,7 @@ nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
 Plug 'tracyone/fzf-funky',{'on': 'FzfFunky'}
+  nnoremap <silent>ff :FzfFunky<CR>
 
 Plug 'asford/fzf-quickfix', {'on': 'Quickfix'}
 Plug 'laher/fuzzymenu.vim'
