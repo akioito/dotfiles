@@ -589,6 +589,7 @@ endif
 "  - p past
 "  - ctr+r* paste to command line or in insert mode
 "  :TodoQuickFix
+" Visual Select Paragraph: vip
 
 " Save read-only file :w!!<enter>
 cmap w!! w !sudo tee % >/dev/null
@@ -965,5 +966,6 @@ highlight FoldColumn guibg=White
 if has("nvim")
   set foldcolumn=1
 endif
+set relativenumber
 
 " End
