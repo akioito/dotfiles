@@ -58,11 +58,4 @@ require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- or a list of languages
-  highlight = {
-    enable = true,
-  },
-}
-
 -- End
