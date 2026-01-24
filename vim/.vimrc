@@ -108,6 +108,11 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+  xmap ff <Plug>(textobj-python-function-a)
+  omap ff <Plug>(textobj-python-function-a)
+
 Plug 'easymotion/vim-easymotion'
   nmap f <Plug>(easymotion-overwin-f2)
   let g:EasyMotion_smartcase = 1
@@ -589,8 +594,8 @@ endif
 "  - p past
 "  - ctr+r* paste to command line or in insert mode
 "  :TodoQuickFix
+" Visual Select Function:  vaf or vff
 " Visual Select Paragraph: vip
-
 " Save read-only file :w!!<enter>
 cmap w!! w !sudo tee % >/dev/null
 
