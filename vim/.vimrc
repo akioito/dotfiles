@@ -16,6 +16,7 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'chr4/nginx.vim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
@@ -911,7 +912,7 @@ set cmdheight=2
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
-set regexpengine=1                     " Improves performance syntax highlighted file
+" set regexpengine=1                     " Improves performance syntax highlighted file
 set nostartofline
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars
