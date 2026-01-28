@@ -99,7 +99,7 @@ Plug 'preservim/vim-markdown'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Yggdroot/indentLine'
   let g:indentLine_color_gui = '#ffdad8'
-  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'bash', 'lua']
+  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'bash', 'lua', 'awk']
   let g:indentLine_char = '|'
   let g:indentLine_faster = 1
 
@@ -719,7 +719,7 @@ augroup my_autocmd
     autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml,awk} %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
