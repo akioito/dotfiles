@@ -2,17 +2,17 @@
 
 local map = vim.keymap.set
 
--- Neovide
--- see ~/.local/share/nvim/neovide-settings.json
---     https://github.com/neovide/neovide/issues/1263#issuecomment-1094628137
-
-map('n', '<D-s>', ':w<CR>')      -- Save
-map('v', '<D-c>', '"+y')         -- Copy
-map('n', '<D-v>', '"+P')         -- Paste normal mode
-map('v', '<D-v>', '"+P')         -- Paste visual mode
-map('c', '<D-v>', '<C-R>+')      -- Paste command mode
-map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 map("n", "U", "<C-R>", { desc = "Redo last change" })
+
+if vim.g.neovide then
+  local function save() vim.cmd.write() end
+  local function copy() vim.cmd([[normal! "+y]]) end
+  local function paste() vim.api.nvim_paste(vim.fn.getreg("+"), true, -1) end
+
+  vim.keymap.set({ "n", "i", "v" }, "<D-s>", save, { desc = "Save" })
+  vim.keymap.set("v", "<D-c>", copy, { silent = true, desc = "Copy" })
+  vim.keymap.set({ "n", "i", "v", "c", "t" }, "<D-v>", paste, { silent = true, desc = "Paste" })
+end
 
 -- Text-to-speech
 vim.keymap.set('v', '<M-s>', function()
