@@ -154,7 +154,7 @@ Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
 
 Plug 'gisphm/vim-gitignore'
 
-if has("gui_macvim") || exists("g:gui_vimr") || exists('g:neovide')
+if has("gui_macvim")
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>

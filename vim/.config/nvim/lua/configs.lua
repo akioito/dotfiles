@@ -14,6 +14,13 @@ map('c', '<D-v>', '<C-R>+')      -- Paste command mode
 map('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 map("n", "U", "<C-R>", { desc = "Redo last change" })
 
+-- Text-to-speech
+vim.keymap.set('v', '<M-s>', function()
+  vim.cmd('normal! "xy')
+  local text = vim.fn.getreg('x')
+  vim.fn.jobstart({ 'say', '-v', 'Kyoko', text })
+end, { silent = true, desc = 'Speak selection with Kyoko voice' })
+
 vim.api.nvim_set_option("clipboard", "unnamed")
 
 vim.opt.title = true
