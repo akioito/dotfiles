@@ -7,4 +7,6 @@ vim/.config/nvim/lua/*.lua
 vim/.vim/mybundle/misc/colors/mycolor.vim
 vim/.vimrc
 
+opencode/.config/opencode/*.json
+
 # End
