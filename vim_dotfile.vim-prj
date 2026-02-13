@@ -1,12 +1,13 @@
 # vim_dotfile.vim-prj
 
+opencode/.config/opencode/*.json
+ghostty/.config/ghostty/config
+
 README.md
 install.sh
 vim/.config/nvim/init.vim
 vim/.config/nvim/lua/*.lua
 vim/.vim/mybundle/misc/colors/mycolor.vim
 vim/.vimrc
-
-opencode/.config/opencode/*.json
 
 # End

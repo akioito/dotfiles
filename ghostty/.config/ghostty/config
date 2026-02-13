@@ -1,0 +1,19 @@
+# theme = Apple System Colors Light
+# theme = iTerm2 Light Background
+theme = Builtin Light
+
+quit-after-last-window-closed=true
+font-family = Maple Mono
+font-size = 19.0
+macos-option-as-alt = true
+adjust-cell-height = -7
+copy-on-select = clipboard
+# window-colorspace = display-p3
+# bold-is-bright = true
+window-height = 115
+window-width = 200
+
+window-padding-balance = true
+window-padding-x =  5
+window-padding-y = 15
+
