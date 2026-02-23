@@ -1,6 +1,5 @@
 # vim_dotfile.vim-prj
 
-opencode/.config/opencode/*.json
 ghostty/.config/ghostty/config
 
 README.md
