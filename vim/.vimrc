@@ -965,6 +965,6 @@ highlight FoldColumn guibg=White
 if has("nvim")
   set foldcolumn=1
 endif
-set relativenumber
+" set relativenumber
 
 " End
