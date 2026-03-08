@@ -745,9 +745,9 @@ nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
 " Copy Selected line reference to Clipboard
-noremap  <D-6> :SFRef<cr>
-vnoremap <D-6> <ESC>gv:SFRef<cr>
-inoremap <D-6> <ESC>:SFRef<cr>
+noremap  <F6> :SFRef<cr>
+vnoremap <F6> <ESC>gv:SFRef<cr>
+inoremap <F6> <ESC>:SFRef<cr>
 
 command! -range SFRef call CopyLineRefToClipboard(<line1>, <line2>)
 
