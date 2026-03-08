@@ -360,6 +360,7 @@ Plug 'laher/fuzzymenu.vim'
     \'VSCode                            |:VSCODE',
     \'sfref - copy file ref to Clipboard|sfref',
     \'vimrc                             |:e ~/.vimrc',
+    \'cmd line                          |:',
     \]
 
  function! MyMenu_sink(lines)
@@ -371,7 +372,9 @@ Plug 'laher/fuzzymenu.vim'
     endif
     let cmd = split(a:lines[0], '|')[1]
     let prefix = cmd[0]
-    if prefix == ':'
+    if cmd == ':'
+        execute 'silent call feedkeys("'.cmd.'")'
+    elseif prefix == ':'
         execute 'silent call feedkeys("'.cmd.'\<CR>")'
     else
         let escaped_cmd = substitute(cmd, '<', '\\<', "g")
