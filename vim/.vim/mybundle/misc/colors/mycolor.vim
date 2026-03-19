@@ -149,4 +149,7 @@ hi VimCommand         guifg=#972226 gui=bold
 
 highlight lspReference      guifg=#000000 guibg=#ffffa2
 
+hi jsonNoQuotesError        guifg=#000000 gui=italic
+hi jsonStringSQError        guifg=#9f40c0 gui=italic
+
 " End
