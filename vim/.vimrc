@@ -894,6 +894,8 @@ if has("gui_macvim")
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
+  map <ScrollWheelUp>   <C-Y>
+  map <ScrollWheelDown> <C-E>
   " For Command T/W
   " macmenu &File.New\ Tab key=<nop>
   " macmenu &File.Close key=<nop>
@@ -913,8 +915,6 @@ set cmdheight=2
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
-map <ScrollWheelUp>   <C-Y>
-map <ScrollWheelDown> <C-E>
 set regexpengine=1                     " Improves performance syntax highlighted file
 set nostartofline
 set softtabstop=4                      " 4 spaces
