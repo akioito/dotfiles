@@ -361,6 +361,7 @@ Plug 'laher/fuzzymenu.vim'
     \'sfref - copy file ref to Clipboard|sfref',
     \'vimrc                             |:e ~/.vimrc',
     \'cmd line                          |:',
+    \'redo                              |:redo',
     \]
 
  function! MyMenu_sink(lines)
