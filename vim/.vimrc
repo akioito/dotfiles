@@ -750,15 +750,17 @@ noremap  <F6> :SFRef<cr>
 vnoremap <F6> <ESC>gv:SFRef<cr>
 inoremap <F6> <ESC>:SFRef<cr>
 
-command! -range SFRef call CopyLineRefToClipboard(<line1>, <line2>)
+command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
 
-function! CopyLineRefToClipboard(start_line, end_line) abort
+function! SendLineRefToiTerm(start_line, end_line) abort
     let filename = empty(expand('%')) ? '[No Name]' : expand('%')
     let reference = '@' . filename . ':' . a:start_line
     if a:start_line != a:end_line
         let reference .= '-' . a:end_line
     endif
     let reference .= ' '
+
+    " Keep clipboard functionality just in case you need it
     if has('clipboard')
         if has('unnamedplus')
             let @+ = reference
@@ -767,7 +769,27 @@ function! CopyLineRefToClipboard(start_line, end_line) abort
         endif
     endif
 
-    echo 'Copied to clipboard: ' . reference
+    " Escape double quotes and backslashes in the filename so it doesn't break AppleScript
+    let l:safe_ref = escape(reference, '"\')
+
+    " Build a native iTerm2 AppleScript string
+    let l:applescript = [
+    \ 'tell application "iTerm"',
+    \ '  activate',
+    \ '  if exists (current window) then',
+    \ '    tell current window',
+    \ '      tell current session',
+    \ '        write text "' . l:safe_ref . '" without newline',
+    \ '      end tell',
+    \ '    end tell',
+    \ '  end if',
+    \ 'end tell'
+    \ ]
+
+    " Execute the AppleScript securely
+    call system('osascript -e ' . shellescape(join(l:applescript, "\n")))
+
+    echo 'Sent to iTerm: ' . reference
 endfunction
 
 
