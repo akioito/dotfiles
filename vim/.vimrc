@@ -187,6 +187,8 @@ Plug 'machakann/vim-sandwich'
 Plug 'akio-ito/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
+  let g:AutoPairsMapCR = 0
+  imap <silent><CR> <CR><Plug>AutoPairsReturn
 "}
 Plug 'tomtom/tcomment_vim' "{
  noremap  <D-1> :TComment<cr>
