@@ -1,8 +1,7 @@
 -- configs.lua
 
-local map = vim.keymap.set
-
-map("n", "U", "<C-R>", { desc = "Redo last change" })
+vim.keymap.set("n", "U", "<C-R>", { desc = "Redo last change" })
+vim.keymap.set('v', '<BS>', 'd', { noremap = true })
 
 if vim.g.neovide then
   local function save() vim.cmd.write() end
