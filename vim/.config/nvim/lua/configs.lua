@@ -64,36 +64,36 @@ require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
 })
 
-require('blink.cmp').setup({
-  keymap = {
-    preset = 'default',
-    ['<Tab>'] = { 'select_next', 'fallback' },
-    ['<S-Tab>'] = { 'select_prev', 'fallback' },
-    ['<CR>'] = { 'accept', 'fallback' },
-  },
-  appearance = {
-    nerd_font_variant = 'mono'
-  },
-  completion = {
-    menu = {
-      draw = {
-        treesitter = { 'lsp' }
-      }
-    },
-    list = {
-      selection = {
-        preselect = false,
-        auto_insert = true,
-      }
-    },
-  },
-  snippets = { preset = 'vsnip' },
-  sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
-  },
-  fuzzy = {
-    implementation = "prefer_rust_with_warning"
-  }
-})
+-- require('blink.cmp').setup({
+--   keymap = {
+--     preset = 'default',
+--     ['<Tab>'] = { 'select_next', 'fallback' },
+--     ['<S-Tab>'] = { 'select_prev', 'fallback' },
+--     ['<CR>'] = { 'accept', 'fallback' },
+--   },
+--   appearance = {
+--     nerd_font_variant = 'mono'
+--   },
+--   completion = {
+--     menu = {
+--       draw = {
+--         treesitter = { 'lsp' }
+--       }
+--     },
+--     list = {
+--       selection = {
+--         preselect = false,
+--         auto_insert = true,
+--       }
+--     },
+--   },
+--   snippets = { preset = 'vsnip' },
+--   sources = {
+--     default = { 'lsp', 'path', 'snippets', 'buffer' },
+--   },
+--   fuzzy = {
+--     implementation = "prefer_rust_with_warning"
+--   }
+-- })
 
 -- End
