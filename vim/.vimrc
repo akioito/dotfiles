@@ -23,7 +23,7 @@ Plug 'UncleZeiv/minibufexpl.vim'
     let g:miniBufExplMaxSize = 35
     let g:miniBufExplVSplit  = 20
     let g:miniBufExplUseSingleClick  = 1
-    let g:miniBufExplorerMoreThanOne = 1
+    let g:miniBufExplorerMoreThanOne = 2
     nnoremap <silent> <F7> <C-w>w
 
 " LSP
@@ -428,6 +428,12 @@ Plug '~/.vim/mybundle/sbd.vim'
 " Plug '~/.vim/mybundle/vim-command-w'
 
 call plug#end()
+
+" Close MBE after vim starts (deferred so MBE's own VimEnter fires first)
+augroup MBEInit
+  autocmd!
+  autocmd VimEnter * call timer_start(2, {-> execute('TMiniBufExplorer')})
+augroup END
 
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
