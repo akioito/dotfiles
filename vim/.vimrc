@@ -261,8 +261,7 @@ if exists("g:gui_vimr") || exists('g:neovide')
       augroup end
 end
 
-let $BAT_THEME = 'GitHub'
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'GitHub'
+let $BAT_THEME = 'mycolor'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   let g:rustfmt_autosave = 1
@@ -305,10 +304,11 @@ Plug 'amadeus/vim-convert-color-to'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+  let $FZF_PREVIEW_COMMAND = 'bat --theme=mycolor --style=numbers --color=always {}'
   let g:fzf_layout = {'down': '77%'}
-  let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
+  " let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
   let g:fzf_preview_window = ['right,70%', 'ctrl-/']
-  let g:fzf_tags_command = 'ctags -R'
+  " let g:fzf_tags_command = 'ctags -R'
 nnoremap <silent> <leader>c :Commands<CR>
 command! LS call fzf#run(fzf#wrap({'source': 'ls'}))
 command! VSCODE call system('vscode.py')
