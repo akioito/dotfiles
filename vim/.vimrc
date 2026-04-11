@@ -19,6 +19,12 @@ if has("nvim")
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/minibufexpl.vim'
+    let g:miniBufExplMaxSize = 35
+    let g:miniBufExplVSplit  = 20
+    let g:miniBufExplUseSingleClick  = 1
+    let g:miniBufExplorerMoreThanOne = 1
+    nnoremap <silent> <F7> <C-w>h
 
 " LSP
 Plug 'prabirshrestha/vim-lsp'
@@ -368,6 +374,7 @@ Plug 'laher/fuzzymenu.vim'
     \'vimrc                             |:e ~/.vimrc',
     \'cmd line                          |:',
     \'redo                              |:redo',
+    \'minibuffer                        |:TMiniBufExplorer',
     \]
 
  function! MyMenu_sink(lines)
@@ -586,7 +593,6 @@ endif
 " :TableModeToggle
 " :Tableize   convert from CSV
 "
-" :BufferTree
 " :ToggleCB  Toggle checkbox
 " neovim
 "  - vey yank word (start)
@@ -662,8 +668,6 @@ nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 "   autocmd FileType mysql nnoremap <buffer><silent> <F6>        :MySQL<CR>
 "   autocmd FileType mysql nnoremap <buffer><silent> <C-r>       :MySQL<CR>
 " augroup end
-
-" nmap    <F7>       :call HexHighlight()<Return>
 
 " MacVim - move cursor word left
 map <S-w> <M-Left>
