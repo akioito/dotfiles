@@ -19,7 +19,7 @@ if has("nvim")
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
-Plug 'vim-scripts/minibufexpl.vim'
+Plug 'UncleZeiv/minibufexpl.vim'
     let g:miniBufExplMaxSize = 35
     let g:miniBufExplVSplit  = 20
     let g:miniBufExplUseSingleClick  = 1
