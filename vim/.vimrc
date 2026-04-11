@@ -24,7 +24,7 @@ Plug 'UncleZeiv/minibufexpl.vim'
     let g:miniBufExplVSplit  = 20
     let g:miniBufExplUseSingleClick  = 1
     let g:miniBufExplorerMoreThanOne = 1
-    nnoremap <silent> <F7> <C-w>h
+    nnoremap <silent> <F7> <C-w>w
 
 " LSP
 Plug 'prabirshrestha/vim-lsp'
