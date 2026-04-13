@@ -16,6 +16,7 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'chr4/nginx.vim'
+    Plug 'f-person/git-blame.nvim'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
@@ -375,6 +376,7 @@ Plug 'laher/fuzzymenu.vim'
     \'cmd line                          |:',
     \'redo                              |:redo',
     \'minibuffer                        |:TMiniBufExplorer',
+    \'gitblame                          |:GitBlameToggle',
     \]
 
  function! MyMenu_sink(lines)
