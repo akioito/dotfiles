@@ -768,9 +768,9 @@ noremap  <F6> :SFRef<cr>
 vnoremap <F6> <ESC>gv:SFRef<cr>
 inoremap <F6> <ESC>:SFRef<cr>
 
-command! -range SFRef call SendLineRefToGhostty(<line1>, <line2>)
+command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
 
-function! SendLineRefToGhostty(start_line, end_line) abort
+function! SendLineRefToiTerm(start_line, end_line) abort
     let filename = empty(expand('%')) ? '[No Name]' : expand('%')
     let reference = '@' . filename . ':' . a:start_line
     if a:start_line != a:end_line
@@ -790,14 +790,20 @@ function! SendLineRefToGhostty(start_line, end_line) abort
     " Escape double quotes and backslashes in the filename so it doesn't break AppleScript
     let l:safe_ref = escape(reference, '"\')
 
-    " Build a native Ghostty AppleScript string
+    " Build a native iTerm2 AppleScript string
     let l:applescript = [
-    \ 'tell application "Ghostty"',
+    \ 'tell application "iTerm"',
     \ '  activate',
-    \ '  set term to focused terminal of selected tab of front window',
-    \ '   input text "' . l:safe_ref . '" to term',
+    \ '  if exists (current window) then',
+    \ '    tell current window',
+    \ '      tell current session',
+    \ '        write text "' . l:safe_ref . '" without newline',
+    \ '      end tell',
+    \ '    end tell',
+    \ '  end if',
     \ 'end tell'
     \ ]
+
     " Execute the AppleScript securely
     call system('osascript -e ' . shellescape(join(l:applescript, "\n")))
 
