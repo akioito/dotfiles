@@ -86,7 +86,7 @@ Normal mode
     \'GhostStart                        |:GhostStart',
     \'ITerm                             |:Iterm',
     \'ItermMacScripts                   |:ItermMacScripts',
-    \'WezTerm                           |:WezTerm',
+    \'Ghostty                           |:Ghostty',
     \'Reveal in Finder                  |:Reveal',
     \'Ls files in current dir           |:LS',
     \'#',
@@ -108,6 +108,10 @@ Normal mode
     \'VSCode                            |:VSCODE',
     \'sfref - copy file ref to Clipboard|sfref',
     \'vimrc                             |:e ~/.vimrc',
+    \'cmd line                          |:',
+    \'redo                              |:redo',
+    \'minibuffer                        |:TMiniBufExplorer',
+    \'gitblame                          |:GitBlameToggle',
     \]
 ```
 
