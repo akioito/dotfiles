@@ -706,7 +706,7 @@ augroup my_autocmd
 
     " Go to last file if invoked without arguments
     if has("nvim")
-        autocmd VimEnter * if !argc() | call feedkeys("\<C-O>") | endif
+        autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>") | endif
     else
         autocmd VimEnter * nested
             \ if argc() == 0 && bufname("%") == "" && bufname("2" + 0) != ""
