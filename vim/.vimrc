@@ -16,7 +16,6 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'chr4/nginx.vim'
-    Plug 'f-person/git-blame.nvim'
 endif
 
 Plug 'vim-scripts/BufOnly.vim'
@@ -83,10 +82,10 @@ if has('nvim')
   Plug 'mhinz/vim-crates'
     autocmd BufRead Cargo.toml call crates#toggle()
 
-  " Plug 'f-person/git-blame.nvim'
-  "   let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
-  "   let g:gitblame_message_template = ' <date> • <author> • <summary>'
-  "   let g:gitblame_enabled = 0
+  Plug 'f-person/git-blame.nvim'
+    let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
+    let g:gitblame_message_template = ' <date> • <author> • <summary>'
+    let g:gitblame_enabled = 0
 else
   " To use Python remote plugin features in Vim, can be skipped
   Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
