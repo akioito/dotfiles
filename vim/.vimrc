@@ -18,6 +18,17 @@ if has("nvim")
     Plug 'chr4/nginx.vim'
 endif
 
+" Plug 'roosta/fzf-folds.vim'
+" Plug 'pseewald/vim-anyfold'
+" Plug 'arecarn/vim-fold-cycle'
+"     let g:fold_cycle_default_mapping = 0 "disable default mappings
+"     nmap <Space><CR> <Plug>(fold-cycle-toggle-all)
+"     nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close-all)
+"     " Won't close when max fold is opened
+"     let g:fold_cycle_toggle_max_open  = 0
+"     " Won't open when max fold is closed
+"     let g:fold_cycle_toggle_max_close = 0
+
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'UncleZeiv/minibufexpl.vim'
     let g:miniBufExplMaxSize = 35
