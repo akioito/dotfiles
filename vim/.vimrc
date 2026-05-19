@@ -18,7 +18,7 @@ if has("nvim")
     Plug 'chr4/nginx.vim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'ray-x/telescope-ast-grep.nvim'
+    Plug 'Marskey/telescope-sg'
 endif
 
 " Plug 'roosta/fzf-folds.vim'
