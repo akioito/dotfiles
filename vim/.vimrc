@@ -16,6 +16,9 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'chr4/nginx.vim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'ray-x/telescope-ast-grep.nvim'
 endif
 
 " Plug 'roosta/fzf-folds.vim'

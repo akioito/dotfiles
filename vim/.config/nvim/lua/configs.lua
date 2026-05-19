@@ -97,4 +97,21 @@ require('blink.cmp').setup({
   }
 })
 
+-- init.lua or plugins/telescope.lua
+require('telescope').setup({
+    extensions = {
+        ast_grep = {
+            command = {
+                "sg",
+                "--json=stream",
+            },
+            grep_open_files = false,
+            lang = nil, -- auto detect
+        }
+    }
+})
+
+-- Load the extension
+require('telescope').load_extension('ast_grep')
+
 -- End
