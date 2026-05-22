@@ -460,6 +460,8 @@ call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline({
       \       'language': 'python',
+      \       'fuzzy': 2,
+      \       'sorter': wilder#python_difflib_sorter(),
       \     }),
       \     wilder#python_search_pipeline({
       \       'pattern': wilder#python_fuzzy_pattern(),
@@ -468,6 +470,13 @@ call wilder#set_option('pipeline', [
       \     }),
       \   ),
       \ ])
+
+cnoremap <expr> <C-j>   wilder#in_context() ? wilder#next()     : "\<C-j>"
+cnoremap <expr> <C-k>   wilder#in_context() ? wilder#previous() : "\<C-k>"
+cnoremap <expr> <Tab>   wilder#in_context() ? wilder#next()     : "\<Tab>"
+cnoremap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
+cnoremap <expr> <Down>  wilder#in_context() ? wilder#next()     : "\<Down>"
+cnoremap <expr> <Up>    wilder#in_context() ? wilder#previous() : "\<Up>"
 
 " ============================================================================
 " General Settings
