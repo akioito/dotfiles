@@ -100,13 +100,13 @@ require('blink.cmp').setup({
 require('fzf-lua').setup({
   'fzf-vim',
   winopts = {
+    height = 0.95,
+    width = 0.95,
+    row = 0.5,
     preview = {
       hidden = 'nohidden',
-      layout = 'flex',
-      flip_columns = 120,
-      horizontal = 'right:60%',
-      vertical = 'down:60%',
-      scrollbar = 'float',
+      layout = 'horizontal',
+      horizontal = 'right:70%',
     },
   },
   keymap = {
