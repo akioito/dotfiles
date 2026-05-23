@@ -97,21 +97,25 @@ require('blink.cmp').setup({
   }
 })
 
--- init.lua or plugins/telescope.lua
-require('telescope').setup({
-    extensions = {
-        ast_grep = {
-            command = {
-                "sg",
-                "--json=stream",
-            },
-            grep_open_files = false,
-            lang = nil, -- auto detect
-        }
-    }
+require('fzf-lua').setup({
+  'fzf-vim',
+  winopts = {
+    preview = {
+      hidden = 'nohidden',
+      layout = 'flex',
+      flip_columns = 120,
+      horizontal = 'right:60%',
+      vertical = 'down:60%',
+      scrollbar = 'float',
+    },
+  },
+  keymap = {
+    builtin = {
+      ['<C-/>'] = 'toggle-preview',
+      ['<C-d>'] = 'preview-page-down',
+      ['<C-u>'] = 'preview-page-up',
+    },
+  },
 })
-
--- Load the extension
-require('telescope').load_extension('ast_grep')
 
 -- End

@@ -16,9 +16,7 @@ if has("nvim")
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
     Plug 'chr4/nginx.vim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'Marskey/telescope-sg'
+    Plug 'ibhagwan/fzf-lua'
 endif
 
 " Plug 'roosta/fzf-folds.vim'
@@ -460,7 +458,7 @@ call wilder#set_option('pipeline', [
       \   wilder#branch(
       \     wilder#cmdline_pipeline({
       \       'language': 'python',
-      \       'fuzzy': 2,
+      \       'fuzzy': 1,
       \       'sorter': wilder#python_difflib_sorter(),
       \     }),
       \     wilder#python_search_pipeline({
@@ -475,8 +473,6 @@ cnoremap <expr> <C-j>   wilder#in_context() ? wilder#next()     : "\<C-j>"
 cnoremap <expr> <C-k>   wilder#in_context() ? wilder#previous() : "\<C-k>"
 cnoremap <expr> <Tab>   wilder#in_context() ? wilder#next()     : "\<Tab>"
 cnoremap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-cnoremap <expr> <Down>  wilder#in_context() ? wilder#next()     : "\<Down>"
-cnoremap <expr> <Up>    wilder#in_context() ? wilder#previous() : "\<Up>"
 
 " ============================================================================
 " General Settings
