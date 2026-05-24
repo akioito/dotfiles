@@ -97,8 +97,11 @@ require('blink.cmp').setup({
   }
 })
 
+vim.api.nvim_set_hl(0, 'FzfMatch', { fg = '#ffffff', bg = '#00aa00' })
+
 require('fzf-lua').setup({
   'fzf-vim',
+  fzf_bin = 'sk',
   winopts = {
     height = 0.95,
     width = 0.95,
@@ -108,6 +111,15 @@ require('fzf-lua').setup({
       layout = 'horizontal',
       horizontal = 'right:70%',
     },
+  },
+  fzf_opts = {
+    ['--layout'] = 'reverse',
+  },
+  fzf_colors = {
+    ['bg+'] = { 'bg', 'CursorLine' },
+    ['fg+'] = { 'fg', 'CursorLine' },
+    ['hl'] = { 'fg', 'FzfMatch', 'bg', 'FzfMatch' },
+    ['hl+'] = { 'fg', 'FzfMatch', 'bg', 'FzfMatch' },
   },
   keymap = {
     builtin = {
