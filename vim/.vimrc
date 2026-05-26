@@ -953,8 +953,6 @@ if has("gui_macvim")
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
-  map <ScrollWheelUp>   <C-Y>
-  map <ScrollWheelDown> <C-E>
   " For Command T/W
   " macmenu &File.New\ Tab key=<nop>
   " macmenu &File.Close key=<nop>
