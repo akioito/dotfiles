@@ -7,6 +7,9 @@ endif
 " ============================================================================
 " Plugin Declarations
 " ============================================================================
+" Guard plugin init: re-sourcing .vimrc (see BufWritePost below) must not
+" re-run plug#begin/plug#end. Settings/mappings/autocmds further down still reload.
+if !exists('g:plugs_loaded')
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
 " Cond(): gate a plugin on a condition (used by conditional Plug calls below)
@@ -209,6 +212,7 @@ Plug 'laher/fuzzymenu.vim'
     \   'window': { 'width': 0.5, 'height': 0.55 }
     \ })
   nnoremap <silent> <leader><Space> :MyMenu<CR>
+  " NOTE: shadows native `m{mark}` — marks replaced by vim-bookmarks (<F2>)
   nnoremap <silent> m :MyMenu<CR>
 
 Plug 'yegappan/mru' " usage as :MRU vim-prj
@@ -471,6 +475,8 @@ endif
 "     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 call plug#end()
+let g:plugs_loaded = 1
+endif
 
 " Close MBE after vim starts (deferred so MBE's own VimEnter fires first)
 augroup MBEInit
@@ -669,7 +675,7 @@ endif
 " neovim paste
 inoremap <C-v> <C-r>*
 cnoremap <C-v> <C-r>*
-noremap  <C-v> <Esc>hp
+nnoremap <C-v> <Esc>hp            " normal-mode paste; visual <C-v> stays blockwise
 nnoremap <leader>w :<C-u>w<cr>h
 inoremap <Space>w <Esc>:<C-u>w<cr>l
 
@@ -689,8 +695,10 @@ map <SwipeRight>    :bn<CR>
 map <SwipeUp>      <C-f>
 map <SwipeDown>    <C-b>
 
+" no <CR>: leaves cmdline open to confirm/append a buffer name
 nnoremap bd :bdelete
 
+" trailing `kj` nudges the cursor to force a redraw (cursorline refresh)
 nnoremap <C-j> :cnext<cr>kj
 nnoremap <C-k> :cprevious<cr>kj
 
@@ -743,6 +751,13 @@ function! QSearchToggle(forced)
     endif
 endfunction
 
+" Trim trailing whitespace without moving the cursor or clobbering @/
+function! s:TrimWhitespace() abort
+    let l:view = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:view)
+endfunction
+
 " Consolidated autocommands (merged my_autocmd, my_autocmd_misc, QSearchToggle, FastEscape)
 augroup my_autocmd
     autocmd!
@@ -779,7 +794,7 @@ augroup my_autocmd
     autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,lua,sh,json,yaml,awk},.vimrc,vimrc %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,lua,sh,json,yaml,awk},.vimrc,vimrc call s:TrimWhitespace()
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
@@ -1001,7 +1016,7 @@ set cmdheight=2
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
-set regexpengine=1                     " Improves performance syntax highlighted file
+set regexpengine=0                     " Auto-pick engine (NFA usually faster on highlighted files)
 set nostartofline
 set softtabstop=4                      " 4 spaces
 set expandtab                          " Kill tabulars
@@ -1026,7 +1041,6 @@ if has('nvim')
   highlight FoldColumn guibg=white guifg=blue
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
-  set selection=exclusive
 endif
 set linespace=-1
 set lazyredraw                          " to avoid scrolling problems
@@ -1041,7 +1055,6 @@ set breakindentopt=shift:2
 set iskeyword+=-                        " treat dashes as part of word
 set wildmenu
 set laststatus=2
-set t_Co=256
 set vb t_vb=
 set list listchars=tab:»-,trail:°,extends:»,precedes:«
 highlight NonText guifg=blue guibg=white
@@ -1052,7 +1065,6 @@ if has('termguicolors')
     set termguicolors
 endif
 set signcolumn=number
-highlight FoldColumn guibg=White
 if has('nvim')
   set foldcolumn=1
 endif
