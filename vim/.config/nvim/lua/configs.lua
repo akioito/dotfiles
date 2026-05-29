@@ -20,7 +20,7 @@ vim.keymap.set('v', '<M-s>', function()
   vim.fn.jobstart({ 'say', '-v', 'Kyoko', text })
 end, { silent = true, desc = 'Speak selection with Kyoko voice' })
 
-vim.api.nvim_set_option("clipboard", "unnamed")
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.title = true
 vim.opt.termguicolors = true
@@ -36,8 +36,6 @@ if vim.g.neovide then
   vim.g.neovide_cursor_antialiasing = true
 
   -- turn off all animations
-  -- vim.g.neovide_position_animation_length = 0
-  -- vim.g.neovide_cursor_animation_length = 0.00
   vim.g.neovide_cursor_trail_size = 0
   vim.g.neovide_cursor_animate_in_insert_mode = false
   vim.g.neovide_cursor_animate_command_line = false
