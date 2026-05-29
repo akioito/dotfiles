@@ -1004,70 +1004,68 @@ if has('gui_macvim')
   " imap <D-w> <Esc>:CommandW<CR>
 endif
 
-set guifont=Lekton\ Nerd\ Font:h20
-" set guifont=Maple\ Mono\ ExtraLight:h16
-
 colorscheme mycolor
 
+" ============================================================================
+" Editor Behavior & Appearance
+" ============================================================================
+set guifont=Lekton\ Nerd\ Font:h20     " GUI font + size (Nerd Font for glyphs)
 set hlsearch                           " Highlight search
 set ignorecase                         " Ignore case when searching
-set smartcase
-set cmdheight=2
+set smartcase                          " ...but stay case-sensitive if pattern has uppercase
+set cmdheight=2                        " Command/message area height (2 lines)
 set showmode                           " Always show the mode
 set mousehide                          " Hide mouse when typing
 set mouse=a                            " Terminal scroll with mouse
 set regexpengine=0                     " Auto-pick engine (NFA usually faster on highlighted files)
-set nostartofline
-set softtabstop=4                      " 4 spaces
-set expandtab                          " Kill tabulars
-set shiftwidth=4                       " 4 spaces
-set tabstop=4                          " Need for retab
-set matchpairs+=<:>                    " Match angle brackets
+set nostartofline                      " Keep column on jumps (don't snap to first non-blank)
+set softtabstop=4                      " <Tab>/<BS> feel like 4 spaces
+set expandtab                          " Kill tabulars (tabs -> spaces)
+set shiftwidth=4                       " Indent width = 4 spaces
+set tabstop=4                          " A real tab renders as 4 (needed for retab)
+set matchpairs+=<:>                    " Match angle brackets too
 set hidden                             " Allow modified buffers to be hidden
 
-set iminsert=0
-set viminfo^=%                         " Remember buffer
-set imsearch=0
-set autowrite
-set nobackup
-set noswapfile
-set nowritebackup
-" set imdisable
-set virtualedit=all
-set shortmess=oO
-set number
-let fillchars='eob: '
+set iminsert=0                         " Start insert in Latin (non-IME) input mode
+set viminfo^=%                         " Remember buffer list across sessions
+set imsearch=0                         " No IME for search input
+set autowrite                          " Auto-save before :next, :make, etc.
+set nobackup                           " Don't keep backup files
+set noswapfile                         " No swap files
+set nowritebackup                      " No backup while overwriting a file
+set virtualedit=all                    " Let cursor go where there's no text
+set shortmess=oO                       " Suppress/overwrite file-read messages
+set number                             " Show line numbers
+let fillchars='eob: '                  " Blank out ~ on end-of-buffer lines
 if has('nvim')
   highlight FoldColumn guibg=white guifg=blue
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
 endif
-set linespace=-1
+set linespace=-1                       " Pixels between rows (negative = tighter)
 set lazyredraw                          " to avoid scrolling problems
-set ttyfast
-set timeout timeoutlen=300 ttimeoutlen=50
-set updatetime=300
-set noundofile
+set ttyfast                            " Assume a fast terminal (smoother redraw)
+set timeout timeoutlen=300 ttimeoutlen=50  " Mapping (300) vs key-code (50) timeouts in ms
+set updatetime=300                     " Idle delay for CursorHold / swap write (ms)
+set noundofile                         " Don't persist undo history to disk
 
-set completeopt=longest,noselect,preview,popup
-set breakindent
-set breakindentopt=shift:2
+set completeopt=longest,noselect,preview,popup  " Insert-completion menu behavior
+set breakindent                        " Wrapped lines keep their indent
+set breakindentopt=shift:2             " ...and shift the wrap +2 extra
 set iskeyword+=-                        " treat dashes as part of word
-set wildmenu
-set laststatus=2
-set vb t_vb=
-set list listchars=tab:»-,trail:°,extends:»,precedes:«
+set wildmenu                           " Enhanced cmdline completion menu
+set laststatus=2                       " Always show the status line
+set vb t_vb=                           " Visual bell, but disabled (no flash/beep)
+set list listchars=tab:»-,trail:°,extends:»,precedes:«  " Show tab/trailing/overflow markers
 highlight NonText guifg=blue guibg=white
-" highlight CursorWord2  guibg=#ffffa2
-set cursorline cursorlineopt=number
+set cursorline cursorlineopt=number    " Highlight only the current line's number
 highlight ScrollView guibg=Gray
 if has('termguicolors')
-    set termguicolors
+    set termguicolors                  " 24-bit color (use gui*/highlight RGB values)
 endif
-set signcolumn=number
+set signcolumn=number                  " Show signs in the number column (no extra gutter)
 if has('nvim')
-  set foldcolumn=1
+  set foldcolumn=1                     " One-column fold indicator
 endif
-" set relativenumber
 
 " End
