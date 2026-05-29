@@ -478,12 +478,18 @@ call plug#end()
 let g:plugs_loaded = 1
 endif
 
+" ============================================================================
+" Post-Plugin Initialisation
+" ============================================================================
+" Runs after plug#end() (plugins are loaded). Re-runs on :so $MYVIMRC.
+
 " Close MBE after vim starts (deferred so MBE's own VimEnter fires first)
 augroup MBEInit
   autocmd!
   autocmd VimEnter * call timer_start(2, {-> execute('TMiniBufExplorer')})
 augroup end
 
+" wilder.nvim: fuzzy popup for : / and ?
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
       \ 'highlighter': wilder#basic_highlighter(),
@@ -518,63 +524,98 @@ cnoremap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 filetype plugin indent on
 
 " ----------------------------------------------------------------------------
+" Encoding
 " set termencoding=utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932
 
-inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
+" ----------------------------------------------------------------------------
+" Editor behaviour & appearance
+set guifont=Lekton\ Nerd\ Font:h20     " GUI font + size (Nerd Font for glyphs)
+set hlsearch                           " Highlight search
+set ignorecase                         " Ignore case when searching
+set smartcase                          " ...but stay case-sensitive if pattern has uppercase
+set cmdheight=2                        " Command/message area height (2 lines)
+set showmode                           " Always show the mode
+set mousehide                          " Hide mouse when typing
+set mouse=a                            " Terminal scroll with mouse
+set regexpengine=0                     " Auto-pick engine (NFA usually faster on highlighted files)
+set nostartofline                      " Keep column on jumps (don't snap to first non-blank)
+set softtabstop=4                      " <Tab>/<BS> feel like 4 spaces
+set expandtab                          " Kill tabulars (tabs -> spaces)
+set shiftwidth=4                       " Indent width = 4 spaces
+set tabstop=4                          " A real tab renders as 4 (needed for retab)
+set matchpairs+=<:>                    " Match angle brackets too
+set hidden                             " Allow modified buffers to be hidden
+set iminsert=0                         " Start insert in Latin (non-IME) input mode
+set viminfo^=%                         " Remember buffer list across sessions
+set imsearch=0                         " No IME for search input
+set autowrite                          " Auto-save before :next, :make, etc.
+set nobackup                           " Don't keep backup files
+set noswapfile                         " No swap files
+set nowritebackup                      " No backup while overwriting a file
+set virtualedit=all                    " Let cursor go where there's no text
+set shortmess=oO                       " Suppress/overwrite file-read messages
+set number                             " Show line numbers
+let fillchars='eob: '                  " Blank out ~ on end-of-buffer lines
+set linespace=-1                       " Pixels between rows (negative = tighter)
+set lazyredraw                         " to avoid scrolling problems
+set ttyfast                            " Assume a fast terminal (smoother redraw)
+set timeout timeoutlen=300 ttimeoutlen=50  " Mapping (300) vs key-code (50) timeouts in ms
+set updatetime=300                     " Idle delay for CursorHold / swap write (ms)
+set noundofile                         " Don't persist undo history to disk
+set completeopt=longest,noselect,preview,popup  " Insert-completion menu behavior
+set breakindent                        " Wrapped lines keep their indent
+set breakindentopt=shift:2             " ...and shift the wrap +2 extra
+set iskeyword+=-                       " treat dashes as part of word
+set wildmenu                           " Enhanced cmdline completion menu
+set laststatus=2                       " Always show the status line
+set vb t_vb=                           " Visual bell, but disabled (no flash/beep)
+set list listchars=tab:»-,trail:°,extends:»,precedes:«  " Show tab/trailing/overflow markers
+set cursorline cursorlineopt=number    " Highlight only the current line's number
+set signcolumn=number                  " Show signs in the number column (no extra gutter)
+if has('termguicolors')
+    set termguicolors                  " 24-bit color (use gui*/highlight RGB values)
+endif
+if has('nvim')
+  set foldcolumn=1                     " One-column fold indicator
+endif
 
-" visual select
-nnoremap v V
-nnoremap V v
-
-" python debug variable
-nnoremap <leader>db yiw o<C-R>=printf("print(f\"{%s = }\")  # testIto remove after test", @")<CR><Esc>
-
-nnoremap <C-N>          :tabnew<cr>
-" vim command line
-nnoremap cm :
-
-" For performance reason
+" ----------------------------------------------------------------------------
+" Performance: lighten HTML rendering / indent
 let html_no_rendering     = 1
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
 let loaded_quickfixsigns  = 100
 
 " ----------------------------------------------------------------------------
-" Grep
+" Grep (grep.vim / ripgrep)
 let g:Grep_Xargs_Options = '-0'
 
+" ----------------------------------------------------------------------------
+" Tags
 set tags=./tags,./../tags,./*/tags
-" ctags
-" Press 't' to follow tag under cursor, 'T' to go back up the tag stack
-nmap t <C-]>
-nmap T :pop<CR>
 
 " ----------------------------------------------------------------------------
+" Clipboard
+if has('clipboard')
+  set clipboard+=unnamedplus
+endif
+
+" ----------------------------------------------------------------------------
+" Directories (swap/backup under ~/tmp)
+set directory=~/tmp/
+set backupdir=~/tmp
+
+" ============================================================================
 " Status Line
-function! SyntaxItem()
-  return synIDattr(synID(line("."),col("."),1),"name")
-endfunction
-
-" function! MyLspProgress() abort
-"   let l:progress = lsp#get_progress()
-"   if empty(l:progress) | return '' | endif
-"   let l:progress = l:progress[len(l:progress) - 1]
-"   return l:progress['server'] . ': ' . l:progress['message']
-" endfunction
-
+" ============================================================================
+" g:currentTag / g:syntax are refreshed by the my_autocmd CursorHold events;
+" SyntaxItem() lives in the Functions section below.
 let g:syntax = '???'
 let g:currentTag = '???'
 " let g:progress = '???'
-
-" Note: Main autocommands consolidated in augroup my_autocmd below
 
 " set statusline=%4*\ %l\/%L\ -\ %P,\ column\ %c\
 set statusline=%L\ column\ %c\ %p%%
@@ -593,14 +634,258 @@ set statusline+=%0*%y%*                            " file type
 iabbrev xrm # testIto remove after test...
 
 " ============================================================================
+" Functions, Commands & their mappings
+" ============================================================================
+
+" ----------------------------------------------------------------------------
+" Status-line helper (value consumed by 'statusline' above)
+function! SyntaxItem()
+  return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+" function! MyLspProgress() abort
+"   let l:progress = lsp#get_progress()
+"   if empty(l:progress) | return '' | endif
+"   let l:progress = l:progress[len(l:progress) - 1]
+"   return l:progress['server'] . ': ' . l:progress['message']
+" endfunction
+
+" ----------------------------------------------------------------------------
+" QuickFix Close or Search
+function! QSearchToggle(forced)
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+    else
+        execute "normal! *:Bgrep\<CR>\<CR>"
+    endif
+endfunction
+inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
+nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
+
+" ----------------------------------------------------------------------------
+" Trim trailing whitespace without moving the cursor or clobbering @/
+" (called from BufWritePre in my_autocmd)
+function! s:TrimWhitespace() abort
+    let l:view = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:view)
+endfunction
+
+" ----------------------------------------------------------------------------
+" Toggle relative / absolute line numbers
+function! s:ToggleNumberMode()
+  if &rnu == 0
+    set rnu
+  else
+    set nornu
+    set nu
+  endif
+endfunction
+nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
+
+" ----------------------------------------------------------------------------
+" Copy selected line reference to clipboard + send it to iTerm
+noremap  <F6> :SFRef<cr>
+vnoremap <F6> <ESC>gv:SFRef<cr>
+inoremap <F6> <ESC>:SFRef<cr>
+
+command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
+
+function! SendLineRefToiTerm(start_line, end_line) abort
+    let filename = empty(expand('%')) ? '[No Name]' : expand('%')
+    let reference = '@' . filename . ':' . a:start_line
+    if a:start_line != a:end_line
+        let reference .= '-' . a:end_line
+    endif
+    let reference .= ' '
+
+    " Keep clipboard functionality just in case you need it
+    if has('clipboard')
+        if has('unnamedplus')
+            let @+ = reference
+        else
+            let @* = reference
+        endif
+    endif
+
+    " Escape double quotes and backslashes in the filename so it doesn't break AppleScript
+    let l:safe_ref = escape(reference, '"\')
+
+    " Build a native iTerm2 AppleScript string
+    let l:applescript = [
+    \ 'tell application "iTerm"',
+    \ '  activate',
+    \ '  if exists (current window) then',
+    \ '    tell current window',
+    \ '      tell current session',
+    \ '        write text "' . l:safe_ref . '" without newline',
+    \ '      end tell',
+    \ '    end tell',
+    \ '  end if',
+    \ 'end tell'
+    \ ]
+
+    " Execute the AppleScript securely
+    call system('osascript -e ' . shellescape(join(l:applescript, "\n")))
+
+    echo 'Sent to iTerm: ' . reference
+endfunction
+
+" ----------------------------------------------------------------------------
+" Copy a pytest prompt for the current line/file to the clipboard
+function! GenPyTest(...)
+    let filename = expand('%')
+    let line_content = getline('.')
+    let line_content = trim(line_content)
+
+    let pytest_cmd = 'pytest, add test code for @' . filename . ', ' . line_content
+    if has('clipboard')
+        if has('unnamedplus')
+            let @+ = pytest_cmd
+        else
+            let @* = pytest_cmd
+        endif
+    endif
+    echo "Copied: " . pytest_cmd
+endfunction
+
+command! GenPyTest call GenPyTest()
+
+" ----------------------------------------------------------------------------
+" cfilter.vim: Plugin to filter entries from a quickfix/location list
+" Last Change: Aug 23, 2018
+" Maintainer: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
+" Version: 1.1
+"
+" Commands to filter the quickfix list:
+"   :Cfilter[!] /{pat}/
+"       Create a new quickfix list from entries matching {pat} in the current
+"       quickfix list. Both the file name and the text of the entries are
+"       matched against {pat}. If ! is supplied, then entries not matching
+"       {pat} are used. The pattern can be optionally enclosed using one of
+"       the following characters: ', ", /. If the pattern is empty, then the
+"       last used search pattern is used.
+"   :Lfilter[!] /{pat}/
+"       Same as :Cfilter but operates on the current location list.
+
+packadd cfilter
+
+function! s:Qf_grep(searchpat, bang)
+  if a:bang == '!'
+    call feedkeys(":Cfilter! ". a:searchpat . "\<CR>")
+  else
+    call feedkeys(":Cfilter ".  a:searchpat . "\<CR>")
+  endif
+endfunction
+com! -nargs=+ -bang QFGrep  call s:Qf_grep(<q-args>, <q-bang>)
+
+" ----------------------------------------------------------------------------
+" Open the cwd / scripts dir in a terminal
+function! Iterm()
+  silent exec "!open -n -a iTerm '".getcwd()."'" | redraw!
+endfunction
+command! -nargs=* Iterm call Iterm()
+
+function! Ghostty()
+  silent exec "!open -n -a Ghostty '".getcwd()."'" | redraw!
+endfunction
+command! -nargs=* Ghostty call Ghostty()
+
+function! ItermMacScripts()
+  silent exec "!open -n -a iTerm '".$HOME."/mac_scripts'"
+endfunction
+command! -nargs=* ItermMacScripts call ItermMacScripts()
+
+" ----------------------------------------------------------------------------
+" Run gitup
+function! Gitup()
+  silent exec "!/usr/local/bin/gitup"
+  echo "!/usr/local/bin/gitup"
+endfunction
+command! -nargs=* Gup call Gitup()
+
+" ----------------------------------------------------------------------------
+" Move cursor up/down to the next non-blank cell in the same column
+function! s:MoveVToNonBlank(UpDown)
+  let cursorPos = col('.')
+  let total_lines = line('$')
+  let i = 0
+  while i < 1000
+    let i += 1
+    if a:UpDown == 'Up'
+        if line('.') <= 1
+            break
+        endif
+        execute 'norm! k'
+    else
+        if line('.') >= total_lines
+            break
+        endif
+        execute 'norm! j'
+    endif
+    let c = getline('.')[cursorPos - 1]
+    if !(c == ' ' || c == '')
+        break
+    endif
+  endwhile
+endfunction
+nnoremap <silent> K        :call <SID>MoveVToNonBlank('Up')<CR>
+nnoremap <silent> J        :call <SID>MoveVToNonBlank('Down')<CR>
+nnoremap <silent> <C-Up>   :call <SID>MoveVToNonBlank('Up')<CR>
+nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>
+
+" ----------------------------------------------------------------------------
+" MacVim window transparency toggle
+if has('gui_macvim')
+  let g:transparency     = 7
+  let g:transparencyCtrl = 1
+
+  function! s:Toggle_transparence()
+    if &transparency > 0
+      let &transparency      = 0
+      let g:transparencyCtrl = 0
+    else
+      let &transparency      = g:transparency
+      let g:transparencyCtrl = g:transparency
+    endif
+  endfunction
+  nnoremap <silent> tt :<C-u>call <SID>Toggle_transparence()<CR>
+endif
+
+" ============================================================================
 " Mappings
 " ============================================================================
+
+" ----------------------------------------------------------------------------
+" Command line / leader
 nnoremap ; :
 map <Space> <Leader>
+" vim command line
+nnoremap cm :
 
+" Insert-completion popup navigation
+inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><C-j>    pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr><C-k>    pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr><Down>   pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr><Up>     pumvisible() ? "\<C-p>" : "\<Up>"
+
+" visual select swap (v <-> V)
+nnoremap v V
+nnoremap V v
+
+" python debug variable
+nnoremap <leader>db yiw o<C-R>=printf("print(f\"{%s = }\")  # testIto remove after test", @")<CR><Esc>
+
+" Tabs
+nnoremap <C-N>          :tabnew<cr>
+
+" Scroll / paging
 nnoremap <C-M>  <C-D>
 nnoremap <C-,>  <C-u>
 
+" Clear search highlight / tag stack
 nnoremap <silent>  <ESC><ESC> :<C-u>nohlsearch<CR>
 nnoremap <C-[>     <C-t>
 " overwrite <ESC> <C-t> mapped by vim-lsp
@@ -617,6 +902,10 @@ endif
 
 " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
 "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" Tags: 't' follows tag under cursor, 'T' pops the tag stack
+nmap t <C-]>
+nmap T :pop<CR>
 
 "Tricks
 " Ctrl + m = Enter
@@ -668,10 +957,6 @@ endif
 " Save read-only file :w!!<enter>
 cmap w!! w !sudo tee % >/dev/null
 
-if has('clipboard')
-  set clipboard+=unnamedplus
-endif
-
 " neovim paste
 inoremap <C-v> <C-r>*
 cnoremap <C-v> <C-r>*
@@ -679,31 +964,31 @@ nnoremap <C-v> <Esc>hp            " normal-mode paste; visual <C-v> stays blockw
 nnoremap <leader>w :<C-u>w<cr>h
 inoremap <Space>w <Esc>:<C-u>w<cr>l
 
+" Scroll positioning
 noremap zh zt
 noremap zl zb
 noremap zm zz
-
 noremap zr zRzz
 
+" Buffers
 nnoremap  b<Space> :b<Space>
 noremap! ¥ \
-
-" Buffer Navigation
-map <SwipeLeft>     <C-o>
-map <SwipeRight>    :bn<CR>
-
-map <SwipeUp>      <C-f>
-map <SwipeDown>    <C-b>
-
 " no <CR>: leaves cmdline open to confirm/append a buffer name
 nnoremap bd :bdelete
 
-" trailing `kj` nudges the cursor to force a redraw (cursorline refresh)
+" Quickfix navigation (trailing `kj` nudges the cursor to force a redraw)
 nnoremap <C-j> :cnext<cr>kj
 nnoremap <C-k> :cprevious<cr>kj
 
 nnoremap <leader>v       0<C-v>$
 " nnoremap <leader>w       <C-w>v<C-w>l
+
+" Buffer Navigation (trackpad swipes)
+map <SwipeLeft>     <C-o>
+map <SwipeRight>    :bn<CR>
+map <SwipeUp>      <C-f>
+map <SwipeDown>    <C-b>
+
 " Browser refresh
 let g:RefreshRunningBrowserReturnFocus = 0
 let g:RefreshRunningBrowserDefault     = 'firefox'
@@ -716,13 +1001,10 @@ vnoremap > >gv
 " Scroll for terminal
 tnoremap <Esc><Esc> <C-\><C-n>
 
-" ----------------------------------------------------------------------------
+" Grep current buffer / word at cursor
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 noremap  <silent> <F3>       :Bgrep<CR><CR>
   let g:Lf_PreviewResult = {'Rg': 1 }
-
-inoremap <silent> <F4>  <ESC>:call QSearchToggle(0)<CR>
-nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 
 " augroup filetype_mysql
 "   autocmd!
@@ -735,28 +1017,9 @@ nnoremap <silent> <F4>       :call QSearchToggle(0)<CR>
 " MacVim - move cursor word left
 map <S-w> <M-Left>
 
-" Directory & autocmd
-set directory=~/tmp/
-set backupdir=~/tmp
 " ============================================================================
 " Autocommands
 " ============================================================================
-
-" QuickFix Close or Search
-function! QSearchToggle(forced)
-    if exists("g:qfix_win") && a:forced == 0
-        cclose
-    else
-        execute "normal! *:Bgrep\<CR>\<CR>"
-    endif
-endfunction
-
-" Trim trailing whitespace without moving the cursor or clobbering @/
-function! s:TrimWhitespace() abort
-    let l:view = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:view)
-endfunction
 
 " Consolidated autocommands (merged my_autocmd, my_autocmd_misc, QSearchToggle, FastEscape)
 augroup my_autocmd
@@ -811,188 +1074,10 @@ augroup my_autocmd
 augroup end
 
 " ============================================================================
-" UI and Final Settings
+" Appearance & Final
 " ============================================================================
 
-function! s:ToggleNumberMode()
-  if &rnu == 0
-    set rnu
-  else
-    set nornu
-    set nu
-  endif
-endfunction
-nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
-
-" ----------------------------------------------------------------------------
-" Copy Selected line reference to Clipboard
-noremap  <F6> :SFRef<cr>
-vnoremap <F6> <ESC>gv:SFRef<cr>
-inoremap <F6> <ESC>:SFRef<cr>
-
-command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
-
-function! SendLineRefToiTerm(start_line, end_line) abort
-    let filename = empty(expand('%')) ? '[No Name]' : expand('%')
-    let reference = '@' . filename . ':' . a:start_line
-    if a:start_line != a:end_line
-        let reference .= '-' . a:end_line
-    endif
-    let reference .= ' '
-
-    " Keep clipboard functionality just in case you need it
-    if has('clipboard')
-        if has('unnamedplus')
-            let @+ = reference
-        else
-            let @* = reference
-        endif
-    endif
-
-    " Escape double quotes and backslashes in the filename so it doesn't break AppleScript
-    let l:safe_ref = escape(reference, '"\')
-
-    " Build a native iTerm2 AppleScript string
-    let l:applescript = [
-    \ 'tell application "iTerm"',
-    \ '  activate',
-    \ '  if exists (current window) then',
-    \ '    tell current window',
-    \ '      tell current session',
-    \ '        write text "' . l:safe_ref . '" without newline',
-    \ '      end tell',
-    \ '    end tell',
-    \ '  end if',
-    \ 'end tell'
-    \ ]
-
-    " Execute the AppleScript securely
-    call system('osascript -e ' . shellescape(join(l:applescript, "\n")))
-
-    echo 'Sent to iTerm: ' . reference
-endfunction
-
-
-" ----------------------------------------------------------------------------
-function! GenPyTest(...)
-    let filename = expand('%')
-    let line_content = getline('.')
-    let line_content = trim(line_content)
-
-    let pytest_cmd = 'pytest, add test code for @' . filename . ', ' . line_content
-    if has('clipboard')
-        if has('unnamedplus')
-            let @+ = pytest_cmd
-        else
-            let @* = pytest_cmd
-        endif
-    endif
-    echo "Copied: " . pytest_cmd
-endfunction
-
-command! GenPyTest call GenPyTest()
-
-" ----------------------------------------------------------------------------
-" cfilter.vim: Plugin to filter entries from a quickfix/location list
-" Last Change: Aug 23, 2018
-" Maintainer: Yegappan Lakshmanan (yegappan AT yahoo DOT com)
-" Version: 1.1
-"
-" Commands to filter the quickfix list:
-"   :Cfilter[!] /{pat}/
-"       Create a new quickfix list from entries matching {pat} in the current
-"       quickfix list. Both the file name and the text of the entries are
-"       matched against {pat}. If ! is supplied, then entries not matching
-"       {pat} are used. The pattern can be optionally enclosed using one of
-"       the following characters: ', ", /. If the pattern is empty, then the
-"       last used search pattern is used.
-"   :Lfilter[!] /{pat}/
-"       Same as :Cfilter but operates on the current location list.
-
-packadd cfilter
-
-function! s:Qf_grep(searchpat, bang)
-  if a:bang == '!'
-    call feedkeys(":Cfilter! ". a:searchpat . "\<CR>")
-  else
-    call feedkeys(":Cfilter ".  a:searchpat . "\<CR>")
-  endif
-endfunction
-com! -nargs=+ -bang QFGrep  call s:Qf_grep(<q-args>, <q-bang>)
-
-" ----------------------------------------------------------------------------
-function! Iterm()
-  silent exec "!open -n -a iTerm '".getcwd()."'" | redraw!
-endfunction
-command! -nargs=* Iterm call Iterm()
-
-" ----------------------------------------------------------------------------
-function! Ghostty()
-  silent exec "!open -n -a Ghostty '".getcwd()."'" | redraw!
-endfunction
-command! -nargs=* Ghostty call Ghostty()
-
-" ----------------------------------------------------------------------------
-function! ItermMacScripts()
-  silent exec "!open -n -a iTerm '".$HOME."/mac_scripts'"
-endfunction
-command! -nargs=* ItermMacScripts call ItermMacScripts()
-
-" ----------------------------------------------------------------------------
-function! Gitup()
-  silent exec "!/usr/local/bin/gitup"
-  echo "!/usr/local/bin/gitup"
-endfunction
-command! -nargs=* Gup call Gitup()
-
-" ----------------------------------------------------------------------------
-function! s:MoveVToNonBlank(UpDown)
-  let cursorPos = col('.')
-  let total_lines = line('$')
-  let i = 0
-  while i < 1000
-    let i += 1
-    if a:UpDown == 'Up'
-        if line('.') <= 1
-            break
-        endif
-        execute 'norm! k'
-    else
-        if line('.') >= total_lines
-            break
-        endif
-        execute 'norm! j'
-    endif
-    let c = getline('.')[cursorPos - 1]
-    if !(c == ' ' || c == '')
-        break
-    endif
-  endwhile
-endfunction
-nnoremap <silent> K        :call <SID>MoveVToNonBlank('Up')<CR>
-nnoremap <silent> J        :call <SID>MoveVToNonBlank('Down')<CR>
-nnoremap <silent> <C-Up>   :call <SID>MoveVToNonBlank('Up')<CR>
-nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>
-
-" ----------------------------------------------------------------------------
-" transparency
-if has('gui_macvim')
-  let g:transparency     = 7
-  let g:transparencyCtrl = 1
-
-  function! s:Toggle_transparence()
-    if &transparency > 0
-      let &transparency      = 0
-      let g:transparencyCtrl = 0
-    else
-      let &transparency      = g:transparency
-      let g:transparencyCtrl = g:transparency
-    endif
-  endfunction
-  nnoremap <silent> tt :<C-u>call <SID>Toggle_transparence()<CR>
-endif
-
-" ----------------------------------------------------------------------------
+" MacVim GUI tweaks
 if has('gui_macvim')
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
@@ -1004,68 +1089,16 @@ if has('gui_macvim')
   " imap <D-w> <Esc>:CommandW<CR>
 endif
 
+" Colorscheme — load before the highlight overrides below so they win
 colorscheme mycolor
 
-" ============================================================================
-" Editor Behavior & Appearance
-" ============================================================================
-set guifont=Lekton\ Nerd\ Font:h20     " GUI font + size (Nerd Font for glyphs)
-set hlsearch                           " Highlight search
-set ignorecase                         " Ignore case when searching
-set smartcase                          " ...but stay case-sensitive if pattern has uppercase
-set cmdheight=2                        " Command/message area height (2 lines)
-set showmode                           " Always show the mode
-set mousehide                          " Hide mouse when typing
-set mouse=a                            " Terminal scroll with mouse
-set regexpengine=0                     " Auto-pick engine (NFA usually faster on highlighted files)
-set nostartofline                      " Keep column on jumps (don't snap to first non-blank)
-set softtabstop=4                      " <Tab>/<BS> feel like 4 spaces
-set expandtab                          " Kill tabulars (tabs -> spaces)
-set shiftwidth=4                       " Indent width = 4 spaces
-set tabstop=4                          " A real tab renders as 4 (needed for retab)
-set matchpairs+=<:>                    " Match angle brackets too
-set hidden                             " Allow modified buffers to be hidden
-
-set iminsert=0                         " Start insert in Latin (non-IME) input mode
-set viminfo^=%                         " Remember buffer list across sessions
-set imsearch=0                         " No IME for search input
-set autowrite                          " Auto-save before :next, :make, etc.
-set nobackup                           " Don't keep backup files
-set noswapfile                         " No swap files
-set nowritebackup                      " No backup while overwriting a file
-set virtualedit=all                    " Let cursor go where there's no text
-set shortmess=oO                       " Suppress/overwrite file-read messages
-set number                             " Show line numbers
-let fillchars='eob: '                  " Blank out ~ on end-of-buffer lines
+" Highlight overrides (must come after :colorscheme)
 if has('nvim')
   highlight FoldColumn guibg=white guifg=blue
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
 endif
-set linespace=-1                       " Pixels between rows (negative = tighter)
-set lazyredraw                          " to avoid scrolling problems
-set ttyfast                            " Assume a fast terminal (smoother redraw)
-set timeout timeoutlen=300 ttimeoutlen=50  " Mapping (300) vs key-code (50) timeouts in ms
-set updatetime=300                     " Idle delay for CursorHold / swap write (ms)
-set noundofile                         " Don't persist undo history to disk
-
-set completeopt=longest,noselect,preview,popup  " Insert-completion menu behavior
-set breakindent                        " Wrapped lines keep their indent
-set breakindentopt=shift:2             " ...and shift the wrap +2 extra
-set iskeyword+=-                        " treat dashes as part of word
-set wildmenu                           " Enhanced cmdline completion menu
-set laststatus=2                       " Always show the status line
-set vb t_vb=                           " Visual bell, but disabled (no flash/beep)
-set list listchars=tab:»-,trail:°,extends:»,precedes:«  " Show tab/trailing/overflow markers
 highlight NonText guifg=blue guibg=white
-set cursorline cursorlineopt=number    " Highlight only the current line's number
 highlight ScrollView guibg=Gray
-if has('termguicolors')
-    set termguicolors                  " 24-bit color (use gui*/highlight RGB values)
-endif
-set signcolumn=number                  " Show signs in the number column (no extra gutter)
-if has('nvim')
-  set foldcolumn=1                     " One-column fold indicator
-endif
 
 " End
