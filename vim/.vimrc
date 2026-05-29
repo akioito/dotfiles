@@ -55,11 +55,11 @@ function! MyDiagnostics()
     call timer_start(200, {-> execute('lclose')})
 endfunction
 
-noremap mr   :LspReferences<cr>
-noremap md   :LspDefinition<cr>
-noremap gh   :LspHover<cr>
-noremap gl   :call MyDiagnostics()<cr>
-noremap cx   :LspCodeAction<cr>
+nnoremap mr   :LspReferences<cr>
+nnoremap md   :LspDefinition<cr>
+nnoremap gh   :LspHover<cr>
+nnoremap gl   :call MyDiagnostics()<cr>
+nnoremap cx   :LspCodeAction<cr>
 
 " ----------------------------------------------------------------------------
 " Snippets
@@ -71,7 +71,7 @@ let g:vsnip_snippet_dir =  $HOME . '/dotfiles/.vsnip'
 " ----------------------------------------------------------------------------
 " Treesitter, Syntax & Language Support
 " ----------------------------------------------------------------------------
-if has("nvim")
+if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'chr4/nginx.vim'
 endif
@@ -102,7 +102,7 @@ Plug 'ap/vim-css-color'
 " ----------------------------------------------------------------------------
 " Fuzzy Finder & Command-line
 " ----------------------------------------------------------------------------
-if has("nvim")
+if has('nvim')
     Plug 'ibhagwan/fzf-lua'
 endif
 
@@ -354,7 +354,7 @@ Plug 'Yggdroot/indentLine'
 " ----------------------------------------------------------------------------
 " UI & Appearance
 " ----------------------------------------------------------------------------
-if has("nvim")
+if has('nvim')
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
@@ -417,7 +417,7 @@ if exists("g:gui_vimr") || exists('g:neovide')
           au!
           au User vim-ghost#connected call s:SetupGhostBuffer()
       augroup end
-end
+endif
 
 " ----------------------------------------------------------------------------
 " Local plugins & Platform-specific
@@ -427,7 +427,7 @@ Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/sbd.vim'
 " Plug '~/.vim/mybundle/vim-command-w'
 
-if has("gui_macvim")
+if has('gui_macvim')
   let macvim_hig_shift_movement = 1
   " Text-to-speech
   vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
@@ -476,7 +476,7 @@ call plug#end()
 augroup MBEInit
   autocmd!
   autocmd VimEnter * call timer_start(2, {-> execute('TMiniBufExplorer')})
-augroup END
+augroup end
 
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer({
@@ -662,7 +662,7 @@ endif
 " Save read-only file :w!!<enter>
 cmap w!! w !sudo tee % >/dev/null
 
-if has("clipboard")
+if has('clipboard')
   set clipboard+=unnamedplus
 endif
 
@@ -677,7 +677,7 @@ noremap zh zt
 noremap zl zb
 noremap zm zz
 
-noremap zr zR
+noremap zr zRzz
 
 nnoremap  b<Space> :b<Space>
 noremap! ¥ \
@@ -696,7 +696,6 @@ nnoremap <C-k> :cprevious<cr>kj
 
 nnoremap <leader>v       0<C-v>$
 " nnoremap <leader>w       <C-w>v<C-w>l
-nnoremap zr              zRzz
 " Browser refresh
 let g:RefreshRunningBrowserReturnFocus = 0
 let g:RefreshRunningBrowserDefault     = 'firefox'
@@ -753,7 +752,7 @@ augroup my_autocmd
     autocmd CursorHold * let g:syntax = SyntaxItem()
 
     " Go to last file if invoked without arguments
-    if has("nvim")
+    if has('nvim')
         autocmd VimEnter * if !argc() | call feedkeys("\<C-O>\<C-O>") | endif
     else
         autocmd VimEnter * nested
@@ -780,7 +779,7 @@ augroup my_autocmd
     autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
 
     " Trim Trailing Whitespace
-    autocmd BufWritePre *.{py,rs,js,html,css,swift,vimrc,lua,sh,json,yaml,awk} %s/\s\+$//e
+    autocmd BufWritePre *.{py,rs,js,html,css,swift,lua,sh,json,yaml,awk},.vimrc,vimrc %s/\s\+$//e
 
     " FocusLost save and Normal Mode
     autocmd FocusLost * silent! wa
@@ -807,7 +806,7 @@ function! s:ToggleNumberMode()
     set nornu
     set nu
   endif
-endfunc
+endfunction
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
@@ -897,13 +896,13 @@ command! GenPyTest call GenPyTest()
 
 packadd cfilter
 
-func s:Qf_grep(searchpat, bang)
+function! s:Qf_grep(searchpat, bang)
   if a:bang == '!'
     call feedkeys(":Cfilter! ". a:searchpat . "\<CR>")
   else
     call feedkeys(":Cfilter ".  a:searchpat . "\<CR>")
   endif
-endfunc
+endfunction
 com! -nargs=+ -bang QFGrep  call s:Qf_grep(<q-args>, <q-bang>)
 
 " ----------------------------------------------------------------------------
@@ -962,7 +961,7 @@ nnoremap <silent> <C-Down> :call <SID>MoveVToNonBlank('Down')<CR>
 
 " ----------------------------------------------------------------------------
 " transparency
-if has("gui_macvim")
+if has('gui_macvim')
   let g:transparency     = 7
   let g:transparencyCtrl = 1
 
@@ -979,7 +978,7 @@ if has("gui_macvim")
 endif
 
 " ----------------------------------------------------------------------------
-if has("gui_macvim")
+if has('gui_macvim')
   set guioptions-=T " No toolbar
   set go-=L         " No verticall scoll bar for minibufexpl
   set macmeta
@@ -1023,7 +1022,7 @@ set virtualedit=all
 set shortmess=oO
 set number
 let fillchars='eob: '
-if has("nvim")
+if has('nvim')
   highlight FoldColumn guibg=white guifg=blue
 else
   hi EndOfBuffer ctermfg=0 guifg=bg
@@ -1054,7 +1053,7 @@ if has('termguicolors')
 endif
 set signcolumn=number
 highlight FoldColumn guibg=White
-if has("nvim")
+if has('nvim')
   set foldcolumn=1
 endif
 " set relativenumber
