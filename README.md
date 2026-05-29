@@ -6,16 +6,24 @@ Install HomeBrew  / https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Install python + packages:
+Install tools + packages:
 ```
 brew install stow
 brew install neovim
 brew install cmake
 brew install python
-brew install ripgrep
-brew install universal-ctags
+brew install ripgrep          # :Grep / grep.vim
+brew install universal-ctags  # Tagbar
+brew install bat              # fzf preview
+brew install node yarn        # :PlugInstall builds markdown-preview.nvim & vim-prettier
 
 pip3 install pynvim
+pip3 install ruff isort docformatter  # Neoformat (Python)
+```
+
+Optional (SQL formatting with Neoformat):
+```
+cargo install sleek
 ```
 
 Install Lekton Nerd Font (or Ajust guifont)<br>

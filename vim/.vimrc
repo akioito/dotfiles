@@ -9,36 +9,15 @@ endif
 " ============================================================================
 call plug#begin(has('nvim') ? '~/.config/nvim/plugged' : '~/.vim/plugged')
 
-" Treesitter
-if has("nvim")
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'folke/todo-comments.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
-    Plug 'chr4/nginx.vim'
-    Plug 'ibhagwan/fzf-lua'
-endif
+" Cond(): gate a plugin on a condition (used by conditional Plug calls below)
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
-" Plug 'roosta/fzf-folds.vim'
-" Plug 'pseewald/vim-anyfold'
-" Plug 'arecarn/vim-fold-cycle'
-"     let g:fold_cycle_default_mapping = 0 "disable default mappings
-"     nmap <Space><CR> <Plug>(fold-cycle-toggle-all)
-"     nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close-all)
-"     " Won't close when max fold is opened
-"     let g:fold_cycle_toggle_max_open  = 0
-"     " Won't open when max fold is closed
-"     let g:fold_cycle_toggle_max_close = 0
-
-Plug 'vim-scripts/BufOnly.vim'
-Plug 'UncleZeiv/minibufexpl.vim'
-    let g:miniBufExplMaxSize = 35
-    let g:miniBufExplVSplit  = 20
-    let g:miniBufExplUseSingleClick  = 1
-    let g:miniBufExplorerMoreThanOne = 2
-    nnoremap <silent> <F7> <C-w>w
-
-" LSP
+" ----------------------------------------------------------------------------
+" LSP & Completion
+" ----------------------------------------------------------------------------
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 " let g:lsp_work_done_progress_enabled = 1
@@ -82,240 +61,54 @@ noremap gh   :LspHover<cr>
 noremap gl   :call MyDiagnostics()<cr>
 noremap cx   :LspCodeAction<cr>
 
+" ----------------------------------------------------------------------------
+" Snippets
+" ----------------------------------------------------------------------------
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 let g:vsnip_snippet_dir =  $HOME . '/dotfiles/.vsnip'
 
-Plug 'djoshea/vim-autoread'
-
-if has('nvim')
-  Plug 'mcauley-penney/tidy.nvim'
-  Plug 'MunifTanjim/nui.nvim'
-  Plug 'mhinz/vim-crates'
-    autocmd BufRead Cargo.toml call crates#toggle()
-
-  Plug 'f-person/git-blame.nvim'
-    let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
-    let g:gitblame_message_template = ' <date> • <author> • <summary>'
-    let g:gitblame_enabled = 0
-else
-  " To use Python remote plugin features in Vim, can be skipped
-  Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'michaeljsmith/vim-indent-object'
-" <count>ai An Indentation level and line above.
-
-Plug 'preservim/vim-markdown'
-  let g:vim_markdown_folding_disabled = 1
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'Yggdroot/indentLine'
-  let g:indentLine_color_gui = '#ffdad8'
-  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'bash', 'lua', 'awk']
-  let g:indentLine_char = '|'
-  let g:indentLine_faster = 1
-
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
-Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
-  xmap ff <Plug>(textobj-python-function-a)
-  omap ff <Plug>(textobj-python-function-a)
-
-Plug 'easymotion/vim-easymotion'
-  nmap f <Plug>(easymotion-overwin-f2)
-  let g:EasyMotion_smartcase = 1
-  let g:EasyMotion_verbose = 0
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'jkramer/vim-checkbox'
-
-Plug 'tonchis/vim-to-github'
-Plug 'sbdchd/neoformat'
-  let g:neoformat_enabled_python = ['ruff', 'isort', 'docformatter']
-  let g:neoformat_run_all_formatters = 1
-  " https://github.com/nrempel/sleek / cargo install sleek
-  let g:neoformat_sql_sleek = {
-              \ 'exe': 'sleek',
-              \ 'args': ['--indent-spaces=2'],
-              \ 'stdin': 1,
-              \ }
-  let g:neoformat_enabled_sql = ['sleek']
-Plug 'andymass/vim-matchup', Cond(!exists('g:vscode'))
-  let g:loaded_matchit = 1
-  let g:matchup_matchparen_deferred = 1
-  let g:matchup_matchparen_hi_surround_always = 1
-Plug 'gelguy/wilder.nvim'
-Plug 'MattesGroeger/vim-bookmarks'
-  let g:bookmark_save_per_working_dir = 1
-  let g:bookmark_auto_save = 1
-  nnoremap <F2> :BookmarkToggle<cr>
-  nnoremap <S-F2> :BookmarkShowAll<cr>
-
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
-Plug 'alvan/vim-closetag'
-
-
-Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
-  let g:disable_rainbow_key_mappings = 1
-
-Plug 'gisphm/vim-gitignore'
-
-if has("gui_macvim")
-  let macvim_hig_shift_movement = 1
-  " Text-to-speech
-  vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
-  vnoremap <silent><C-l> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
-  vnoremap <BS> d
+" ----------------------------------------------------------------------------
+" Treesitter, Syntax & Language Support
+" ----------------------------------------------------------------------------
+if has("nvim")
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'chr4/nginx.vim'
 endif
 
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
-
+Plug 'leafgarland/typescript-vim'
 Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
-
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'rhysd/vim-gfm-syntax'
-
 Plug 'cespare/vim-toml'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround' "{
-"   " Assuming | as a cursor
-"     " fo|o - ysiw' - 'foo'
-"     " 'fo|o' - ds' - foo
-"     " 'fo|o' - cs'" - "foo"
-"   " ds ･･･ d(delete)s(surround)
-"   " di ･･･ d(delete)i(inside)
-"   " cs ･･･ c(change)s(surround)
-"   " ci ･･･ c(change)i(inside)
-"   " ys$ ･･･y(yank)s(surround)line
-"   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
-"   " gvS' ･･･ visual surroud with char
-" "}
-Plug 'machakann/vim-sandwich'
-Plug 'akio-ito/auto-pairs' "{
-  " <M-e> Fast Wrap (|)'hello' -> ('hello')
-  " <M-n> Jump to next closed pair
-  let g:AutoPairsMapCR = 0
-  imap <silent><CR> <CR><Plug>AutoPairsReturn
-"}
-Plug 'tomtom/tcomment_vim' "{
- noremap  <D-1> :TComment<cr>
- vnoremap <D-1> <ESC>gv:TComment<cr>
- inoremap <D-1> <ESC>:TComment<cr>
-
- noremap  <Leader>k :TComment<cr>
- vnoremap <Leader>k <ESC>gv:TComment<cr>
- inoremap <Leader>k <ESC>:TComment<cr>
- let g:tcomment#filetype#guess_svelte = 1
-"}
-
-" Plug 'rhysd/conflict-marker.vim'
-" co - our   - ConflictMarkerOurselves  - HEAD
-" ct - their - ConflictMarkerThemselves - feature/branch
-" cb - both  - ConflictMarkerBoth
-" cn - none  - ConflictMarkerNone
-" :ConflictMarkerNextHunk
-" :ConflictMarkerPrevHunk
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'akioito/vim-project-files'
-  noremap op :PyOpenProject<CR>
-Plug 'mkitt/browser-refresh.vim'
-Plug 'vim-scripts/a.vim'
-Plug 'vim-scripts/grep.vim' "{
-  " see https://github.com/BurntSushi/ripgrep
-  set grepprg=rg\ --vimgrep
-"}
-Plug 'henrik/vim-reveal-in-finder', { 'on': 'Reveal' }
-
-Plug 'preservim/tagbar' "{ Some customization
-  let g:tagbar_autoclose   = 1
-  let g:tagbar_autopreview = 1
-  let g:tagbar_sort        = 0
-  let g:tagbar_compact     = 1
-  let g:tagbar_indent      = 1
-  let g:tagbar_singleclick = 1
-  let g:tagbar_width       = 50
-  let g:tagbar_vertical    = 100
-  let g:tagbar_previewwin_pos = "rightbelow vertical"
-  nnoremap <C-@>      :TagbarToggle<CR>
-"}
-
-Plug 'ap/vim-css-color'
+Plug 'preservim/vim-markdown'
+  let g:vim_markdown_folding_disabled = 1
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'leafoftree/vim-svelte-plugin'
 Plug 'Galicarnax/vim-regex-syntax'
-
-if exists("g:gui_vimr") || exists('g:neovide')
-  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
-    " let g:ghost_autostart = 1
-    " :GhostStart
-    " Shortcut for browser textarea -> Shit+Cmd+V
-      function! s:SetupGhostBuffer()
-          if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
-              set ft=markdown
-          endif
-      endfunction
-
-      augroup vim-ghost
-          au!
-          au User vim-ghost#connected call s:SetupGhostBuffer()
-      augroup end
-end
-
-let $BAT_THEME = 'mycolor'
-
+Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   let g:rustfmt_autosave = 1
-Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
-Plug 'chiedo/vim-case-convert'
+Plug 'mechatroner/rainbow_csv', {'for': 'csv'}
+  let g:disable_rainbow_key_mappings = 1
+Plug 'gisphm/vim-gitignore'
 Plug 'NoahTheDuke/vim-just'
-Plug 'airblade/vim-rooter'
-Plug 'tyru/open-browser.vim'
-  let g:netrw_nogx = 1 " disable netrw's gx mapping.
-  nmap gb <Plug>(openbrowser-open)
-  vmap gb <Plug>(openbrowser-open)
+Plug 'ap/vim-css-color'
 
-" NERDTree
-" let g:mynerdtree = 0
-" function! MyNerdToggle()
-"     if g:mynerdtree == 0
-"         execute "normal! :NERDTree\<CR>:normal P\<CR>:normal O\<CR>"
-"          let g:mynerdtree = 1
-"     else
-"         execute "normal! *:NERDTreeClose\<CR>"
-"         let g:mynerdtree = 0
-"     endif
-" endfunction
-
-Plug 'leafgarland/typescript-vim'
-" Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
-" let g:NERDTreeMouseMode=3
-" " let g:NERDTreeQuitOnOpen=1
-" let NERDTreeShowLineNumbers=1
-" let NERDTreeMinimalUI=1
-" let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
-" nnoremap <F6> :call MyNerdToggle()<CR>
-" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-Plug 'romainl/vim-cool'
-  let g:CoolTotalMatches = 1
-
-Plug 'amadeus/vim-convert-color-to'
+" ----------------------------------------------------------------------------
+" Fuzzy Finder & Command-line
+" ----------------------------------------------------------------------------
+if has("nvim")
+    Plug 'ibhagwan/fzf-lua'
+endif
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+  let $BAT_THEME = 'mycolor'
   let $FZF_PREVIEW_COMMAND = 'bat --theme=mycolor --style=numbers --color=always {}'
   let g:fzf_layout = {'down': '77%'}
   " let $FZF_DEFAULT_OPTS = '--reverse --color fg:240,hl:33,fg+:241,bg+:#FFFF91,bg:#FFFFFF,hl+:33 --color info:33,prompt:33,pointer:166,marker:166,spinner:33'
@@ -418,7 +211,6 @@ Plug 'laher/fuzzymenu.vim'
   nnoremap <silent> <leader><Space> :MyMenu<CR>
   nnoremap <silent> m :MyMenu<CR>
 
-
 Plug 'yegappan/mru' " usage as :MRU vim-prj
   let MRU_Max_Entries = 2500 " saved at ~/.vim_mru_files
   let MRU_Window_Height = 40
@@ -434,11 +226,249 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
   command! XMRU call fzf#run(fzf#wrap({'source': 'cat ~/.vim_mru_files|rg -a vim-prj'}))
   nnoremap <silent> <C-P> <ESC>:call feedkeys("\<F5>")<CR>
 
-" Plug 'tpope/vim-sensible'
+Plug 'gelguy/wilder.nvim'
+
+" ----------------------------------------------------------------------------
+" Git
+" ----------------------------------------------------------------------------
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tonchis/vim-to-github'
+if has('nvim')
+  Plug 'f-person/git-blame.nvim'
+    let g:gitblame_date_format = '%r %Y-%m-%d %H:%M:%S'
+    let g:gitblame_message_template = ' <date> • <author> • <summary>'
+    let g:gitblame_enabled = 0
+endif
+" Plug 'rhysd/conflict-marker.vim'
+" co - our   - ConflictMarkerOurselves  - HEAD
+" ct - their - ConflictMarkerThemselves - feature/branch
+" cb - both  - ConflictMarkerBoth
+" cn - none  - ConflictMarkerNone
+" :ConflictMarkerNextHunk
+" :ConflictMarkerPrevHunk
+
+" ----------------------------------------------------------------------------
+" Buffers, Windows & Tags
+" ----------------------------------------------------------------------------
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'UncleZeiv/minibufexpl.vim'
+    let g:miniBufExplMaxSize = 35
+    let g:miniBufExplVSplit  = 20
+    let g:miniBufExplUseSingleClick  = 1
+    let g:miniBufExplorerMoreThanOne = 2
+    nnoremap <silent> <F7> <C-w>w
+Plug 'preservim/tagbar' "{ Some customization
+  let g:tagbar_autoclose   = 1
+  let g:tagbar_autopreview = 1
+  let g:tagbar_sort        = 0
+  let g:tagbar_compact     = 1
+  let g:tagbar_indent      = 1
+  let g:tagbar_singleclick = 1
+  let g:tagbar_width       = 50
+  let g:tagbar_vertical    = 100
+  let g:tagbar_previewwin_pos = "rightbelow vertical"
+  nnoremap <C-@>      :TagbarToggle<CR>
+"}
+
+" ----------------------------------------------------------------------------
+" Editing: text objects, motions, surround, comments
+" ----------------------------------------------------------------------------
+Plug 'michaeljsmith/vim-indent-object'
+" <count>ai An Indentation level and line above.
+
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+  xmap ff <Plug>(textobj-python-function-a)
+  omap ff <Plug>(textobj-python-function-a)
+
+Plug 'easymotion/vim-easymotion'
+  nmap f <Plug>(easymotion-overwin-f2)
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_verbose = 0
+
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround' "{
+"   " Assuming | as a cursor
+"     " fo|o - ysiw' - 'foo'
+"     " 'fo|o' - ds' - foo
+"     " 'fo|o' - cs'" - "foo"
+"   " ds ･･･ d(delete)s(surround)
+"   " di ･･･ d(delete)i(inside)
+"   " cs ･･･ c(change)s(surround)
+"   " ci ･･･ c(change)i(inside)
+"   " ys$ ･･･y(yank)s(surround)line
+"   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
+"   " gvS' ･･･ visual surroud with char
+" "}
+Plug 'machakann/vim-sandwich'
+Plug 'akio-ito/auto-pairs' "{
+  " <M-e> Fast Wrap (|)'hello' -> ('hello')
+  " <M-n> Jump to next closed pair
+  let g:AutoPairsMapCR = 0
+  imap <silent><CR> <CR><Plug>AutoPairsReturn
+"}
+Plug 'tomtom/tcomment_vim' "{
+ noremap  <D-1> :TComment<cr>
+ vnoremap <D-1> <ESC>gv:TComment<cr>
+ inoremap <D-1> <ESC>:TComment<cr>
+
+ noremap  <Leader>k :TComment<cr>
+ vnoremap <Leader>k <ESC>gv:TComment<cr>
+ inoremap <Leader>k <ESC>:TComment<cr>
+ let g:tcomment#filetype#guess_svelte = 1
+"}
+Plug 'chiedo/vim-case-convert'
+Plug 'jkramer/vim-checkbox'
+Plug 'dhruvasagar/vim-table-mode'
+
+" ----------------------------------------------------------------------------
+" Formatting & Indentation
+" ----------------------------------------------------------------------------
+Plug 'sbdchd/neoformat'
+  let g:neoformat_enabled_python = ['ruff', 'isort', 'docformatter']
+  let g:neoformat_run_all_formatters = 1
+  " https://github.com/nrempel/sleek / cargo install sleek
+  let g:neoformat_sql_sleek = {
+              \ 'exe': 'sleek',
+              \ 'args': ['--indent-spaces=2'],
+              \ 'stdin': 1,
+              \ }
+  let g:neoformat_enabled_sql = ['sleek']
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['css', 'less', 'scss', 'json', 'markdown', 'vue', 'svelte', 'yaml'] }
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tpope/vim-sleuth'
+Plug 'alvan/vim-closetag'
+Plug 'andymass/vim-matchup', Cond(!exists('g:vscode'))
+  let g:loaded_matchit = 1
+  let g:matchup_matchparen_deferred = 1
+  let g:matchup_matchparen_hi_surround_always = 1
+Plug 'Yggdroot/indentLine'
+  let g:indentLine_color_gui = '#ffdad8'
+  let g:indentLine_fileType = ['html', 'python', 'rust', 'javascript', 'typescript', 'json', 'yaml', 'toml', 'bash', 'lua', 'awk']
+  let g:indentLine_char = '|'
+  let g:indentLine_faster = 1
+
+" ----------------------------------------------------------------------------
+" UI & Appearance
+" ----------------------------------------------------------------------------
+if has("nvim")
+    Plug 'folke/todo-comments.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
+endif
+
+Plug 'romainl/vim-cool'
+  let g:CoolTotalMatches = 1
+Plug 'amadeus/vim-convert-color-to'
+Plug 'MattesGroeger/vim-bookmarks'
+  let g:bookmark_save_per_working_dir = 1
+  let g:bookmark_auto_save = 1
+  nnoremap <F2> :BookmarkToggle<cr>
+  nnoremap <S-F2> :BookmarkShowAll<cr>
 Plug 'godlygeek/csapprox'
+
+" ----------------------------------------------------------------------------
+" Tools & Integrations
+" ----------------------------------------------------------------------------
+Plug 'djoshea/vim-autoread'
+
+if has('nvim')
+  Plug 'mcauley-penney/tidy.nvim'
+  Plug 'MunifTanjim/nui.nvim'
+  Plug 'mhinz/vim-crates'
+    autocmd BufRead Cargo.toml call crates#toggle()
+else
+  " To use Python remote plugin features in Vim, can be skipped
+  Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'akioito/vim-project-files'
+  noremap op :PyOpenProject<CR>
+Plug 'mkitt/browser-refresh.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/grep.vim' "{
+  " see https://github.com/BurntSushi/ripgrep
+  set grepprg=rg\ --vimgrep
+"}
+Plug 'henrik/vim-reveal-in-finder', { 'on': 'Reveal' }
+Plug 'tyru/open-browser.vim'
+  let g:netrw_nogx = 1 " disable netrw's gx mapping.
+  nmap gb <Plug>(openbrowser-open)
+  vmap gb <Plug>(openbrowser-open)
+Plug 'airblade/vim-rooter'
+
+if exists("g:gui_vimr") || exists('g:neovide')
+  Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+    " let g:ghost_autostart = 1
+    " :GhostStart
+    " Shortcut for browser textarea -> Shit+Cmd+V
+      function! s:SetupGhostBuffer()
+          if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
+              set ft=markdown
+          endif
+      endfunction
+
+      augroup vim-ghost
+          au!
+          au User vim-ghost#connected call s:SetupGhostBuffer()
+      augroup end
+end
+
+" ----------------------------------------------------------------------------
+" Local plugins & Platform-specific
+" ----------------------------------------------------------------------------
+" Plug 'tpope/vim-sensible'
 Plug '~/.vim/mybundle/misc'
 Plug '~/.vim/mybundle/sbd.vim'
 " Plug '~/.vim/mybundle/vim-command-w'
+
+if has("gui_macvim")
+  let macvim_hig_shift_movement = 1
+  " Text-to-speech
+  vnoremap <silent><M-s> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
+  vnoremap <silent><C-l> "xy:call system('say -v Kyoko ' . shellescape(@x) . ' &')<CR>
+  vnoremap <BS> d
+endif
+
+" ----------------------------------------------------------------------------
+" Disabled / reference (commented out, kept for later)
+" ----------------------------------------------------------------------------
+" Plug 'roosta/fzf-folds.vim'
+" Plug 'pseewald/vim-anyfold'
+" Plug 'arecarn/vim-fold-cycle'
+"     let g:fold_cycle_default_mapping = 0 "disable default mappings
+"     nmap <Space><CR> <Plug>(fold-cycle-toggle-all)
+"     nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close-all)
+"     " Won't close when max fold is opened
+"     let g:fold_cycle_toggle_max_open  = 0
+"     " Won't open when max fold is closed
+"     let g:fold_cycle_toggle_max_close = 0
+
+" NERDTree
+" let g:mynerdtree = 0
+" function! MyNerdToggle()
+"     if g:mynerdtree == 0
+"         execute "normal! :NERDTree\<CR>:normal P\<CR>:normal O\<CR>"
+"          let g:mynerdtree = 1
+"     else
+"         execute "normal! *:NERDTreeClose\<CR>"
+"         let g:mynerdtree = 0
+"     endif
+" endfunction
+" Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+" let g:NERDTreeMouseMode=3
+" " let g:NERDTreeQuitOnOpen=1
+" let NERDTreeShowLineNumbers=1
+" let NERDTreeMinimalUI=1
+" let NERDTreeIgnore=['target[[dir]]', '\~$', '__pycache__[[dir]]', 'book[[dir]]']
+" nnoremap <F6> :call MyNerdToggle()<CR>
+" autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+"     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 call plug#end()
 
