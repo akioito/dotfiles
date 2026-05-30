@@ -78,7 +78,6 @@ require('blink.cmp').setup({
         treesitter = { 'lsp' }
       }
     },
-    signature = { enabled = true },
     list = {
       selection = {
         preselect = false,
@@ -86,6 +85,7 @@ require('blink.cmp').setup({
       }
     },
   },
+  signature = { enabled = true },
   snippets = { preset = 'vsnip' },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
