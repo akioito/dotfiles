@@ -68,13 +68,9 @@ Plug 'hrsh7th/vim-vsnip-integ'
 let g:vsnip_snippet_dir =  $HOME . '/dotfiles/.vsnip'
 
 " ----------------------------------------------------------------------------
-" Treesitter, Syntax & Language Support
+" Syntax & Language Support
 " ----------------------------------------------------------------------------
-if has('nvim')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'chr4/nginx.vim'
-endif
-
+Plug 'chr4/nginx.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
