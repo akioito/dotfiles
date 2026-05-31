@@ -50,6 +50,7 @@ hi pythonStatement            guifg=#9f40c0                      gui=italic
 hi pythonStatementSpecial     guifg=#28C101                      gui=italic
 hi pythonString               guifg=#28C101                      gui=italic
 hi pythonTripleString         guifg=darkgreen                    gui=italic
+hi pythonOperator             guifg=#A72E2F                      gui=italic
 
 " HTML / JS
 hi htmlString                 guifg=#0BB634                      gui=italic
