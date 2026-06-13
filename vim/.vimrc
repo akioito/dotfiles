@@ -1040,6 +1040,7 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
     autocmd BufRead *.vim-prj call feedkeys("op")
     autocmd FileType html setlocal indentkeys-=*<Return>
+    autocmd BufWinEnter *.md if filereadable(expand('%:p')) | call system('open ' . shellescape(expand('%:p'))) | endif
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Quickfix settings
