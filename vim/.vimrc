@@ -664,6 +664,32 @@ function! s:TrimWhitespace() abort
 endfunction
 
 " ----------------------------------------------------------------------------
+" Close the Google Chrome tab whose URL matches the given file (BufWinLeave).
+" Pairs with the BufWinEnter *.md autocmd that opens the file in Chrome.
+function! s:CloseMarkdownTab(path) abort
+    if a:path ==# '' | return | endif
+    let l:lines = [
+        \ 'on run argv',
+        \ 'set p to item 1 of argv',
+        \ 'tell application "Google Chrome"',
+        \ 'repeat with w in windows',
+        \ 'set tabList to tabs of w',
+        \ 'repeat with i from (count of tabList) to 1 by -1',
+        \ 'if (URL of item i of tabList) contains p then close item i of tabList',
+        \ 'end repeat',
+        \ 'end repeat',
+        \ 'end tell',
+        \ 'end run',
+        \ ]
+    let l:cmd = 'osascript'
+    for l:line in l:lines
+        let l:cmd .= ' -e ' . shellescape(l:line)
+    endfor
+    let l:cmd .= ' -- ' . shellescape(a:path)
+    call system(l:cmd)
+endfunction
+
+" ----------------------------------------------------------------------------
 " Toggle relative / absolute line numbers
 function! s:ToggleNumberMode()
   if &rnu == 0
@@ -1040,7 +1066,9 @@ augroup my_autocmd
     autocmd BufNewFile,BufRead .gitignore,*.vim-prj set filetype=gitignore
     autocmd BufRead *.vim-prj call feedkeys("op")
     autocmd FileType html setlocal indentkeys-=*<Return>
-    autocmd BufWinEnter *.md if filereadable(expand('%:p')) | call system('open ' . shellescape(expand('%:p'))) | endif
+    autocmd BufWinEnter *.md if filereadable(expand('%:p')) | call system('open -a "Google Chrome" ' . shellescape(expand('%:p'))) | endif
+    autocmd BufWinLeave *.md call s:CloseMarkdownTab(expand('<afile>:p'))
+
     autocmd FileType svelte runtime ftplugin/html/sparkup.vim
 
     " Quickfix settings
