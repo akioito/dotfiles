@@ -551,7 +551,11 @@ set virtualedit=all                    " Let cursor go where there's no text
 set shortmess=oO                       " Suppress/overwrite file-read messages
 set number                             " Show line numbers
 let fillchars='eob: '                  " Blank out ~ on end-of-buffer lines
-set linespace=-1                       " Pixels between rows (negative = tighter)
+if has('gui_macvim')
+    set linespace=-3                   " MacVim: tighter rows
+else
+    set linespace=-1                   " Pixels between rows (negative = tighter)
+endif
 set lazyredraw                         " to avoid scrolling problems
 set ttyfast                            " Assume a fast terminal (smoother redraw)
 set timeout timeoutlen=300 ttimeoutlen=50  " Mapping (300) vs key-code (50) timeouts in ms
