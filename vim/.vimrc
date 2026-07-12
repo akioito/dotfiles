@@ -38,6 +38,12 @@ augroup vim-lsp
       \ 'priority': 10,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+      \ 'name': 'buffer',
+      \ 'allowlist': ['*'],
+      \ 'priority': 5,
+      \ 'completor': function('asyncomplete#sources#buffer#completor')
+      \ }))
 augroup end
 
 let g:lsp_diagnostics_echo_cursor = 1
@@ -77,13 +83,11 @@ Plug 'leafgarland/typescript-vim'
 Plug 'dag/vim-fish'
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
-Plug 'rhysd/vim-gfm-syntax'
 Plug 'cespare/vim-toml'
 Plug 'preservim/vim-markdown'
   let g:vim_markdown_folding_disabled = 1
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-Plug 'leafoftree/vim-svelte-plugin'
 Plug 'Galicarnax/vim-regex-syntax'
 Plug 'Glench/Vim-Jinja2-Syntax'  " Also used for askama template
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -213,7 +217,8 @@ Plug 'yegappan/mru' " usage as :MRU vim-prj
   let MRU_Max_Menu_Entries = 50
 
   nnoremap zquick               :<C-u>Quickfix<cr>
-  nnoremap zdiff                :<C-u>!git difftool<cr>  " Dialog yes/no only works for MacVim...
+  " Dialog yes/no only works for MacVim...
+  nnoremap zdiff                :<C-u>!git difftool<cr>
   nnoremap zdesk                :<C-u>!github<cr>
 
   nnoremap <silent> <C-l>       :<C-u>Buffers<cr>
@@ -297,7 +302,6 @@ Plug 'tpope/vim-surround' "{
 "   " ysiw ･･･ y(yank)s(surrond)iw(inner word)
 "   " gvS' ･･･ visual surroud with char
 " "}
-Plug 'machakann/vim-sandwich'
 Plug 'akio-ito/auto-pairs' "{
   " <M-e> Fast Wrap (|)'hello' -> ('hello')
   " <M-n> Jump to next closed pair
@@ -364,7 +368,6 @@ Plug 'MattesGroeger/vim-bookmarks'
   let g:bookmark_auto_save = 1
   nnoremap <F2> :BookmarkToggle<cr>
   nnoremap <S-F2> :BookmarkShowAll<cr>
-Plug 'godlygeek/csapprox'
 
 " ----------------------------------------------------------------------------
 " Tools & Integrations
@@ -377,7 +380,7 @@ if has('nvim')
   Plug 'mhinz/vim-crates'
     autocmd BufRead Cargo.toml call crates#toggle()
 else
-  " To use Python remote plugin features in Vim, can be skipped
+  " Remote-plugin support in Vim — required by wilder.nvim's python pipeline
   Plug 'roxma/nvim-yarp', { 'do': 'pip install -r requirements.txt' }
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -550,7 +553,7 @@ set nowritebackup                      " No backup while overwriting a file
 set virtualedit=all                    " Let cursor go where there's no text
 set shortmess=oO                       " Suppress/overwrite file-read messages
 set number                             " Show line numbers
-let fillchars='eob: '                  " Blank out ~ on end-of-buffer lines
+set fillchars=eob:\                    " Blank out ~ on end-of-buffer lines
 if has('gui_macvim')
     set linespace=-3                   " MacVim: tighter rows
 else
@@ -583,7 +586,6 @@ endif
 let html_no_rendering     = 1
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1  = "inc"
-let loaded_quickfixsigns  = 100
 
 " ----------------------------------------------------------------------------
 " Grep (grep.vim / ripgrep)
@@ -982,7 +984,8 @@ cmap w!! w !sudo tee % >/dev/null
 " neovim paste
 inoremap <C-v> <C-r>*
 cnoremap <C-v> <C-r>*
-nnoremap <C-v> <Esc>hp            " normal-mode paste; visual <C-v> stays blockwise
+" normal-mode paste; visual <C-v> stays blockwise
+nnoremap <C-v> <Esc>hp
 nnoremap <leader>w :<C-u>w<cr>h
 inoremap <Space>w <Esc>:<C-u>w<cr>l
 
@@ -1026,7 +1029,6 @@ tnoremap <Esc><Esc> <C-\><C-n>
 " Grep current buffer / word at cursor
 inoremap <silent> <F3>  <ESC>:Bgrep<CR><CR>
 noremap  <silent> <F3>       :Bgrep<CR><CR>
-  let g:Lf_PreviewResult = {'Rg': 1 }
 
 " augroup filetype_mysql
 "   autocmd!
