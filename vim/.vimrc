@@ -625,6 +625,7 @@ set statusline+=%0*\ %{&ff}\                       " file format
 set statusline+=%4*\ %{(&fenc==\"\"?&enc:&fenc)}\  " encoding
 " set statusline+=%4*\ %{g:progress}
 set statusline+=%0*%y%*                            " file type
+set notagstack
 
 " ============================================================================
 " Abbreviations
