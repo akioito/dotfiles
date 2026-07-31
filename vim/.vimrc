@@ -400,6 +400,7 @@ Plug 'tyru/open-browser.vim'
   nmap gb <Plug>(openbrowser-open)
   vmap gb <Plug>(openbrowser-open)
 Plug 'airblade/vim-rooter'
+Plug 'tanabee/cmux.vim'
 
 if exists("g:gui_vimr") || exists('g:neovide')
   Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
