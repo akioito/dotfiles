@@ -5,7 +5,6 @@ theme = Builtin Light
 quit-after-last-window-closed=true
 font-family = Maple Mono
 font-size = 19.0
-sidebar-font-size = 18.0
 macos-option-as-alt = true
 adjust-cell-height = -7
 copy-on-select = clipboard
