@@ -357,6 +357,7 @@ Plug 'Yggdroot/indentLine'
 if has('nvim')
     Plug 'folke/todo-comments.nvim'
     Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
     Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
 endif
 
