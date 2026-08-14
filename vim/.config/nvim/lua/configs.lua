@@ -57,7 +57,37 @@ vim.opt.guicursor = table.concat({
 vim.o.fillchars = 'eob: ' -- remove ~ sign
 require("todo-comments").setup({})
 require('pqf').setup()
-require("bufferline").setup({})
+
+local bufferline_selected_bg = '#ffffa2'
+local bufferline_selected_fg = '#000000'
+local bufferline_bg = '#ffffff'
+require("bufferline").setup({
+  options = {
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+  },
+  highlights = {
+    background            = { bg = bufferline_bg },
+    numbers               = { bg = bufferline_bg },
+    duplicate             = { bg = bufferline_bg },
+    modified              = { bg = bufferline_bg },
+    separator             = { bg = bufferline_bg },
+
+    buffer_visible        = { bg = bufferline_bg },
+    numbers_visible       = { bg = bufferline_bg },
+    duplicate_visible     = { bg = bufferline_bg },
+    modified_visible      = { bg = bufferline_bg },
+    separator_visible     = { bg = bufferline_bg },
+    indicator_visible     = { bg = bufferline_bg },
+
+    buffer_selected       = { fg = bufferline_selected_fg, bg = bufferline_selected_bg },
+    numbers_selected      = { fg = bufferline_selected_fg, bg = bufferline_selected_bg },
+    duplicate_selected    = { fg = bufferline_selected_fg, bg = bufferline_selected_bg },
+    modified_selected     = { fg = bufferline_selected_fg, bg = bufferline_selected_bg },
+    indicator_selected    = { bg = bufferline_selected_bg },
+    separator_selected    = { bg = bufferline_selected_bg },
+  },
+})
 
 require("tidy").setup({
   filetype_exclude = { "markdown", "diff" },
