@@ -32,7 +32,8 @@ if vim.g.neovide then
   vim.g.neovide_input_macos_option_key_is_meta = 'both'
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_refresh_rate = 120
-  vim.g.neovide_no_idle = true
+  -- vim.g.neovide_no_idle = true
+  vim.g.neovide_refresh_rate_idle = 5
   vim.g.neovide_cursor_antialiasing = true
 
   -- turn off all animations
@@ -41,6 +42,11 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animate_command_line = false
   vim.g.neovide_scroll_animation_far_lines = 0
   vim.g.neovide_scroll_animation_length = 0.3
+
+  vim.o.guifont = "Lekton Nerd Font:h20:#e-subpixelantialias:#h-full"
+  vim.g.neovide_text_gamma = 0.8
+  vim.g.neovide_text_contrast = 0.1
+  vim.g.neovide_pixel_geometry = "RGBH"
 end
 
 -- Cursor blink (blinkwait-blinkon-blinkoff in milliseconds)
