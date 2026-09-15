@@ -706,14 +706,14 @@ endfunction
 nnoremap <silent> nt :call <SID>ToggleNumberMode()<CR>
 
 " ----------------------------------------------------------------------------
-" Copy selected line reference to clipboard + send it to cmux
+" Copy selected line reference to clipboard + send it to iTerm
 noremap  <F6> :SFRef<cr>
 vnoremap <F6> <ESC>gv:SFRef<cr>
 inoremap <F6> <ESC>:SFRef<cr>
 
-command! -range SFRef call SendLineRefToCmux(<line1>, <line2>)
+command! -range SFRef call SendLineRefToiTerm(<line1>, <line2>)
 
-function! SendLineRefToCmux(start_line, end_line) abort
+function! SendLineRefToiTerm(start_line, end_line) abort
     let filename = empty(expand('%')) ? '[No Name]' : expand('%')
     let reference = '@' . filename . ':' . a:start_line
     if a:start_line != a:end_line
@@ -730,14 +730,27 @@ function! SendLineRefToCmux(start_line, end_line) abort
         endif
     endif
 
-    " cmux send types the text into the focused surface without a newline
-    let l:out = system('cmux send -- ' . shellescape(reference))
-    if v:shell_error
-        echohl WarningMsg | echo 'SFRef: cmux send failed: ' . trim(l:out) | echohl None
-        return
-    endif
+    " Escape double quotes and backslashes in the filename so it doesn't break AppleScript
+    let l:safe_ref = escape(reference, '"\')
 
-    echo 'Sent to cmux: ' . reference
+    " Build a native iTerm2 AppleScript string
+    let l:applescript = [
+    \ 'tell application "iTerm"',
+    \ '  activate',
+    \ '  if exists (current window) then',
+    \ '    tell current window',
+    \ '      tell current session',
+    \ '        write text "' . l:safe_ref . '" without newline',
+    \ '      end tell',
+    \ '    end tell',
+    \ '  end if',
+    \ 'end tell'
+    \ ]
+
+    " Execute the AppleScript securely
+    call system('osascript -e ' . shellescape(join(l:applescript, "\n")))
+
+    echo 'Sent to iTerm: ' . reference
 endfunction
 
 " ----------------------------------------------------------------------------
